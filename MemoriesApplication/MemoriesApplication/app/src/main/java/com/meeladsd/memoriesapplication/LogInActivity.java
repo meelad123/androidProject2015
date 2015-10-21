@@ -31,24 +31,14 @@ public class LogInActivity extends ActionBarActivity {
                     txtUsername.setError(getString(R.string.msg_empty));
                 if (txtPassword.getText().toString() == "")
                     txtPassword.setError(getString(R.string.msg_empty));
-                boolean res = Login();
-                if(!res) {
-                    Toast.makeText(getApplicationContext(), "Not logged in",
-                            Toast.LENGTH_SHORT).show();
-                }
-                Toast.makeText(getApplicationContext(), "Logged in!",
-                        Toast.LENGTH_SHORT).show();
+                Login();
             }
         });
     }
 
-    public Boolean Login()
-    {
+    public void Login() {
         User u = new User();
         myURL = getString(R.string.url_token);
-        new login(txtUsername.getText().toString(), txtPassword.getText().toString(), myURL).execute();
-        if(u.token != null)
-            return true;
-        return false;
+        new login(txtUsername.getText().toString(), txtPassword.getText().toString(), myURL, getApplicationContext()).execute();
     }
 }

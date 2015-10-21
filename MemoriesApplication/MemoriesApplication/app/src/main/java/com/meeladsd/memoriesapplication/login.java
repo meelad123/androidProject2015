@@ -1,6 +1,8 @@
 package com.meeladsd.memoriesapplication;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -18,20 +20,22 @@ import java.util.List;
 /**
  * Created by meeladsd on 10/18/2015.
  */
-public class login extends AsyncTask<Void, Void, Boolean>{
+public class login extends AsyncTask<String, Void, JSONObject>{
 
     private String _userName, _password, _url;
+    Context _myContext;
     private HttpResponse resp = null;
     
-    login(String userName, String password, String url)
+    login(String userName, String password, String url, Context c)
     {
         _userName = userName;
         _password = password;
         _url = url;
+        _myContext = c;
     }
 
     @Override
-    protected Boolean doInBackground(Void... params) {
+    protected JSONObject doInBackground(String... params) {
 
         HttpPost httppost = new HttpPost(_url);
         HttpClient client = new DefaultHttpClient();
@@ -46,14 +50,20 @@ public class login extends AsyncTask<Void, Void, Boolean>{
             httppost.setEntity(new  UrlEncodedFormEntity(valuePairs, HTTP.UTF_8));
             resp = client.execute(httppost);
 
-            JSONObject userJson = JsonHelper.parseJSONObjectResponse(resp.getEntity().getContent());
-
-            return true;
+            return JsonHelper.parseJSONObjectResponse(resp.getEntity().getContent());
         }catch (Exception e)
         {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 
+    @Override
+    protected void onPostExecute(JSONObject jsonObject) {
+
+        if(jsonObject != null)
+            Toast.makeText(_myContext, "logged in", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(_myContext, "not in", Toast.LENGTH_LONG).show();
+    }
 }
