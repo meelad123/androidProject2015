@@ -19,6 +19,7 @@ import java.util.List;
 
 /**
  * Created by Sevag on 2015-10-21.
+ * Edited by Meelad on 2015-10-22.
  */
 public class Register extends AsyncTask<String, String, String> {
 

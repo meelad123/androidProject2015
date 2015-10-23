@@ -33,7 +33,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
-        android:onClick="reg_btn_clicked"
         android:id="@+id/btn_register"
         android:layout_marginTop="104dp"
         android:layout_below="@+id/Pass_text_Field"

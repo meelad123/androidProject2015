@@ -12,7 +12,7 @@
     android:id="@+id/MyRelativeLayout">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imgLogo"
         android:src="@drawable/header_android_2"
@@ -31,7 +31,10 @@
         android:layout_alignBaseline="@+id/imgLogo"
         android:textColor="#ffffff"
         android:inputType="text"
-        android:hint="@string/user_name"/>
+        android:hint="@string/user_name"
+        android:textColorHighlight="#ffffff"
+        android:textColorHint="#ffffff"
+        android:textColorLink="#ffffff" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -39,19 +42,21 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/txtPass"
-        android:layout_marginTop="19dp"
         android:textColor="#ffffff"
         android:layout_below="@+id/imgLogo"
         android:layout_alignLeft="@+id/txtUsername"
         android:layout_alignStart="@+id/txtUsername"
-        android:hint="@string/password"/>
+        android:hint="@string/password"
+        android:foreground="#ffffff"
+        android:textColorHint="#ffffff"
+        android:textColorHighlight="#ffffff"
+        android:textColorLink="#ffffff" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btnLogin"
         android:id="@+id/btnLogin"
-        android:layout_marginTop="23dp"
         android:layout_below="@+id/txtPass"
         android:layout_alignLeft="@+id/txtPass"
         android:layout_alignStart="@+id/txtPass"
@@ -59,5 +64,21 @@
         android:layout_alignEnd="@+id/txtPass"
         android:background="#2a2a2a"
         android:textColor="#ffffff" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/txt_register"
+        android:id="@+id/txtRegister"
+        android:textColor="#ffffff"
+        android:textColorHighlight="#ffffff"
+        android:textColorHint="#ffffff"
+        android:textColorLink="#ffffff"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/btnLogin"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp" />
 </RelativeLayout>
 

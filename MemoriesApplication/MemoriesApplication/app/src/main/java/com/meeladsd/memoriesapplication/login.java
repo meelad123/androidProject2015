@@ -1,6 +1,8 @@
 package com.meeladsd.memoriesapplication;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -12,6 +14,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -61,9 +64,19 @@ public class login extends AsyncTask<String, Void, JSONObject>{
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
 
-        if(jsonObject != null)
+        SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = myS.edit();
+        try {
+
+            String s = jsonObject.getString("access_token");
+            editor.putString("access_token", s);
+            editor.commit();
             Toast.makeText(_myContext, "logged in", Toast.LENGTH_LONG).show();
-        else
-            Toast.makeText(_myContext, "not in", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(_myContext, MainActivity.class);
+            _myContext.startActivity(intent);
+        } catch (JSONException e) {
+            Toast.makeText(_myContext, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
     }
 }
