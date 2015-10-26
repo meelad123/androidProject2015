@@ -20,5 +20,8 @@
     <string name="txt_register">Not a member? Register here</string>
     <string name="str_token">token</string>
     <string name="str_access_token">access_token</string>
+    <string name="title_activity_create_vacation">CreateVacation</string>
+    <string name="title_activity_create_vacationa">CreateVacationaActivity</string>
+    <string name="create_vacatiom">Create Vacation</string>
 
 </resources>
