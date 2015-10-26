@@ -1,5 +1,6 @@
 package com.meeladsd.memoriesapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,10 +27,10 @@ import java.util.List;
 public class login extends AsyncTask<String, Void, JSONObject>{
 
     private String _userName, _password, _url;
-    Context _myContext;
+    Activity _myContext;
     private HttpResponse resp = null;
     
-    login(String userName, String password, String url, Context c)
+    login(String userName, String password, String url, Activity c)
     {
         _userName = userName;
         _password = password;
@@ -72,8 +73,7 @@ public class login extends AsyncTask<String, Void, JSONObject>{
             editor.putString("access_token", s);
             editor.commit();
             Toast.makeText(_myContext, "logged in", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(_myContext, MainActivity.class);
-            _myContext.startActivity(intent);
+            _myContext.startActivity(new Intent(_myContext, MainActivity.class));
         } catch (JSONException e) {
             Toast.makeText(_myContext, e.getMessage(), Toast.LENGTH_LONG).show();
         }

@@ -14,5 +14,5 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:id="@+id/btnLogout"
-        />
+        android:text="Log out" />
 </RelativeLayout>

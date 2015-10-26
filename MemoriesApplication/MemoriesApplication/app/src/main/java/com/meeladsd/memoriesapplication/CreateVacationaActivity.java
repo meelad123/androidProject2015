@@ -31,16 +31,17 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
     private void CreateVacationFunk(View v) {
 
-
-
-         title = (EditText) findViewById(R.id.title_txt);
-         description = (EditText) findViewById(R.id.description_txt);
-         place = (EditText) findViewById(R.id.place_txt);
-         start = (EditText) findViewById(R.id.start_txt);
-         end = (EditText) findViewById(R.id.end_txt);
-        new CreateVacation (title.getText().toString(),description.getText().toString(),place.getText().toString(),start.getText().toString(),end.getText().toString(),getApplicationContext()).execute();
-
-
+        title = (EditText) findViewById(R.id.title_txt);
+        description = (EditText) findViewById(R.id.description_txt);
+        place = (EditText) findViewById(R.id.place_txt);
+        start = (EditText) findViewById(R.id.start_txt);
+        end = (EditText) findViewById(R.id.end_txt);
+        new CreateVacation (title.getText().toString(),
+                            description.getText().toString(),
+                            place.getText().toString(),
+                            start.getText().toString(),
+                            end.getText().toString(),
+                            getApplicationContext()).execute();
 
     }
 

@@ -69,7 +69,10 @@ public class LogInActivity extends ActionBarActivity {
             else {
                 User u = new User();
                 myURL = getString(R.string.url_token);
-                new login(txtUsername.getText().toString(), txtPassword.getText().toString(), myURL, getApplicationContext()).execute();
+                new login(txtUsername.getText().toString(),
+                        txtPassword.getText().toString(),
+                        myURL,
+                        LogInActivity.this).execute();
             }
 
     }
