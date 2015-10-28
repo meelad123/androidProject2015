@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="Output" type="id">output</item>
+    <item name="changeDate" type="id">changeData</item>
+    <item name="etxt_fromdate" type="id" />
+    <item name="etxt_todate" type="id" />
+</resources>

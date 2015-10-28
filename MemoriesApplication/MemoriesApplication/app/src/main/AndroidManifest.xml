@@ -13,12 +13,13 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".LogInActivity"
-            android:label="@string/app_name" >
+            android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".RegisterActivity"
@@ -26,18 +27,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
-        <activity
-            android:name=".CreateVacation"
-            android:label="@string/title_activity_create_vacation" >
-        </activity>
-        <activity
-            android:name=".Create_vacation"
-            android:label="@string/title_activity_create_vacation" >
-        </activity>
-        <activity
-            android:name=".CreateVacationaActivity"
-            android:label="@string/title_activity_create_vacationa" >
-        </activity>
+
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.meeladsd.memoriesapplication;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.text.Editable;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import java.util.List;
  */
 
 public class CreateVacation extends AsyncTask<String, String, String> {
+
 
     private String Description, title,place,start,end;
     Context con;
@@ -55,7 +57,11 @@ public class CreateVacation extends AsyncTask<String, String, String> {
 
 
         try {
+            SharedPreferences myS =  con.getSharedPreferences("token", Context.MODE_PRIVATE);
 
+            String t = myS.getString("access_token","");
+
+            httppost.setHeader("Authorization", "Bearer" + t);
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePair));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

@@ -10,7 +10,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="create vacatiom"
+        android:text="create vacation"
         android:id="@+id/create_vacation_btn"
         android:layout_marginBottom="55dp"
         android:layout_alignParentBottom="true"
@@ -33,50 +33,52 @@
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/description_txt"
+        android:hint="Description"
         android:layout_below="@+id/title_txt"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="45dp"
-        android:layout_alignRight="@+id/end_txt"
-        android:layout_alignEnd="@+id/end_txt"
-        android:hint="Description"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/start_txt"
-        android:layout_above="@+id/create_vacation_btn"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="78dp"
-        android:layout_toLeftOf="@+id/create_vacation_btn"
-        android:layout_toStartOf="@+id/create_vacation_btn"
-        android:hint="start"
-        />
-
-    <EditText
-        android:hint="end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/end_txt"
-        android:layout_alignTop="@+id/start_txt"
-        android:layout_toRightOf="@+id/create_vacation_btn"
-        android:layout_toEndOf="@+id/create_vacation_btn" />
-
+        android:layout_alignRight="@+id/title_txt"
+        android:layout_alignEnd="@+id/title_txt" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/place_txt"
+        android:hint="place"
         android:layout_below="@+id/description_txt"
-        android:layout_marginTop="35dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:hint="place"/>
+        android:layout_alignRight="@+id/description_txt"
+        android:layout_alignEnd="@+id/description_txt" />
+
+    <TextView
+        android:hint="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Vac_start"
+        android:layout_below="@+id/place_txt"
+        android:layout_alignLeft="@+id/create_vacation_btn"
+        android:layout_alignStart="@+id/create_vacation_btn"
+        android:layout_marginTop="52dp"
+        android:layout_alignRight="@+id/create_vacation_btn"
+        android:layout_alignEnd="@+id/create_vacation_btn"
+        android:gravity="center"
+        android:clickable="true" />
+
+    <TextView
+        android:hint="End"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Vac_End"
+        android:layout_below="@+id/Vac_start"
+        android:layout_alignLeft="@+id/Vac_start"
+        android:layout_alignStart="@+id/Vac_start"
+        android:layout_marginTop="50dp"
+        android:layout_alignRight="@+id/Vac_start"
+        android:layout_alignEnd="@+id/Vac_start"
+        android:clickable="true" />
+
+
+
 
 </RelativeLayout>

@@ -13,28 +13,25 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
         android:id="@+id/imgLogo"
         android:src="@drawable/header_android_2"
-        android:contentDescription="@string/img_header"
-        android:scaleType="fitCenter"
-        android:layout_alignParentTop="true"
-        />
+        android:contentDescription="@string/img_header" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:id="@+id/txtUsername"
-        android:layout_alignBottom="@+id/imgLogo"
-        android:layout_centerHorizontal="true"
-        android:layout_alignBaseline="@+id/imgLogo"
         android:textColor="#ffffff"
         android:inputType="text"
         android:hint="@string/user_name"
         android:textColorHighlight="#ffffff"
         android:textColorHint="#ffffff"
-        android:textColorLink="#ffffff" />
+        android:textColorLink="#ffffff"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -43,14 +40,14 @@
         android:ems="10"
         android:id="@+id/txtPass"
         android:textColor="#ffffff"
-        android:layout_below="@+id/imgLogo"
-        android:layout_alignLeft="@+id/txtUsername"
-        android:layout_alignStart="@+id/txtUsername"
         android:hint="@string/password"
         android:foreground="#ffffff"
         android:textColorHint="#ffffff"
         android:textColorHighlight="#ffffff"
-        android:textColorLink="#ffffff" />
+        android:textColorLink="#ffffff"
+        android:layout_below="@+id/txtUsername"
+        android:layout_alignLeft="@+id/txtUsername"
+        android:layout_alignStart="@+id/txtUsername" />
 
     <Button
         android:layout_width="wrap_content"
@@ -76,9 +73,8 @@
         android:textColorHint="#ffffff"
         android:textColorLink="#ffffff"
         android:gravity="center_horizontal"
-        android:layout_below="@+id/btnLogin"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
 
