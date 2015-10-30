@@ -23,5 +23,7 @@
     <string name="title_activity_create_vacation">CreateVacation</string>
     <string name="title_activity_create_vacationa">CreateVacationaActivity</string>
     <string name="create_vacatiom">Create Vacation</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 
 </resources>

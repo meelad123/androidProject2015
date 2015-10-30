@@ -12,9 +12,9 @@
         android:layout_height="wrap_content"
         android:text="create vacation"
         android:id="@+id/create_vacation_btn"
-        android:layout_marginBottom="55dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/Vac_End"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp" />
 
     <EditText
         android:layout_width="wrap_content"

@@ -74,6 +74,7 @@ public class login extends AsyncTask<String, Void, JSONObject>{
             editor.commit();
             Toast.makeText(_myContext, "logged in", Toast.LENGTH_LONG).show();
             _myContext.startActivity(new Intent(_myContext, MainActivity.class));
+            _myContext.finish();
         } catch (JSONException e) {
             Toast.makeText(_myContext, e.getMessage(), Toast.LENGTH_LONG).show();
         }

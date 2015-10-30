@@ -67,7 +67,6 @@ public class LogInActivity extends ActionBarActivity {
         else if (txtPassword.getText().toString() == "")
                 txtPassword.setError(getString(R.string.msg_empty));
             else {
-                User u = new User();
                 myURL = getString(R.string.url_token);
                 new login(txtUsername.getText().toString(),
                         txtPassword.getText().toString(),
