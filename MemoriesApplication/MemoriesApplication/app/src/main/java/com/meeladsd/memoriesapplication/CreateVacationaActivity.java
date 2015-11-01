@@ -2,9 +2,10 @@ package com.meeladsd.memoriesapplication;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.text.InputType;
-import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -62,6 +63,12 @@ public class CreateVacationaActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_vacationa);
 
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
         startVac = (TextView) findViewById(R.id.Vac_start);
         EndVac = (TextView) findViewById(R.id.Vac_End);
         create_vacaion_btn = (Button) findViewById(R.id.create_vacation_btn);
@@ -97,6 +104,16 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     private void CreateVacationFunk(View v) {
 

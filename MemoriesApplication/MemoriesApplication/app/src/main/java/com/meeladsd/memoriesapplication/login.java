@@ -1,6 +1,7 @@
 package com.meeladsd.memoriesapplication;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,13 +30,22 @@ public class login extends AsyncTask<String, Void, JSONObject>{
     private String _userName, _password, _url;
     Activity _myContext;
     private HttpResponse resp = null;
-    
+    ProgressDialog progress;
     login(String userName, String password, String url, Activity c)
     {
         _userName = userName;
         _password = password;
         _url = url;
         _myContext = c;
+        progress = new ProgressDialog(c);
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progress.setTitle("Logging in");
+        progress.setMessage("Please wait...");
+        progress.show();
     }
 
     @Override
@@ -44,6 +54,7 @@ public class login extends AsyncTask<String, Void, JSONObject>{
         HttpPost httppost = new HttpPost(_url);
         HttpClient client = new DefaultHttpClient();
         List<NameValuePair> valuePairs = new ArrayList<NameValuePair>();
+
 
         valuePairs.add(new BasicNameValuePair("grant_type", "password"));
         valuePairs.add(new BasicNameValuePair("username", _userName));
@@ -62,6 +73,7 @@ public class login extends AsyncTask<String, Void, JSONObject>{
         }
     }
 
+
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
 
@@ -73,10 +85,17 @@ public class login extends AsyncTask<String, Void, JSONObject>{
             editor.putString("access_token", s);
             editor.commit();
             Toast.makeText(_myContext, "logged in", Toast.LENGTH_LONG).show();
+
             _myContext.startActivity(new Intent(_myContext, MainActivity.class));
+
             _myContext.finish();
         } catch (JSONException e) {
             Toast.makeText(_myContext, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        finally {
+            if (progress.isShowing()) {
+                progress.dismiss();
+            }
         }
 
     }
