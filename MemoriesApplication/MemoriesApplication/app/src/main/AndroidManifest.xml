@@ -21,6 +21,10 @@
             </intent-filter>
         </activity>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
         <activity
             android:name=".RegisterActivity"
             android:label="@string/lbl_register"
@@ -32,7 +36,16 @@
 
         <activity
             android:name=".MainActivity"
+<<<<<<< HEAD
             android:label="MAIN" />
+=======
+            android:label="@string/title_activity_main" />
+<<<<<<< HEAD
+        <activity android:name=".CreateVacationaActivity"
+            android:label="CreateVacationActivity"></activity>
+
+=======
+>>>>>>> origin/master
 
         <activity
             android:name=".CreateVacationaActivity"
@@ -42,6 +55,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
+>>>>>>> origin/master
 
     </application>
 
