@@ -28,7 +28,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
 
         addDrawerItems();
@@ -37,54 +37,24 @@ public class MainActivity extends ActionBarActivity {
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                switch (position) {
-                    case 0:
-                        Intent intent_Vac = new Intent(view.getContext(), CreateVacationaActivity.class);
-                        startActivity(intent_Vac);
-                        break;
 
-                    case 2:
-                        SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
-                        SharedPreferences.Editor editor = userDetails.edit();
-
-                        editor.clear();
-                        editor.commit();
-
-                        Intent intent = new Intent(view.getContext(), LogInActivity.class);
-                        startActivity(intent);
-                        break;
-=======
-=======
->>>>>>> parent of fadf28a... post create vacation works
                 if (position == 2) {
                     SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
                     SharedPreferences.Editor editor = userDetails.edit();
 
                     editor.clear();
-<<<<<<< HEAD
                     editor.apply();
 
                     Intent intent = new Intent(view.getContext(), LogInActivity.class);
                     startActivity(intent);
                     finish();
->>>>>>> origin/master
                 }
-=======
-                    editor.commit();
->>>>>>> parent of fadf28a... post create vacation works
 
-                    Intent intent = new Intent(view.getContext(), LogInActivity.class);
-                    startActivity(intent);
-                }
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setHomeButtonEnabled(true);
             }
         });
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
     }
-
     private void addDrawerItems() {
         String[] myitems = { "My vacations", "My friends", "Log out"};
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myitems);
