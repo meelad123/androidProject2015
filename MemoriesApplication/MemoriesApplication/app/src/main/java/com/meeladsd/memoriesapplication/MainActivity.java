@@ -38,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 switch (position) {
                     case 0:
                         Intent intent_Vac = new Intent(view.getContext(), CreateVacationaActivity.class);
@@ -55,11 +56,14 @@ public class MainActivity extends ActionBarActivity {
                         startActivity(intent);
                         break;
 =======
+=======
+>>>>>>> parent of fadf28a... post create vacation works
                 if (position == 2) {
                     SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
                     SharedPreferences.Editor editor = userDetails.edit();
 
                     editor.clear();
+<<<<<<< HEAD
                     editor.apply();
 
                     Intent intent = new Intent(view.getContext(), LogInActivity.class);
@@ -67,7 +71,13 @@ public class MainActivity extends ActionBarActivity {
                     finish();
 >>>>>>> origin/master
                 }
+=======
+                    editor.commit();
+>>>>>>> parent of fadf28a... post create vacation works
 
+                    Intent intent = new Intent(view.getContext(), LogInActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
