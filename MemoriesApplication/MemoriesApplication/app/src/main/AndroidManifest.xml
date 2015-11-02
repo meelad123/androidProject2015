@@ -20,14 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-=======
->>>>>>> parent of fadf28a... post create vacation works
         <activity
             android:name=".RegisterActivity"
             android:label="@string/lbl_register"
@@ -39,18 +31,7 @@
 
         <activity
             android:name=".MainActivity"
-<<<<<<< HEAD
             android:label="MAIN" />
-=======
-            android:label="@string/title_activity_main" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <activity android:name=".CreateVacationaActivity"
-            android:label="CreateVacationActivity"></activity>
-
-=======
->>>>>>> origin/master
-
         <activity
             android:name=".CreateVacationaActivity"
             android:label="@string/lbl_create_vacation"
@@ -59,10 +40,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
->>>>>>> origin/master
-
-=======
->>>>>>> parent of fadf28a... post create vacation works
     </application>
 
 </manifest>
