@@ -5,17 +5,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg_new2"
     tools:context="com.meeladsd.memoriesapplication.RegisterActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="User Name"
-        android:gravity="center"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
 
     <EditText
@@ -24,28 +15,30 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editText2"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:hint="@string/txt_username"
+        android:textColorHint="#fff"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignLeft="@+id/Pass_text_Field"
+        android:layout_alignStart="@+id/Pass_text_Field" />
 
 
     <Button
-        android:gravity="bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text="@string/btn_register"
         android:id="@+id/btn_register"
-        android:layout_marginTop="104dp"
-        android:layout_below="@+id/Pass_text_Field"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Email"
-        android:id="@+id/Email_View"
-        android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true" />
+        android:textColor="#ffffff"
+        android:textAlignment="center"
+        android:background="#282828"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/Email_text"
+        android:layout_alignRight="@+id/Email_text"
+        android:layout_alignEnd="@+id/Email_text"
+        android:layout_alignLeft="@+id/Email_text"
+        android:layout_alignStart="@+id/Email_text" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -53,17 +46,12 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/Email_text"
-        android:layout_below="@+id/Email_View"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignStart="@+id/editText2" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Password"
-        android:id="@+id/Pass_View"
-        android:layout_below="@+id/Email_text"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:textAlignment="center"
+        android:hint="@string/txt_password"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/Pass_text_Field"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -72,6 +60,23 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/Pass_text_Field"
-        android:layout_below="@+id/Pass_View"
-        android:layout_centerHorizontal="true" />
+        android:hint="@string/txt_email"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:layout_below="@+id/editText2"
+        android:layout_alignLeft="@+id/Email_text"
+        android:layout_alignStart="@+id/Email_text"
+        android:layout_marginTop="22dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:contentDescription="imgRegister"
+        android:src="@drawable/register_icon"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp" />
+
 </RelativeLayout>

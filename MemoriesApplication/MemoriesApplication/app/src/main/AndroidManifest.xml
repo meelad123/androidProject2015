@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LogInActivity"
-            android:label="LogInActivit">
+            android:label="@string/lbl_log_in">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
 
         <activity
             android:name=".RegisterActivity"
-            android:label="@string/title_activity_register"
+            android:label="@string/lbl_register"
             android:parentActivityName=".LogInActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -32,11 +32,11 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main" />
+            android:label="MAIN" />
 
         <activity
             android:name=".CreateVacationaActivity"
-            android:label="CreateVacationaActivity"
+            android:label="@string/lbl_create_vacation"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -4,15 +4,11 @@
     <string name="app_name">memo.me</string>
     <string name="action_settings">Settings</string>
     <string name="img_header">img_header</string>
-    <string name="btnLogin">login</string>
+    <string name="btnLogin">LOGIN</string>
     <string name="user_name">Username</string>
     <string name="password">Password</string>
     <string name="msg_empty">Cannot be empty</string>
     <string name="url_token">http://jthcloudproject.elasticbeanstalk.com/api/v1/token</string>
-    <string name="title_activity_register">RegisterActivity</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
     <string name="title_section3">Log out</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -20,11 +16,15 @@
     <string name="txt_register">Not a member? Register here</string>
     <string name="str_token">token</string>
     <string name="str_access_token">access_token</string>
-    <string name="title_activity_create_vacation">CreateVacation</string>
-    <string name="title_activity_create_vacationa">CreateVacationaActivity</string>
-    <string name="create_vacatiom">Create Vacation</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="add_vacation">Add vacation</string>
+    <string name="lbl_register">REGISTER</string>
+    <string name="lbl_create_vacation">Create New Vacation</string>
+    <string name="lbl_log_in">SIGN IN</string>
+    <string name="btn_register">Register</string>
+    <string name="txt_password">Password</string>
+    <string name="txt_username">Username</string>
+    <string name="txt_email">Email</string>
 
 </resources>
