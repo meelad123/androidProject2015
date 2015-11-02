@@ -102,7 +102,7 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
         title = (EditText) findViewById(R.id.title_txt);
         description = (EditText) findViewById(R.id.description_txt);
-        place = (EditText)findViewById(R.id.description_txt);
+        place = (EditText)findViewById(R.id.place_txt);
 
         new CreateVacation(title.getText().toString(),
                 description.getText().toString(),
@@ -115,7 +115,7 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
     private void Start_updateLabel() {
 
-        String myFormat = "MM/dd/yy";
+        String myFormat = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.GERMAN);
 
         startVac.setText(sdf.format(myCalender.getTime()));
@@ -124,7 +124,7 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
     private void End_updateLabel() {
 
-        String myFormat = "MM/dd/yy";
+        String myFormat = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.GERMAN);
 
         EndVac.setText(sdf.format(myCalender.getTime()));
