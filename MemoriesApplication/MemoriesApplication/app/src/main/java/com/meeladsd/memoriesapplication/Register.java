@@ -28,6 +28,7 @@ public class Register extends AsyncTask<String, String, String> {
     Context con;
     private int statuscode;
 
+
     public Register(String _userName, String _Password, String _Email, Context c) {
         userName = _userName;
         password = _Password;

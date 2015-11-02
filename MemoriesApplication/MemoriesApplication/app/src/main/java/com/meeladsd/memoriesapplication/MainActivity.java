@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+<<<<<<< HEAD
                 switch (position) {
                     case 0:
                         Intent intent_Vac = new Intent(view.getContext(), CreateVacationaActivity.class);
@@ -52,6 +54,18 @@ public class MainActivity extends ActionBarActivity {
                         Intent intent = new Intent(view.getContext(), LogInActivity.class);
                         startActivity(intent);
                         break;
+=======
+                if (position == 2) {
+                    SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
+                    SharedPreferences.Editor editor = userDetails.edit();
+
+                    editor.clear();
+                    editor.apply();
+
+                    Intent intent = new Intent(view.getContext(), LogInActivity.class);
+                    startActivity(intent);
+                    finish();
+>>>>>>> origin/master
                 }
 
             }
@@ -88,9 +102,21 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
+        }
+        if(id == R.id.action_add)
+        {
+            Intent intent = new Intent(this, CreateVacationaActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
 
