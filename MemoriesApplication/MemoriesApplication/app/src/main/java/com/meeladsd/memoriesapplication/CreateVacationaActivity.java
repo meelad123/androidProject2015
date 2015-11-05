@@ -1,18 +1,30 @@
 package com.meeladsd.memoriesapplication;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -25,47 +37,21 @@ public class CreateVacationaActivity extends ActionBarActivity {
     private EditText place;
     TextView startVac;
     TextView EndVac;
-
     Calendar myCalender = Calendar.getInstance();
-    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            // TODO Auto-generated method stub
-            myCalender.set(Calendar.YEAR, year);
-            myCalender.set(Calendar.MONTH, monthOfYear);
-            myCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            Start_updateLabel();
-        }
-
-    };
 
 
-    Calendar myCalender_2 = Calendar.getInstance();
-    DatePickerDialog.OnDateSetListener date_2 = new DatePickerDialog.OnDateSetListener() {
-
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            // TODO Auto-generated method stub
-            myCalender.set(Calendar.YEAR, year);
-            myCalender.set(Calendar.MONTH, monthOfYear);
-            myCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            End_updateLabel();
-        }
-
-    };
-
-
+    public static ArrayList<Bitmap> bitmapArray;
+    private GridView gridView;
+    public static final int IMAGE_GALLERY = 1;
+    ImageAdapter imageAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_vacationa);
-
-
         // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();
+
+
 
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
@@ -101,7 +87,55 @@ public class CreateVacationaActivity extends ActionBarActivity {
             }
         });
 
+        /*logic for the gridview and displaying the images that the user selected
+        * Meelad*/
+        Bitmap firstIcon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_add_white_36dp);
+        bitmapArray = new ArrayList<Bitmap>();
+        bitmapArray.add(firstIcon);
 
+        gridView = (GridView) findViewById(R.id.grd_images);
+        imageAdapter = new ImageAdapter(this, bitmapArray);
+        gridView.setAdapter(imageAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                if(position == 0)
+                {
+                    Intent imageGalleryInten = new Intent(Intent.ACTION_PICK);
+                    File picDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+
+                    String picDirPath = picDir.getPath();
+
+                    Uri data = Uri.parse(picDirPath);
+
+                    imageGalleryInten.setDataAndType(data, "image/*");
+                    startActivityForResult(imageGalleryInten, IMAGE_GALLERY);
+                }
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == RESULT_OK){
+            if(requestCode == IMAGE_GALLERY){
+                Uri imgUri = data.getData();
+
+                InputStream inputStream;
+
+                try {
+                    inputStream = getContentResolver().openInputStream(imgUri);
+                    Bitmap imgFetched = BitmapFactory.decodeStream(inputStream);
+                    bitmapArray.add(imgFetched);
+                    imageAdapter.notifyDataSetChanged();
+                } catch (FileNotFoundException e) {
+                    Toast.makeText(this, "Unable to open the image", Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+        }
     }
 
     @Override
@@ -148,5 +182,34 @@ public class CreateVacationaActivity extends ActionBarActivity {
         end=EndVac.getText().toString();
     }
 
+    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            // TODO Auto-generated method stub
+            myCalender.set(Calendar.YEAR, year);
+            myCalender.set(Calendar.MONTH, monthOfYear);
+            myCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            Start_updateLabel();
+        }
+
+    };
+
+
+    Calendar myCalender_2 = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener date_2 = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            // TODO Auto-generated method stub
+            myCalender.set(Calendar.YEAR, year);
+            myCalender.set(Calendar.MONTH, monthOfYear);
+            myCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            End_updateLabel();
+        }
+
+    };
 
 }

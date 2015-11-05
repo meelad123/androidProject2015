@@ -16,7 +16,7 @@ import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity {
 
-    public static final int IMAGE_GALLERY = 1;
+
     private ListView mDrawerList;
     private ArrayAdapter<String> mAdapter;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -97,22 +97,8 @@ public class MainActivity extends ActionBarActivity {
         {
             Intent intent = new Intent(this, CreateVacationaActivity.class);
             startActivity(intent);
-                       /* Intent imageGalleryInten = new Intent(Intent.ACTION_PICK);
-            File picDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-
-            String picDirPath = picDir.getPath();
-
-            Uri data = Uri.parse(picDirPath);
-
-            imageGalleryInten.setDataAndType(data, "image/*");
-            startActivityForResult(imageGalleryInten, IMAGE_GALLERY);*/
         }
         return super.onOptionsItemSelected(item);
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
     }
 

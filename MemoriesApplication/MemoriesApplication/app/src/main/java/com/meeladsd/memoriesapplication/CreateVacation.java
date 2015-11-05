@@ -3,8 +3,6 @@ package com.meeladsd.memoriesapplication;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.text.Editable;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -43,8 +41,6 @@ public class CreateVacation extends AsyncTask<String, String, String> {
         start=_start;
         end=_end;
         con = c;
-
-
 
     }
 
