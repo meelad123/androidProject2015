@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="match_parent" android:layout_width="match_parent"
-    android:background="@drawable/bg_new2"
-    android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_new2">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add pictures:"
+        android:paddingLeft="4dp"
+        android:textColor="#fff"
+        android:background="#006192"
+        android:id="@+id/txt_add_pic"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginBottom="10dp"
+        />
     <GridView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/grd_images"
+        android:columnWidth="60dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:layout_below="@+id/txt_add_pic"
         >
     </GridView>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/ColorPrimary" />
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/title_txt"
-        android:textColor="#ffffff"
-        android:foreground="#ffffff"
-        android:textColorHint="#ffffff"
-        android:textColorHighlight="#ffffff"
-        android:textColorLink="#ffffff"
-        android:textAlignment="center"
-        android:hint="Title" />
-
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -38,47 +41,107 @@
         android:textColorHint="#ffffff"
         android:textColorHighlight="#ffffff"
         android:textColorLink="#ffffff"
-        android:textAlignment="center"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/grd_images"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/img_devider"
+        android:background="#006192"
+        android:layout_below="@+id/description_txt"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/place_txt"
-        android:hint="Place"
-        android:textColor="#ffffff"
-        android:foreground="#ffffff"
-        android:textColorHint="#ffffff"
-        android:textColorHighlight="#ffffff"
-        android:textColorLink="#ffffff"
-        android:textAlignment="center" />
+        android:layout_below="@+id/img_devider"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="25dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/title_txt"
+                android:textColor="#ffffff"
+                android:foreground="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textColorHighlight="#ffffff"
+                android:textColorLink="#ffffff"
+                android:hint="Title"
+                android:layout_marginBottom="30dp"/>
 
-    <TextView
-        android:hint="Start"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Vac_start"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:gravity="center"
-        android:clickable="true"
-        android:background="#ffffff" />
 
-    <TextView
-        android:hint="End"
-        android:gravity="center"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Vac_End"
-        android:clickable="true"
-        android:background="#ffffff" />
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="create vacation"
-        android:id="@+id/create_vacation_btn"
-        android:background="#282828"
-        android:textColor="#ffffff"
-        android:layout_marginTop="14dp" />
-</LinearLayout>
-
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/place_txt"
+                android:hint="Place"
+                android:textColor="#ffffff"
+                android:foreground="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textColorHighlight="#ffffff"
+                android:textColorLink="#ffffff"
+                android:layout_marginBottom="30dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="vertical"
+                android:layout_gravity="left"
+                android:layout_marginBottom="30dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Start:"
+                        android:padding="20dp"/>
+                    <TextView
+                        android:hint="Select Date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Vac_start"
+                        android:clickable="true"
+                        android:padding="20dp"
+                        android:layout_gravity="center"
+                        android:background="#ffffff"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="End:"
+                        android:padding="20dp"/>
+                    <TextView
+                        android:hint="Select Date"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Vac_End"
+                        android:clickable="true"
+                        android:background="#ffffff"
+                        android:padding="20dp" />
+                </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/create_vacation_btn"
+                android:text="Creat"
+                android:textColor="#fff"
+                android:background="@color/primary_dark_material_dark"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

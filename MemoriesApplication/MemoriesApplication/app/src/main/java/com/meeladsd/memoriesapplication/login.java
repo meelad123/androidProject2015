@@ -83,6 +83,7 @@ public class login extends AsyncTask<String, Void, JSONObject>{
 
             String s = jsonObject.getString("access_token");
             editor.putString("access_token", s);
+            editor.putString("username", _userName);
             editor.commit();
             Toast.makeText(_myContext, "logged in", Toast.LENGTH_LONG).show();
 

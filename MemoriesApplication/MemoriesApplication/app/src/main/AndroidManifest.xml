@@ -35,7 +35,7 @@
             android:label="MAIN" />
         <activity
             android:name=".CreateVacationaActivity"
-            android:label="@string/lbl_create_vacation"
+            android:label="@string/add_vacation"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

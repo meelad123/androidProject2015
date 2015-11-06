@@ -89,7 +89,7 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
         /*logic for the gridview and displaying the images that the user selected
         * Meelad*/
-        Bitmap firstIcon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_add_white_36dp);
+        Bitmap firstIcon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_insert_photo_white_48dp);
         bitmapArray = new ArrayList<Bitmap>();
         bitmapArray.add(firstIcon);
 

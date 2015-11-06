@@ -20,7 +20,6 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="add_vacation">Add vacation</string>
     <string name="lbl_register">REGISTER</string>
-    <string name="lbl_create_vacation">Create New Vacation</string>
     <string name="lbl_log_in">SIGN IN</string>
     <string name="btn_register">Register</string>
     <string name="txt_password">Password</string>
