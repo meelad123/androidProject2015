@@ -42,11 +42,24 @@ public class MainActivity extends ActionBarActivity {
                 if (position == 2) {
                     SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
                     SharedPreferences.Editor editor = userDetails.edit();
-
+                    SharedPreferences userName = view.getContext().getSharedPreferences("Name",MODE_PRIVATE);
+                    SharedPreferences.Editor editor1 = userName.edit();
+                    editor1.clear();
+                    editor1.apply();
                     editor.clear();
                     editor.apply();
 
+
                     Intent intent = new Intent(view.getContext(), LogInActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                if (position == 3) {
+                    SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
+                    SharedPreferences.Editor editor = userDetails.edit();
+
+
+                    Intent intent = new Intent(view.getContext(), MyProfileactivity2.class);
                     startActivity(intent);
                     finish();
                 }
@@ -56,7 +69,7 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
     }
     private void addDrawerItems() {
-        String[] myitems = { "My vacations", "My friends", "Log out"};
+        String[] myitems = { "My vacations", "My friends", "Log out","My Profile"};
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myitems);
         mDrawerList.setAdapter(mAdapter);
     }

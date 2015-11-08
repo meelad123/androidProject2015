@@ -1,5 +1,6 @@
 package com.meeladsd.memoriesapplication;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
@@ -25,6 +26,25 @@ public class JsonHelper {
             }
             JSONTokener tokener = new JSONTokener(builder.toString());
             result = new JSONObject(tokener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+    public static JSONArray parsArray(InputStream stream) {
+
+        BufferedReader reader;
+        StringBuilder builder = new StringBuilder();
+        JSONArray result = new JSONArray();
+
+        try {
+            reader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
+            for (String line = null; (line = reader.readLine()) != null;) {
+                builder.append(line).append("\n");
+            }
+            JSONTokener tokener = new JSONTokener(builder.toString());
+            result = new JSONArray(tokener);
         } catch (Exception e) {
             e.printStackTrace();
         }

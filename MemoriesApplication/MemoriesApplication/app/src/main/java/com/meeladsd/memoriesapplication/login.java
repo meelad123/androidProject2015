@@ -59,6 +59,11 @@ public class login extends AsyncTask<String, Void, JSONObject>{
         valuePairs.add(new BasicNameValuePair("grant_type", "password"));
         valuePairs.add(new BasicNameValuePair("username", _userName));
         valuePairs.add(new BasicNameValuePair("password", _password));
+        SharedPreferences uName = _myContext.getSharedPreferences("Name", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = uName.edit();
+
+        editor.putString("Fname", _userName);
+        editor.commit();
 
         try {
             httppost.addHeader("Content-Type", "application/json");
