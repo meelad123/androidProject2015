@@ -81,7 +81,6 @@ public class CreateVacationaActivity extends ActionBarActivity {
         create_vacaion_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 CreateVacationFunk(v);
 
             }
@@ -99,18 +98,23 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                if(position == 0)
+                if(bitmapArray.size() < 2)
                 {
-                    Intent imageGalleryInten = new Intent(Intent.ACTION_PICK);
-                    File picDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+                    if(position == 0)
+                    {
+                        Intent imageGalleryInten = new Intent(Intent.ACTION_PICK);
+                        File picDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
-                    String picDirPath = picDir.getPath();
+                        String picDirPath = picDir.getPath();
 
-                    Uri data = Uri.parse(picDirPath);
+                        Uri data = Uri.parse(picDirPath);
 
-                    imageGalleryInten.setDataAndType(data, "image/*");
-                    startActivityForResult(imageGalleryInten, IMAGE_GALLERY);
+                        imageGalleryInten.setDataAndType(data, "image/*");
+                        startActivityForResult(imageGalleryInten, IMAGE_GALLERY);
+                    }
                 }
+
+
             }
         });
 
@@ -155,12 +159,14 @@ public class CreateVacationaActivity extends ActionBarActivity {
         description = (EditText) findViewById(R.id.description_txt);
         place = (EditText)findViewById(R.id.place_txt);
 
+
         new CreateVacation(title.getText().toString(),
                 description.getText().toString(),
                 place.getText().toString(),
                 start.toString(),
                 end.toString(),
-                getApplicationContext()).execute();
+                getApplicationContext(),
+                bitmapArray).execute();
 
     }
 
