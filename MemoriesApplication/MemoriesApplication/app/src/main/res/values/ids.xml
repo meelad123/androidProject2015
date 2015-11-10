@@ -4,4 +4,5 @@
     <item name="changeDate" type="id">changeData</item>
     <item name="etxt_fromdate" type="id" />
     <item name="etxt_todate" type="id" />
+    <item name="edit_icon" type="id">s</item>
 </resources>
