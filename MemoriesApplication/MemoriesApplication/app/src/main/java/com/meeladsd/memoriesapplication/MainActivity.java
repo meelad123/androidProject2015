@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
                 if (position == 2) {
                     SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
                     SharedPreferences.Editor editor = userDetails.edit();
-                    SharedPreferences userName = view.getContext().getSharedPreferences("Name",MODE_PRIVATE);
+                    SharedPreferences userName = view.getContext().getSharedPreferences("Name", MODE_PRIVATE);
                     SharedPreferences.Editor editor1 = userName.edit();
                     editor1.clear();
                     editor1.apply();
@@ -67,6 +67,8 @@ public class MainActivity extends ActionBarActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+
     }
     private void addDrawerItems() {
         String[] myitems = { "My vacations", "My friends", "Log out","My Profile"};

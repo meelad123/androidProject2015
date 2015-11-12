@@ -4,32 +4,27 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.widget.Toast;
+import android.util.Log;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.HTTP;
-import org.json.JSONObject;
-
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by meeladsd on 11/9/2015.
  */
-public class ImageUpload extends AsyncTask<String, Void, JSONObject> {
-
+public class ImageUpload extends AsyncTask<String, Void, String> {
     private int _id;
     private ArrayList<Bitmap> _bArray;
     Context _con;
     private int _statuscode;
 
+    DataOutputStream dos;
     ImageUpload(int id, ArrayList<Bitmap> bArra, Context con) {
 
         _bArray = bArra;
@@ -39,46 +34,58 @@ public class ImageUpload extends AsyncTask<String, Void, JSONObject> {
     }
 
     @Override
-    protected JSONObject doInBackground(String... params) {
-        Bitmap bitmap = _bArray.get(1);
-        DefaultHttpClient httpclient = new DefaultHttpClient();
-        int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
-
-
-
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        InputStream is = new ByteArrayInputStream(stream.toByteArray());
-
-        List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>();
-        //nameValuePair.add(new BasicNameValuePair( "picture", is));
-        HttpPost httppost = new HttpPost("http://jthcloudproject.elasticbeanstalk.com/api/v1/memories/"+ _id+"/picture?height="+height+"&width="+width);
-
+    protected String doInBackground(String... params) {
         try {
+
+            Bitmap bitmap = _bArray.get(0);
+
             SharedPreferences myS =  _con.getSharedPreferences("token", Context.MODE_PRIVATE);
-
             String t = myS.getString("access_token", "");
-            httppost.addHeader("authorization", "bearer " + t);
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePair, HTTP.UTF_8));
 
-            HttpResponse response = httpclient.execute(httppost);
-            _statuscode = response.getStatusLine().getStatusCode();
-            return JsonHelper.parseJSONObjectResponse(response.getEntity().getContent());
-        }catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            int width = bitmap.getWidth();
+            int height = bitmap.getHeight();
+
+            URL url = new URL("http://jthcloudproject.elasticbeanstalk.com/api/v1/memories/"+ _id+"/picture?height="+height+"&width="+width);
+            HttpURLConnection c = (HttpURLConnection) url.openConnection();
+
+            c.setDoInput(true);
+            c.setDoOutput(true);
+
+            c.setRequestMethod("POST");
+            c.setRequestProperty("Authorization", "bearer " + t);
+            c.setRequestProperty("Content-type", "multipart/form-data");
+            
+            dos = new DataOutputStream(c.getOutputStream());
+
+            c.connect();
+
+            OutputStream output = c.getOutputStream();
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+            byte[] imageBytes = baos.toByteArray();
+
+            output.write(imageBytes);
+            output.close();
+
+            int responseCode = c.getResponseCode();
+            Scanner result = new Scanner(c.getInputStream());
+            String response = result.nextLine();
+            result.close();
+
+            return response;
+        } catch (IOException e) {
+            Log.e("tstImage", "Error", e);
         }
+        return null;
     }
 
     @Override
-    protected void onPostExecute(JSONObject jsonObject) {
-        if (_statuscode > 200 || _statuscode < 300) {
-            Toast.makeText(_con, "Vacation created", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(_con, "Vacation not created", Toast.LENGTH_SHORT).show();
-        }
+    protected void onPostExecute(String s) {
 
+        Log.e("response",s);
     }
 }
+
+
+//URL url = new URL("http://jthcloudproject.elasticbeanstalk.com/api/v1/memories/"+ _id+"/picture?height="+height+"&width="+width);

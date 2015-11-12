@@ -39,6 +39,7 @@ public class CreateVacationaActivity extends ActionBarActivity {
     TextView EndVac;
     Calendar myCalender = Calendar.getInstance();
 
+    Button btnUpload;
 
     public static ArrayList<Bitmap> bitmapArray;
     private GridView gridView;
@@ -98,10 +99,8 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                if(bitmapArray.size() < 2)
-                {
-                    if(position == 0)
-                    {
+                if (bitmapArray.size() < 2) {
+                    if (position == 0) {
                         Intent imageGalleryInten = new Intent(Intent.ACTION_PICK);
                         File picDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
@@ -118,6 +117,16 @@ public class CreateVacationaActivity extends ActionBarActivity {
             }
         });
 
+        this.btnUpload = (Button)findViewById(R.id.btnupload);
+
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ImageUpload(21,
+                        bitmapArray,
+                        getApplicationContext()).execute();
+            }
+        });
     }
 
     @Override
