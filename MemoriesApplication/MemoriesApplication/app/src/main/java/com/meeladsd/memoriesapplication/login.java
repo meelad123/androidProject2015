@@ -81,24 +81,35 @@ public class login extends AsyncTask<String, Void, JSONObject>{
 
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
-
-        SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = myS.edit();
         try {
+            if(jsonObject.getString("access_token") != null){
+                SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = myS.edit();
+                try {
 
-            String s = jsonObject.getString("access_token");
-            editor.putString("access_token", s);
-            editor.putString("username", _userName);
-            editor.commit();
-            Toast.makeText(_myContext, "logged in", Toast.LENGTH_LONG).show();
+                    String s = jsonObject.getString("access_token");
+                    editor.putString("access_token", s);
+                    editor.putString("username", _userName);
+                    editor.commit();
+                    Toast.makeText(_myContext, "logged in", Toast.LENGTH_LONG).show();
 
-            _myContext.startActivity(new Intent(_myContext, MainActivity.class));
+                    _myContext.startActivity(new Intent(_myContext, MainActivity.class));
 
-            _myContext.finish();
+                    _myContext.finish();
+                } catch (JSONException e) {
+                    Toast.makeText(_myContext, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+                finally {
+                    if (progress.isShowing()) {
+                        progress.dismiss();
+                    }
+                }
+
+            }
         } catch (JSONException e) {
+            e.printStackTrace();
             Toast.makeText(_myContext, e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-        finally {
+
             if (progress.isShowing()) {
                 progress.dismiss();
             }

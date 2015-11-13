@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="topNetworkOutbound">Utgående klient, max</String>
+	<String ID="topNetworkOutboundBytes">Skickat</String>
+	<String ID="topNetworkInbound">Inkommande klient, max</String>
+	<String ID="topNetworkInboundBytes">Mottaget</String>
+	<String ID="diskQueue">Diskkölängd</String>
+</StringTable>

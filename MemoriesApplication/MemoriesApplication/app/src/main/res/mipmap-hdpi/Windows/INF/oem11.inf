@@ -1,0 +1,140 @@
+;/*++
+;
+;Copyright (c) Microsoft Corporation.  All rights reserved.
+;
+;Module Name:
+;
+;    pnpxrtr.inf
+;
+;Abstract:
+;    INF file for installing a MS PnP-X Router/NID. Uses UMPass.sys
+;
+;--*/
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=%ClassName%
+Provider=%MSFT%
+
+; Digital Media Device GUID
+ClassGuid={B6A945DE-134C-4279-9A66-61A63C6F0DC5}
+DriverVer=05/13/2010, 1.0.0.2
+CatalogFile=delta.cat
+
+[ClassInstall32]
+Addreg=NetworkInfrastructureDevice_ClassReg
+
+[NetworkInfrastructureDevice_ClassReg]
+HKR,,,,%ClassName%            ; Friendly Name for this device class
+HKR,,SilentInstall,,1         ; Specify a silent installation for this device class
+HKR,,Icon,,"-52"              ; Icon to use for this device class
+
+[DestinationDirs]
+DefaultDestDir = 11           ; Install files to ...\system32 by default (DIRID_SYSTEM)
+
+
+
+[Manufacturer]                ; Should list all device manufacturer/model combinations here
+%MSFT%=PnPXRTRDevice, NTx86.6.0, NTx86.6.1, NTamd64.6.0, NTamd64.6.1
+
+; Model Device Description    Install Section       HWIDs, Compatible IDs
+; -----------                    -------               --------
+
+; Enter the HARDWARE ID for you device here by replacing HARDWAREID with your device's hardware ID
+
+[PnPXRTRDevice.NTx86.6.0]              ; Model specific install section list (x86 Section)
+%PnPXRTRDevice.DeviceDesc%	=PnPXRTRDevice_Install_Vista, UMB\VEN_0033&DEV_0008&REV_01
+
+[PnPXRTRDevice.NTx86.6.1]              ; Model specific install section list (x86 Section)
+%PnPXRTRDevice.DeviceDesc%	=PnPXRTRDevice_Install_Win7, UMB\VEN_0033&DEV_0008&REV_01
+
+[PnPXRTRDevice.NTamd64.6.0]              ; Model specific install section list (x86 Section)
+%PnPXRTRDevice.DeviceDesc%	=PnPXRTRDevice_Install_Vista, UMB\VEN_0033&DEV_0008&REV_01
+
+[PnPXRTRDevice.NTamd64.6.1]              ; Model specific install section list (x86 Section)
+%PnPXRTRDevice.DeviceDesc%	=PnPXRTRDevice_Install_Win7, UMB\VEN_0033&DEV_0008&REV_01
+
+
+; ===================== Install Sections =======================
+
+; ===================== Install Win7 Section =======================
+
+[PnPXRTRDevice_Install_Win7.NT]
+Include=umpass.inf
+Needs=UmPass
+
+[PnPXRTRDevice_Install_Win7.NT.HW]                 ; Optional section to add device specific information to the registry
+Include=umpass.inf
+Needs=UmPass.HW
+AddReg=PnPXRTRDevice_Install_Win7.NT.HW.AddReg
+
+ 
+[PnPXRTRDevice_Install_Win7.NT.HW.AddReg]
+
+HKCR,NetworkExplorerPlugins\VEN_0033&DEV_0008&REV_01\DefaultIcon,,0x00000000,"%SystemRoot%\System32\networkmap.dll,-206"
+
+HKCR,NetworkExplorerPlugins\VEN_0033&DEV_0008&REV_01\shell\"Network Map"\command,,0x00000000,"explorer.exe shell:::{E7DE9B1A-7533-4556-9484-B26FB486475E}"
+
+HKLM,SOFTWARE\Classes\DeviceDisplayObject\HardwareId\UMB#VEN_0033&DEV_0008&REV_01\shell\"Network Map"\command,,0x00000000,"explorer.exe shell:::{E7DE9B1A-7533-4556-9484-B26FB486475E}"
+
+HKLM,SOFTWARE\Classes\DeviceDisplayObject\HardwareId\UMB#VEN_0033&DEV_0008&REV_01\shell\"Network Map","DefaultAppliesTo",0x00000000,""
+
+
+
+
+[PnPXRTRDevice_Install_Win7.NT.CoInstallers]
+Include=umpass.inf
+Needs=UmPass.CoInstallers
+
+
+[PnPXRTRDevice_Install_Win7.NT.Services]
+Include=umpass.inf
+Needs=UmPass.Services
+
+[PnPXRTRDevice_Install_Win7.NT.Interfaces]
+Include=umpass.inf
+Needs=UmPass.Interfaces
+
+
+; ===================== Install Vista Section =======================
+
+[PnPXRTRDevice_Install_Vista.NT]
+
+[PnPXRTRDevice_Install_Vista.HW]                 ; Optional section to add device specific information to the registry
+AddReg=PnPXRTRDevice_Install_Vista.HW.AddReg
+
+ 
+[PnPXRTRDevice_Install_Vista.HW.AddReg]
+
+HKCR,NetworkExplorerPlugins\VEN_0033&DEV_0006&REV_01\DefaultIcon,,0x00000000,"%SystemRoot%\System32\icsigd.dll,-121"
+
+HKCR,NetworkExplorerPlugins\VEN_0033&DEV_0008&REV_01\shellex\ContextMenuHandlers\{4A1E5ACD-A108-4100-9E26-D2FAFA1BA486}
+
+HKCR,NetworkExplorerPlugins\VEN_0033&DEV_0008&REV_01\shellex\PropertySheetHandlers\{4A1E5ACD-A108-4100-9E26-D2FAFA1BA486}
+
+
+[PnPXRTRDevice_Install_Vista.Services]           ; Setup the UMPass service for our device
+AddService = UMPass, %SPSVCINST_ASSOCSERVICE%, UMPassService_Install
+
+
+[UMBUS_UnitTestDevice_Install.Services]
+AddService = UMPass, %SPSVCINST_ASSOCSERVICE%, UMPassService_Install
+
+
+[UMPassService_Install]
+DisplayName    = %umpass.SVCDESC%     ; Friendly Name of the Service
+ServiceType    = 1                    ; SERVICE_KERNEL_DRIVER
+StartType      = 3                    ; SERVICE_DEMAND_START 
+ErrorControl   = 1                    ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\umpass.sys
+LoadOrderGroup = Extended Base
+
+
+[Strings] ; Strings that are referenced throughout the INF
+MSFT = "Microsoft"
+SPSVCINST_ASSOCSERVICE= 0x00000002
+umpass.SVCDESC = "Microsoft UMPass Driver"
+ClassName = "Network Infrastructure Devices"
+
+; Enter the device description for your NID device here:
+PnPXRTRDevice.DeviceDesc = "Microsoft Wireless Router Module"

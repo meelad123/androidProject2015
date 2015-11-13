@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="GroupSysHealth">Systemhälsa</String>
+	<String ID="RuleSysHealthCpu">Processoranvändning</String>
+	<String ID="RuleSysHealthDisk">Diskanvändning</String>
+	<String ID="RuleSysHealthInsertConfig">Infoga konfigurationstabellen i den slutgiltiga rapporten</String>
+	<String ID="RuleSysHealthMemory">Minnesanvändning</String>
+	<String ID="RuleSysHealthNetwork">Närverksanvändning</String>
+	<String ID="RuleSysHealthInsert">Infoga i systemhälsotabellen</String>
+	<String ID="RuleSysHealthRptDisplay">Visningnivå för rapporter</String>
+	<String ID="SysHealthDetailCpuBusy">Hög CPU-belastning. Undersök högsta processer.</String>
+	<String ID="SysHealthDetailCpuIdle">Låg CPU-belastning.</String>
+	<String ID="SysHealthDetailCpuNormal">Normal CPU-belastning.</String>
+	<String ID="SysHealthDetailDskBusy">Disk-I/O är högre än 500 (läs/skriv) per sekund för disk {disknumber}.</String>
+	<String ID="SysHealthDetailDskIdle">Disk-I/O är lägre än 100 (läs/skriv) per sekund för disk {disknumber}.</String>
+	<String ID="SysHealthDetailDskNormal">Disk-I/O ligger mellan 100 och 500 (läs/skriv) per sekund för disk {disknumber}.</String>
+	<String ID="SysHealthDetailMemBusy">{prettyavailablemem} MB tillgängligt.</String>
+	<String ID="SysHealthDetailMemIdle">{prettyavailablemem} MB tillgängligt.</String>
+	<String ID="SysHealthDetailMemNormal">{prettyavailablemem} MB tillgängligt.</String>
+	<String ID="SysHealthDetailNetBusy">Det mest använda nätverkskortet överskred 60 %.</String>
+	<String ID="SysHealthDetailNetIdle">Det mest använda nätverkskortet underskrider 15 %.</String>
+	<String ID="SysHealthDetailNetNormal">Det mest använda nätverkskortet ligger mellan 15 och 60 %.</String>
+	<String ID="SysHealthDetailDskNote">Läsningar {diskr} per sekund + Skrivningar {diskw} per sekund</String>
+	<String ID="SysHealthDetailNetNote">Nätverkskortet {netin} använder {prttotalbits} bitar och har {prtbandwidth} bitars kapacitet.</String>
+	<String ID="SysHealthStateBusy">Upptagen</String>
+	<String ID="SysHealthStateIdle">Inaktiv</String>
+	<String ID="SysHealthStateNormal">Normal</String>
+</StringTable>

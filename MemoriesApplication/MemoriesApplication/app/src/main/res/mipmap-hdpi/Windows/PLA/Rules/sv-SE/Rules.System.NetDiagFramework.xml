@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="GroupNetDiagFramework" loc.comment="Name of Network Diagnostics Framework Rules Group">Ramverksgrupp för nätverksdiagnostik</String>
+	<String ID="RuleNetDiagFrameworkSetup" loc.comment="Name of Rule to setup Network Diagnostics Framework Summary Group">Konfiguration av kontroller för nätverksdiagnostik</String>
+	<String ID="RuleBuildNetDiagResultsTable" loc.comment="Name of Rule to Network Diagnostics Results Table">Skapa tabell med nätverksdiagnostik</String>
+	<String ID="RuleDiagResultsCheck" loc.comment="Name of Rule to check Net Diag Event results">Kontrollera resultat för nätverksdiagnostik</String>
+	<String ID="RuleNetDiagFrameworkSummary" loc.comment="Name of Rule to summary Network Diagnostics Framework Rules">Sammanfattning av kontroller för nätverksdiagnostik</String>
+	<String ID="RuleNetworkingDiagnosticsFrameworkCleanup" loc.comment="Name of Rule to cleanup Networking Diagnostics Framework ETW Tables">Rensning av tabeller för ramverk av nätverksdiagnostik</String>
+	<String ID="LOC_TitleNetDiagFrameworkSummary" loc.comment="Title of Network Diagnostics Framework Rules Summary Group">Kontroller för nätverksdiagnostik</String>
+	<String ID="LOC_DescNetDiagFramework" loc.comment="Description of Network Diagnostics Framework Rules Summary Group">Kontroller som har att göra med händelser i ramverket för nätverksdiagnostik</String>
+	<String ID="LOC_RuleDiagResultsCheck" loc.comment="Name of Rule to check Net Diag Event results">Kontrollera resultat av nätverksdiagnostik</String>
+	<String ID="LOC_Failed" loc.comment="Text to display when a rule or group of rules failed">Misslyckades</String>
+	<String ID="LOC_Passed" loc.comment="Text to display when a rule or group of rules passed">Lyckades</String>
+	<String ID="WarnSuccessDiagNoProblem_symptom" loc.comment="Symptom string for warning message: WarnSuccessDiagNoProblem">Nätverksdiagnostik lyckades.</String>
+	<String ID="WarnSuccessDiagNoProblem_cause" loc.comment="Cause string for warning message: WarnSuccessDiagNoProblem">Inga problem med nätverket upptäcktes.</String>
+	<String ID="WarnSuccessDiagNoProblem_details" loc.comment="Details string for warning message: WarnSuccessDiagNoProblem">Det finns problem med nätverksanslutningen.</String>
+	<String ID="WarnSuccessDiagNoProblem_res1" loc.comment="Resolution string for warning message: WarnSuccessDiagNoProblem">Kontakta Internetleverantören om du fortfarande har problem med nätverksanslutningen.</String>
+	<String ID="WarnCancelDiag_symptom" loc.comment="Symptom string for warning message: WarnCancelDiag">Nätverksdiagnostik avbröts av användaren.</String>
+	<String ID="WarnCancelDiag_cause" loc.comment="Cause string for warning message: WarnCancelDiag">Nätverksdiagnostik fick inte slutföras.</String>
+	<String ID="WarnCancelDiag_details" loc.comment="Details string for warning message: WarnCancelDiag">Användaren avbröt nätverksdiagnostiken innan analysen var klar.</String>
+	<String ID="WarnCancelDiag_res1" loc.comment="Resolution string for warning message: WarnCancelDiag">Utför en fullständig nätverksdiagnostik.</String>
+	<String ID="WarnFailInHelper_symptom" loc.comment="Symptom string for warning message: WarnFailInHelper">Problemet kunde inte diagnostiseras.</String>
+	<String ID="WarnFailInHelper_cause" loc.comment="Cause string for warning message: WarnFailInHelper">Det gick inte att diagnostisera problemet på grund av ett fel i en hjälpklass.</String>
+	<String ID="WarnFailInHelper_details" loc.comment="Details string for warning message: WarnFailInHelper">Ett fel uppstod i hjälpklassen {helperclassname} när problemet diagnostiserades. Följande fel returnerades: {errorcode}.</String>
+	<String ID="WarnFailInHelper_res1" loc.comment="Resolution string for warning message: WarnFailInHelper">Utför nätverksdiagnostik igen och kontakta Internetleverantören och fråga om det finns några kända problem med Interentanslutningarn.</String>
+	<String ID="WarnFailInFramework_symptom" loc.comment="Symptom string for warning message: WarnFailInFramework">Problemet kunde inte diagnostiseras.</String>
+	<String ID="WarnFailInFramework_cause" loc.comment="Cause string for warning message: WarnFailInFramework">Det gick inte att diagnostisera problemet på grund av att ramverket inte slutfördes.</String>
+	<String ID="WarnFailInFramework_details" loc.comment="Details string for warning message: WarnFailInFramework">Ramverket för nätverksdiagnostik returnerade följande felkod: {errorcode}.</String>
+	<String ID="WarnFailInFramework_res1" loc.comment="Resolution string for warning message: WarnFailInFramework">Utför nätverksdiagnostik igen och kontakta Internetleverantören och fråga om det finns några kända problem med Interentanslutningarn.</String>
+	<String ID="WarnSuccessValidation_symptom" loc.comment="Symptom string for warning message: WarnSuccessValidation">Problemet har diagnostiserats och reparationsåtgärderna har verifierats.</String>
+	<String ID="WarnSuccessValidation_cause" loc.comment="Cause string for warning message: WarnSuccessValidation">Problemet har diagnostiserats och det reparationsalternativ som valdes har rättat till situationen.</String>
+	<String ID="WarnSuccessValidation_details" loc.comment="Details string for warning message: WarnSuccessValidation">Användaren valde följande reparationsåtgärd för att rätta till nätverksproblemet: {repairoption}</String>
+	<String ID="WarnSuccessValidation_res1" loc.comment="Resolution string for warning message: WarnSuccessValidation">Nätverket verkar fungera korrekt nu.</String>
+	<String ID="WarnFailValidation_symptom" loc.comment="Symptom string for warning message: WarnFailValidation">Problemet har diagnostiserats men reparationsåtgärderna kunde inte verifieras.</String>
+	<String ID="WarnFailValidation_cause" loc.comment="Cause string for warning message: WarnFailValidation">Problemet har diagnostiserats men det gick inte att verifiera att det reparationsalternativ som valdes rättade till situationen.</String>
+	<String ID="WarnFailValidation_details" loc.comment="Details string for warning message: WarnFailValidation">Användaren försökte med följande reparationsåtgärd: {repairoption}. Detta rekommenderades av följande hjälpklass: {helperclassname}. Reparationen krävde följande säkerhetsidentifierartyp: {sidtyperequired}.</String>
+	<String ID="WarnFailValidation_res1" loc.comment="Resolution string for warning message: WarnFailValidation">Användaren kan försöka med de andra alternativ som gavs under diagnosen. Om alla reparationsalternativ har misslyckats kanske användaren bör kontakta Internetleverantören och fråga om det finns några kände problem med nätverket.</String>
+	<String ID="WarnFailRepair_symptom" loc.comment="Symptom string for warning message: WarnFailRepair">Problemet har diagnostiserats och men det reparationsalternativ som valdes kunde inte utföras.</String>
+	<String ID="WarnFailRepair_cause" loc.comment="Cause string for warning message: WarnFailRepair">Problemet har diagnostiserats men nätverksanslutningen kunde inte repareras.</String>
+	<String ID="WarnFailRepair_details" loc.comment="Details string for warning message: WarnFailRepair">Användaren valde följande reparationsåtgärd: {repairoption}. Reparationen krävde följande säkerhetsidentifierartyp: {sidtyperequired}. Detta val rättade inte till problemet.</String>
+	<String ID="WarnFailRepair_res1" loc.comment="Resolution string for warning message: WarnFailRepair">Användaren bör kontakta Internetleverantören och fråga om det finns några kände problem med nätverket.</String>
+	<String ID="WarnCancelRepair_symptom" loc.comment="Symptom string for warning message: WarnCancelRepair">Reparationsåtgärden avbröts av användaren.</String>
+	<String ID="WarnCancelRepair_cause" loc.comment="Cause string for warning message: WarnCancelRepair">Nätverksdiagnostik fick inte slutföras.</String>
+	<String ID="WarnCancelRepair_details" loc.comment="Details string for warning message: WarnCancelRepair">Användaren avbröt nätverksdiagnostiken innan det reparationsalternativ som användaren valde slutfördes.</String>
+	<String ID="WarnCancelRepair_res1" loc.comment="Resolution string for warning message: WarnCancelRepair">Utför en fullständig nätverksdiagnostik och utför reparationen.</String>
+	<String ID="WarnSuccessDiagSingleOption_symptom" loc.comment="Symptom string for warning message: WarnSuccessDiagSingleOption">Nätverksdiagnostiken lyckades men användaren kan ha valt ett reparationsalternativ som inte kunde verifieras av ramverket för nätverksdiagnostik.</String>
+	<String ID="WarnSuccessDiagSingleOption_cause" loc.comment="Cause string for warning message: WarnSuccessDiagSingleOption">Ett problem med nätverket upptäcktes och användaren måste vidta en åtgärd för att lösa problemet.</String>
+	<String ID="WarnSuccessDiagSingleOption_details" loc.comment="Details string for warning message: WarnSuccessDiagSingleOption">Användaren kommer kanske att kunna lösa nätverksproblemen.</String>
+	<String ID="WarnSuccessDiagSingleOption_res1" loc.comment="Resolution string for warning message: WarnSuccessDiagSingleOption">Användaren ombads utföra följande: {repairoption}</String>
+	<String ID="WarnSuccessDiagMultipleOptions_symptom" loc.comment="Symptom string for warning message: WarnSuccessDiagMultipleOptions">Nätverksdiagnostiken lyckades men användaren kan ha valt ett reparationsalternativ som inte kunde verifieras av ramverket för nätverksdiagnostik.</String>
+	<String ID="WarnSuccessDiagMultipleOptions_cause" loc.comment="Cause string for warning message: WarnSuccessDiagMultipleOptions">Ett problem med nätverket upptäcktes och användaren måste vidta en åtgärd för att lösa problemet.</String>
+	<String ID="WarnSuccessDiagMultipleOptions_details" loc.comment="Details string for warning message: WarnSuccessDiagMultipleOptions">Användaren kommer kanske att kunna lösa nätverksproblemen.</String>
+	<String ID="WarnSuccessDiagMultipleOptions_res1" loc.comment="Resolution string for warning message: WarnSuccessDiagMultipleOptions">Användaren gavs flera reparationsalternativ. Ytterligare information finns i avsnittet Nätverksdiagnostik.</String>
+</StringTable>

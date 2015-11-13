@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="memoryWorkingSet">Aktiv sidmängd</String>
+	<String ID="memoryWorkingSetPrivate">Privat aktiv sidmängd</String>
+	<String ID="private">Privat</String>
+	<String ID="handleCount">Antal bindningsreferenser</String>
+	<String ID="memory">Minne</String>
+	<String ID="tracerptMemory">Minne</String>
+	<String ID="TableWorkingSet">Minne</String>
+	<String ID="topMemoryInstance">Högsta process</String>
+	<String ID="topPrivate">Privat aktiv sidmängd</String>
+	<String ID="availableMemory">Tillgängligt minne</String>
+	<String ID="memoryVirtual">Sparat</String>
+	<String ID="shareable">Delbart</String>
+</StringTable>

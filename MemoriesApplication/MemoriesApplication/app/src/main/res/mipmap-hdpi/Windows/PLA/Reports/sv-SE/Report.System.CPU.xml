@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="filesystemcache">Filsystemets cache</String>
+	<String ID="processCounters">Process</String>
+	<String ID="processorCounters">Processor</String>
+	<String ID="processorInterruptCounters">Processoravbrott per CPU</String>
+	<String ID="processorUserProcessorCounters">Processoranvändartid per CPU</String>
+	<String ID="processorPerformance">Processorprestanda</String>
+	<String ID="configService">Tjänster</String>
+	<String ID="displayName">Visningsnamn</String>
+	<String ID="serviceName">Tjänst</String>
+	<String ID="services">Tjänster</String>
+	<String ID="stopped">Stoppade tjänster</String>
+</StringTable>

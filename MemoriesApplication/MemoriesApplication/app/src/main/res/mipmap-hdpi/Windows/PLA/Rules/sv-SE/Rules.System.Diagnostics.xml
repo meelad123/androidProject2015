@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="Information" loc.comment="Only used in WDC Console">Information</String>
+	<String ID="GroupDiagnosticsSetup">Installation för grundläggande felsökargrupp</String>
+	<String ID="GroupBasic">Grundläggande regler för felsökaren</String>
+	<String ID="RuleDiskSummary">Sammanfattning av diskkontroll</String>
+	<String ID="RuleUpdateCounterSections" loc.comment="Marked as not seen anywhere">Lägg till namn till namnlösa räknare</String>
+	<String ID="RuleAddWarningTable" loc.comment="Marked as not seen anywhere">Skapa toppvarningstabell</String>
+	<String ID="RuleDiagnosticsSetup">Installation av grundläggande regler för felsökaren</String>
+	<String ID="RuleInsertSections" loc.comment="Marked as not seen anywhere">Infoga sektioner</String>
+	<String ID="RuleBasicInsert" loc.comment="Rule name for inserting general Support Information into final report">Infoga tabellen för supportinformation i den slutgiltiga rapporten</String>
+	<String ID="RuleDiskSetup" loc.comment="Rule name for setting up the summary group for Disk in the Rules Summary Table">Installation av disksammanfattningstabell</String>
+	<String ID="RuleSuccessLogicalDiskDirty" loc.comment="Rule name for checking for the Logical Disk Dirty Bit being set">Kontroll av flaggan Dirty för logiska diskar</String>
+	<String ID="RuleSuccessSMARTCheck" loc.comment="Rule name for checking for the SMART status of disks in the system">SMART Predict Failure-kontroll</String>
+	<String ID="RuleSuccessDiskFreeSpace" loc.comment="Rule name for checking for the amount of free disk space per drive">Tillgängligt ledigt diskutrymme</String>
+	<String ID="RuleOSSetup" loc.comment="Rule name for setting up the summary group for OS in the Rules Summary Table">Installation av sammanfattningstabell för operativsystemet</String>
+	<String ID="RuleSuccessOSVersionCheck" loc.comment="Rule name for checking for OS Version">OS Version Check</String>
+	<String ID="RuleAddressWidthCheck" loc.comment="Rule name for checking for OS architecture against hardware">Kontroll av operativsystemets arkitektur</String>
+	<String ID="RuleOSSummary" loc.comment="Rule name for setting up the summary group for OS in the Rules Summary Table">Sammanfattning av sammanfattningstabell för operativsystemet</String>
+	<String ID="RuleSuccessService" loc.comment="Rule name for checking for abnormally stopped services">Kontroll för felaktigt avslutade tjänster</String>
+	<String ID="RuleSecurityCenterSetup" loc.comment="Rule name for setting up the summary group for Security Center in the Rules Summary Table">Installation av sammanfattningstabell för Säkerhetscenter</String>
+	<String ID="RuleSecurityCenterSummary" loc.comment="Rule name for summarizing the Security Center rules run in the Rules Summary Table">Sammanfattning för Säkerhetscenter</String>
+	<String ID="RuleSuccessLUA" loc.comment="Rule name for checking to see if user has LUA enabled or not">Kontroll av att User Account Control är aktiverat</String>
+	<String ID="RuleSuccessWU" loc.comment="Rule name for checking to see if user has WU enabled or not">Kontroll av att uppdateringar från Windows Update installeras</String>
+	<String ID="RuleSuccessAntiSpywareCheck" loc.comment="Rule name for checking to see if anti-spyware is enabled and up-to-date">Kontroll av antispionprogram</String>
+	<String ID="RuleSuccessAntiVirusCheck" loc.comment="Rule name for checking to see if anti-virus is enabled and up-to-date">Antiviruskontroll</String>
+	<String ID="RuleSuccessFirewallCheck" loc.comment="Rule name for checking to see if firewall is enabled and up-to-date">Brandväggskontroll</String>
+	<String ID="RuleBasicCleanup" loc.comment="Rule name for cleaning up tables in Basic System Information">Rensning av supportinformation</String>
+	<String ID="RuleCheckWorkstationService" loc.comment="Name of rule that checks the status of the workstation service seen in WPDC">Kontroll av tjänsten Workstation</String>
+	<String ID="LOC_Workstation" loc.comment="Name of workstation service seen in report">LanmanWorkstation</String>
+	<String ID="LOC_RuleCheckWorkstationService" loc.comment="Name of check for the status of the workstation service seen in WPDC">Kontroll av tjänsten Workstation</String>
+	<String ID="LOC_Test_RuleSuccessLogicalDiskDirty" loc.comment="Test name description checking for the Logical Disk Dirty Bit being set">Kontroll av flaggan Dirty för logiska diskar</String>
+	<String ID="LOC_Test_RuleSuccessSMARTCheck" loc.comment="Test name description checking for the SMART status of disks in the system">SMART Predict Failure-kontroll</String>
+	<String ID="LOC_Test_RuleSuccessDiskFreeSpace" loc.comment="Test name description checking for the amount of free disk space per drive">Tillgängligt diskutrymme {diskname}</String>
+	<String ID="LOC_Test_RuleSuccessOSVersionCheck" loc.comment="Test name description checking for OS Version">Versionskontroll av operativsystem</String>
+	<String ID="LOC_Test_RuleSuccessService" loc.comment="Test name description checking for abnormally stopped services">Kontroll för felaktigt avslutade tjänster</String>
+	<String ID="LOC_Test_RuleSuccessLUA" loc.comment="Test name description checking to see if user has LUA enabled or not">Kontrollera att User Account Control är aktiverat</String>
+	<String ID="LOC_Test_RuleSuccessWU" loc.comment="Test name description checking to see if user has WU enabled or not">Kontrollera att uppdateringar från Windows Update installeras</String>
+	<String ID="LOC_TableBasicServiceSummary" loc.comment="Title used to describe table of System Services Checks">Kontroller av systemtjänster</String>
+	<String ID="LOC_TableBasicOSSummary" loc.comment="Title used to describe table with Operating System Checks">Kontroller av operativsystem</String>
+	<String ID="LOC_TableBasicDiskSummary" loc.comment="Title used to describe table with Disk Checks">Kontroller av diskar</String>
+	<String ID="LOC_TableBasicSecurityCenterGroupSummary" loc.comment="Title used to describe Summary Table Group for Security Center Tests">Tester för säkerhetscenter</String>
+	<String ID="LOC_DescOSSummary" loc.comment="Description of the Operation System Summary Group in Rules Summary Table">Söker efter operativsystemets attribut</String>
+	<String ID="LOC_DescServicesSummary" loc.comment="Description of the System Services Summary Group in Rules Summary Table">Kontrollerar systemtjänsters tillstånd</String>
+	<String ID="LOC_DescDiskSummary" loc.comment="Description of the Disk Summary Group in the Rules Summary Table">Kontrollerar diskstatus</String>
+	<String ID="LOC_DescSecurityCenterSummary" loc.comment="Description of the Security Center Summary Group in the Rules Summary Table">Söker efter information relaterad till Säkerhetscenter.</String>
+	<String ID="LOC_DescDiskFreeSpace" loc.comment="Description of the disk free space check results">Enheten {diskname} har {freediskpercent} % ledigt diskutrymme [{freediskspacemb} MB]</String>
+	<String ID="LOC_Test_CheckAntiVirusEnabled" loc.comment="Test that checks to see if there is at least one anti-virus product with on access scanning enabled on the machine">Kontroll att virusskanning vid åtkomst är aktiverad i antivirusprodukten.</String>
+	<String ID="LOC_Test_CheckAntiVirusUpToDate" loc.comment="Test that checks to see if that the anti-virus product is used is up-to-date">Kontroll att antivirusprodukten är aktuell.</String>
+	<String ID="LOC_Test_CheckAntiSpywareEnabled" loc.comment="Test that checks to see if there is at least one anti-spyware product that is enabled on the machine">Kontroll att antispionprogramprodukten är aktiverad.</String>
+	<String ID="LOC_Test_CheckAntiSpywareUpToDate" loc.comment="Test that checks to see if that the anti-spyware product is used is up-to-date">Kontroll att antispionprogramprodukten är aktuell.</String>
+	<String ID="LOC_Test_CheckFirewallEnabled" loc.comment="Test that checks to see if there is at least one firewall product that is enabled on the machine">Kontroll att brandväggsprodukten är aktiverad.</String>
+	<String ID="LOC_Failed" loc.comment="Text to display when a rule or group of rules failed">Misslyckades</String>
+	<String ID="LOC_Passed" loc.comment="Text to display when a rule or group of rules passed">Lyckades</String>
+	<String ID="LOC_Running" loc.comment="String that matches the running state for a service">Körs</String>
+	<String ID="WarnFailCheckWorkstationServiceAbnormallyStopped_symptom" loc.comment="Symptom string for warning message: WarnFailCheckWorkstationServiceAbnormallyStopped">Tjänsten Workstation har stängts av felaktigt.</String>
+	<String ID="WarnFailCheckWorkstationServiceAbnormallyStopped_cause" loc.comment="Cause string for warning message: WarnFailCheckWorkstationServiceAbnormallyStopped">Programfel. Slutkod {exitcode}.</String>
+	<String ID="WarnFailCheckWorkstationServiceAbnormallyStopped_res1" loc.comment="Resolution string for warning message: WarnFailCheckWorkstationServiceAbnormallyStopped">Starta om tjänsten</String>
+	<String ID="WarnFailCheckWorkstationServiceAbnormallyStopped_related1">Systemdiagnos</String>
+	<String ID="WarnFailServiceNotFound_symptom" loc.comment="Symptom string for warning message: WarnFailServiceNotFound">Det går inte att hitta tjänsten {servicename} i systemtjänster.</String>
+	<String ID="WarnFailServiceNotFound_cause" loc.comment="Cause string for warning message: WarnFailServiceNotFound">Tjänsten är inte registrerad i systemet.</String>
+	<String ID="WarnFailServiceNotFound_res1" loc.comment="Resolution string for warning message: WarnFailServiceNotFound">Registrera tjänsten i systemet.</String>
+	<String ID="WarnFailServiceNotFound_related1">Systemdiagnos</String>
+	<String ID="WarnFailOSVersionCheck_symptom" loc.comment="Symptom string for warning message: WarnFailOSVersionCheck">Versionskontrollen av operativsystemet misslyckades</String>
+	<String ID="WarnFailOSVersionCheck_cause" loc.comment="Cause string for warning message: WarnFailOSVersionCheck">Diagnostiken skrevs för en annan version av operativsystemet.  Delar av rapporten kan vara ogiltiga.</String>
+	<String ID="WarnFailOSVersionCheck_details" loc.comment="Details string for warning message: WarnFailOSVersionCheck">Operativsystemets versionssträng innehåller inte 6.1</String>
+	<String ID="WarnFailOSVersionCheck_res1" loc.comment="Resolution string for warning message: WarnFailOSVersionCheck">Kontrollera operativsystemet genom att köra winver.exe.</String>
+	<String ID="WarnFailOSVersionCheck_related1">Operativsystemets version</String>
+	<String ID="WarnFailOSAddressWidthCheck_symptom" loc.comment="Symptom string for warning message: WarnFailOSAddressWidthCheck">Arkitekturkontrollen av operativsystemet misslyckades</String>
+	<String ID="WarnFailOSAddressWidthCheck_cause" loc.comment="Cause string for warning message: WarnFailOSAddressWidthCheck">Arkitekturen hos det installerade operativsystemet rekommenderas inte för denna maskinvara</String>
+	<String ID="WarnFailOSAddressWidthCheck_details" loc.comment="Details string for warning message: WarnFailOSAddressWidthCheck">Operativsystemets arkitektur är {osarchitecture} medan processorns adressbredd är {processorwidth} bitar.</String>
+	<String ID="WarnFailOSAddressWidthCheck_res1" loc.comment="Resolution string for warning message: WarnFailOSAddressWidthCheck">Överväg om du ska installera ett {processorwidth} bitars operativsystem för bättre prestanda</String>
+	<String ID="WarnFailOSAddressWidthCheck_related1">Maskinvarukompatibilitet</String>
+	<String ID="WarnFailLogicalDiskDirty_symptom" loc.comment="Symptom string for warning message: WarnFailLogicalDiskDirty">Flaggan VolumeDirty är angiven för disken</String>
+	<String ID="WarnFailLogicalDiskDirty_cause" loc.comment="Cause string for warning message: WarnFailLogicalDiskDirty">Flaggan Dirty är angiven för en logisk disk.</String>
+	<String ID="WarnFailLogicalDiskDirty_details" loc.comment="Details string for warning message: WarnFailLogicalDiskDirty">Den här disken har markerats som smutsig. Den kan vara skadad eller så har den kanske inte stängts av korrekt</String>
+	<String ID="WarnFailLogicalDiskDirty_res1" loc.comment="Resolution string for warning message: WarnFailLogicalDiskDirty">1. Kör chkdsk på enheten och dokumentera eventuella fel som identifieras.</String>
+	<String ID="WarnFailLogicalDiskDirty_res2" loc.comment="Resolution string for warning message: WarnFailLogicalDiskDirty">2. Om chkdsk anger att enheten innehåller fel kan du köra chkdsk /f om du vill reparera felen.</String>
+	<String ID="WarnFailLogicalDiskDirty_related1">Diskdiagnos</String>
+	<String ID="WarnFailService_symptom" loc.comment="Symptom string for warning message: WarnFailService">En tjänst har rapporterats med en oväntad felkod</String>
+	<String ID="WarnFailService_cause" loc.comment="Cause string for warning message: WarnFailService">En eller flera tjänster har misslyckats. Tjänsten stoppades inte korrekt och kan ha kraschat eller så har en av dess komponenter stoppats på ett felaktigt sätt.</String>
+	<String ID="WarnFailService_details" loc.comment="Details string for warning message: WarnFailService">Tjänsten stängdes med annan kod än 0 eller 1077</String>
+	<String ID="WarnFailService_res1" loc.comment="Resolution string for warning message: WarnFailService">Starta om tjänsten</String>
+	<String ID="WarnFailService_related1">Prestandadiagnos</String>
+	<String ID="WarnFailSMARTCheck_symptom" loc.comment="Symptom string for warning message: WarnFailSMARTCheck">Flaggan PredictFailure har angetts för disken </String>
+	<String ID="WarnFailSMARTCheck_cause" loc.comment="Cause string for warning message: WarnFailSMARTCheck">Biten SMART Predict Failure har angetts för en logisk disk.</String>
+	<String ID="WarnFailSMARTCheck_details" loc.comment="Details string for warning message: WarnFailSMARTCheck">Ett problem har uppstått med disken och enheten kommer förmodligen att misslyckas.  </String>
+	<String ID="WarnFailSMARTCheck_res1" loc.comment="Resolution string for warning message: WarnFailSMARTCheck">1. Säkerhetskopiera viktiga data på den här enheten.</String>
+	<String ID="WarnFailSMARTCheck_res2" loc.comment="Resolution string for warning message: WarnFailSMARTCheck">2. När du har säkerhetskopierat data kan du försöka med att köra chkdsk /f för att reparera mindre fel. Kör inte chkdsk /f på enheten om du inte har säkerhetskopierat. Dataförluster kan uppstå om enheten har fysiska fel.</String>
+	<String ID="WarnFailSMARTCheck_related1">Diskdiagnos</String>
+	<String ID="WarnFailDiskSpaceFree_symptom" loc.comment="Symptom string for warning message: WarnFailDiskSpaceFree">{diskname} har mindre än {minfreediskpercent} % ledigt diskutrymme</String>
+	<String ID="WarnFailDiskSpaceFree_cause" loc.comment="Cause string for warning message: WarnFailDiskSpaceFree">En logisk disk har lite ledigt diskutrymme.</String>
+	<String ID="WarnFailDiskSpaceFree_details" loc.comment="Details string for warning message: WarnFailDiskSpaceFree">{diskname} har {freediskspacemb} MB ledigt diskutrymme. Det finns {freediskpercent} % ledigt utrymme. Före lite diskutrymme kan orsaka dålig prestanda och fel kan uppstå på grund av för lite virtuellt minne</String>
+	<String ID="WarnFailDiskSpaceFree_res1" loc.comment="Resolution string for warning message: WarnFailDiskSpaceFree">1. Bekräfta att diskutrymmet är lågt genom att använda "Dator" på Start-menyn.</String>
+	<String ID="WarnFailDiskSpaceFree_res2" loc.comment="Resolution string for warning message: WarnFailDiskSpaceFree">2. Säkerhetskopiera icke-kritiska filer och ta sedan bort dem från enheten.</String>
+	<String ID="WarnFailDiskSpaceFree_res3" loc.comment="Resolution string for warning message: WarnFailDiskSpaceFree">3. Utför en diskrensning.</String>
+	<String ID="WarnFailSystemDiskSpaceFree_symptom" loc.comment="Symptom string for warning message: WarnFailSystemDiskSpaceFree">{diskname} har mindre än {minfreediskpercent} % ledigt eller mindre än {minfreediskspacemb} MB diskutrymme</String>
+	<String ID="WarnFailSystemDiskSpaceFree_cause" loc.comment="Cause string for warning message: WarnFailSystemDiskSpaceFree">Systemdisken har lite utrymme.</String>
+	<String ID="WarnFailSystemDiskSpaceFree_details" loc.comment="Details string for warning message: WarnFailSystemDiskSpaceFree">{diskname} har {freediskspacemb} MB ledigt diskutrymme. Det finns {freediskpercent} % ledigt diskutrymme.</String>
+	<String ID="WarnFailSystemDiskSpaceFree_res1" loc.comment="Resolution string for warning message: WarnFailSystemDiskSpaceFree">1. Bekräfta att diskutrymmet är lågt genom att visa enheten i funktionen Dator på Start-menyn.</String>
+	<String ID="WarnFailSystemDiskSpaceFree_res2" loc.comment="Resolution string for warning message: WarnFailSystemDiskSpaceFree">2. Säkerhetskopiera icke-kritiska filer och ta bort dem från enheten.</String>
+	<String ID="WarnFailSystemDiskSpaceFree_res3" loc.comment="Resolution string for warning message: WarnFailSystemDiskSpaceFree">3. Utför en diskrensning.</String>
+	<String ID="WarnFailDiskSpaceFree_related1">Frigör diskutrymme</String>
+	<String ID="WarnFailLUA_symptom" loc.comment="Symptom string for warning message: WarnFailLUA">En rapport från Säkerhetscenter visar att användaråtkomstkontrollen är inaktiverad.</String>
+	<String ID="WarnFailLUA_cause" loc.comment="Cause string for warning message: WarnFailLUA">Användaråtkomstkontrollen är inaktiverad. Du bör köra Windows med användaråtkomstkontrollen aktiverad.</String>
+	<String ID="WarnFailLUA_res1" loc.comment="Resolution string for warning message: WarnFailLUA">Aktivera användaråtkomstkontrollen i Säkerhetscenter.</String>
+	<String ID="WarnFailLUA_related1">Användaråtkomstkontroll</String>
+	<String ID="WarnFailWU_symptom" loc.comment="Symptom string for warning message: WarnFailWU">En rapport från Säkerhetscenter visar att Windows Update är inaktiverad.</String>
+	<String ID="WarnFailWU_cause" loc.comment="Cause string for warning message: WarnFailWU">Windows Update är inaktiverad. Du bör köra Windows med Windows Update aktiverad.</String>
+	<String ID="WarnFailWU_res1" loc.comment="Resolution string for warning message: WarnFailWU">1. Aktivera Windows Update i Säkerhetscenter.</String>
+	<String ID="WarnFailWU_related1">Windows Update</String>
+	<String ID="WarnFailAntiVirusCheckEnabled_symptom" loc.comment="Symptom string for warning message: WarnFailAntiVirusCheckEnabled">En rapport från Säkerhetscenter visar att det inte finns någon antivirusprodukt som aktivt skyddar den här datorn.</String>
+	<String ID="WarnFailAntiVirusCheckEnabled_cause" loc.comment="Cause string for warning message: WarnFailAntiVirusCheckEnabled">En rapport från Säkerhetscenter visar att virusskanning vid åtkomst har inaktiverats. Antingen är virusskanning vid åtkomst inte aktiverad eller så känns antivirusprogrammet inte igen.</String>
+	<String ID="WarnFailAntiVirusCheckEnabled_res1" loc.comment="Resolution string for warning message: WarnFailAntiVirusCheckEnabled">Bekräfta att en antivirusprodukt är installerad.</String>
+	<String ID="WarnFailAntiVirusUnknown_symptom" loc.comment="Symptom string for warning message: WarnFailAntiVirusUnknown">Ingen antivirusprodukt har registrerats i Säkerhetscenter.</String>
+	<String ID="WarnFailAntiVirusUnknown_cause" loc.comment="Cause string for warning message: WarnFailAntiVirusUnknown">Inget aktivt antivirusprogram har identifierats i Säkerhetscenter. Antingen har inget antivirusprogram installerats eller så känns det inte igen.</String>
+	<String ID="WarnFailAntiVirusUnknown_res1" loc.comment="Resolution string for warning message: WarnFailAntiVirusUnknown">1. Bekräfta att en antivirusprodukt har installerats.</String>
+	<String ID="WarnFailAntiVirusUnknown_res2" loc.comment="Resolution string for warning message: WarnFailAntiVirusUnknown">2. Om en antivirusprodukt är installerad och körs kan du stänga av övervakningen av antivirusprogrammets status i Säkerhetscenter.</String>
+	<String ID="WarnFailAntiVirusCheckUpToDate_symptom" loc.comment="Symptom string for warning message: WarnFailAntiVirusCheckUpToDate">En rapport från Säkerhetscenter visar att antivirusprodukten {antivirusproduct} inte är aktuell.</String>
+	<String ID="WarnFailAntiVirusCheckUpToDate_cause" loc.comment="Cause string for warning message: WarnFailAntiVirusCheckUpToDate">{antivirusproduct} är inte aktuell.  Du bör köra Windows med en antivirusprodukt som är så aktuell som möjligt.</String>
+	<String ID="WarnFailAntiVirusCheckUpToDate_details" loc.comment="Details string for warning message: WarnFailAntiVirusCheckUpToDate">Antivirusprodukten som är registrerad i Säkerhetscenter är inte aktuell.</String>
+	<String ID="WarnFailAntiVirusCheckUpToDate_res1" loc.comment="Resolution string for warning message: WarnFailAntiVirusCheckUpToDate">Läs produktinformationen eller vänd dig till tillverkaren av {antivirusproduct} om du vill ha mer information om hur du kan hålla produkten aktuell.</String>
+	<String ID="WarnFailAntiSpywareUnknown_symptom" loc.comment="Symptom string for warning message: WarnFailAntiSpywareUnknown">Inget antispionprogram finns registrerat i Säkerhetscenter.</String>
+	<String ID="WarnFailAntiSpywareUnknown_cause" loc.comment="Cause string for warning message: WarnFailAntiSpywareUnknown">Inget aktivt antispionprogram har identifierats i Säkerhetscenter. Antingen har inget antispionprogram installerats eller så känns det inte igen.</String>
+	<String ID="WarnFailAntiSpywareUnknown_res1" loc.comment="Resolution string for warning message: WarnFailAntiSpywareUnknown">1. Bekräfta att ett antispionprogram har installerats.</String>
+	<String ID="WarnFailAntiSpywareUnknown_res2" loc.comment="Resolution string for warning message: WarnFailAntiSpywareUnknown">2. Om ett antispionprogram har installerats och körs kan du stänga av övervakningen av antispionprogrammets status i Säkerhetscenter.</String>
+	<String ID="WarnFailAntiSpywareCheckEnabled_symptom" loc.comment="Symptom string for warning message: WarnFailAntiSpywareCheckEnabled">En rapport från Säkerhetscenter visar att det inte finns något antispionprogram som aktivt skyddar datorn.</String>
+	<String ID="WarnFailAntiSpywareCheckEnabled_cause" loc.comment="Cause string for warning message: WarnFailAntiSpywareCheckEnabled">En rapport från Säkerhetscenter visar att skanning av spionprogram vid åtkomst är inaktiverad. Antingen är skanning vid åtkomst inaktiverad eller så känns antispionprogrammet inte igen.</String>
+	<String ID="WarnFailAntiSpywareCheckEnabled_res1" loc.comment="Resolution string for warning message: WarnFailAntiSpywareCheckEnabled">1. Bekräfta att ett antispionprogram har installerats.</String>
+	<String ID="WarnFailAntiSpywareCheckEnabled_res2" loc.comment="Resolution string for warning message: WarnFailAntiSpywareCheckEnabled">2. Om ett antispionprogram har installerats och körs kan du stänga av övervakningen av antispionprogrammets status i Säkerhetscenter.</String>
+	<String ID="WarnFailAntiSpywareCheckUpToDate_symptom" loc.comment="Symptom string for warning message: WarnFailAntiSpywareCheckUpToDate">En rapport från Säkerhetscenter visar att antispionprogrammet: {antispywareproduct} inte är aktuellt.</String>
+	<String ID="WarnFailAntiSpywareCheckUpToDate_cause" loc.comment="Cause string for warning message: WarnFailAntiSpywareCheckUpToDate">{antispywareproduct} är inte aktuellt.  Du bör köra Windows med en antivirusprodukt som är så aktuell som möjligt.</String>
+	<String ID="WarnFailAntiSpywareCheckUpToDate_details" loc.comment="Details string for warning message: WarnFailAntiSpywareCheckUpToDate">En rapport från antispionprogrammet som är registrerat i Säkerhetscenter visar att programmet inte är aktuellt.</String>
+	<String ID="WarnFailAntiSpywareCheckUpToDate_res1" loc.comment="Resolution string for warning message: WarnFailAntiSpywareCheckUpToDate">Läs produktinformationen eller vänd dig till tillverkaren av {antispywareproduct} om du vill ha mer information om hur du kan hålla programmet aktuellt.</String>
+	<String ID="WarnFailFirewallEnabled_symptom" loc.comment="Symptom string for warning message: WarnFailFirewallEnabled">En rapport från Säkerhetscenter visar att det inte finns någon brandväggsprodukt som aktivt skyddar datorn.</String>
+	<String ID="WarnFailFirewallEnabled_cause" loc.comment="Cause string for warning message: WarnFailFirewallEnabled">Ingen brandväggsprodukt har aktiverats i datorn. Du bör köra Windows med en aktiverad brandväggsprodukt.</String>
+	<String ID="WarnFailFirewallEnabled_details" loc.comment="Details string for warning message: WarnFailFirewallEnabled">Det finns ingen rapport i Säkerhetscenter om en aktiverad brandväggsprodukt.</String>
+	<String ID="WarnFailFirewallEnabled_res1" loc.comment="Resolution string for warning message: WarnFailFirewallEnabled">1. Bekräfta att en brandväggsprodukt har installerats.</String>
+	<String ID="WarnFailFirewallEnabled_res2" loc.comment="Resolution string for warning message: WarnFailFirewallEnabled">2. Om du använder en brandvägg som tillhandahålls av tredje part och som inte registreras i Säkerhetscenter kan du inaktivera den här inställningen i Säkerhetscenter.</String>
+	<String ID="WarnFailFirewallEnabled_res3" loc.comment="Resolution string for warning message: WarnFailFirewallEnabled">3. Om du inte har installerat en brandväggsprodukt bör du aktivera Windows-brandväggen.</String>
+	<String ID="LinkAntiSpyware">Antispionprogram</String>
+	<String ID="LinkAntiVirus">Antivirus</String>
+	<String ID="LinkFirewall">Brandvägg</String>
+	<String ID="LinkPerformanceDiagnosis">Prestandadiagnos</String>
+	<String ID="GroupTrbTbl" loc.comment="Name of PLA rules group">WMI-prestandafrågor</String>
+	<String ID="RuleTrbInsert" loc.comment="Name of rule that inserts performance sections and tables seen in WPDC">Infoga konfigurationstabellen i den slutgiltiga rapporten</String>
+	<String ID="RuleListInteractiveSessionProcesses" loc.comment="Name of rule that lists all the interactive processes seen in WPDC">Skapa tabell av interaktiva sessionsprocesser</String>
+	<String ID="RuleListStartupPrograms" loc.comment="Name of rule that lists all the startup programs seen in WPDC">Startprogram</String>
+	<String ID="RulePerfCleanup" loc.comment="Name of rule that removes all the unwanted performance tables seen in WPDC">Rensa oönskade prestandatabeller</String>
+	<String ID="RuleDesktopRating" loc.comment="Name of rule that summarizes the desktop rating seen in WPDC">Klassificering av skrivbordet</String>
+	<String ID="LOC_CPUScore" loc.comment="Informational warning for poor CPU score seen in report">Systemets CPU-klassificering är låg och kan vara orsak till prestandaproblem. Du kan förbättra systemprestandan genom att minska antalet öppna program. Se om du kan inaktivera startprogram som inte behövs. Om problemet kvarstår måste du kanske uppgradera processorn.</String>
+	<String ID="LOC_D3DScore" loc.comment="Informational warning for poor D3D score seen in report">Systemets klassificering av spelgrafik är låg och kan vara orsak till prestandaproblem i multimedieprogram eller spel. Du kan förbättra systemprestandan i multimedieprogram och spel genom att inaktivera Aero - glas. Om problemet kvarstår måste du kanske uppdatera bildskärmskortets drivrutin eller uppgradera bildskärmskortet.</String>
+	<String ID="LOC_GraphicsScore" loc.comment="Informational warning for poor Graphics score seen in report">Systemets grafikklassificering är låg och kan vara orsak till prestandaproblem. Du kan förbättra systemets grafikprestanda genom att inaktivera skrivbordssammansättning. Om problemet kvarstår måste du kanske uppdatera bildskärmskortets drivrutin eller uppgradera bildskärmskortet. </String>
+	<String ID="LOC_DiskScore" loc.comment="Informational warning for poor Disk score seen in report">Systemets diskklassificering är låg och kan vara orsak till prestandaproblem. Du kan förbättra systemprestandan genom att minska antalet öppna program. Kontrollera att hårddisken har tillräckligt med ledigt utrymme och att den har defragmenterats. Se om du kan inaktivera startprogram som inte behövs. Om problemet kvarstår måste du kanske uppgradera hårddisken.</String>
+	<String ID="LOC_MemoryScore" loc.comment="Informational warning for poor Memory score seen in report">Systemets klassificering för minne är låg och kan vara orsak till prestandaproblem. Du kan förbättra systemprestandan genom minska antalet öppna program. Se om du kan inaktivera startprogram som inte behövs. Om problemet kvarstår måste du kanske uppgradera systemets minne.</String>
+	<String ID="LOC_MultipleLoggedOnUsers" loc.comment="Informational warning for multiple logged on users seen in report">Flera användare är inloggade på datorn och detta kan vara orsak till prestandaproblem. Logga ut inaktiva användare för att återfå systemresurser.</String>
+	<String ID="WarnListInteractiveSessionProcesses_related1">Prestandadiagnostik</String>
+</StringTable>

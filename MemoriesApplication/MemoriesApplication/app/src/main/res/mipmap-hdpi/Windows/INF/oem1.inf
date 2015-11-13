@@ -1,0 +1,194 @@
+;******************************************************************
+;
+; Copyright (c) Microsoft Corporation. All rights reserved.
+;
+;******************************************************************
+
+[Version]
+Signature   = "$Chicago$"
+Class       = MEDIA
+Provider    = %ProviderName%
+ClassGUID   = {4d36e96c-e325-11ce-bfc1-08002be10318}
+CatalogFile = msdokub.cat
+DriverVer   = 10/24/2014, 1.31.35.7
+pnplockdown = 0
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames]
+222 = %SPoC.DiskDesc%,,,
+
+[SourceDisksFiles]
+usbaud64.sys = 222
+UCI64S78.dll = 222
+UDFSPOCJS64.dll = 222
+
+;;
+;; PE Signature
+;;
+[SignatureAttributes]
+usbaud64.sys=SignatureAttributes.DRM
+
+[SignatureAttributes.DRM]
+DRMLevel=1300
+
+[SignatureAttributes.PETrust]
+PETrust=true
+
+[Manufacturer]
+%MfgName% = SPoC, NTamd64.6
+
+[SPoC.NTamd64.6]
+%SPoC.DeviceDesc% = USBAUD.NTamd64.6, USB\VID_045E&PID_07CA&MI_00
+
+[DestinationDirs]
+USBAUD64.CopyFiles      = 12
+CoInstaller64.CopyFiles = 11
+UMDriverCopy            = 12,UMDF ; copy to drivers\umdf
+ 
+[USBAUD64.CopyFiles]
+usbaud64.sys
+[CoInstaller64.CopyFiles]
+UCI64S78.dll
+ 
+[UMDriverCopy]
+UDFSPOCJS64.dll
+;======================================================
+; USBAUD.NTamd64.6
+;======================================================
+
+[USBAUD.NTamd64.6]
+Include   = ks.inf,wdmaudio.inf
+Needs     = KS.Registration, WDMAUDIO.Registration,mssysfx.CopyFilesAndRegister
+CopyFiles = USBAUD64.CopyFiles,UMDriverCopy
+AddReg    = USBAUD.AddReg, USBAUD64.AddReg, AudioParameters.AddReg, Volume.6.AddReg
+
+[USBAUD.NTamd64.6.hw]
+AddReg = JackSenseDetection_AddReg
+ 
+[USBAUD.NTamd64.6.CoInstallers]
+AddReg    = CoInstaller.AddReg, CoInstaller64.AddReg
+CopyFiles = CoInstaller64.CopyFiles
+ 
+[USBAUD.NTamd64.6.Interfaces]
+AddInterface = %KSCATEGORY_AUDIO%,   %KSNAME_Wave%,     USBAUD.I.Wave
+AddInterface = %KSCATEGORY_RENDER%,  %KSNAME_Wave%,     USBAUD.I.Wave
+AddInterface = %KSCATEGORY_CAPTURE%, %KSNAME_Wave%,     USBAUD.I.Wave
+AddInterface = %KSCATEGORY_AUDIO%,   %KSNAME_Topology%, USBAUD.I.Topo
+
+[USBAUD.NTamd64.6.Services]
+AddService = WUDFRd, 0x000001f8, WUDFRD_ServiceInstall
+AddService = usbaud, 0x00000002, MicrosoftUsbAudio64_Service_Inst
+[JackSenseDetection_AddReg]
+HKR,,"LowerFilters",0x00010008,"WUDFRd" ; FLG_ADDREG_TYPE_MULTI_SZ | FLG_ADDREG_APPEND
+
+
+[WUDFRD_ServiceInstall]
+DisplayName = %WudfRdDisplayName%
+ServiceType = 1
+StartType = 3
+ErrorControl = 1
+ServiceBinary = %12%\WUDFRd.sys
+LoadOrderGroup = Base
+
+[MicrosoftUsbAudio64_Service_Inst]
+DisplayName   = %SPoC.SvcDesc%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\usbaud64.sys
+;======================================================
+; COMMON
+;======================================================
+[USBAUD.AddReg]
+HKR,,AssociatedFilters,,"wdmaud,swmidi,redbook"
+HKR,Drivers,SubClasses,,"wave,midi,mixer"
+HKR,Drivers\wave\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\midi\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\mixer\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\wave\wdmaud.drv,Description,,%SPoC.DeviceDesc%
+HKR,Drivers\midi\wdmaud.drv,Description,,%SPoC.MidiDesc%
+HKR,Drivers\mixer\wdmaud.drv,Description,,%SPoC.DeviceDesc%
+
+[USBAUD64.AddReg]
+HKR,,Driver,,usbaud64.sys
+HKR,,NTMPDriver,,"usbaud64.sys,sbemul.sys"
+
+[USBAUD.I.Wave]
+AddReg=USBAUD.I.Wave.AddReg
+
+[USBAUD.I.Wave.AddReg]
+HKR,,CLSID,,%Proxy.CLSID%
+HKR,,FriendlyName,,%USBAUD.Wave.szPname%
+ 
+[USBAUD.I.Topo]
+AddReg=USBAUD.I.Topo.AddReg
+
+[USBAUD.I.Topo.AddReg]
+HKR,,CLSID,,%Proxy.CLSID%
+HKR,,FriendlyName,,%USBAUD.Topo.szPname%
+
+[CoInstaller.AddReg]
+HKR,,CompanyName,,%CompanyName%
+HKR,,ProductName,,%ProductName%
+HKR,,InstallationPath,,%1%
+
+[CoInstaller64.AddReg]
+HKR,,CoInstallers32,0x00010000,"WUDFCoinstaller.dll","UCI64S78.dll,CAUDCoInstaller"
+HKLM, SOFTWARE\%CompanyName%\%ProductName%\Files\SYS,usbaud64.sys,,0x00000008
+
+;======================================================
+; Audio settings                                   
+;======================================================
+[Volume.6.AddReg]
+HKR,GlobalSettings,PlaybackVolume,          1,38,00,00,00  ;
+HKR,GlobalSettings,RecordingMicVolume,      1,51,00,00,00  ; 
+HKR,GlobalSettings,RecordingLineInVolume,   1,51,00,00,00  ;
+
+[AudioParameters.AddReg]
+
+HKR,,EnableWaveRT,                          1,01,00,00,00
+HKR,GlobalSettings,SelectiveSuspend,        1,00,00,00,00  ;; Support Selective Suspend
+HKR,GlobalSettings,OverrideDeviceVersion,   1,02,00,00,00  ;; Microsoft Docking
+HKR,GlobalSettings,DetectTransferError,   1,00,00,00,00  ;; Microsoft Docking 
+ 
+HKR,GlobalSettings,BeamWidth,               1,64,00,14,00  ;; Beam Width and Mic Array Seperation
+HKR,GlobalSettings,MicDelay,                1,1E,00,00,00  ; Microphone Delay for Echo Cancelation (in milliseconds)
+HKR,GlobalSettings,MicNrAgressivenessLevel, 1,08,00,00,00  ; Aggressiveness of Noise Reduction (0-8)
+HKR,GlobalSettings,MicBoostBeforeNR,        1,14,00,00,00  ; Gain before Noise Reduction
+HKR,GlobalSettings,MicBoostAfterNR,         1,00,00,00,00  ; Gain after  Noise Reduction
+
+HKLM,SYSTEM\CurrentControlSet\Services\usbaud, DefaultSettings,0x00000001,0,1,0
+HKLM,SOFTWARE\Microsoft\USBService, ProductId,0x10001,0x000007CA
+HKLM,SOFTWARE\Microsoft\USBService, VendorId, 0x10001,0x0000045E
+
+[USBAUD.NTamd64.6.Wdf]
+UmdfService      ="JackSenseDetection", JackSenseDetection_Install
+UmdfServiceOrder = JackSenseDetection
+UmdfKernelModeClientPolicy = AllowKernelModeClients
+UmdfMethodNeitherAction = Copy
+
+[JackSenseDetection_Install]
+UmdfLibraryVersion=2.0.0
+;DriverCLSID = "{422d8dbc-520d-4d7e-8f53-920e5c867e6c}"
+ServiceBinary = %12%\UMDF\UDFSPOCJS64.dll
+ 
+[Strings]
+ProviderName        = "Microsoft"
+MfgName             = "Microsoft"
+CompanyName         = "Microsoft"
+ProductName         = "Microsoft Docking Station Audio Device"
+SPoC.DeviceDesc     = "Microsoft Docking Station Audio Device"
+SPoC.SvcDesc        = "Microsoft Docking Station Audio Device"
+SPoC.MidiDesc       = "Microsoft Docking Station Audio Device"
+SPoC.DiskDesc       = "Microsoft Docking Station Audio Device Installation Disk"
+USBAUD.Wave.szPname = "Microsoft Docking Station Audio Device Device"
+USBAUD.Topo.szPname = "Microsoft Docking Station Audio Device Topology"
+Proxy.CLSID         = "{17CCA71B-ECD7-11D0-B908-00A0C9223196}"
+KSCATEGORY_AUDIO    = "{6994AD04-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_RENDER   = "{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE  = "{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSNAME_Wave         = "Wave"
+KSNAME_Topology     = "Topology"
+WudfRdDisplayName   = "Windows Driver Foundation - User-mode Driver Framework Reflector"

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="TopicDisk" loc.comment="Topic Name for Disk Tables in Report">Fysisk disk</String>
+	<String ID="physicalDiskCounters" loc.comment="Table name for counters related to physical disks in Report">Fysiska diskräknare</String>
+	<String ID="physicalDiskIdle" loc.comment="Table name for counters related to physical disks in Report">Ledig tid i procent för fysisk disk</String>
+	<String ID="physicalDiskAveDiskSec" loc.comment="Table name for counters related to physical disks in Report">Genomsnittliga sekundära räknare för fysisk disk</String>
+	<String ID="NoteWhyDiskIdle" loc.comment="Explain value of this table in the report">Inaktivitet är en bra indikator för diskaktiviteten. Diskens undersystem upprätthåller olika I/O-hastigheter och inaktivitetsräknaren normaliserar denna information och visar när disken förväntas vara upptagen. Räknarvärdet minskar och diskanvändningen ökar.</String>
+	<String ID="NoteWhyDiskAvg" loc.comment="Explain value of this table in the report">Det genomsnittliga antalet sekunder per åtgärd är en bra indikator på diskens aktivitet och hälsa. En I/O-åtgärd förväntas ta under 0.015 ms på ett friskt undersystem. Högre värden, speciellt om inaktivitetstiden är hög och diskens I/O-hastighet är låg, är en indikation på att disken har svårigheter med läsning och skrivning. Använd en eller fler av de föreslagna testerna för diskdiagnostik om detta är fallet.</String>
+	<String ID="TableNTFSPerformance" loc.comment="Table name for file system performance seen in report">Prestandainställningar</String>
+	<String ID="TableWorkstationServices" loc.comment="Name of table lists the workstation service seen in report">Tjänsten Workstation</String>
+	<String ID="TopicNTFSPerformance" loc.comment="Topic name for file system performance seen in report">NTFS-prestanda</String>
+</StringTable>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="Error" loc.comment="Only used in WDC Console">Fel</String>
+	<String ID="Warning" loc.comment="Only used in WDC Console">Varning</String>
+	<String ID="Information" loc.comment="Only used in WDC Console">Information</String>
+	<String ID="GroupSystem" loc.comment="Only used in WDC Console">System</String>
+	<String ID="RuleHideMultiCpu" loc.comment="Only used in WDC Console">Dölj flerprocessortabeller på enkel CPU</String>
+	<String ID="RuleInterrupts" loc.comment="Only used in WDC Console">Hög avbrottsfrekvens per processor</String>
+	<String ID="RuleSingleImageCpu" loc.comment="Only used in WDC Console">Hög CPU-förbrukning för enskild avbildning</String>
+	<String ID="RuleServices">Tjänsttabell</String>
+	<String ID="LOC_IntHighValue" loc.comment="Interrupt Rule">Stort genomsnittligt antal avbrott per processor. Datorn har {numprocessors} processorer och {numnics} nätverkskort. Det totala antalet avbrott per sekund för datorn är {totalinterrupt}. Det genomsnittliga antalet avbrott för varje processor per sekund är {averageinterrupts}.</String>
+	<String ID="PerformanceDiagnosis">Prestandadiagnos</String>
+	<String ID="LOC_HSingleImageCPU" loc.comment="Process has high CPU">Process {processname} [ProcessId: {processid}] har en hög CPU-förbrukning på {cpuusage} %.</String>
+</StringTable>

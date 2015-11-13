@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="GroupMemory">Minne</String>
+	<String ID="RuleCheckAvailMemory" loc.comment="Name of rule seen in WPDC">Kontrollera tillgängligt minne</String>
+	<String ID="RuleMemoryTable">Minnesanvändningstabell</String>
+	<String ID="RuleReduceHandleTable">Tabell för justeringshandtag</String>
+	<String ID="RuleFreeSystemPTE">Kontrollera lediga PTE</String>
+	<String ID="WarnFreeSystemPTE_symptom" loc.comment="Symptom string for warning message: WarnFreeSystemPTE">Lediga system-PTE (Page Table Entries). Genomsnittet för prestandaräknaren är lågt</String>
+	<String ID="WarnFreeSystemPTE_cause" loc.comment="Cause string for warning message: WarnFreeSystemPTE">För många system-PTE används.</String>
+	<String ID="WarnFreeSystemPTE_details" loc.comment="Details string for warning message: WarnFreeSystemPTE">Det finns {freesyspte} lediga poster.</String>
+	<String ID="WarnFreeSystemPTE_res1" loc.comment="Resolution string for warning message: WarnFreeSystemPTE">1. Kontrollera att villkoret fortfarande gäller.</String>
+	<String ID="WarnFreeSystemPTE_res2" loc.comment="Resolution string for warning message: WarnFreeSystemPTE">2. Stäng program som inte används.</String>
+	<String ID="WarnFreeSystemPTE_related1" loc.comment="First resolution detail string for warning message: WarnFreeSystemPTE">Virtuellt minne</String>
+	<String ID="WarnPaging_symptom" loc.comment="Symptom string for warning message: WarnPaging">Överdriven växling i systemet</String>
+	<String ID="WarnPaging_cause" loc.comment="Cause string for warning message: WarnPaging">Systemet har lite tillgängligt minne.</String>
+	<String ID="WarnPaging_details" loc.comment="Details string for warning message: WarnPaging">Systemets sammanlagda fysiska minne kan inte hantera belastningen.</String>
+	<String ID="WarnPaging_res1" loc.comment="Resolution string for warning message: WarnPaging">Uppgradera det fysiska minnet eller minska belastningen</String>
+	<String ID="WarnPaging_related1">Minnesdiagnos</String>
+</StringTable>

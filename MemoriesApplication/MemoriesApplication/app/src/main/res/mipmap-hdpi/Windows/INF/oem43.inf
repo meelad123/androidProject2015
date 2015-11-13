@@ -1,0 +1,1662 @@
+;==============================================================================
+; Microsoft TrueColor INF
+; Copyright (C) Microsoft Corporation.  All rights reserved.
+;==============================================================================
+
+[Version]
+signature="$CHICAGO$"
+Class=Image
+ClassGUID={6bdd1fc6-810f-11d0-bec7-08002be2092f}
+Provider=%Msft%
+CatalogFile.NT = TrueColor.cat
+DriverVer=06/16/2014,5.20.1034.0
+PnpLockdown=1
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[SourceDisksNames]
+1 = %InstallDisk%, , , 
+
+[SourceDisksFiles]
+TrueColor.sys = 1
+WdfCoInstaller01011.dll = 1
+CAL2.dll = 1
+CinVPU.dll = 1
+FaceDetectorDll.dll = 1
+MoCinConfig.dll = 1
+msvcp120.dll = 1
+msvcr120.dll = 1
+vccorlib120.dll = 1
+LcProxy2.ax = 1
+Transcoder.dll = 1
+ViperRT.dll = 1
+VPUGraph.dll = 1
+LcMft.dll = 1
+; 32 bit binaries
+x86.LcProxy2.ax = 1
+x86.msvcp120.dll = 1
+x86.msvcr120.dll = 1
+x86.vccorlib120.dll = 1
+x86.CAL2.dll = 1
+x86.CinVPU.dll = 1
+x86.FaceDetectorDll.dll = 1
+x86.Transcoder.dll = 1
+x86.ViperRT.dll = 1
+x86.LcMft.dll = 1
+x86.MoCinConfig.dll = 1
+
+[DestinationDirs]
+Drivers_Dir = 12
+WDF_CoInstaller_CopyFiles = 11
+VCRuntime.CopyList=11
+LifeCam.CopyList = 11, TrueColor5.2
+VCRuntime32.CopyList=16425, 
+LifeCam32.CopyList = 16425, TrueColor5.2
+
+[Manufacturer]
+%Msft%=Microsoft, NTamd64.6.2, NTamd64.6.3
+
+[Microsoft.NTamd64.6.2]
+%USBVideoSurfaceProFront.DeviceDesc%=USBVideoSurfaceProFront, USB\VID_045E&PID_0794&MI_00
+%USBVideoSurfaceProRear.DeviceDesc%=USBVideoSurfaceProRear, USB\VID_045E&PID_0795&MI_00
+%USBVideoSurfaceProNFront.DeviceDesc%=USBVideoSurfaceProNFront, USB\VID_045E&PID_07BE&MI_00
+
+[Microsoft.NTamd64.6.3]
+%USBVideoSurfaceProFront.DeviceDesc%=USBVideoSurfaceProFront, USB\VID_045E&PID_0794&MI_00
+%USBVideoSurfaceProRear.DeviceDesc%=USBVideoSurfaceProRear, USB\VID_045E&PID_0795&MI_00
+%USBVideoSurfaceProNFront.DeviceDesc%=USBVideoSurfaceProNFront, USB\VID_045E&PID_07BE&MI_00
+
+[Drivers_Dir]
+TrueColor.sys
+
+[TrueColor_Service_Inst]
+DisplayName    = %TrueColor.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\TrueColor.sys
+LoadOrderGroup = Extended Base
+
+[TrueColor.AddReg]
+HKR, , "UpperFilters", 0x00010000, "TrueColor"
+
+[WDF_CoInstaller_CopyFiles]
+WdfCoInstaller01011.dll
+
+[TrueColor_wdfsect]
+KmdfLibraryVersion = 1.11
+
+[USBVideoSurfaceProFront.NT]
+Include=USBVideo.inf, ks.inf, kscaptur.inf
+Needs=USBVideo.NT, KS.Registration, KSCAPTUR.Registration.NT
+CopyFiles=Drivers_Dir, VCRuntime.CopyList, VCRuntime32.CopyList, LifeCam.CopyList, LifeCam32.CopyList
+AddReg=MSHUSBVideo.RegSvr32.LcProxy2.AddReg, MSHUSBVideo.RegSvr.LcProxy2.AddReg, MSHUSBVideo.RegSvr32.CAL2.AddReg, MSHUSBVideo.RegSvr.CAL2.AddReg, MSHUSBVideo.RegSvr32.ViPER.AddReg, MSHUSBVideo.RegSvr.ViPER.AddReg, MSHUSBVideo.RegSvr32.LcMft.AddReg, MSHUSBVideo.RegSvr.LcMft.AddReg
+PreferDeviceInfo=1
+; WIA
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+FriendlyName=%USBVideoSurfaceProFront.DeviceDesc%
+Capabilities=0x00000031
+DeviceData=USBVideoSurfaceProFront.DeviceData
+ICMProfiles="sRGB Color Space Profile.icm"
+
+[USBVideoSurfaceProFront.DeviceData]
+Server=local
+UI Class ID={5d8ef5a3-ac13-11d2-a093-00c04f72dc3c}
+
+[USBVideoSurfaceProFront.NT.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%, GLOBAL, USBVideoSurfaceProFront.Interface
+AddInterface=%KSCATEGORY_RENDER%, GLOBAL, USBVideoSurfaceProFront.Interface
+AddInterface=%KSCATEGORY_VIDEO%, GLOBAL, USBVideoSurfaceProFront.Interface
+AddInterface=%KSCATEGORY_VIDEO_CAMERA%, GLOBAL, USBVideoSurfaceProFront.Interface
+
+[USBVideoSurfaceProFront.Interface]
+AddReg=USBVideoSurfaceProFront.Interface.AddReg
+
+[USBVideoSurfaceProFront.Interface.AddReg]
+HKR, , CLSID, , %ProxyLifeCam.CLSID%
+HKR, , FriendlyName, , %USBVideoSurfaceProFront.DeviceDesc%
+HKR, , RTCFlags, 0x00010001, 0x00000010
+HKR, , CameraPostProcessingPluginCLSID, , %LcMft.CLSID%
+HKR, , UvcFlags, 0x00010001, 0x00000010
+
+[USBVideoSurfaceProFront.NT.Services]
+AddService = usbvideo, 0x00000002, MSHUSBVideo.ServiceInstall
+AddService = TrueColor, 0x00000000, TrueColor_Service_Inst
+
+[USBVideoSurfaceProFront.NT.HW]
+AddReg = MSHAddRegSurfaceProFront.NT.HW, TrueColor.AddReg
+
+[MSHAddRegSurfaceProFront.NT.HW]
+HKR, , "FriendlyName", , %USBVideoSurfaceProFront.DeviceDesc%
+
+[USBVideoSurfaceProFront.NT.CoInstallers]
+AddReg = Wdf.CoInstallers.AddReg
+CopyFiles = WDF_CoInstaller_CopyFiles
+
+[USBVideoSurfaceProFront.NT.Wdf]
+KmdfService =  TrueColor, TrueColor_wdfsect
+
+[USBVideoSurfaceProRear.NT]
+Include=USBVideo.inf, ks.inf, kscaptur.inf
+Needs=USBVideo.NT, KS.Registration, KSCAPTUR.Registration.NT
+CopyFiles=Drivers_Dir, VCRuntime.CopyList, VCRuntime32.CopyList, LifeCam.CopyList, LifeCam32.CopyList
+AddReg=MSHUSBVideo.RegSvr32.LcProxy2.AddReg, MSHUSBVideo.RegSvr.LcProxy2.AddReg, MSHUSBVideo.RegSvr32.CAL2.AddReg, MSHUSBVideo.RegSvr.CAL2.AddReg, MSHUSBVideo.RegSvr32.ViPER.AddReg, MSHUSBVideo.RegSvr.ViPER.AddReg, MSHUSBVideo.RegSvr32.LcMft.AddReg, MSHUSBVideo.RegSvr.LcMft.AddReg
+PreferDeviceInfo=1
+; WIA
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+FriendlyName=%USBVideoSurfaceProRear.DeviceDesc%
+Capabilities=0x00000031
+DeviceData=USBVideoSurfaceProRear.DeviceData
+ICMProfiles="sRGB Color Space Profile.icm"
+
+[USBVideoSurfaceProRear.DeviceData]
+Server=local
+UI Class ID={5d8ef5a3-ac13-11d2-a093-00c04f72dc3c}
+
+[USBVideoSurfaceProRear.NT.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%, GLOBAL, USBVideoSurfaceProRear.Interface
+AddInterface=%KSCATEGORY_RENDER%, GLOBAL, USBVideoSurfaceProRear.Interface
+AddInterface=%KSCATEGORY_VIDEO%, GLOBAL, USBVideoSurfaceProRear.Interface
+AddInterface=%KSCATEGORY_VIDEO_CAMERA%, GLOBAL, USBVideoSurfaceProRear.Interface
+
+[USBVideoSurfaceProRear.Interface]
+AddReg=USBVideoSurfaceProRear.Interface.AddReg
+
+[USBVideoSurfaceProRear.Interface.AddReg]
+HKR, , CLSID, , %ProxyLifeCam.CLSID%
+HKR, , FriendlyName, , %USBVideoSurfaceProRear.DeviceDesc%
+HKR, , RTCFlags, 0x00010001, 0x00000010
+HKR, , CameraPostProcessingPluginCLSID, , %LcMft.CLSID%
+HKR, , UvcFlags, 0x00010001, 0x00000010
+
+[USBVideoSurfaceProRear.NT.Services]
+AddService = usbvideo, 0x00000002, MSHUSBVideo.ServiceInstall
+AddService = TrueColor, 0x00000000, TrueColor_Service_Inst
+
+[USBVideoSurfaceProRear.NT.HW]
+AddReg = MSHAddRegSurfaceProRear.NT.HW, TrueColor.AddReg
+
+[MSHAddRegSurfaceProRear.NT.HW]
+HKR, , "FriendlyName", , %USBVideoSurfaceProRear.DeviceDesc%
+
+[USBVideoSurfaceProRear.NT.CoInstallers]
+AddReg = Wdf.CoInstallers.AddReg
+CopyFiles = WDF_CoInstaller_CopyFiles
+
+[USBVideoSurfaceProRear.NT.Wdf]
+KmdfService =  TrueColor, TrueColor_wdfsect
+
+[USBVideoSurfaceProNFront.NT]
+Include=USBVideo.inf, ks.inf, kscaptur.inf
+Needs=USBVideo.NT, KS.Registration, KSCAPTUR.Registration.NT
+CopyFiles=Drivers_Dir, VCRuntime.CopyList, VCRuntime32.CopyList, LifeCam.CopyList, LifeCam32.CopyList
+AddReg=MSHUSBVideo.RegSvr32.LcProxy2.AddReg, MSHUSBVideo.RegSvr.LcProxy2.AddReg, MSHUSBVideo.RegSvr32.CAL2.AddReg, MSHUSBVideo.RegSvr.CAL2.AddReg, MSHUSBVideo.RegSvr32.ViPER.AddReg, MSHUSBVideo.RegSvr.ViPER.AddReg, MSHUSBVideo.RegSvr32.LcMft.AddReg, MSHUSBVideo.RegSvr.LcMft.AddReg
+PreferDeviceInfo=1
+; WIA
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+FriendlyName=%USBVideoSurfaceProNFront.DeviceDesc%
+Capabilities=0x00000031
+DeviceData=USBVideoSurfaceProNFront.DeviceData
+ICMProfiles="sRGB Color Space Profile.icm"
+
+[USBVideoSurfaceProNFront.DeviceData]
+Server=local
+UI Class ID={5d8ef5a3-ac13-11d2-a093-00c04f72dc3c}
+
+[USBVideoSurfaceProNFront.NT.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%, GLOBAL, USBVideoSurfaceProNFront.Interface
+AddInterface=%KSCATEGORY_RENDER%, GLOBAL, USBVideoSurfaceProNFront.Interface
+AddInterface=%KSCATEGORY_VIDEO%, GLOBAL, USBVideoSurfaceProNFront.Interface
+AddInterface=%KSCATEGORY_VIDEO_CAMERA%, GLOBAL, USBVideoSurfaceProNFront.Interface
+
+[USBVideoSurfaceProNFront.Interface]
+AddReg=USBVideoSurfaceProNFront.Interface.AddReg
+
+[USBVideoSurfaceProNFront.Interface.AddReg]
+HKR, , CLSID, , %ProxyLifeCam.CLSID%
+HKR, , FriendlyName, , %USBVideoSurfaceProNFront.DeviceDesc%
+HKR, , RTCFlags, 0x00010001, 0x00000010
+HKR, , CameraPostProcessingPluginCLSID, , %LcMft.CLSID%
+HKR, , UvcFlags, 0x00010001, 0x00000010
+
+[USBVideoSurfaceProNFront.NT.Services]
+AddService = usbvideo, 0x00000002, MSHUSBVideo.ServiceInstall
+AddService = TrueColor, 0x00000000, TrueColor_Service_Inst
+
+[USBVideoSurfaceProNFront.NT.HW]
+AddReg = MSHAddRegSurfaceProNFront.NT.HW, TrueColor.AddReg
+
+[MSHAddRegSurfaceProNFront.NT.HW]
+HKR, , "FriendlyName", , %USBVideoSurfaceProNFront.DeviceDesc%
+
+[USBVideoSurfaceProNFront.NT.CoInstallers]
+AddReg = Wdf.CoInstallers.AddReg
+CopyFiles = WDF_CoInstaller_CopyFiles
+
+[USBVideoSurfaceProNFront.NT.Wdf]
+KmdfService =  TrueColor, TrueColor_wdfsect
+
+[MSHUSBVideo.ServiceInstall]
+DisplayName   = %USBVideo.SvcDesc%
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %10%\System32\Drivers\usbvideo.sys
+
+[VCRuntime.CopyList]
+msvcp120.dll, , , 0x00000010
+msvcr120.dll, , , 0x00000010
+vccorlib120.dll, , , 0x00000010
+
+[VCRuntime32.CopyList]
+msvcp120.dll, x86.msvcp120.dll, , 0x00000010
+msvcr120.dll, x86.msvcr120.dll, , 0x00000010
+vccorlib120.dll, x86.vccorlib120.dll, , 0x00000010
+
+[LifeCam.CopyList]
+CAL2.dll
+CinVPU.dll
+FaceDetectorDll.dll
+MoCinConfig.dll
+LcProxy2.ax
+LcMft.dll
+Transcoder.dll
+ViperRT.dll
+VPUGraph.dll
+
+[LifeCam32.CopyList]
+LcProxy2.ax, x86.LcProxy2.ax
+VPUGraph.dll
+LcMft.dll, x86.LcMft.dll
+CAL2.dll, x86.CAL2.dll
+CinVPU.dll, x86.CinVPU.dll
+FaceDetectorDll.dll, x86.FaceDetectorDll.dll
+MoCinConfig.dll, x86.MoCinConfig.dll
+Transcoder.dll, x86.Transcoder.dll
+ViperRT.dll, x86.ViperRT.dll
+
+[Wdf.CoInstallers.AddReg]
+HKR,,"CoInstallers32",,"WdfCoInstaller01011.dll,WdfCoInstaller"
+; COM registration
+; CAL2 COM registration
+
+[MSHUSBVideo.RegSvr.CAL2.AddReg]
+HKCR, TypeLib\{f1f257bd-508a-48c5-b6f0-ab39aa675ade}\2.0\HELPDIR, , 0x00001000, ""
+HKCR, TypeLib\{f1f257bd-508a-48c5-b6f0-ab39aa675ade}\2.0\FLAGS, , 0x00001000, "0"
+HKCR, TypeLib\{f1f257bd-508a-48c5-b6f0-ab39aa675ade}\2.0\0\win32, , 0x00001000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, TypeLib\{f1f257bd-508a-48c5-b6f0-ab39aa675ade}\2.0\0\win64, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}, , 0x00001000, "CameraPropertyEnumerator Class"
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\ProgID, , 0x00001000, "IntelliCAL.CameraPropertyEnumerator.1"
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.CameraPropertyEnumerator"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}, , 0x00001000, "EnumMediaTypeConfig Class"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\ProgID, , 0x00001000, "IntelliCAL.EnumMediaTypeConfig.1"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.EnumMediaTypeConfig"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}, , 0x00001000, "CameraFactory Class"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\ProgID, , 0x00001000, "IntelliCAL.CameraFactory.1"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.CameraFactory"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}, , 0x00001000, "Camera Class"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\ProgID, , 0x00001000, "IntelliCAL.Camera.1"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.Camera"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}, , 0x00001000, "CameraModel Class"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\ProgID, , 0x00001000, "IntelliCAL.CameraModel.1"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.CameraModel"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}, , 0x00001000, "MediaTypeMapper Class"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\ProgID, , 0x00001000, "IntelliCAL.MediaTypeMapper.1"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.MediaTypeMapper"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}, , 0x00001000, "UVCCameraProperties Class"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\ProgID, , 0x00001000, "IntelliCAL.UVCCameraProperties.1"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.UVCCameraProperties"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}, , 0x00001000, "CameraProperties Class"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\ProgID, , 0x00001000, "IntelliCAL.CameraProperties.1"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.CameraProperties"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}, , 0x00001000, "MediaTypeConfig Class"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\ProgID, , 0x00001000, "IntelliCAL.MediaTypeConfig.1"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.MediaTypeConfig"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}, , 0x00001000, "ExposureRecipeMap Class"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\ProgID, , 0x00001000, "IntelliCAL.ExposureRecipeMap.1"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.ExposureRecipeMap"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}, , 0x00001000, "ExposureRecipe Class"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\ProgID, , 0x00001000, "IntelliCAL.ExposureRecipe.1"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.ExposureRecipe"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}, , 0x00001000, "ExposureSettingsHistory Class"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\ProgID, , 0x00001000, "IntelliCAL.ExposureSettingsHistory.1"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.ExposureSettingsHistory"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}, , 0x00001000, "ExposureSettingsHistoryEntry Class"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\ProgID, , 0x00001000, "IntelliCAL.ExposureSettingsHistoryEntry.1"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.ExposureSettingsHistoryEntry"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}, , 0x00001000, "ExposureControl Class"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\ProgID, , 0x00001000, "IntelliCAL.ExposureControl.1"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.ExposureControl"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}, , 0x00001000, "EventingExposureControl Class"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\ProgID, , 0x00001000, "IntelliCAL.EventingExposureControl.1"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.EventingExposureControl"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}, , 0x00001000, "ToneReproCurve Class"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\ProgID, , 0x00001000, "IntelliCAL.ToneReproCurve.1"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\Version, , 0x00001000, "2.0"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\VersionIndependentProgID, , 0x00001000, "IntelliCAL.ToneReproCurve"
+; CAL Interfaces
+HKCR, Interface\{130A5851-A376-46CB-9C78-4AC95F4B44D6}, , 0x00001000, "ICameraProperties"
+HKCR, Interface\{130A5851-A376-46CB-9C78-4AC95F4B44D6}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{130A5851-A376-46CB-9C78-4AC95F4B44D6}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{130A5851-A376-46CB-9C78-4AC95F4B44D6}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{130A5851-A376-46CB-9C78-4AC95F4B44D6}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{267FF90A-FB58-43EA-BD8A-0596355C06B5}, , 0x00001000, "ICameraFeatureSetInitialization"
+HKCR, Interface\{267FF90A-FB58-43EA-BD8A-0596355C06B5}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{267FF90A-FB58-43EA-BD8A-0596355C06B5}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{267FF90A-FB58-43EA-BD8A-0596355C06B5}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{267FF90A-FB58-43EA-BD8A-0596355C06B5}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{26948AC5-B073-47E5-BD2B-AFAE3B3A9EEB}, , 0x00001000, "ICameraModelPropertyEnumerator"
+HKCR, Interface\{26948AC5-B073-47E5-BD2B-AFAE3B3A9EEB}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{26948AC5-B073-47E5-BD2B-AFAE3B3A9EEB}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{26948AC5-B073-47E5-BD2B-AFAE3B3A9EEB}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{26948AC5-B073-47E5-BD2B-AFAE3B3A9EEB}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{28B05B9E-CCF8-4D73-A068-2993039CD2D4}, , 0x00001000, "ICALObjectPropertyXMLInitializable"
+HKCR, Interface\{28B05B9E-CCF8-4D73-A068-2993039CD2D4}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{28B05B9E-CCF8-4D73-A068-2993039CD2D4}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{28B05B9E-CCF8-4D73-A068-2993039CD2D4}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{28B05B9E-CCF8-4D73-A068-2993039CD2D4}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{5886FC41-1DC8-48BD-A60D-BAB466DFB093}, , 0x00001000, "IMediaTypeMapper"
+HKCR, Interface\{5886FC41-1DC8-48BD-A60D-BAB466DFB093}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{5886FC41-1DC8-48BD-A60D-BAB466DFB093}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{5886FC41-1DC8-48BD-A60D-BAB466DFB093}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{5886FC41-1DC8-48BD-A60D-BAB466DFB093}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{5C3593CC-EA04-47EA-BAD3-AD5FA0968477}, , 0x00001000, "IMediaTypeConfig"
+HKCR, Interface\{5C3593CC-EA04-47EA-BAD3-AD5FA0968477}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{5C3593CC-EA04-47EA-BAD3-AD5FA0968477}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{5C3593CC-EA04-47EA-BAD3-AD5FA0968477}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{5C3593CC-EA04-47EA-BAD3-AD5FA0968477}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{A00F0CEA-ADC4-47BF-A00B-A7937C485E48}, , 0x00001000, "ICameraModel"
+HKCR, Interface\{A00F0CEA-ADC4-47BF-A00B-A7937C485E48}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{A00F0CEA-ADC4-47BF-A00B-A7937C485E48}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{A00F0CEA-ADC4-47BF-A00B-A7937C485E48}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{A00F0CEA-ADC4-47BF-A00B-A7937C485E48}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{B84EF9F3-DC6A-42C0-92A2-F8D233B05929}, , 0x00001000, "IEnumMediaTypeConfig"
+HKCR, Interface\{B84EF9F3-DC6A-42C0-92A2-F8D233B05929}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{B84EF9F3-DC6A-42C0-92A2-F8D233B05929}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{B84EF9F3-DC6A-42C0-92A2-F8D233B05929}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{B84EF9F3-DC6A-42C0-92A2-F8D233B05929}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{C35923A5-6B71-431C-BA55-FCC8867F13FD}, , 0x00001000, "ICameraFeatureSet"
+HKCR, Interface\{C35923A5-6B71-431C-BA55-FCC8867F13FD}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{C35923A5-6B71-431C-BA55-FCC8867F13FD}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{C35923A5-6B71-431C-BA55-FCC8867F13FD}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{C35923A5-6B71-431C-BA55-FCC8867F13FD}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{F3CB578A-E05C-413A-9F0F-C78B2C7CCA3B}, , 0x00001000, "ICamera"
+HKCR, Interface\{F3CB578A-E05C-413A-9F0F-C78B2C7CCA3B}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{F3CB578A-E05C-413A-9F0F-C78B2C7CCA3B}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{F3CB578A-E05C-413A-9F0F-C78B2C7CCA3B}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{F3CB578A-E05C-413A-9F0F-C78B2C7CCA3B}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{FE7E231D-3FFC-4407-A581-88F04FE8FF79}, , 0x00001000, "ICameraFactory"
+HKCR, Interface\{FE7E231D-3FFC-4407-A581-88F04FE8FF79}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{FE7E231D-3FFC-4407-A581-88F04FE8FF79}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{FE7E231D-3FFC-4407-A581-88F04FE8FF79}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{FE7E231D-3FFC-4407-A581-88F04FE8FF79}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{07C4AD7E-9506-47a9-8F14-AD36FCDEAA94}, , 0x00001000, "IExposureRecipe"
+HKCR, Interface\{07C4AD7E-9506-47a9-8F14-AD36FCDEAA94}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{07C4AD7E-9506-47a9-8F14-AD36FCDEAA94}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{07C4AD7E-9506-47a9-8F14-AD36FCDEAA94}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{07C4AD7E-9506-47a9-8F14-AD36FCDEAA94}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{C6D61C52-87C8-441d-AD82-0F6775E495F1}, , 0x00001000, "IExposureRecipeMap"
+HKCR, Interface\{C6D61C52-87C8-441d-AD82-0F6775E495F1}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{C6D61C52-87C8-441d-AD82-0F6775E495F1}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{C6D61C52-87C8-441d-AD82-0F6775E495F1}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{C6D61C52-87C8-441d-AD82-0F6775E495F1}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{E223CB36-2CCA-4b83-AB52-588746453067}, , 0x00001000, "IExposureSettingsHistoryEntry"
+HKCR, Interface\{E223CB36-2CCA-4b83-AB52-588746453067}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{E223CB36-2CCA-4b83-AB52-588746453067}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{E223CB36-2CCA-4b83-AB52-588746453067}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{E223CB36-2CCA-4b83-AB52-588746453067}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{215C77C2-0FF4-41cc-932D-409CCF40618D}, , 0x00001000, "IQueryExposureSettingsHistory"
+HKCR, Interface\{215C77C2-0FF4-41cc-932D-409CCF40618D}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{215C77C2-0FF4-41cc-932D-409CCF40618D}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{215C77C2-0FF4-41cc-932D-409CCF40618D}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{215C77C2-0FF4-41cc-932D-409CCF40618D}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{9BD17014-CBA1-490f-8DB6-25B020F5A67F}, , 0x00001000, "IExposureSettingsHistory"
+HKCR, Interface\{9BD17014-CBA1-490f-8DB6-25B020F5A67F}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{9BD17014-CBA1-490f-8DB6-25B020F5A67F}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{9BD17014-CBA1-490f-8DB6-25B020F5A67F}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{9BD17014-CBA1-490f-8DB6-25B020F5A67F}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{037268E5-0B31-4240-AF6B-FA74E390214D}, , 0x00001000, "IExposureControl"
+HKCR, Interface\{037268E5-0B31-4240-AF6B-FA74E390214D}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{037268E5-0B31-4240-AF6B-FA74E390214D}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{037268E5-0B31-4240-AF6B-FA74E390214D}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{037268E5-0B31-4240-AF6B-FA74E390214D}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{3A5910EE-FE9C-4727-B0AE-6E96219DD72D}, , 0x00001000, "IToneReproCurve"
+HKCR, Interface\{3A5910EE-FE9C-4727-B0AE-6E96219DD72D}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{3A5910EE-FE9C-4727-B0AE-6E96219DD72D}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{3A5910EE-FE9C-4727-B0AE-6E96219DD72D}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{3A5910EE-FE9C-4727-B0AE-6E96219DD72D}\TypeLib, "Version", 0x00001000, "2.0"
+HKCR, Interface\{109064FC-012E-47ab-AF2C-D9A49DF483BC}, , 0x00001000, "IExposureRecipeInitialization"
+HKCR, Interface\{109064FC-012E-47ab-AF2C-D9A49DF483BC}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{109064FC-012E-47ab-AF2C-D9A49DF483BC}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{109064FC-012E-47ab-AF2C-D9A49DF483BC}\TypeLib, , 0x00001000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{109064FC-012E-47ab-AF2C-D9A49DF483BC}\TypeLib, "Version", 0x00001000, "2.0"
+; ViPER related COM registration
+
+[MSHUSBVideo.RegSvr.ViPER.AddReg]
+; CinVPU 1.0 Type Library
+HKCR, TypeLib\{92da4076-8e62-433d-b654-ec1e7838f4a4}\1.0\HELPDIR, , 0x00001000, ""
+HKCR, TypeLib\{92da4076-8e62-433d-b654-ec1e7838f4a4}\1.0\FLAGS, , 0x00001000, "0"
+HKCR, TypeLib\{92da4076-8e62-433d-b654-ec1e7838f4a4}\1.0\0\win32, , 0x00001000, %16425%\TrueColor5.2\CinVPU.dll
+HKCR, TypeLib\{92da4076-8e62-433d-b654-ec1e7838f4a4}\1.0\0\win64, , 0x00001000, %11%\TrueColor5.2\CinVPU.dll
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}, , 0x00001000, "VirtCinVPU Class"
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CinVPU.dll
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\ProgID, , 0x00001000, "CinVPU.VirtCinVPU.1"
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\TypeLib, , 0x00001000, "{92da4076-8e62-433d-b654-ec1e7838f4a4}"
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\Version, , 0x00001000, "1.0"
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\VersionIndependentProgID, , 0x00001000, "CinVPU.VirtCinVPU"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}, , 0x00001000, "TrueColor Class"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CinVPU.dll
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\ProgID, , 0x00001000, "CinVPU.TrueColor.1"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\TypeLib, , 0x00001000, "{92da4076-8e62-433d-b654-ec1e7838f4a4}"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\Version, , 0x00001000, "1.0"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\VersionIndependentProgID, , 0x00001000, "CinVPU.TrueColor"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}, , 0x00001000, "TCPropertyBag Class"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\CinVPU.dll
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\ProgID, , 0x00001000, "CinVPU.TCPropertyBag.1"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\TypeLib, , 0x00001000, "{92da4076-8e62-433d-b654-ec1e7838f4a4}"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\Version, , 0x00001000, "1.0"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\VersionIndependentProgID, , 0x00001000, "CinVPU.TCPropertyBag"
+; Transcoder 1.0 Type Library
+HKCR, TypeLib\{0f18e140-99da-4e09-a94f-9fd03322103f}\1.0\HELPDIR, , 0x00001000, ""
+HKCR, TypeLib\{0f18e140-99da-4e09-a94f-9fd03322103f}\1.0\FLAGS, , 0x00001000, "0"
+HKCR, TypeLib\{0f18e140-99da-4e09-a94f-9fd03322103f}\1.0\0\win32, , 0x00001000, %16425%\TrueColor5.2\Transcoder.dll
+HKCR, TypeLib\{0f18e140-99da-4e09-a94f-9fd03322103f}\1.0\0\win64, , 0x00001000, %11%\TrueColor5.2\Transcoder.dll
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}, , 0x00001000, "TranscoderVPU Class"
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\Transcoder.dll
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\ProgID, , 0x00001000, "Transcoder.TranscoderVPU.1"
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\TypeLib, , 0x00001000, "{0f18e140-99da-4e09-a94f-9fd03322103f}"
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\Version, , 0x00001000, "1.0"
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\VersionIndependentProgID, , 0x00001000, "Transcoder.TranscoderVPU"
+; ViperRuntime 1.0 Type Library
+HKCR, TypeLib\{ce05a418-9ac2-4611-8401-2883567483af}\1.0\HELPDIR, , 0x00001000, ""
+HKCR, TypeLib\{ce05a418-9ac2-4611-8401-2883567483af}\1.0\FLAGS, , 0x00001000, "0"
+HKCR, TypeLib\{ce05a418-9ac2-4611-8401-2883567483af}\1.0\0\win32, , 0x00001000, %16425%\TrueColor5.2\ViperRT.dll
+HKCR, TypeLib\{ce05a418-9ac2-4611-8401-2883567483af}\1.0\0\win64, , 0x00001000, %11%\TrueColor5.2\ViperRT.dll
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}, , 0x00001000, "VRT Class"
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\ViperRT.dll
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\ProgID, , 0x00001000, "ViperRuntime.VRT.1"
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\TypeLib, , 0x00001000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\Version, , 0x00001000, "1.0"
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\VersionIndependentProgID, , 0x00001000, "ViperRuntime.VRT"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}, , 0x00001000, "PropertyBag Class"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\ViperRT.dll
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\ProgID, , 0x00001000, "ViperRuntime.PropertyBag.1"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\TypeLib, , 0x00001000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\Version, , 0x00001000, "1.0"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\VersionIndependentProgID, , 0x00001000, "ViperRuntime.PropertyBag"
+HKCR, Interface\{E6749B37-C4CA-40F6-939A-7992F477E0A5}, , 0x00001000, "IVRT"
+HKCR, Interface\{E6749B37-C4CA-40F6-939A-7992F477E0A5}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{E6749B37-C4CA-40F6-939A-7992F477E0A5}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{E6749B37-C4CA-40F6-939A-7992F477E0A5}\TypeLib, , 0x00001000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{E6749B37-C4CA-40F6-939A-7992F477E0A5}\TypeLib, "Version", 0x00001000, "1.0"
+HKCR, Interface\{A47B34E3-DA5B-4D74-BF74-6824DE7BB65E}, , 0x00001000, "IMfViper"
+HKCR, Interface\{A47B34E3-DA5B-4D74-BF74-6824DE7BB65E}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{A47B34E3-DA5B-4D74-BF74-6824DE7BB65E}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{A47B34E3-DA5B-4D74-BF74-6824DE7BB65E}\TypeLib, , 0x00001000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{A47B34E3-DA5B-4D74-BF74-6824DE7BB65E}\TypeLib, "Version", 0x00001000, "1.0"
+HKCR, Interface\{67968F9E-19BE-41F3-B01C-F4DD6A1E4D82}, , 0x00001000, "IFrameEvt"
+HKCR, Interface\{67968F9E-19BE-41F3-B01C-F4DD6A1E4D82}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{67968F9E-19BE-41F3-B01C-F4DD6A1E4D82}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{67968F9E-19BE-41F3-B01C-F4DD6A1E4D82}\TypeLib, , 0x00001000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{67968F9E-19BE-41F3-B01C-F4DD6A1E4D82}\TypeLib, "Version", 0x00001000, "1.0"
+HKCR, Interface\{EB443799-CAA1-40a6-86A4-992CB7E1CC28}, , 0x00001000, "IProcessFrame"
+HKCR, Interface\{EB443799-CAA1-40a6-86A4-992CB7E1CC28}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{EB443799-CAA1-40a6-86A4-992CB7E1CC28}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{EB443799-CAA1-40a6-86A4-992CB7E1CC28}\TypeLib, , 0x00001000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{EB443799-CAA1-40a6-86A4-992CB7E1CC28}\TypeLib, "Version", 0x00001000, "1.0"
+HKCR, Interface\{D7C3CA82-5B87-4A0F-9D10-C38CE3C3B391}, , 0x00001000, "IFramePin"
+HKCR, Interface\{D7C3CA82-5B87-4A0F-9D10-C38CE3C3B391}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{D7C3CA82-5B87-4A0F-9D10-C38CE3C3B391}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{D7C3CA82-5B87-4A0F-9D10-C38CE3C3B391}\TypeLib, , 0x00001000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{D7C3CA82-5B87-4A0F-9D10-C38CE3C3B391}\TypeLib, "Version", 0x00001000, "1.0"
+HKCR, Interface\{7D2AB05C-419D-44C3-95EA-318F8772CADA}, , 0x00001000, "IInitialize"
+HKCR, Interface\{7D2AB05C-419D-44C3-95EA-318F8772CADA}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{7D2AB05C-419D-44C3-95EA-318F8772CADA}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{7D2AB05C-419D-44C3-95EA-318F8772CADA}\TypeLib, , 0x00001000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{7D2AB05C-419D-44C3-95EA-318F8772CADA}\TypeLib, "Version", 0x00001000, "1.0"
+; LcMFT related COM registration
+
+[MSHUSBVideo.RegSvr.LcMFT.AddReg]
+; LcMFT 1.0 Type Library
+HKCR, TypeLib\{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}\1.0\HELPDIR, , 0x00001000, ""
+HKCR, TypeLib\{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}\1.0\FLAGS, , 0x00001000, "0"
+HKCR, TypeLib\{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}\1.0\0\win32, , 0x00001000, %16425%\TrueColor5.2\LcMft.dll
+HKCR, TypeLib\{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}\1.0\0\win64, , 0x00001000, %11%\TrueColor5.2\LcMft.dll
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}, , 0x00001000, "LcMftImpl Class"
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\InprocServer32, , 0x00001000, %11%\TrueColor5.2\LcMft.dll
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\ProgID, , 0x00001000, "LcMft.LcMftImpl.1"
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\TypeLib, , 0x00001000, "{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}"
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\Version, , 0x00001000, "1.0"
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\VersionIndependentProgID, , 0x00001000, "LcMft.LcMftImpl"
+; LcMft Interfaces
+HKCR, Interface\{21F14081-87BE-4508-92FC-8794BC167B92}, , 0x00001000, "ITrueColorConfig"
+HKCR, Interface\{21F14081-87BE-4508-92FC-8794BC167B92}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{21F14081-87BE-4508-92FC-8794BC167B92}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{21F14081-87BE-4508-92FC-8794BC167B92}\TypeLib, , 0x00001000, "{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}"
+HKCR, Interface\{21F14081-87BE-4508-92FC-8794BC167B92}\TypeLib, "Version", 0x00001000, "1.0"
+HKCR, Interface\{48C6A190-216D-4C29-BE05-69E2E8C304E9}, , 0x00001000, "ICalProp"
+HKCR, Interface\{48C6A190-216D-4C29-BE05-69E2E8C304E9}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{48C6A190-216D-4C29-BE05-69E2E8C304E9}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{48C6A190-216D-4C29-BE05-69E2E8C304E9}\TypeLib, , 0x00001000, "{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}"
+HKCR, Interface\{48C6A190-216D-4C29-BE05-69E2E8C304E9}\TypeLib, "Version", 0x00001000, "1.0"
+HKCR, Interface\{049F0F0C-6B22-4D70-976E-E55AE4A8ED26}, , 0x00001000, "IMfProp"
+HKCR, Interface\{049F0F0C-6B22-4D70-976E-E55AE4A8ED26}\ProxyStubClsid, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{049F0F0C-6B22-4D70-976E-E55AE4A8ED26}\ProxyStubClsid32, , 0x00001000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{049F0F0C-6B22-4D70-976E-E55AE4A8ED26}\TypeLib, , 0x00001000, "{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}"
+HKCR, Interface\{049F0F0C-6B22-4D70-976E-E55AE4A8ED26}\TypeLib, "Version", 0x00001000, "1.0"
+; LcProxy related COM registration
+
+[MSHUSBVideo.RegSvr.LcProxy2.AddReg]
+HKCR, CLSID\{6b4e327a-ada3-46f4-8891-53d309172281}, , 0x00001000, "LifeCamInterfaceHandler"
+HKCR, CLSID\{6b4e327a-ada3-46f4-8891-53d309172281}\InprocServer32, ,0x00001000, %11%\TrueColor5.2\LcProxy2.ax
+HKCR, CLSID\{6b4e327a-ada3-46f4-8891-53d309172281}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{908ac3d4-c444-4178-af76-20665de0889a}, ,0x00001000, "LifeCam Proxy Filter"
+HKCR, CLSID\{908ac3d4-c444-4178-af76-20665de0889a}\InprocServer32, ,0x00001000, %11%\TrueColor5.2\LcProxy2.ax
+HKCR, CLSID\{908ac3d4-c444-4178-af76-20665de0889a}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{CLSID_LifeCamVideoSettingsPropertyPage}, ,0x00001000, "LifeCam Video Settings Property Page"
+HKCR, CLSID\{CLSID_LifeCamVideoSettingsPropertyPage}\InprocServer32, ,0x00001000, %11%\TrueColor5.2\LcProxy2.ax
+HKCR, CLSID\{CLSID_LifeCamVideoSettingsPropertyPage}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+HKCR, CLSID\{CLSID_LifeCamCameraControlPropertyPage}, ,0x00001000, "LifeCam CameraControl Property Page"
+HKCR, CLSID\{CLSID_LifeCamCameraControlPropertyPage}\InprocServer32, ,0x00001000, %11%\TrueColor5.2\LcProxy2.ax
+HKCR, CLSID\{CLSID_LifeCamCameraControlPropertyPage}\InprocServer32, "ThreadingModel", 0x00001000, "Both"
+; 32bit COM registration
+; CAL2 COM registration
+
+[MSHUSBVideo.RegSvr32.CAL2.AddReg]
+HKCR, TypeLib\{f1f257bd-508a-48c5-b6f0-ab39aa675ade}\2.0\HELPDIR, , 0x00004000, ""
+HKCR, TypeLib\{f1f257bd-508a-48c5-b6f0-ab39aa675ade}\2.0\FLAGS, , 0x00004000, "0"
+HKCR, TypeLib\{f1f257bd-508a-48c5-b6f0-ab39aa675ade}\2.0\0\win32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, TypeLib\{f1f257bd-508a-48c5-b6f0-ab39aa675ade}\2.0\0\win64, , 0x00004000, %11%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}, , 0x00004000, "CameraPropertyEnumerator Class"
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\ProgID, , 0x00004000, "IntelliCAL.CameraPropertyEnumerator.1"
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{7fcd51b6-bf76-42c4-a451-c11a32548e5c}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.CameraPropertyEnumerator"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}, , 0x00004000, "EnumMediaTypeConfig Class"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\ProgID, , 0x00004000, "IntelliCAL.EnumMediaTypeConfig.1"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{6076f157-035e-480d-b660-3d5d1bf3da65}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.EnumMediaTypeConfig"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}, , 0x00004000, "CameraFactory Class"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\ProgID, , 0x00004000, "IntelliCAL.CameraFactory.1"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{83517f01-7b04-47a2-844d-628c65127147}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.CameraFactory"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}, , 0x00004000, "Camera Class"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\ProgID, , 0x00004000, "IntelliCAL.Camera.1"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{11777f8f-993c-43cd-93e5-c4437bbb9754}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.Camera"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}, , 0x00004000, "CameraModel Class"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\ProgID, , 0x00004000, "IntelliCAL.CameraModel.1"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{0f1b1162-4ba2-4f7a-b25b-da809e811831}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.CameraModel"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}, , 0x00004000, "MediaTypeMapper Class"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\ProgID, , 0x00004000, "IntelliCAL.MediaTypeMapper.1"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{8f302103-b2bf-49c4-85db-1e3bf5b60403}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.MediaTypeMapper"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}, , 0x00004000, "UVCCameraProperties Class"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\ProgID, , 0x00004000, "IntelliCAL.UVCCameraProperties.1"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{cb53c14a-2dcb-445a-8d7a-e3be5830c5f0}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.UVCCameraProperties"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}, , 0x00004000, "CameraProperties Class"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\ProgID, , 0x00004000, "IntelliCAL.CameraProperties.1"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{7ba16fd7-d277-4096-a76c-abd7b42dd022}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.CameraProperties"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}, , 0x00004000, "MediaTypeConfig Class"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\ProgID, , 0x00004000, "IntelliCAL.MediaTypeConfig.1"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{1901c3c5-2b92-48aa-a641-47d7f2ccb2f8}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.MediaTypeConfig"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}, , 0x00004000, "ExposureRecipeMap Class"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\ProgID, , 0x00004000, "IntelliCAL.ExposureRecipeMap.1"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{858b620c-8a0e-465c-90b6-55f1f5b7510f}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.ExposureRecipeMap"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}, , 0x00004000, "ExposureRecipe Class"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\ProgID, , 0x00004000, "IntelliCAL.ExposureRecipe.1"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{7f0851a0-d423-4288-8b18-cbe1d1033ce3}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.ExposureRecipe"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}, , 0x00004000, "ExposureSettingsHistory Class"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\ProgID, , 0x00004000, "IntelliCAL.ExposureSettingsHistory.1"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{b7c91798-0f29-49ec-82b1-fc8e6904905b}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.ExposureSettingsHistory"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}, , 0x00004000, "ExposureSettingsHistoryEntry Class"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\ProgID, , 0x00004000, "IntelliCAL.ExposureSettingsHistoryEntry.1"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{7515ca5b-134c-456b-b4ea-b1a72cf49e4a}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.ExposureSettingsHistoryEntry"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}, , 0x00004000, "ExposureControl Class"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\ProgID, , 0x00004000, "IntelliCAL.ExposureControl.1"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{37e34bce-7d08-4016-94ea-d579525ad737}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.ExposureControl"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}, , 0x00004000, "EventingExposureControl Class"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\ProgID, , 0x00004000, "IntelliCAL.EventingExposureControl.1"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{794aa51c-2ad2-45c4-adb8-bf58fd07f33b}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.EventingExposureControl"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}, , 0x00004000, "ToneReproCurve Class"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CAL2.dll
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\ProgID, , 0x00004000, "IntelliCAL.ToneReproCurve.1"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\Version, , 0x00004000, "2.0"
+HKCR, CLSID\{f584e9e3-1dab-4286-aa34-0eae97aa760a}\VersionIndependentProgID, , 0x00004000, "IntelliCAL.ToneReproCurve"
+; CAL Interfaces
+HKCR, Interface\{130A5851-A376-46CB-9C78-4AC95F4B44D6}, , 0x00004000, "ICameraProperties"
+HKCR, Interface\{130A5851-A376-46CB-9C78-4AC95F4B44D6}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{130A5851-A376-46CB-9C78-4AC95F4B44D6}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{130A5851-A376-46CB-9C78-4AC95F4B44D6}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{130A5851-A376-46CB-9C78-4AC95F4B44D6}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{267FF90A-FB58-43EA-BD8A-0596355C06B5}, , 0x00004000, "ICameraFeatureSetInitialization"
+HKCR, Interface\{267FF90A-FB58-43EA-BD8A-0596355C06B5}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{267FF90A-FB58-43EA-BD8A-0596355C06B5}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{267FF90A-FB58-43EA-BD8A-0596355C06B5}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{267FF90A-FB58-43EA-BD8A-0596355C06B5}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{26948AC5-B073-47E5-BD2B-AFAE3B3A9EEB}, , 0x00004000, "ICameraModelPropertyEnumerator"
+HKCR, Interface\{26948AC5-B073-47E5-BD2B-AFAE3B3A9EEB}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{26948AC5-B073-47E5-BD2B-AFAE3B3A9EEB}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{26948AC5-B073-47E5-BD2B-AFAE3B3A9EEB}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{26948AC5-B073-47E5-BD2B-AFAE3B3A9EEB}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{28B05B9E-CCF8-4D73-A068-2993039CD2D4}, , 0x00004000, "ICALObjectPropertyXMLInitializable"
+HKCR, Interface\{28B05B9E-CCF8-4D73-A068-2993039CD2D4}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{28B05B9E-CCF8-4D73-A068-2993039CD2D4}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{28B05B9E-CCF8-4D73-A068-2993039CD2D4}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{28B05B9E-CCF8-4D73-A068-2993039CD2D4}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{5886FC41-1DC8-48BD-A60D-BAB466DFB093}, , 0x00004000, "IMediaTypeMapper"
+HKCR, Interface\{5886FC41-1DC8-48BD-A60D-BAB466DFB093}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{5886FC41-1DC8-48BD-A60D-BAB466DFB093}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{5886FC41-1DC8-48BD-A60D-BAB466DFB093}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{5886FC41-1DC8-48BD-A60D-BAB466DFB093}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{5C3593CC-EA04-47EA-BAD3-AD5FA0968477}, , 0x00004000, "IMediaTypeConfig"
+HKCR, Interface\{5C3593CC-EA04-47EA-BAD3-AD5FA0968477}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{5C3593CC-EA04-47EA-BAD3-AD5FA0968477}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{5C3593CC-EA04-47EA-BAD3-AD5FA0968477}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{5C3593CC-EA04-47EA-BAD3-AD5FA0968477}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{A00F0CEA-ADC4-47BF-A00B-A7937C485E48}, , 0x00004000, "ICameraModel"
+HKCR, Interface\{A00F0CEA-ADC4-47BF-A00B-A7937C485E48}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{A00F0CEA-ADC4-47BF-A00B-A7937C485E48}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{A00F0CEA-ADC4-47BF-A00B-A7937C485E48}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{A00F0CEA-ADC4-47BF-A00B-A7937C485E48}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{B84EF9F3-DC6A-42C0-92A2-F8D233B05929}, , 0x00004000, "IEnumMediaTypeConfig"
+HKCR, Interface\{B84EF9F3-DC6A-42C0-92A2-F8D233B05929}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{B84EF9F3-DC6A-42C0-92A2-F8D233B05929}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{B84EF9F3-DC6A-42C0-92A2-F8D233B05929}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{B84EF9F3-DC6A-42C0-92A2-F8D233B05929}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{C35923A5-6B71-431C-BA55-FCC8867F13FD}, , 0x00004000, "ICameraFeatureSet"
+HKCR, Interface\{C35923A5-6B71-431C-BA55-FCC8867F13FD}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{C35923A5-6B71-431C-BA55-FCC8867F13FD}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{C35923A5-6B71-431C-BA55-FCC8867F13FD}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{C35923A5-6B71-431C-BA55-FCC8867F13FD}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{F3CB578A-E05C-413A-9F0F-C78B2C7CCA3B}, , 0x00004000, "ICamera"
+HKCR, Interface\{F3CB578A-E05C-413A-9F0F-C78B2C7CCA3B}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{F3CB578A-E05C-413A-9F0F-C78B2C7CCA3B}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{F3CB578A-E05C-413A-9F0F-C78B2C7CCA3B}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{F3CB578A-E05C-413A-9F0F-C78B2C7CCA3B}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{FE7E231D-3FFC-4407-A581-88F04FE8FF79}, , 0x00004000, "ICameraFactory"
+HKCR, Interface\{FE7E231D-3FFC-4407-A581-88F04FE8FF79}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{FE7E231D-3FFC-4407-A581-88F04FE8FF79}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{FE7E231D-3FFC-4407-A581-88F04FE8FF79}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{FE7E231D-3FFC-4407-A581-88F04FE8FF79}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{07C4AD7E-9506-47a9-8F14-AD36FCDEAA94}, , 0x00004000, "IExposureRecipe"
+HKCR, Interface\{07C4AD7E-9506-47a9-8F14-AD36FCDEAA94}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{07C4AD7E-9506-47a9-8F14-AD36FCDEAA94}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{07C4AD7E-9506-47a9-8F14-AD36FCDEAA94}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{07C4AD7E-9506-47a9-8F14-AD36FCDEAA94}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{C6D61C52-87C8-441d-AD82-0F6775E495F1}, , 0x00004000, "IExposureRecipeMap"
+HKCR, Interface\{C6D61C52-87C8-441d-AD82-0F6775E495F1}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{C6D61C52-87C8-441d-AD82-0F6775E495F1}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{C6D61C52-87C8-441d-AD82-0F6775E495F1}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{C6D61C52-87C8-441d-AD82-0F6775E495F1}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{E223CB36-2CCA-4b83-AB52-588746453067}, , 0x00004000, "IExposureSettingsHistoryEntry"
+HKCR, Interface\{E223CB36-2CCA-4b83-AB52-588746453067}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{E223CB36-2CCA-4b83-AB52-588746453067}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{E223CB36-2CCA-4b83-AB52-588746453067}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{E223CB36-2CCA-4b83-AB52-588746453067}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{215C77C2-0FF4-41cc-932D-409CCF40618D}, , 0x00004000, "IQueryExposureSettingsHistory"
+HKCR, Interface\{215C77C2-0FF4-41cc-932D-409CCF40618D}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{215C77C2-0FF4-41cc-932D-409CCF40618D}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{215C77C2-0FF4-41cc-932D-409CCF40618D}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{215C77C2-0FF4-41cc-932D-409CCF40618D}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{9BD17014-CBA1-490f-8DB6-25B020F5A67F}, , 0x00004000, "IExposureSettingsHistory"
+HKCR, Interface\{9BD17014-CBA1-490f-8DB6-25B020F5A67F}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{9BD17014-CBA1-490f-8DB6-25B020F5A67F}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{9BD17014-CBA1-490f-8DB6-25B020F5A67F}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{9BD17014-CBA1-490f-8DB6-25B020F5A67F}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{037268E5-0B31-4240-AF6B-FA74E390214D}, , 0x00004000, "IExposureControl"
+HKCR, Interface\{037268E5-0B31-4240-AF6B-FA74E390214D}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{037268E5-0B31-4240-AF6B-FA74E390214D}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{037268E5-0B31-4240-AF6B-FA74E390214D}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{037268E5-0B31-4240-AF6B-FA74E390214D}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{3A5910EE-FE9C-4727-B0AE-6E96219DD72D}, , 0x00004000, "IToneReproCurve"
+HKCR, Interface\{3A5910EE-FE9C-4727-B0AE-6E96219DD72D}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{3A5910EE-FE9C-4727-B0AE-6E96219DD72D}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{3A5910EE-FE9C-4727-B0AE-6E96219DD72D}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{3A5910EE-FE9C-4727-B0AE-6E96219DD72D}\TypeLib, "Version", 0x00004000, "2.0"
+HKCR, Interface\{109064FC-012E-47ab-AF2C-D9A49DF483BC}, , 0x00004000, "IExposureRecipeInitialization"
+HKCR, Interface\{109064FC-012E-47ab-AF2C-D9A49DF483BC}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{109064FC-012E-47ab-AF2C-D9A49DF483BC}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{109064FC-012E-47ab-AF2C-D9A49DF483BC}\TypeLib, , 0x00004000, "{f1f257bd-508a-48c5-b6f0-ab39aa675ade}"
+HKCR, Interface\{109064FC-012E-47ab-AF2C-D9A49DF483BC}\TypeLib, "Version", 0x00004000, "2.0"
+; ViPER related COM registration
+
+[MSHUSBVideo.RegSvr32.ViPER.AddReg]
+; CinVPU 1.0 Type Library
+HKCR, TypeLib\{92da4076-8e62-433d-b654-ec1e7838f4a4}\1.0\HELPDIR, , 0x00004000, ""
+HKCR, TypeLib\{92da4076-8e62-433d-b654-ec1e7838f4a4}\1.0\FLAGS, , 0x00004000, "0"
+HKCR, TypeLib\{92da4076-8e62-433d-b654-ec1e7838f4a4}\1.0\0\win32, , 0x00004000, %16425%\TrueColor5.2\CinVPU.dll
+HKCR, TypeLib\{92da4076-8e62-433d-b654-ec1e7838f4a4}\1.0\0\win64, , 0x00004000, %11%\TrueColor5.2\CinVPU.dll
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}, , 0x00004000, "VirtCinVPU Class"
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CinVPU.dll
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\ProgID, , 0x00004000, "CinVPU.VirtCinVPU.1"
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\TypeLib, , 0x00004000, "{92da4076-8e62-433d-b654-ec1e7838f4a4}"
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\Version, , 0x00004000, "1.0"
+HKCR, CLSID\{54a4ed50-2965-4925-9248-54e25f322088}\VersionIndependentProgID, , 0x00004000, "CinVPU.VirtCinVPU"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}, , 0x00004000, "TrueColor Class"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CinVPU.dll
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\ProgID, , 0x00004000, "CinVPU.TrueColor.1"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\TypeLib, , 0x00004000, "{92da4076-8e62-433d-b654-ec1e7838f4a4}"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\Version, , 0x00004000, "1.0"
+HKCR, CLSID\{95f48ae2-edcb-40bb-94be-9568729bb686}\VersionIndependentProgID, , 0x00004000, "CinVPU.TrueColor"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}, , 0x00004000, "TCPropertyBag Class"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\CinVPU.dll
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\ProgID, , 0x00004000, "CinVPU.TCPropertyBag.1"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\TypeLib, , 0x00004000, "{92da4076-8e62-433d-b654-ec1e7838f4a4}"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\Version, , 0x00004000, "1.0"
+HKCR, CLSID\{a6f2e552-f76e-4147-a14b-e5a4d2701fa7}\VersionIndependentProgID, , 0x00004000, "CinVPU.TCPropertyBag"
+; Transcoder 1.0 Type Library
+HKCR, TypeLib\{0f18e140-99da-4e09-a94f-9fd03322103f}\1.0\HELPDIR, , 0x00004000, ""
+HKCR, TypeLib\{0f18e140-99da-4e09-a94f-9fd03322103f}\1.0\FLAGS, , 0x00004000, "0"
+HKCR, TypeLib\{0f18e140-99da-4e09-a94f-9fd03322103f}\1.0\0\win32, , 0x00004000, %16425%\TrueColor5.2\Transcoder.dll
+HKCR, TypeLib\{0f18e140-99da-4e09-a94f-9fd03322103f}\1.0\0\win64, , 0x00004000, %11%\TrueColor5.2\Transcoder.dll
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}, , 0x00004000, "TranscoderVPU Class"
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\Transcoder.dll
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\ProgID, , 0x00004000, "Transcoder.TranscoderVPU.1"
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\TypeLib, , 0x00004000, "{0f18e140-99da-4e09-a94f-9fd03322103f}"
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\Version, , 0x00004000, "1.0"
+HKCR, CLSID\{8a4eb0a0-85ac-4fc0-9564-6d20642918b1}\VersionIndependentProgID, , 0x00004000, "Transcoder.TranscoderVPU"
+; ViperRuntime 1.0 Type Library
+HKCR, TypeLib\{ce05a418-9ac2-4611-8401-2883567483af}\1.0\HELPDIR, , 0x00004000, ""
+HKCR, TypeLib\{ce05a418-9ac2-4611-8401-2883567483af}\1.0\FLAGS, , 0x00004000, "0"
+HKCR, TypeLib\{ce05a418-9ac2-4611-8401-2883567483af}\1.0\0\win32, , 0x00004000, %16425%\TrueColor5.2\ViperRT.dll
+HKCR, TypeLib\{ce05a418-9ac2-4611-8401-2883567483af}\1.0\0\win64, , 0x00004000, %11%\TrueColor5.2\ViperRT.dll
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}, , 0x00004000, "VRT Class"
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\ViperRT.dll
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\ProgID, , 0x00004000, "ViperRuntime.VRT.1"
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\TypeLib, , 0x00004000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\Version, , 0x00004000, "1.0"
+HKCR, CLSID\{35e05c11-38ff-4ef4-8e4e-b62b1914d5c8}\VersionIndependentProgID, , 0x00004000, "ViperRuntime.VRT"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}, , 0x00004000, "PropertyBag Class"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\ViperRT.dll
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\ProgID, , 0x00004000, "ViperRuntime.PropertyBag.1"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\TypeLib, , 0x00004000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\Version, , 0x00004000, "1.0"
+HKCR, CLSID\{f13f5053-dbcc-486f-beec-c1c5bba05bb2}\VersionIndependentProgID, , 0x00004000, "ViperRuntime.PropertyBag"
+HKCR, Interface\{E6749B37-C4CA-40F6-939A-7992F477E0A5}, , 0x00004000, "IVRT"
+HKCR, Interface\{E6749B37-C4CA-40F6-939A-7992F477E0A5}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{E6749B37-C4CA-40F6-939A-7992F477E0A5}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{E6749B37-C4CA-40F6-939A-7992F477E0A5}\TypeLib, , 0x00004000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{E6749B37-C4CA-40F6-939A-7992F477E0A5}\TypeLib, "Version", 0x00004000, "1.0"
+HKCR, Interface\{A47B34E3-DA5B-4D74-BF74-6824DE7BB65E}, , 0x00004000, "IMfViper"
+HKCR, Interface\{A47B34E3-DA5B-4D74-BF74-6824DE7BB65E}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{A47B34E3-DA5B-4D74-BF74-6824DE7BB65E}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{A47B34E3-DA5B-4D74-BF74-6824DE7BB65E}\TypeLib, , 0x00004000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{A47B34E3-DA5B-4D74-BF74-6824DE7BB65E}\TypeLib, "Version", 0x00004000, "1.0"
+HKCR, Interface\{67968F9E-19BE-41F3-B01C-F4DD6A1E4D82}, , 0x00004000, "IFrameEvt"
+HKCR, Interface\{67968F9E-19BE-41F3-B01C-F4DD6A1E4D82}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{67968F9E-19BE-41F3-B01C-F4DD6A1E4D82}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{67968F9E-19BE-41F3-B01C-F4DD6A1E4D82}\TypeLib, , 0x00004000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{67968F9E-19BE-41F3-B01C-F4DD6A1E4D82}\TypeLib, "Version", 0x00004000, "1.0"
+HKCR, Interface\{EB443799-CAA1-40a6-86A4-992CB7E1CC28}, , 0x00004000, "IProcessFrame"
+HKCR, Interface\{EB443799-CAA1-40a6-86A4-992CB7E1CC28}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{EB443799-CAA1-40a6-86A4-992CB7E1CC28}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{EB443799-CAA1-40a6-86A4-992CB7E1CC28}\TypeLib, , 0x00004000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{EB443799-CAA1-40a6-86A4-992CB7E1CC28}\TypeLib, "Version", 0x00004000, "1.0"
+HKCR, Interface\{D7C3CA82-5B87-4A0F-9D10-C38CE3C3B391}, , 0x00004000, "IFramePin"
+HKCR, Interface\{D7C3CA82-5B87-4A0F-9D10-C38CE3C3B391}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{D7C3CA82-5B87-4A0F-9D10-C38CE3C3B391}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{D7C3CA82-5B87-4A0F-9D10-C38CE3C3B391}\TypeLib, , 0x00004000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{D7C3CA82-5B87-4A0F-9D10-C38CE3C3B391}\TypeLib, "Version", 0x00004000, "1.0"
+HKCR, Interface\{7D2AB05C-419D-44C3-95EA-318F8772CADA}, , 0x00004000, "IInitialize"
+HKCR, Interface\{7D2AB05C-419D-44C3-95EA-318F8772CADA}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{7D2AB05C-419D-44C3-95EA-318F8772CADA}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{7D2AB05C-419D-44C3-95EA-318F8772CADA}\TypeLib, , 0x00004000, "{ce05a418-9ac2-4611-8401-2883567483af}"
+HKCR, Interface\{7D2AB05C-419D-44C3-95EA-318F8772CADA}\TypeLib, "Version", 0x00004000, "1.0"
+; LcMFT related COM registration
+
+[MSHUSBVideo.RegSvr32.LcMFT.AddReg]
+; LcMFT 1.0 Type Library
+HKCR, TypeLib\{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}\1.0\HELPDIR, , 0x00004000, ""
+HKCR, TypeLib\{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}\1.0\FLAGS, , 0x00004000, "0"
+HKCR, TypeLib\{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}\1.0\0\win32, , 0x00004000, %16425%\TrueColor5.2\LcMft.dll
+HKCR, TypeLib\{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}\1.0\0\win64, , 0x00004000, %11%\TrueColor5.2\LcMft.dll
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}, , 0x00004000, "LcMftImpl Class"
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\InprocServer32, , 0x00004000, %16425%\TrueColor5.2\LcMft.dll
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\ProgID, , 0x00004000, "LcMft.LcMftImpl.1"
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\TypeLib, , 0x00004000, "{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}"
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\Version, , 0x00004000, "1.0"
+HKCR, CLSID\{cc53bf4a-1abe-419a-a932-185b76a271d2}\VersionIndependentProgID, , 0x00004000, "LcMft.LcMftImpl"
+; LcMft Interfaces
+HKCR, Interface\{21F14081-87BE-4508-92FC-8794BC167B92}, , 0x00004000, "ITrueColorConfig"
+HKCR, Interface\{21F14081-87BE-4508-92FC-8794BC167B92}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{21F14081-87BE-4508-92FC-8794BC167B92}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{21F14081-87BE-4508-92FC-8794BC167B92}\TypeLib, , 0x00004000, "{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}"
+HKCR, Interface\{21F14081-87BE-4508-92FC-8794BC167B92}\TypeLib, "Version", 0x00004000, "1.0"
+HKCR, Interface\{48C6A190-216D-4C29-BE05-69E2E8C304E9}, , 0x00004000, "ICalProp"
+HKCR, Interface\{48C6A190-216D-4C29-BE05-69E2E8C304E9}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{48C6A190-216D-4C29-BE05-69E2E8C304E9}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{48C6A190-216D-4C29-BE05-69E2E8C304E9}\TypeLib, , 0x00004000, "{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}"
+HKCR, Interface\{48C6A190-216D-4C29-BE05-69E2E8C304E9}\TypeLib, "Version", 0x00004000, "1.0"
+HKCR, Interface\{049F0F0C-6B22-4D70-976E-E55AE4A8ED26}, , 0x00004000, "IMfProp"
+HKCR, Interface\{049F0F0C-6B22-4D70-976E-E55AE4A8ED26}\ProxyStubClsid, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{049F0F0C-6B22-4D70-976E-E55AE4A8ED26}\ProxyStubClsid32, , 0x00004000, "{00020424-0000-0000-C000-000000000046}"
+HKCR, Interface\{049F0F0C-6B22-4D70-976E-E55AE4A8ED26}\TypeLib, , 0x00004000, "{67c226a8-6d1c-4456-82f3-a4e5632dbf7f}"
+HKCR, Interface\{049F0F0C-6B22-4D70-976E-E55AE4A8ED26}\TypeLib, "Version", 0x00004000, "1.0"
+; LcProxy related COM registration
+
+[MSHUSBVideo.RegSvr32.LcProxy2.AddReg]
+HKCR, CLSID\{6b4e327a-ada3-46f4-8891-53d309172281}, , 0x00004000, "LifeCamInterfaceHandler"
+HKCR, CLSID\{6b4e327a-ada3-46f4-8891-53d309172281}\InprocServer32, ,0x00004000, %16425%\TrueColor5.2\LcProxy2.ax
+HKCR, CLSID\{6b4e327a-ada3-46f4-8891-53d309172281}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{908ac3d4-c444-4178-af76-20665de0889a}, ,0x00004000, "LifeCam Proxy Filter"
+HKCR, CLSID\{908ac3d4-c444-4178-af76-20665de0889a}\InprocServer32, ,0x00004000, %16425%\TrueColor5.2\LcProxy2.ax
+HKCR, CLSID\{908ac3d4-c444-4178-af76-20665de0889a}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{CLSID_LifeCamVideoSettingsPropertyPage}, ,0x00004000, "LifeCam Video Settings Property Page"
+HKCR, CLSID\{CLSID_LifeCamVideoSettingsPropertyPage}\InprocServer32, ,0x00004000, %16425%\TrueColor5.2\LcProxy2.ax
+HKCR, CLSID\{CLSID_LifeCamVideoSettingsPropertyPage}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+HKCR, CLSID\{CLSID_LifeCamCameraControlPropertyPage}, ,0x00004000, "LifeCam CameraControl Property Page"
+HKCR, CLSID\{CLSID_LifeCamCameraControlPropertyPage}\InprocServer32, ,0x00004000, %16425%\TrueColor5.2\LcProxy2.ax
+HKCR, CLSID\{CLSID_LifeCamCameraControlPropertyPage}\InprocServer32, "ThreadingModel", 0x00004000, "Both"
+
+[Strings]
+;-----------------
+; Non-Localizable
+;-----------------
+LocalLanguage="1033"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"
+;==========================================================================
+; String Table (German - 1031)
+;==========================================================================
+
+[Strings.0407]
+LocalLanguage="1031"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"
+;==========================================================================
+; String Table (French - 1036)
+;==========================================================================
+
+[Strings.040C]
+LocalLanguage="1036"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"
+;==========================================================================
+; String Table (Japanese - 1041)
+;==========================================================================
+
+[Strings.0411]
+LocalLanguage="1041"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"
+;==========================================================================
+; String Table (Chinese Traditional - 1028)
+;==========================================================================
+
+[Strings.0404]
+LocalLanguage="1028"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"
+;==========================================================================
+; String Table (Spanish - 1034)
+;==========================================================================
+
+[Strings.040A]
+LocalLanguage="1034"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"
+;==========================================================================
+; String Table (Italian - 1040)
+;==========================================================================
+
+[Strings.0410]
+LocalLanguage="1040"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"
+;==========================================================================
+; String Table (Korean - 1042)
+;==========================================================================
+
+[Strings.0412]
+LocalLanguage="1042"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"
+;==========================================================================
+; String Table (Portuguese Brazil - 1046)
+;==========================================================================
+
+[Strings.0416]
+LocalLanguage="1046"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"
+;==========================================================================
+; String Table (Russian - 1049)
+;==========================================================================
+
+[Strings.0419]
+LocalLanguage="1049"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"
+;==========================================================================
+; String Table (Chinese Simplified - 2052)
+;==========================================================================
+
+[Strings.0804]
+LocalLanguage="2052"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"
+;==========================================================================
+; String Table (Portuguese (Portugal) - 2070)
+;==========================================================================
+
+[Strings.0816]
+LocalLanguage="2070"
+TrueColor.SVCDESC = "TrueColor Service"
+ProxyLifeCam.CLSID="{908ac3d4-c444-4178-af76-20665de0889a}"
+LcMft.CLSID="{cc53bf4a-1abe-419a-a932-185b76a271d2}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_VIDEO="{6994AD05-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_VIDEO_CAMERA="{E5323777-F976-4f5b-9B55-B94699C46E44}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+GUID.VideoStreaming="{DFF229E1-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputTerminal="{DFF229E2-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputTerminal="{DFF229E3-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoSelector="{DFF229E4-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoProcessing="{DFF229E5-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoCameraTerminal="{DFF229E6-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoInputMTT="{DFF229E7-F70F-11D0-B917-00A0C9223196}"
+GUID.VideoOutputMTT="{DFF229E8-F70F-11D0-B917-00A0C9223196}"
+;------------
+;Localizeable
+;------------
+Msft="Microsoft"
+USBVideoSurfaceProFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoSurfaceProRear.DeviceDesc="Microsoft LifeCam Rear"
+USBVideoSurfaceProNFront.DeviceDesc="Microsoft LifeCam Front"
+USBVideoStreaming.DeviceDesc="USB Video Device (VS Interface)"
+USBVideo.SvcDesc="USB Video Device (WDM)"
+InstallDisk = "TrueColor Installation CD"
+Node.VideoStreaming="Video Streaming"
+Node.VideoInputTerminal="Video Input Terminal"
+Node.VideoOutputTerminal="Video Output Terminal"
+Node.VideoSelector="Video Selector"
+Node.VideoProcessing="Video Processing"
+Node.VideoCameraTerminal="Video Camera Terminal"
+Node.VideoInputMTT="Video Input Media Transport Terminal"
+Node.VideoOutputMTT="Video Output Media Transport Terminal"
+;
+; PlugIns Descriptions
+;
+PlugIn_IAMExtDevice="WDM Streaming IAMExtDevice Interface Handler"
+PlugIn_IAMExtTransport="WDM Streaming IAMExtTransport Interface Handler"
+PlugIn_IAMTimecodeReader="WDM Streaming IAMTimecodeReader Interface Handler"
+Plugin_IExtTransport="WDM Streaming IExtTransport Interface Handler"
+PropPage_DVcrControl="DVcrControl Property Page"
+Plugin_IKsTopologyInfo="WDM Streaming IKsTopologyInfo Interface Handler"
+Plugin_ICameraControl="WDM Streaming ICameraControl Interface Handler"
+Plugin_IVideoProcAmp="WDM Streaming IVideoProcAmp Interface Handler"
+Plugin_ISelector="WDM Streaming ISelector Interface Handler"
+Plugin_PropertyObject="Node Interface Aggregation Handler"

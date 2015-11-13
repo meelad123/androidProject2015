@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="GroupWiredNetwork" loc.comment="Wired Network Repro The Problem Rule Group">Felsökare för kabelanslutet nätverk</String>
+	<String ID="RuleInsertWiredNetworkTables" loc.comment="Rule to insert Wired Network Repro The Problem tables.">Infoga tabeller för felsökning av kabelanslutet nätverk</String>
+	<String ID="RuleCreateRegistryWiredAdapterTable" loc.comment="Rule to create table of adapter information from the registry information">Skapa tabell för nätverkskort i registret</String>
+	<String ID="RuleNetworkWiredSetup" loc.comment="Rule to create summary table for Wired Network rules">Skapa tabell med sammanfattning för kabelanslutningar</String>
+	<String ID="RuleDisabledWiredAdaptersCheck" loc.comment="Rule to check that wired adapters listed in the registry are enabled">Sök efter aktiverade kabelanslutna nätverkskort</String>
+	<String ID="RuleNetworkWiredSummary" loc.comment="Rule to summarize summary table for Wired Network rules">Sammanfatta tabell med information om kabelanslutet nätverk</String>
+	<String ID="RuleWiredNetworkCleanup" loc.comment="Name of Rules to cleanup Wired Network report">Rensning av kabelanslutet nätverk</String>
+	<String ID="RuleInformationListInsert" loc.comment="Name of rule to insert summary table">Infoga informationslista</String>
+	<String ID="RuleAddWarningTable" loc.comment="Marked as not seen anywhere">Skapa lista med toppvarningar</String>
+	<String ID="RuleSlimServicesTable" loc.comment="Only used in WDC Console">Omvandla tjänster till noder</String>
+	<String ID="RuleNoteErrorCodes" loc.comment="Name of rule to change File error codes into descriptions">Omvandla felkoder till beskrivningar</String>
+	<String ID="RuleFileHyper" loc.comment="Name of rule to insert a link to Files collected using PLA">Infoga en fil till en länk</String>
+	<String ID="LOC_TableNetworkWiredSummary" loc.comment="Title of Network Wired Summary Group in Rules Summary Table">Kontroller för kabelanslutna nätverk</String>
+	<String ID="LOC_DescNetworkWiredSummary" loc.comment="Description of the Network Wired Summary Group in Rules Summary Table">Felsökarlogik som har att göra med det kabelanslutna nätverkets tillstånd</String>
+	<String ID="LOC_RuleDisabledWiredAdaptersCheck" loc.comment="Rule to check that wired adapters listed in the registry are enabled">Sök efter aktiverade kabelanslutna nätverkskort</String>
+	<String ID="LOC_TrueString" loc.comment="Text value of TRUE">Sant</String>
+	<String ID="LOC_FalseString" loc.comment="Text value of FALSE">Falskt</String>
+	<String ID="LOC_Failed" loc.comment="Text to display when a rule or group of rules failed">Misslyckades</String>
+	<String ID="LOC_Passed" loc.comment="Text to display when a rule or group of rules passed">Lyckades</String>
+	<String ID="LOC_EnvironmentInfoFileName" loc.comment="Name of file with config info">Miljöinformation</String>
+	<String ID="NoteServiceProperlyStopped0" loc.comment="Report service table comment">Tjänsten är stoppad och avslutningskoden är 0(normal avslutning). {summary}</String>
+	<String ID="NoteServiceProperlyStopped1077" loc.comment="Report service table comment">Tjänsten är stoppad och avslutningskoden är 1077 (normal avslutning). {summary}</String>
+	<String ID="NoteServiceRunning" loc.comment="Report service table comment">Tjänsten körs. {summary}</String>
+	<String ID="NoteCode80070003" loc.comment="Text to display in note related to Open File result code 0x80070003">Kod 0x8007003</String>
+	<String ID="LOC_PathNotFound" loc.comment="Text to display when File path is not found">Det går inte att hitta den angivna sökvägen.</String>
+	<String ID="NoteCode0" loc.comment="Text to display in note related to Open File result code 0x0">Kod 0x0</String>
+	<String ID="LOC_Success" loc.comment="Text to display when File operation succeeds">Lyckades</String>
+	<String ID="WarnFailWiredAdapterCheck_symptom" loc.comment="Symptom string for warning message: WarnFailWiredAdapterCheck">Ett kabelanslutet nätverkskort är inaktiverat på datorn.</String>
+	<String ID="WarnFailWiredAdapterCheck_cause" loc.comment="Cause string for warning message: WarnFailWiredAdapterCheck">Ett kabelanslutet nätverkskort på datorn är inaktiverat.</String>
+	<String ID="WarnFailWiredAdapterCheck_details" loc.comment="Details string for warning message: WarnFailWiredAdapterCheck">Det kabelanslutna nätverkskortet {adaptername} är inaktiverat.</String>
+	<String ID="WarnFailWiredAdapterCheck_res1" loc.comment="Resolution string for warning message: WarnFailWiredAdapterCheck">Be användaren starta Enhetshanteraren.</String>
+	<String ID="WarnFailWiredAdapterCheck_res2" loc.comment="Resolution string for warning message: WarnFailWiredAdapterCheck">Hitta och aktivera {adaptername}.</String>
+	<String ID="WarnFailNoWiredAdapterEnabled_symptom" loc.comment="Symptom string for warning message: WarnFailNoWiredAdapterEnabled">Alla kabelanslutna nätverkskort på systemet är inaktiverade.</String>
+	<String ID="WarnFailNoWiredAdapterEnabled_cause" loc.comment="Cause string for warning message: WarnFailNoWiredAdapterEnabled">Inga kabelanslutna nätverkskort på datorn är aktiverade.</String>
+	<String ID="WarnFailNoWiredAdapterEnabled_details" loc.comment="Details string for warning message: WarnFailNoWiredAdapterEnabled">Följande nätverksnamn är inaktiverat: {adaptername}.</String>
+	<String ID="WarnFailNoWiredAdapterEnabled_res1" loc.comment="Resolution string for warning message: WarnFailNoWiredAdapterEnabled">Be användaren starta Enhetshanteraren.</String>
+	<String ID="WarnFailNoWiredAdapterEnabled_res2" loc.comment="Resolution string for warning message: WarnFailNoWiredAdapterEnabled">Hitta och aktivera ett kabelanslutet nätverkskort, t.ex. med namnet {adaptername}.</String>
+</StringTable>

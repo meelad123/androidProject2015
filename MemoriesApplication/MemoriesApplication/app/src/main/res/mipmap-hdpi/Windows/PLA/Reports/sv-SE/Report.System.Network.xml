@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="topTwentyFive">Den här tabellen är begränsad till de 25 högsta.</String>
+	<String ID="tracerptNetwork">Nätverk</String>
+	<String ID="inbytes_sec">Antal inkommande byte per sekund</String>
+	<String ID="interface">Gränssnitt</String>
+	<String ID="ipSection">IP</String>
+	<String ID="ipv4counter">IP version 4</String>
+	<String ID="ipv6counter">IP version 6</String>
+	<String ID="ipv4sec">Drivrutin för IP-säkerhet version 4</String>
+	<String ID="ipv6sec">Drivrutin för IP-säkerhet version 6</String>
+	<String ID="machineinbound">Från dator</String>
+	<String ID="machineoutbound">Till dator</String>
+	<String ID="networkinterface">Nätverksgränssnitt</String>
+	<String ID="outbytes_sec">Antal utgående byte per sekund</String>
+	<String ID="sport">Port</String>
+	<String ID="tcp">TCP</String>
+	<String ID="tcpRecvTableV1">Inkommande TCP-trafik</String>
+	<String ID="tcpSendTableV1">Utgående TCP-trafik</String>
+	<String ID="tcpRecvTable">Inkommande TCP-trafik</String>
+	<String ID="tcpSendTable">Utgående TCP-trafik</String>
+	<String ID="tcpv4counter">TCP version 4</String>
+	<String ID="tcpv6counter">TCP version 6</String>
+	<String ID="TopicUdp">UDP</String>
+	<String ID="udpv4counters">UDP version 4</String>
+	<String ID="udpv6counters">UDP version 6</String>
+</StringTable>

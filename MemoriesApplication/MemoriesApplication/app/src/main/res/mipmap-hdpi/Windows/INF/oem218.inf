@@ -1,0 +1,95 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; File:               SurfacePTPFilter.inf
+;
+; Description:        Driver installation file for SurfacePTPFilter.
+;
+; Copyright (C) Microsoft Corporation.  All Rights Reserved.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature="$Windows NT$"
+Class=HIDClass
+ClassGuid={745a17a0-74d3-11d0-b6fe-00a0c90f57da};HIDClassGuid
+Provider=%ManufacturerName%
+CatalogFile=SurfacePTPFilter.cat
+DriverSet={433B42F8-71EF-4EE8-872F-C74C6ED3BCD1}
+DriverVer=08/18/2015,1.0.33.1
+PnPLockDown=1
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%DeviceName%=SurfacePro4TypeCover_Install, HID\VID_045E&PID_07E4&MI_00&Col06
+%DeviceName%=SurfacePro4TypeCover_Install, HID\VID_045E&PID_07E8&Col06
+%DeviceName%=SurfacePro4TypeCover_Install, HID\VID_045E&PID_07E5&MI_00&Col06
+%DeviceName%=SurfacePro4TypeCover_Install, HID\VID_045E&PID_07E9&Col06
+
+[SourceDisksFiles]
+SurfacePTPFilter.dll=1
+
+[SourceDisksNames]
+1 = %DiskName%
+
+; =================== SurfacePro4TypeCover Device ==================================
+
+[SurfacePro4TypeCover_Install.NT]
+CopyFiles=UMDriverCopy
+
+[SurfacePro4TypeCover_Install.NT.hw]
+AddReg=SurfacePro4TypeCover_NIB_AddReg
+
+[SurfacePro4TypeCover_Install.NT.Services]
+AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall
+
+[SurfacePro4TypeCover_Install.NT.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[SurfacePro4TypeCover_Install.NT.Wdf]
+UmdfService="SurfacePTPFilter",SurfacePTPFilter_Install
+UmdfServiceOrder=SurfacePTPFilter
+UmdfKernelModeClientPolicy=AllowKernelModeClients
+UmdfFileObjectPolicy=AllowNullAndUnknownFileObjects
+UmdfMethodNeitherAction=Copy
+UmdfFsContextUsePolicy=CanUseFsContext2
+UmdfHostPriority=PriorityHigh
+
+[SurfacePro4TypeCover_NIB_AddReg]
+HKR,,"LeftNIB",0x00010001,107
+HKR,,"RightNIB",0x00010001,1846
+HKR,,"TopNIB",0x00010001,80
+
+; =============== General section =================================
+
+[SurfacePTPFilter_Install]
+UmdfLibraryVersion=2.15.0 
+ServiceBinary=%12%\UMDF\SurfacePTPFilter.dll
+
+[WUDFRD_ServiceInstall]
+DisplayName = %WudfRdDisplayName%
+ServiceType = 1
+StartType = 3
+ErrorControl = 1
+ServiceBinary = %12%\WUDFRd.sys
+LoadOrderGroup = Extended Base
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WUDFCoinstaller.dll"
+
+[CoInstallers_CopyFiles]
+;Section required to prevent warnings
+
+[DestinationDirs]
+UMDriverCopy=12,UMDF ; copy to drivers\umdf
+
+[UMDriverCopy]
+SurfacePTPFilter.dll
+
+; =================== Generic ==================================
+
+[Strings]
+ManufacturerName="Microsoft"
+DiskName = "SurfacePTPFilter Installation Disk"
+WudfRdDisplayName="Windows Driver Foundation - User-mode Driver Framework Reflector"
+DeviceName="Surface PTP Filter"

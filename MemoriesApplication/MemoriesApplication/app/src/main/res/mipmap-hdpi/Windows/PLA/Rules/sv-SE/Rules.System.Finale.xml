@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="Information" loc.comment="Only used in WDC Console">Information</String>
+	<String ID="GroupDataCheck">Ogiltiga datauppsättningar</String>
+	<String ID="GroupNotify">Meddelande</String>
+	<String ID="RuleNotify">Meddelande</String>
+	<String ID="Warnings">
+Dator: {computer}
+Fel: {error}
+Varning: {warn}
+Information: {info}
+Rapport: {_document}
+    </String>
+	<String ID="RuleEmptyTables">Ta bort tomma tabeller</String>
+	<String ID="GroupCleanup" loc.comment="Only used in WDC Console">Rapportrensning</String>
+	<String ID="RuleDeleteNoWarningTables" loc.comment="Only used in WDC Console">Ta bort händelsetabellen om den inte innehåller varningar</String>
+	<String ID="RuleSuccessMessageNotNeeded" loc.comment="Only used in WDC Console">Ta bort meddelande om lyckade försök</String>
+	<String ID="RuleRemoveBinaryRegistry" loc.comment="Only used in WDC Console">Ta bort all binär nyckeldata från registertabeller</String>
+	<String ID="LOC_AllIsWell" loc.comment="Message when no error, warning or informational is found">Inga problem hittades på datorn.</String>
+	<String ID="RuleRemovePropertiesForHwOnly" loc.comment="Insert rule name seen in WPDC">Ta bort WMI-egenskaper som inte behövs</String>
+</StringTable>

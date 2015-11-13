@@ -1,0 +1,80 @@
+; Installation inf for the Realtek USB Card Reader
+;
+; (c) Copyright 2006 Realtek
+;
+
+[Version]
+Signature="$CHICAGO$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+provider=%VENDOR%
+DriverVer=07/09/2013,6.2.9200.30164
+CatalogFile=RtsUStor64.cat
+
+[SourceDisksNames]
+1=%Disk_Description%
+
+[SourceDisksFiles]
+RtsUStor.sys=1
+RtsUStoricon.dll = 1
+
+[Manufacturer]
+%MfgName%=DeviceList,NTamd64
+
+[DeviceList.NTamd64]
+%USB\VID_2001&PID_B300.DeviceDesc%=RSUSBSTOR, USB\VID_2001&PID_B300&MI_01
+
+[DestinationDirs]
+CopyFilesSYS = 10,System32\Drivers
+CopyFilesDLL = 11     ; %SystemRoot%\system or system32 - 98 or Win2000
+CopyFilesDLL64 = 10,SysWOW64
+
+[RSUSBSTOR.NTamd64]
+CopyFiles = CopyFilesSYS, CopyFilesDLL64
+
+[DefaultInstall.NTamd64]
+CopyFiles = CopyFilesSYS, CopyFilesDLL64
+
+[CopyFilesSYS]
+RtsUStor.sys
+
+[CopyFilesDLL]
+RtsUStoricon.dll
+
+[CopyFilesDLL64]
+RtsUStoricon.dll
+
+[RSUSBSTOR.NTx86.Services]
+Addservice = RSUSBSTOR, 0x00000002, RSUSBSTOR.AddService
+
+[DefaultInstall.Services]
+AddService = RSUSBSTOR, 0x00000002, RSUSBSTOR.AddService
+
+[RSUSBSTOR.NTamd64.Services]
+Addservice = RSUSBSTOR, 0x00000002, RSUSBSTOR.AddService
+
+[DefaultInstall.Services]
+AddService = RSUSBSTOR, 0x00000002, RSUSBSTOR.AddService
+
+[RSUSBSTOR.AddService]
+DisplayName    = %RSUSBSTOR.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\RtsUStor.sys
+AddReg         = RSUSBSTOR.AddReg
+LoadOrderGroup = Base
+
+[RSUSBSTOR.AddReg]
+;HKR,,DevLoader,,*ntkern
+;HKR,,NTMPDriver,,RtsUStor.sys
+HKR,"Parameters","DebugLevel",0x10001,5
+HKR,"Parameters","FirstLoad",0x10001,1
+;---------------------------------------------------------------;
+
+[Strings]
+VENDOR="D-Link"
+MfgName="D-Link"
+Disk_Description="D-Link DUB-1342 Card Reader Disk"
+RSUSBSTOR.SvcDesc="RtsUStor.Sys D-Link DUB-1342 Card Reader"
+USB\VID_2001&PID_B300.DeviceDesc = "D-Link DUB-1342 Card Reader"

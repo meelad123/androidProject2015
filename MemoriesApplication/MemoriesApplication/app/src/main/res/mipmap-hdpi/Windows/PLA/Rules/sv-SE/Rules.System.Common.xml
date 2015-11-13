@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="GroupCommon">Global varningstabell</String>
+	<String ID="RuleWarningTable">Global varningstabell</String>
+	<String ID="RuleMiss">Händelser som saknas i spårningsfilen</String>
+	<String ID="missingEvents">Händelser som saknas i händelseloggen</String>
+	<String ID="missingEventsDetails">Undersök varför {percentlost}% ({lost}) händelser saknas efter datainsamling. Inställningarna för största antal ETW-buffertar (Event Tracing for Windows) och buffertstorlek kanske inte är optimala med tanke på vilka datauppsättningar som samlas in.</String>
+	<String ID="missingEventsRelated">Händelsespårning för Windows</String>
+</StringTable>

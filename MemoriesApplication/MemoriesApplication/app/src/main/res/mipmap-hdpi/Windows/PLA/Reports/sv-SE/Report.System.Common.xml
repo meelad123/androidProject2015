@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="systemDiagnostics">Systemdiagnostikrapport</String>
+	<String ID="systemPerformance">Systemprestandarapport</String>
+	<String ID="TopicTestResults" loc.comment="Title of topic in Report">Varningar</String>
+	<String ID="advice">Diagnostikresultat</String>
+	<String ID="counters" loc.comment="Commonly Used in Report">Räknare</String>
+	<String ID="cpu" loc.comment="Commonly Used in Report">Processor i procent</String>
+	<String ID="disk" loc.comment="Commonly Used in Report">Disk</String>
+	<String ID="requestRate" loc.comment="Commonly Used in Report">Antal begäranden per sekund</String>
+	<String ID="responseTime" loc.comment="Commonly Used in Report">Svarstid (ms)</String>
+	<String ID="system" loc.comment="Commonly Used in Report">System</String>
+	<String ID="server" loc.comment="Commonly Used in Report">Server</String>
+	<String ID="timestamp" loc.comment="Commonly Used in Report">Tidsstämpel</String>
+	<String ID="thread" loc.comment="Commonly Used in Report">Tråd</String>
+	<String ID="severity" loc.comment="Standard Message description words">Allvarlighetsgrad</String>
+	<String ID="symptom" loc.comment="Standard Message description words">Symptom</String>
+	<String ID="cause" loc.comment="Standard Message description words">Orsak</String>
+	<String ID="details" loc.comment="Standard Message description words">Information</String>
+	<String ID="resolution" loc.comment="Standard Message description words">Lösning</String>
+	<String ID="info" loc.comment="Standard Message description words">Information</String>
+	<String ID="related" loc.comment="Standard Message description words">Relaterat</String>
+	<String ID="bytes" loc.comment="Units label for 'bytes'">byte</String>
+</StringTable>

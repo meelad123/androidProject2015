@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="tracerptNetworkDiag" loc.comment="Section Name for Network Diagnostics Events Table">Nätverksdiagnostik</String>
+	<String ID="TableNetDiagResults" loc.comment="Title of Table with cummulative Network Diagnostic Results">Resultat efter nätverksdiagnostik</String>
+	<String ID="netdiagframework" loc.comment="Topic Name for Network Diagnostics Events Table">Ramverk för nätverksdiagnostik</String>
+	<String ID="activityid" loc.comment="Column Header for Network Diagnostics Events Table">Aktivitets-ID</String>
+	<String ID="start" loc.comment="Table Name for Network Diagnostics Events Table">Diagnostikstart</String>
+	<String ID="numberofattributes" loc.comment="Column Header for Network Diagnostics Events Table">Antal attribut</String>
+	<String ID="helperclassattributes" loc.comment="Column Header for Network Diagnostics Events Table">Hjälpklassattribut</String>
+	<String ID="stopsuccessdiag" loc.comment="Table Name for Network Diagnostics Events Table">Lyckad diagnostik</String>
+	<String ID="stopsuccessrepair" loc.comment="Table Name for Network Diagnostics Events Table">Lyckad reparation</String>
+	<String ID="stopfaildiag" loc.comment="Table Name for Network Diagnostics Events Table">Misslyckad diagnostik</String>
+	<String ID="stopfailrepair" loc.comment="Table Name for Network Diagnostics Events Table">Misslyckad reparation</String>
+	<String ID="stopcanceldiag" loc.comment="Table Name for Network Diagnostics Events Table">Avbruten diagnostik</String>
+	<String ID="stopcancelrepair" loc.comment="Table Name for Network Diagnostics Events Table">Avbruten reparation</String>
+	<String ID="resulthr" loc.comment="Column Header for Network Diagnostics Events Table">Resultatkod</String>
+	<String ID="failinframework" loc.comment="Table Name for Network Diagnostics Events Table">Fel i ramverket</String>
+	<String ID="failinhelper" loc.comment="Table Name for Network Diagnostics Events Table">Fel i hjälpklass</String>
+	<String ID="diagsuccess" loc.comment="Table Name for Network Diagnostics Events Table">Diagnostik lyckades</String>
+	<String ID="diagsuccessnp" loc.comment="Table Name for Network Diagnostics Events Table">Diagnostik lyckades - inga problem</String>
+	<String ID="diagfail" loc.comment="Table Name for Network Diagnostics Events Table">Diagnostik misslyckades</String>
+	<String ID="repairoption" loc.comment="Column Header for Network Diagnostics Events Table">Reparationsalternativ</String>
+	<String ID="repairguid" loc.comment="Column Header for Network Diagnostics Events Table">Reparations-GUID</String>
+	<String ID="secondsrequired" loc.comment="Column Header for Network Diagnostics Events Table">Sekunder krävs</String>
+	<String ID="sidtyperequired" loc.comment="Column Header for Network Diagnostics Events Table">SID-typ krävs</String>
+	<String ID="validationsuccess" loc.comment="Table Name for Network Diagnostics Events Table">Verifiering lyckades</String>
+	<String ID="validationfail" loc.comment="Table Name for Network Diagnostics Events Table">Verifiering misslyckades</String>
+	<String ID="repairfail" loc.comment="Table Name for Network Diagnostics Events Table">Reparation misslyckades</String>
+	<String ID="repairoptfail" loc.comment="Table Name for Network Diagnostics Events Table">Reparationsåtgärd misslyckades</String>
+	<String ID="helperclassoperationalinfo" loc.comment="Table Name for Network Diagnostics Events Table">Åtgärdsinformation för hjälpklass</String>
+	<String ID="helperclassadmininfo" loc.comment="Table Name for Network Diagnostics Events Table">Administrationsinformation för hjälkpklass</String>
+	<String ID="helperclassdebuginfo" loc.comment="Table Name for Network Diagnostics Events Table">Felsökningsinformation för hjälpklass</String>
+	<String ID="helperclassname" loc.comment="Column Header for Network Diagnostics Events Table">Namn på hjälpklass</String>
+	<String ID="eventdescription" loc.comment="Column Header for Network Diagnostics Events Table">Händelsebeskrivning</String>
+	<String ID="eventverbosity" loc.comment="Column Header for Network Diagnostics Events Table">Händelsens utförlighet</String>
+	<String ID="diagnosticsdebug" loc.comment="Table Name for Network Diagnostics Events Table">Felsökning av diagnostik</String>
+	<String ID="hypothesisdebug" loc.comment="Table Name for Network Diagnostics Events Table">Felsökning av hypotes</String>
+	<String ID="repairdebug" loc.comment="Table Name for Network Diagnostics Events Table">Felsökning av reparation</String>
+	<String ID="validationdebug" loc.comment="Table Name for Network Diagnostics Events Table">Felsökning av verifiering</String>
+	<String ID="cachehitdebug" loc.comment="Table Name for Network Diagnostics Events Table">Felsökning av cacheträffar</String>
+	<String ID="registrydebug" loc.comment="Table Name for Network Diagnostics Events Table">Felsökning av register</String>
+	<String ID="unclassifieddebug" loc.comment="Table Name for Network Diagnostics Events Table">Oklassificerad felsökning</String>
+	<String ID="debugmessage" loc.comment="Column Header for Network Diagnostics Events Table">Felsökningsmeddelande</String>
+	<String ID="diagstopstate" loc.comment="Title for column in Network Diagnostics Results Table">Slutgiltigt körningstillstånd för nätverksdiagnostik</String>
+	<String ID="diagstarttime" loc.comment="Title for column in Network Diagnostics Results Table">Tidsstämpel för start</String>
+	<String ID="diagendtime" loc.comment="Title for column in Network Diagnostics Results Table">Tidsstämpel för slut</String>
+	<String ID="diagstep" loc.comment="Title for column in Network Diagnostics Results Table">Händelse/steg för nätverksdiagnostik</String>
+	<String ID="diagstepproperty" loc.comment="Title for column in Network Diagnostics Results Table">Händelseegenskap för nätverksdiagnostik</String>
+	<String ID="diagstepvalue" loc.comment="Title for column in Network Diagnostics Results Table">Händelsevärde för nätverksdiagnostik</String>
+</StringTable>

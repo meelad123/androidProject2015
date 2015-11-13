@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="GroupContent">Rapportinnehåll</String>
+	<String ID="RuleWmi">Minska WMI-tabeller</String>
+	<String ID="RuleServer">Dölj serverräknare</String>
+	<String ID="RuleHideCollectionInfo">Dölj tabellen Insamlingsinformation</String>
+	<String ID="RuleHideConfig">Dölj konfigurationstabeller</String>
+	<String ID="GroupHwClasses" loc.comment="Group name seen in WPDC">Kontrollera status för maskinvaruklasser</String>
+	<String ID="RuleInsertHwClasses" loc.comment="Insert rule name seen in WPDC">Infoga maskinvaruklasser</String>
+	<String ID="RuleHwOnlyListInsert" loc.comment="Insert rule name seen in WPDC">Infogningslista för sammanfattning av maskinvaruregler</String>
+	<String ID="RuleHwOnlyListUpdate" loc.comment="Update rule name seen in WPDC">Felstatus för uppdatering av sammanfattning av maskinvaruregler</String>
+	<String ID="RuleConfigController" loc.comment="Testing rule name seen in WPDC">Styrenheten har konfigurerats</String>
+	<String ID="RuleConfigCooling" loc.comment="Testing rule name seen in WPDC">Kylning har konfigurerats</String>
+	<String ID="RuleConfigInput" loc.comment="Testing rule name seen in WPDC">Indata har konfigurerats</String>
+	<String ID="RuleConfigStorage" loc.comment="Testing rule name seen in WPDC">Lagringsenheten har konfigurerats</String>
+	<String ID="RuleConfigMemory" loc.comment="Testing rule name seen in WPDC">Minnesenheten har konfigurerats</String>
+	<String ID="RuleConfigMotherboard" loc.comment="Testing rule name seen in WPDC">Moderkortsenheten har konfigurerats</String>
+	<String ID="RuleConfigNetwork" loc.comment="Testing rule name seen in WPDC">Nätverket har konfigurerats</String>
+	<String ID="RuleConfigPlugAndPlay" loc.comment="Testing rule name seen in WPDC">Plug and Play-enheten har konfigurerats</String>
+	<String ID="RuleConfigPort" loc.comment="Testing rule name seen in WPDC">Portenheten har konfigurerats</String>
+	<String ID="RuleConfigPower" loc.comment="Testing rule name seen in WPDC">Strömförsörjningsenheten har konfigurerats</String>
+	<String ID="RuleConfigPrinting" loc.comment="Testing rule name seen in WPDC">Utskriftsenheten har konfigurerats</String>
+	<String ID="RuleConfigVideo" loc.comment="Testing rule name seen in WPDC">Videoenheten har konfigurerats</String>
+	<String ID="RuleStatusController" loc.comment="Testing rule name seen in WPDC">Status för styrenhet</String>
+	<String ID="RuleStatusCooling" loc.comment="Testing rule name seen in WPDC">Status för kylning</String>
+	<String ID="RuleStatusInput" loc.comment="Testing rule name seen in WPDC">Status för indata</String>
+	<String ID="RuleStatusStorage" loc.comment="Testing rule name seen in WPDC">Status för lagringsenhet</String>
+	<String ID="RuleStatusMemory" loc.comment="Testing rule name seen in WPDC">Status för minnesenhet</String>
+	<String ID="RuleStatusMotherboard" loc.comment="Testing rule name seen in WPDC">Status för moderkortsenhet</String>
+	<String ID="RuleStatusNetwork" loc.comment="Testing rule name seen in WPDC">Status för nätverk</String>
+	<String ID="RuleStatusPlugAndPlay" loc.comment="Testing rule name seen in WPDC">Status för Plug and Play-enhet</String>
+	<String ID="RuleStatusPort" loc.comment="Testing rule name seen in WPDC">Status för portenhet</String>
+	<String ID="RuleStatusPower" loc.comment="Testing rule name seen in WPDC">Status för strömförsörjningsenhet</String>
+	<String ID="RuleStatusPrinting" loc.comment="Testing rule name seen in WPDC">Status för utskriftsenhet</String>
+	<String ID="RuleStatusVideo" loc.comment="Testing rule name seen in WPDC">Status för videoenhet</String>
+	<String ID="RuleSumConfigController" loc.comment="Testing rule name seen in WPDC">Konfiguration av styrenhet</String>
+	<String ID="RuleSumConfigCooling" loc.comment="Testing rule name seen in WPDC">Konfiguration av kylning</String>
+	<String ID="RuleSumConfigInput" loc.comment="Testing rule name seen in WPDC">Konfiguration av indata</String>
+	<String ID="RuleSumConfigStorage" loc.comment="Testing rule name seen in WPDC">Konfiguration av lagringsenhet</String>
+	<String ID="RuleSumConfigMemory" loc.comment="Testing rule name seen in WPDC">Konfiguration av minnesenhet</String>
+	<String ID="RuleSumConfigMotherboard" loc.comment="Testing rule name seen in WPDC">Konfiguration av moderkortsenhet</String>
+	<String ID="RuleSumConfigNetwork" loc.comment="Testing rule name seen in WPDC">Konfiguration av nätverk</String>
+	<String ID="RuleSumConfigPlugAndPlay" loc.comment="Testing rule name seen in WPDC">Konfiguration av PlugAndPlay-enhet</String>
+	<String ID="RuleSumConfigPort" loc.comment="Testing rule name seen in WPDC">Konfiguration av portenhet</String>
+	<String ID="RuleSumConfigPower" loc.comment="Testing rule name seen in WPDC">Konfiguration av strömförsörjningsenhet</String>
+	<String ID="RuleSumConfigPrinting" loc.comment="Testing rule name seen in WPDC">Konfiguration av utskriftsenhet</String>
+	<String ID="RuleSumConfigVideo" loc.comment="Testing rule name seen in WPDC">Konfiguration av videoenhet</String>
+	<String ID="RuleSumStatusController" loc.comment="Testing rule name seen in WPDC">Status för styrenhet</String>
+	<String ID="RuleSumStatusCooling" loc.comment="Testing rule name seen in WPDC">Status för kylning</String>
+	<String ID="RuleSumStatusInput" loc.comment="Testing rule name seen in WPDC">Status för indata</String>
+	<String ID="RuleSumStatusStorage" loc.comment="Testing rule name seen in WPDC">Status för lagringsenhet</String>
+	<String ID="RuleSumStatusMemory" loc.comment="Testing rule name seen in WPDC">Status för minnesenhet</String>
+	<String ID="RuleSumStatusMotherboard" loc.comment="Testing rule name seen in WPDC">Status för moderkortsenhet</String>
+	<String ID="RuleSumStatusNetwork" loc.comment="Testing rule name seen in WPDC">Status för nätverk</String>
+	<String ID="RuleSumStatusPlugAndPlay" loc.comment="Testing rule name seen in WPDC">Status för Plug and Play-enhet</String>
+	<String ID="RuleSumStatusPort" loc.comment="Testing rule name seen in WPDC">Status för portenhet</String>
+	<String ID="RuleSumStatusPower" loc.comment="Testing rule name seen in WPDC">Status för strömförsörjningsenhet</String>
+	<String ID="RuleSumStatusPrinting" loc.comment="Testing rule name seen in WPDC">Status för utskriftsenhet</String>
+	<String ID="RuleSumStatusVideo" loc.comment="Testing rule name seen in WPDC">Status för videoenhet</String>
+	<String ID="LOC_SummaryGroupHwOnlyDesc" loc.comment="Rule summary table description of this group">Kontroller av maskinvaruenheter och drivrutiner</String>
+	<String ID="LOC_SummaryHwOnlyDesc" loc.comment="Rule summary table description of this group">Undersökning av enheter som stöds av Windows Management-infrastrukturen.</String>
+	<String ID="LOC_RuleSumConfigController" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av styrenhet</String>
+	<String ID="LOC_RuleSumConfigCooling" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av kylning</String>
+	<String ID="LOC_RuleSumConfigInput" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av indata</String>
+	<String ID="LOC_RuleSumConfigStorage" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av lagringsenhet</String>
+	<String ID="LOC_RuleSumConfigMemory" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av minnesenhet</String>
+	<String ID="LOC_RuleSumConfigMotherboard" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av moderkortsenhet</String>
+	<String ID="LOC_RuleSumConfigNetwork" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av nätverk</String>
+	<String ID="LOC_RuleSumConfigPlugAndPlay" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av Plug and Play-enhet</String>
+	<String ID="LOC_RuleSumConfigPort" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av portenhet</String>
+	<String ID="LOC_RuleSumConfigPower" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av strömförsörjningsenhet</String>
+	<String ID="LOC_RuleSumConfigPrinting" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av utskriftsenhet</String>
+	<String ID="LOC_RuleSumConfigVideo" loc.comment="Label for rule in Basic System Checks summary table">Konfiguration av videoenhet</String>
+	<String ID="LOC_RuleSumStatusController" loc.comment="Label for rule in Basic System Checks summary table">Status för styrenhet</String>
+	<String ID="LOC_RuleSumStatusCooling" loc.comment="Label for rule in Basic System Checks summary table">Status för kylning</String>
+	<String ID="LOC_RuleSumStatusInput" loc.comment="Label for rule in Basic System Checks summary table">Status för indata</String>
+	<String ID="LOC_RuleSumStatusStorage" loc.comment="Label for rule in Basic System Checks summary table">Status för lagringsenhet</String>
+	<String ID="LOC_RuleSumStatusMemory" loc.comment="Label for rule in Basic System Checks summary table">Status för minnesenhet</String>
+	<String ID="LOC_RuleSumStatusMotherboard" loc.comment="Label for rule in Basic System Checks summary table">Status för moderkortsenhet</String>
+	<String ID="LOC_RuleSumStatusNetwork" loc.comment="Label for rule in Basic System Checks summary table">Status för nätverk</String>
+	<String ID="LOC_RuleSumStatusPlugAndPlay" loc.comment="Label for rule in Basic System Checks summary table">Status för Plug and Play-enhet</String>
+	<String ID="LOC_RuleSumStatusPort" loc.comment="Label for rule in Basic System Checks summary table">Status för portenhet</String>
+	<String ID="LOC_RuleSumStatusPower" loc.comment="Label for rule in Basic System Checks summary table">Status för strömförsörjningsenhet</String>
+	<String ID="LOC_RuleSumStatusPrinting" loc.comment="Label for rule in Basic System Checks summary table">Status för utskriftsenhet</String>
+	<String ID="LOC_RuleSumStatusVideo" loc.comment="Label for rule in Basic System Checks summary table">Status för videoenhet</String>
+	<String ID="LOC_SummaryInfoController" loc.comment="Rule summary child item seen in report">Styrenheter.</String>
+	<String ID="LOC_SummaryInfoCooling" loc.comment="Rule summary child item seen in report">Kylningsenheter.</String>
+	<String ID="LOC_SummaryInfoInput" loc.comment="Rule summary child item seen in report">Indataenheter.</String>
+	<String ID="LOC_SummaryInfoStorage" loc.comment="Rule summary child item seen in report">Lagringsenheter.</String>
+	<String ID="LOC_SummaryInfoMemory" loc.comment="Rule summary child item seen in report">Minnesenheter.</String>
+	<String ID="LOC_SummaryInfoMotherboard" loc.comment="Rule summary child item seen in report">Moderkortsenheter.</String>
+	<String ID="LOC_SummaryInfoNetwork" loc.comment="Rule summary child item seen in report">Nätverksenheter.</String>
+	<String ID="LOC_SummaryInfoPlugAndPlay" loc.comment="Rule summary child item seen in report">PlugAndPlay-enheter.</String>
+	<String ID="LOC_SummaryInfoPort" loc.comment="Rule summary child item seen in report">Portenheter.</String>
+	<String ID="LOC_SummaryInfoPower" loc.comment="Rule summary child item seen in report">Strömförsörjningsenheter.</String>
+	<String ID="LOC_SummaryInfoPrinting" loc.comment="Rule summary child item seen in report">Utskriftsenheter.</String>
+	<String ID="LOC_SummaryInfoVideo" loc.comment="Rule summary child item seen in report">Videoenheter.</String>
+	<String ID="RuleDocConfigErrCode" loc.comment="Replacement rule name seen in WPDC">Felkoder för Dokumentkonfigurationshanteraren</String>
+	<String ID="NotePlugAndPlayTable" loc.comment="Mark Plug and Play table with static comment.">WMI-klassen Win32_PnPEntity motsvarar egenskaperna för en Plug and Play-enhet. Plug and Play-enheter visas som poster i Enhetshanteraren på Kontrollpanelen. Läs Microsofts onlinedokumentation för enskilda fältbeskrivningar för varje enhet nedan.</String>
+	<String ID="LOC_Failed" loc.comment="Text to display when a rule or group of rules failed">Misslyckades</String>
+	<String ID="LOC_Passed" loc.comment="Text to display when a rule or group of rules passed">Godkänd</String>
+	<String ID="WarnConfig10_symptom" loc.comment="Symptom string for warning message: WarnConfig10">{warnerror}</String>
+	<String ID="WarnConfig10_cause" loc.comment="Cause string for warning message: WarnConfig10">Det finns ett konfigurationsproblem för en enhet som förhindrar att den startas korrekt.</String>
+	<String ID="WarnConfig10_details" loc.comment="Details string for warning message: WarnConfig10">Enheten, {warndescrip}, kan inte startas korrekt. Detta kan bero på att fel drivrutin är installerad eller på ett maskinvarufel. Plug and Play-ID:t för enheten är {warndeviceid}</String>
+	<String ID="WarnConfig10_res1" loc.comment="Resolution string for warning message: WarnConfig10">1. Kontrollera att rätt drivrutin är installerad.</String>
+	<String ID="WarnConfig10_res2" loc.comment="Resolution string for warning message: WarnConfig10">2. Försök uppdatera drivrutinerna med Windows Update.</String>
+	<String ID="WarnConfig10_res3" loc.comment="Resolution string for warning message: WarnConfig10">3. Kontakta tillverkaren och kontrollera om det finns en uppdaterad drivrutin.</String>
+	<String ID="WarnConfig10_res4" loc.comment="Resolution string for warning message: WarnConfig10">4. Försök avinstallera och sedan installera om enheten i Enhetshanteraren.</String>
+	<String ID="WarnConfig10_related1" loc.comment="First resolution detail string for warning message: WarnConfig10">Förklaring av felkoder som orsakas av Enhetshanteraren</String>
+	<String ID="WarnConfig10_related2" loc.comment="Second resolution detail string for warning message: WarnConfig10">Hantera enheter i Windows</String>
+	<String ID="WarnConfig22_symptom" loc.comment="Symptom string for warning message: WarnConfig22">{warnerror}</String>
+	<String ID="WarnConfig22_cause" loc.comment="Cause string for warning message: WarnConfig22">En enhet har inaktiverats och fungerar därför inte.</String>
+	<String ID="WarnConfig22_details" loc.comment="Details string for warning message: WarnConfig22">Enheten, {warndescrip}, har inaktiverats. Om enheten inte används kan den ha inaktiverats medvetet. Plug and Play-ID:t för enheten är {warndeviceid}</String>
+	<String ID="WarnConfig22_res1" loc.comment="Resolution string for warning message: WarnConfig22">1. Kontrollera om du behöver använda enheten.</String>
+	<String ID="WarnConfig22_res2" loc.comment="Resolution string for warning message: WarnConfig22">2. Om du behöver enheten aktiverar du den i Enhetshanteraren.</String>
+	<String ID="WarnConfig22_res3" loc.comment="Resolution string for warning message: WarnConfig22">3. Om du inte behöver enheten kan du låta den vara inaktiverad.</String>
+	<String ID="WarnConfig22_related1" loc.comment="First resolution detail string for warning message: WarnConfig22">Förklaring av felkoder som orsakas av Enhetshanteraren</String>
+	<String ID="WarnConfig22_related2" loc.comment="Second resolution detail string for warning message: WarnConfig22">Hantera enheter i Windows</String>
+	<String ID="WarnConfig28_symptom" loc.comment="Symptom string for warning message: WarnConfig28">{warnerror}</String>
+	<String ID="WarnConfig28_cause" loc.comment="Cause string for warning message: WarnConfig28">Ingen drivrutin har installerats för enheten vilket gör att den inte fungerar.</String>
+	<String ID="WarnConfig28_details" loc.comment="Details string for warning message: WarnConfig28">Drivrutinen för {warndescrip} har inte installerats. Enheten blir tillgänglig när rätt drivrutin för enheten installeras.</String>
+	<String ID="WarnConfig28_res1" loc.comment="Resolution string for warning message: WarnConfig28">1. Försök installera drivrutinerna med Windows Update.</String>
+	<String ID="WarnConfig28_res2" loc.comment="Resolution string for warning message: WarnConfig28">2. Installera drivrutinerna på det installationsmedium som medföljde enheten.</String>
+	<String ID="WarnConfig28_res3" loc.comment="Resolution string for warning message: WarnConfig28">3. Kontakta tillverkaren och kontrollera om det finns en uppdaterad drivrutin.</String>
+	<String ID="WarnConfig28_related1" loc.comment="First resolution detail string for warning message: WarnConfig28">Förklaring av felkoder som orsakas av Enhetshanteraren</String>
+	<String ID="WarnConfigGeneric_symptom" loc.comment="Symptom string for warning message: WarnConfigGeneric">{warnerror}</String>
+	<String ID="WarnConfigGeneric_cause" loc.comment="Cause string for warning message: WarnConfigGeneric">Det finns ett konfigurationsproblem för en enhet som förhindrar att den startas korrekt.</String>
+	<String ID="WarnConfigGeneric_details" loc.comment="Details string for warning message: WarnConfigGeneric">Enheten, {warndescrip}, rapporterar {warnerror}. Enheten blir tillgänglig när problemet har lösts. Plug and Play-ID:t för enheten är {warndeviceid}</String>
+	<String ID="WarnConfigGeneric_res1" loc.comment="Resolution string for warning message: WarnConfigGeneric">1. Kontrollera att rätt drivrutin är installerad.</String>
+	<String ID="WarnConfigGeneric_res2" loc.comment="Resolution string for warning message: WarnConfigGeneric">2. Försök uppdatera drivrutinerna med Windows Update.</String>
+	<String ID="WarnConfigGeneric_res3" loc.comment="Resolution string for warning message: WarnConfigGeneric">3. Kontakta tillverkaren och kontrollera om det finns en uppdaterad drivrutin.</String>
+	<String ID="WarnConfigGeneric_res4" loc.comment="Resolution string for warning message: WarnConfigGeneric">4. Försök avinstallera och därefter installera om enheten i Enhetshanteraren.</String>
+	<String ID="WarnConfigGeneric_related1" loc.comment="First resolution detail string for warning message: WarnConfigGeneric">Förklaring av felkoder som orsakas av Enhetshanteraren</String>
+	<String ID="WarnConfigGeneric_related2" loc.comment="Second resolution detail string for warning message: WarnConfigGeneric">Hantera enheter i Windows</String>
+	<String ID="WarnStatusGeneric_symptom" loc.comment="Symptom string for warning message: WarnStatusGeneric">{warnerror}</String>
+	<String ID="WarnStatusGeneric_cause" loc.comment="Cause string for warning message: WarnStatusGeneric">Felstatus rapporteras för en enhet.</String>
+	<String ID="WarnStatusGeneric_details" loc.comment="Details string for warning message: WarnStatusGeneric">Enheten, {warndescrip}, rapporterar ett felstatusvärde. Enheten blir tillgänglig när problemet har lösts. Plug and Play-ID:t för enheten är {warndeviceid}</String>
+	<String ID="WarnStatusGeneric_res1" loc.comment="Resolution string for warning message: WarnStatusGeneric">1. Kontrollera att rätt drivrutin är installerad.</String>
+	<String ID="WarnStatusGeneric_res2" loc.comment="Resolution string for warning message: WarnStatusGeneric">2. Försök uppdatera drivrutinerna med Windows Update.</String>
+	<String ID="WarnStatusGeneric_res3" loc.comment="Resolution string for warning message: WarnStatusGeneric">3. Kontakta tillverkaren och kontrollera om det finns en uppdaterad drivrutin.</String>
+	<String ID="WarnStatusGeneric_res4" loc.comment="Resolution string for warning message: WarnStatusGeneric">4. Försök avinstallera och därefter installera om enheten i Enhetshanteraren.</String>
+	<String ID="WarnStatusGeneric_related1" loc.comment="First resolution detail string for warning message: WarnStatusGeneric">Förklaring av felkoder som orsakas av Enhetshanteraren</String>
+	<String ID="WarnStatusGeneric_related2" loc.comment="Second resolution detail string for warning message: WarnStatusGeneric">Hantera enheter i Windows</String>
+</StringTable>

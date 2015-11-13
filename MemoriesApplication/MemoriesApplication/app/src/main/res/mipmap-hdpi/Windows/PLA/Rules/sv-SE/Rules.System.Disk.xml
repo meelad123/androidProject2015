@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="Warning" loc.comment="Only used in WDC Console">Varning</String>
+	<String ID="Information" loc.comment="Only used in WDC Console">Information</String>
+	<String ID="GroupDisk">Disk</String>
+	<String ID="RuleDiskAvgSec">Högt diskgenomsnitt per sekund</String>
+	<String ID="RuleSplit">Stort antal I/O-delningar</String>
+	<String ID="LOC_SplitWarning" loc.comment="Warning when high split I/O found using Performance counters">Ett stort antal, {split} I/O-delningar per sekund identifierades. Detta motsvarar {splitpercent} procent av det totala antalet I/O-processer. Betrakta I/O-processernas storlek i förhållande till diskstorleken och defragmentera eller formatera om de diskar som har en hög I/O-delningsfrekvens.</String>
+	<String ID="RuleNTFSInsert" loc.comment="Name of rule that inserts ntfs performance sections and tables seen in WPDC">Infoga konfigurationstabellen i den slutgiltiga rapporten</String>
+	<String ID="RuleCheckQueueLength" loc.comment="Name of rule that checks the disk queue length seen in WPDC">Diskkölängd</String>
+	<String ID="LOC_AvgDiskQueueLength" loc.comment="Warning seen in report">Genomsnittlig diskkölängd är {queuelength}. Disken har kanske nått sin högsta överföringskapacitet på grund av dataflöden och disksökningar</String>
+	<String ID="LinkDiskDiagnosis">Diskdiagnos</String>
+</StringTable>

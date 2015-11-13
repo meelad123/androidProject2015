@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="PassiveConnection">Inkluderar aktiva och passiva anslutningar</String>
+	<String ID="AccSinceBoot">Ackumulerade sedan start</String>
+	<String ID="GroupNetwork">Nätverk</String>
+	<String ID="RuleDisplay">Visningsnivå för nätverk</String>
+	<String ID="RuleHideCtrs">Dölj kommentarräknare</String>
+</StringTable>

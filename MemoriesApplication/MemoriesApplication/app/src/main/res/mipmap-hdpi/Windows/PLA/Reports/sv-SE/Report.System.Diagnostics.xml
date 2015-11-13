@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="tv_TrueString" loc.comment="Text value of TRUE">Sant</String>
+	<String ID="tv_FalseString" loc.comment="Text value of FALSE">Falskt</String>
+	<String ID="state" loc.comment="Custom Service Table column headers">Tillstånd</String>
+	<String ID="servicename" loc.comment="Custom Service Table column headers">Tjänst</String>
+	<String ID="displayname" loc.comment="Custom Service Table column headers">Visningsnamn</String>
+	<String ID="pathname" loc.comment="Custom Service Table column headers">Sökväg</String>
+	<String ID="servicespecificexitcode" loc.comment="Custom Service Table column headers">Tjänstkod</String>
+	<String ID="started" loc.comment="Custom Service Table column headers">Startad</String>
+	<String ID="scname" loc.comment="Custom Service Table column headers">Tjänstnamn</String>
+	<String ID="exitcode" loc.comment="Custom Service Table column headers">Slutkod</String>
+	<String ID="SectionSoftwareConfig">Programvarukonfiguration</String>
+	<String ID="TopicServicesChecks" loc.comment="Title of topic which displays System Services Details">Systemtjänster</String>
+	<String ID="TopicSecurityCenter" loc.comment="Title of topic which displays Security Center Information">Information från Säkerhetscenter</String>
+	<String ID="TopicOsChecks" loc.comment="Title of topic which displays System OS Details">Kontroller av operativsystem</String>
+	<String ID="TableBasicWURegistry" loc.comment="Title for table with WU Registry Keys">Inställningar för Windows Update</String>
+	<String ID="TableBasicService" loc.comment="Title for table of System services">Systemtjänster</String>
+	<String ID="TableBasicSMART" loc.comment="Title for table with SMART Disk Status">Status för SMART Disk</String>
+	<String ID="TableBasicProcessor" loc.comment="Title for table of Processor configuration">Processorinformation</String>
+	<String ID="TableBasicOperatingSystem" loc.comment="Title for table of Operating System configuration">Information om operativsystemet</String>
+	<String ID="TableBasicLUARegistry" loc.comment="Title for table with LUA Registry Keys">Inställningar för User Account Control</String>
+	<String ID="TableBasicFirewallProduct" loc.comment="Title for table with Firewall Product information">Information om brandvägg</String>
+	<String ID="TableBasicDirty" loc.comment="Title for table with Logical Disk Dirty Bit Status">Flaggan Dirty är angiven för en logisk disk</String>
+	<String ID="TableBasicAntiVirusProduct" loc.comment="Title for table with Anti-Virus Product information">Information om antivirusprogram</String>
+	<String ID="TableBasicAntiSpywareProduct" loc.comment="Title for table with Anti-Spyware Product information">Information om antispionprogram</String>
+	<String ID="TableBasicAbnormallyStoppedServices" loc.comment="Title for table of Abnormally Stoped System services">Felaktigt stoppade systemtjänster</String>
+	<String ID="alltests" loc.comment="Title for Rules Summary Table">Grundläggande systemkontroller</String>
+	<String ID="alltestdesc" loc.comment="Title for Rules Summary Group Description Column">Beskrivning</String>
+	<String ID="alltestgroups" loc.comment="Title for Rules Summary Group Name Column">Tester</String>
+	<String ID="allteststatus" loc.comment="Title for Rules Summary Group Resuls Column">Resultat</String>
+	<String ID="allchildfail" loc.comment="Title for Rules Summary Group Child Failed Count Column">Misslyckades</String>
+	<String ID="allchilddesc" loc.comment="Title for Rules Summary Group Child Result Description Column">Beskrivning</String>
+	<String ID="allchildtest" loc.comment="Title for Rules Summary Group Child Test Description Column">Testgrupper</String>
+	<String ID="allchildtotal" loc.comment="Title for Rules Summary Group Child Total Test Count Column">Tester</String>
+	<String ID="TopicDiskChecks" loc.comment="Title of topic in Report">Kontroller av diskar</String>
+	<String ID="TopicHwDetails" loc.comment="Title of topic in Report">Information om maskinvara</String>
+	<String ID="TopicDesktopRating" loc.comment="Title of topic in Report">Klassificering av Skrivbordet</String>
+	<String ID="TopicStartupPrograms" loc.comment="Title of topic in Report">Startprogram</String>
+	<String ID="TablePerfInteractiveSessionProcess" loc.comment="Table name for the interactive session processes not seen in report">Interaktiva sessionsprocesser</String>
+	<String ID="TablePerfInteractiveSession" loc.comment="Table name for the interactive sessions not seen in report">Interaktiva sessioner</String>
+	<String ID="TablePerfProcess" loc.comment="Table name for processes not seen in report">Processer</String>
+	<String ID="TablePerfLoggedOnUsers" loc.comment="Table name for logged on users not seen in report">Inloggade användare</String>
+	<String ID="TablePerfUserAccounts" loc.comment="Table name for local machine accounts not seen in report">Användarkonton</String>
+	<String ID="TablePerfStartupPrograms" loc.comment="Table name for startup folder programs not seen in report">Fler startprogram</String>
+	<String ID="TablePerfStartupRegistry" loc.comment="Table name for startup registry programs not seen in report">Startprogram</String>
+	<String ID="TablePerfDiskRegistry" loc.comment="Table name for disk registry settings seen in report">Diskinställningar</String>
+	<String ID="TablePerfDesktopRating" loc.comment="Table name for desktop rating seen in report">Klassificering av Skrivbordet</String>
+	<String ID="TableInterProc" loc.comment="Table name for interactive user processes seen in report">Interaktiva processer</String>
+	<String ID="TableStartup" loc.comment="Table name for all startup applications seen in report">Startprogram</String>
+	<String ID="HeaderProcName" loc.comment="Header for process seen in report">Processnamn</String>
+	<String ID="HeaderUserName" loc.comment="Header for user name seen in report">Användarnamn</String>
+	<String ID="HeaderStartupItem" loc.comment="Header for startup application name seen in report">Startobjekt</String>
+	<String ID="HeaderCommand" loc.comment="Header for startup application command seen in report">Kommando</String>
+	<String ID="version" loc.comment="Header for application/device/driver/service/policy version seen in report">Version</String>
+	<String ID="name" loc.comment="Header for application/device/driver/service/policy name seen in report">Namn</String>
+	<String ID="Service" loc.comment="Header for service responsiveness issues seen in report">Tjänst</String>
+	<String ID="Memory" loc.comment="Header for memory responsiveness issues seen in report">Minne</String>
+	<String ID="File" loc.comment="Header for file responsiveness issues seen in report">Fil</String>
+	<String ID="Driver" loc.comment="Header for driver responsiveness issues seen in report">Drivrutin</String>
+	<String ID="Device" loc.comment="Header for device responsiveness issues seen in report">Enhet</String>
+	<String ID="Application" loc.comment="Header for application responsiveness issues seen in report">Program</String>
+</StringTable>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="GroupWirelessNetwork" loc.comment="Wireless Network Repro The Problem Rule Group">Felsökare för trådlöst nätverk</String>
+	<String ID="RuleInsertWirelessNetworkTables" loc.comment="Rule to insert Wireless Network Repro The Problem tables.">Infoga tabeller för felsökning av trådlöst nätverk</String>
+	<String ID="RuleCreateRegistryWirelessAdapterTable" loc.comment="Rule to create table of adapter information from the registry information">Skapa tabell för trådlöst nätverkskort i registret</String>
+	<String ID="RuleCreateWirelessConnectionAttemptTable" loc.comment="Rule to create table of wireless network connection attempts">Skapa tabell för anslutningsförsök för trådlöst nätverk</String>
+	<String ID="RuleNetworkWirelessSetup" loc.comment="Rule to create summary table for Wireless Network rules">Skapa tabell med sammanfattning för trådlösa nätverk</String>
+	<String ID="RuleDisabledWirelessAdaptersCheck" loc.comment="Rule to check that wireless adapters listed in the registry are enabled">Sök efter aktiverade trådlösa nätverkskort</String>
+	<String ID="RuleWirelessServiceCheck" loc.comment="Rule to check the state of the wireless auto-configuration service">Sök efter tjänsten Wireless Auto-Configuration</String>
+	<String ID="LOC_WlanSvcStopped" loc.comment="Text to denote the Wireless Auto-Configuration Service has been stopped while the manifest is running">Stoppad</String>
+	<String ID="RuleConnectionAttemptsCheck" loc.comment="Rule to check the various connection attempts made by the user">Kontrollera anslutningsförsök för trådlöst nätverk</String>
+	<String ID="RuleNetworkWirelessSummary" loc.comment="Rule to summarize summary table for Wireless Network rules">Sammanfatta tabell med information om trådlöst nätverk</String>
+	<String ID="RuleWirelessNetworkCleanup" loc.comment="Name of Rules to cleanup Wireless Network report">Rensning för trådlöst nätverk</String>
+	<String ID="RuleInformationListInsert" loc.comment="Name of rule to insert summary table">Infoga informationslista</String>
+	<String ID="RuleAddWarningTable" loc.comment="Marked as not seen anywhere">Skapa lista med toppvarningar</String>
+	<String ID="RuleSlimServicesTable" loc.comment="Only used in WDC Console">Omvandla tjänster till noder</String>
+	<String ID="RuleNoteErrorCodes" loc.comment="Name of rule to change File error codes into descriptions">Omvandla felkoder till beskrivningar</String>
+	<String ID="RuleFileHyper" loc.comment="Name of rule to insert a link to Files collected using PLA">Infoga en fil till en länk</String>
+	<String ID="LOC_DescNetworkWirelessSummary" loc.comment="Description of the Wireless Network Summary Group in Rules Summary Table">Felsökarlogik som har att göra med det trådlösa nätverkets tillstånd</String>
+	<String ID="LOC_TableNetworkWirelessSummary" loc.comment="Title of Network Wireless Summary Group in Rules Summary Table">Kontroller för trådlösa nätverk</String>
+	<String ID="LOC_RuleDisabledWirelessAdaptersCheck" loc.comment="Rule to check that wireless adapters listed in the registry are enabled">Sökning efter trådlösa nätverkskort</String>
+	<String ID="LOC_RuleWirelessServiceCheck" loc.comment="Rule to check the state of the wireless auto-configuration service">Sökning efter tjänsten Wireless Auto-Configuration</String>
+	<String ID="LOC_RuleConnectionAttemptsCheck" loc.comment="Rule to check the various connection attempts made by the user">Kontroll för anslutningsförsök för trådlöst nätverk</String>
+	<String ID="LOC_Failed" loc.comment="Text to display when a rule or group of rules failed">Misslyckades</String>
+	<String ID="LOC_Passed" loc.comment="Text to display when a rule or group of rules passed">Lyckades</String>
+	<String ID="LOC_TrueString" loc.comment="Text value of TRUE">Sant</String>
+	<String ID="LOC_FalseString" loc.comment="Text value of FALSE">Falskt</String>
+	<String ID="LOC_CredProviderFileName" loc.comment="Name of file with config info">Providers för autentiseringsuppgifter</String>
+	<String ID="LOC_CredProviderFilterFileName" loc.comment="Name of file with config info">Filter för providers för autentiseringsuppgifter</String>
+	<String ID="LOC_WinlogonFileName" loc.comment="Name of file with config info">Prenumeranter på meddelanden från Winlogon</String>
+	<String ID="LOC_WlanAPIFileName" loc.comment="Name of file with config info">WLAN API-behörigheter</String>
+	<String ID="LOC_WirelessGPFileName" loc.comment="Name of file with config info">Trådlös grupprincip</String>
+	<String ID="LOC_EnvironmentInfoFileName" loc.comment="Name of file with config info">Miljöinformation</String>
+	<String ID="LOC_PathNotFound" loc.comment="Text to display when File path is not found">Det går inte att hitta den angivna sökvägen.</String>
+	<String ID="LOC_Success" loc.comment="Text to display when File operation succeeds">Lyckades</String>
+	<String ID="NoteCode0" loc.comment="Text to display in note related to Open File result code 0x0">Kod 0x0</String>
+	<String ID="NoteServiceProperlyStopped0" loc.comment="Report service table comment">Tjänsten är stoppad och avslutningskoden är 0(normal avslutning). {summary}</String>
+	<String ID="NoteServiceProperlyStopped1077" loc.comment="Report service table comment">Tjänsten är stoppad och avslutningskoden är 1077 (normal avslutning). {summary}</String>
+	<String ID="NoteServiceRunning" loc.comment="Report service table comment">Tjänsten körs. {summary}</String>
+	<String ID="NoteCode80070003" loc.comment="Text to display in note related to Open File result code 0x80070003">Kod 0x8007003</String>
+	<String ID="WarnFailWirelessAdapterCheck_symptom" loc.comment="Symptom string for warning message: WarnFailWirelessAdapterCheck">Ett trådlöst nätverkskort är inaktiverat på datorn.</String>
+	<String ID="WarnFailWirelessAdapterCheck_cause" loc.comment="Cause string for warning message: WarnFailWirelessAdapterCheck">Ett trådlöst nätverkskort på datorn är inaktiverat.</String>
+	<String ID="WarnFailWirelessAdapterCheck_details" loc.comment="Details string for warning message: WarnFailWirelessAdapterCheck">Det trådlösa nätverkskortet {adaptername} är inaktiverat.</String>
+	<String ID="WarnFailWirelessAdapterCheck_res1" loc.comment="Resolution string for warning message: WarnFailWirelessAdapterCheck">Be användaren starta Enhetshanteraren.</String>
+	<String ID="WarnFailWirelessAdapterCheck_res2" loc.comment="Resolution string for warning message: WarnFailWirelessAdapterCheck">Hitta och aktivera {adaptername}.</String>
+	<String ID="WarnFailNoWirelessAdapterEnabled_symptom" loc.comment="Symptom string for warning message: WarnFailNoWirelessAdapterEnabled">Alla trådlösa nätverkskort på systemet är inaktiverade.</String>
+	<String ID="WarnFailNoWirelessAdapterEnabled_cause" loc.comment="Cause string for warning message: WarnFailNoWirelessAdapterEnabled">Inga trådlösa nätverkskort på datorn är aktiverade.</String>
+	<String ID="WarnFailNoWirelessAdapterEnabled_details" loc.comment="Details string for warning message: WarnFailNoWirelessAdapterEnabled">Det trådlösa nätverkskortet {adaptername} är inaktiverat.</String>
+	<String ID="WarnFailNoWirelessAdapterEnabled_res1" loc.comment="Resolution string for warning message: WarnFailNoWirelessAdapterEnabled">Be användaren starta Enhetshanteraren.</String>
+	<String ID="WarnFailNoWirelessAdapterEnabled_res2" loc.comment="Resolution string for warning message: WarnFailNoWirelessAdapterEnabled">Hitta och aktivera ett trådlöst nätverkskort, t.ex. med namnet {adaptername}.</String>
+	<String ID="WarnFailCheckWirelessServiceAbnormallyStopped_symptom" loc.comment="Symptom string for warning message: WarnFailCheckWirelessServiceAbnormallyStopped">Tjänsten Wireless Auto-Configuration har stoppats oväntat.</String>
+	<String ID="WarnFailCheckWirelessServiceAbnormallyStopped_cause" loc.comment="Cause string for warning message: WarnFailCheckWirelessServiceAbnormallyStopped">Programfel. Slutkod: {exitcode}.</String>
+	<String ID="WarnFailCheckWirelessServiceAbnormallyStopped_res1" loc.comment="Resolution string for warning message: WarnFailCheckWirelessServiceAbnormallyStopped">Starta om tjänsten Wireless Auto-Configuration</String>
+	<String ID="WarnFailCheckWirelessServiceNotRunning_symptom" loc.comment="Symptom string for warning message: WarnFailCheckWirelessServiceNotRunning">Tjänsten Wireless Auto-Configuration körs inte.</String>
+	<String ID="WarnFailCheckWirelessServiceNotRunning_cause" loc.comment="Cause string for warning message: WarnFailCheckWirelessServiceNotRunning">Användaren eller ett program har försatt tjänsten i tillståndet {state}.</String>
+	<String ID="WarnFailCheckWirelessServiceNotRunning_res1" loc.comment="Resolution string for warning message: WarnFailCheckWirelessServiceNotRunning">Starta om tjänsten Wireless Auto-Configuration.</String>
+	<String ID="WarnFailServiceNotFound_symptom" loc.comment="Symptom string for warning message: WarnFailServiceNotFound">Tjänsten {servicename} verkar inte vara installerad.</String>
+	<String ID="WarnFailServiceNotFound_cause" loc.comment="Cause string for warning message: WarnFailServiceNotFound">Tjänsten är inte registrerad på datorn.</String>
+	<String ID="WarnFailServiceNotFound_res1" loc.comment="Resolution string for warning message: WarnFailServiceNotFound">Registrera tjänsten på datorn.</String>
+	<String ID="WarnFailWirelessConnection_symptom" loc.comment="Symptom string for warning message: WarnFailWirelessConnection">Användaren kunde inte ansluta till det önskade trådlösa nätverket.</String>
+	<String ID="WarnFailWirelessConnection_cause" loc.comment="Cause string for warning message: WarnFailWirelessConnection">Orsaken till att det senaste anslutningsförsöket till ett trådlöst nätverk misslyckades är: {failurereason}.</String>
+	<String ID="WarnFailWirelessConnection_details" loc.comment="Details string for warning message: WarnFailWirelessConnection">Användaren försökte ansluta till ett trådlöst nätverk med SSID: {ssid}</String>
+	<String ID="WarnFailWirelessConnection_res1" loc.comment="Resolution string for warning message: WarnFailWirelessConnection">Kontrollera att både det trådlösa nätverkskortet och den trådlösa åtkomstpunkten använder samma version av protokollet 802.11.</String>
+	<String ID="WarnFailWirelessConnection_res2" loc.comment="Resolution string for warning message: WarnFailWirelessConnection">Kontrollera även att det trådlösa nätverkskortet och den trådlösa åtkomstpunkten använder samma krypteringsmetod.</String>
+	<String ID="WarnWirelessConnectionSuccess_symptom" loc.comment="Symptom string for warning message: WarnWirelessConnectionSuccess">Användaren har anslutit till ett trådlöst nätverk.</String>
+	<String ID="WarnWirelessConnectionSuccess_cause" loc.comment="Cause string for warning message: WarnWirelessConnectionSuccess">Det senaste försöket att ansluta till ett trådlöst nätverk lyckades.</String>
+	<String ID="WarnWirelessConnectionSuccess_details" loc.comment="Details string for warning message: WarnWirelessConnectionSuccess">Användaren har anslutit till ett trådlöst nätverk med följande SSID: {ssid}</String>
+	<String ID="WarnWirelessConnectionSuccess_res1" loc.comment="Resolution string for warning message: WarnWirelessConnectionSuccess">Ingen matchning krävs.</String>
+	<String ID="WarnWirelessConnectionDisconnect_symptom" loc.comment="Symptom string for warning message: WarnWirelessConnectionDisconnect">Användaren kopplade från ett trådlöst nätverk.</String>
+	<String ID="WarnWirelessConnectionDisconnect_cause" loc.comment="Cause string for warning message: WarnWirelessConnectionDisconnect">Tjänsten Wireless Auto-Configuration loggade en händelse som anger att användaren kopplade från ett trådlöst nätverk.</String>
+	<String ID="WarnWirelessConnectionDisconnect_details" loc.comment="Details string for warning message: WarnWirelessConnectionDisconnect">Användaren kopplade från ett trådlöst nätverk med följande SSID: {ssid}.</String>
+	<String ID="WarnWirelessConnectionDisconnect_res1" loc.comment="Resolution string for warning message: WarnWirelessConnectionDisconnect">Öppna Nätverkscenter och försök ansluta till det trådlösa nätverk som har följande SSID: {ssid}.</String>
+	<String ID="WarnWirelessConnectionIncomplete_symptom" loc.comment="Symptom string for warning message: WarnWirelessConnectionIncomplete">Användaren kunde inte ansluta till det önskade trådlösa nätverket.</String>
+	<String ID="WarnWirelessConnectionIncomplete_cause" loc.comment="Cause string for warning message: WarnWirelessConnectionIncomplete">Anslutningsförsöket stoppades under följande steg:{wirelessconnectionstep}.</String>
+	<String ID="WarnWirelessConnectionIncomplete_details" loc.comment="Details string for warning message: WarnWirelessConnectionIncomplete">Användaren försökte ansluta till ett trådlöst nätverk med SSID: {ssid}</String>
+	<String ID="WarnWirelessConnectionIncomplete_res1" loc.comment="Resolution string for warning message: WarnWirelessConnectionIncomplete">Försök åter ansluta till det trådlösa nätverk som har SSID: {ssid} och acceptera alla frågor som visas.</String>
+</StringTable>

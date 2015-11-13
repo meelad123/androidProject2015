@@ -1,0 +1,426 @@
+;/*++
+;
+;Copyright (c) 2013, Marvell International Ltd. All Rights Reserved.
+;
+;Module Name:
+;
+;    mrvlpcie8897.INF
+;
+;Abstract:
+;    INF file for installing Marvell PCIE Wireless LAN driver
+;
+;--*/
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = NET
+ClassGuid   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %ProviderName%
+CatalogFile = mrvlpcie8897.cat     ; Rename as appropriate
+DriverVer=06/04/2015,15.68.3091.193
+
+[Manufacturer]
+%mrvlpcie8897Mfg%= mrvlpcie8897, NTamd64.6.2
+
+[mrvlpcie8897.NTamd64.6.2]
+%mrvlpcie8897_Device.DeviceDesc% = mrvlpcie8897_Device.ndi, "PCI\VEN_11AB&DEV_2B38"
+%mrvlpcie8897_Device.DeviceDesc% = mrvlpcie8897_Device.ndi, "PCI\VEN_11AB&DEV_2B38&SUBSYS_045E0001"
+%mrvlpcie8897_Device.DeviceDesc% = mrvlpcie8897_Device.gw.ndi, "PCI\VEN_11AB&DEV_2B38&SUBSYS_045E0002"
+
+[mrvlpcie8897_Device.ndi.NTamd64]
+Include         = netvwifibus.inf
+Needs           = VWiFiBus.CopyFiles
+Characteristics = 0x84      ; NCF_HAS_UI, NCF_PHYSICAL
+BusType         = 5         ; Not really required
+;Driver loading should be blocked after updating until reboot happens
+Reboot
+AddReg          = mrvlpcie8897.reg, bootstrap.reg
+CopyFiles       = mrvlpcie8897.Copy
+*IfType         = 71        ; IF_TYPE_IEEE80211
+*MediaType      = 16        ; NdisMediumNative802_11
+*PhysicalMediaType = 9      ; NdisPhysicalMediumNative802_11
+
+[mrvlpcie8897_Device.gw.ndi.NTamd64]
+Include         = netvwifibus.inf
+Needs           = VWiFiBus.CopyFiles
+Characteristics = 0x84      ; NCF_HAS_UI, NCF_PHYSICAL
+BusType         = 5         ; Not really required
+;Driver loading should be blocked after updating until reboot happens
+Reboot
+AddReg          = mrvlpcie8897.reg
+CopyFiles       = mrvlpcie8897.Copy
+*IfType         = 71        ; IF_TYPE_IEEE80211
+*MediaType      = 16        ; NdisMediumNative802_11
+*PhysicalMediaType = 9      ; NdisPhysicalMediumNative802_11
+
+[mrvlpcie8897.Copy]
+WiFiCLass.sys
+mrvlpcie8897.sys
+
+[mrvlpcie8897.reg]
+HKR, Ndi,             Service,    0, "mrvlpcie8897"
+HKR, Ndi\Interfaces,  UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,  LowerRange, 0, "wlan,ethernet,vwifi"
+
+;----------------------------------------------------------------------------
+; Packet Coalescing Options
+;----------------------------------------------------------------------------
+ HKR,NDI\Params\*PacketCoalescing,ParamDesc      ,0      ,"Packet Coalescing"
+ HKR,NDI\Params\*PacketCoalescing,Type           ,0      ,"enum"
+ HKR,NDI\Params\*PacketCoalescing,Default        ,0      ,"1"
+ HKR,NDI\Params\*PacketCoalescing\enum,"0"       ,0      ,"Disabled"
+ HKR,NDI\Params\*PacketCoalescing\enum,"1"       ,0      ,"Enabled"
+
+;----------------------------------------------------------------------------
+; Wake On Pattern
+;----------------------------------------------------------------------------
+ HKR,NDI\Params\*WakeOnPattern,ParamDesc         ,0      ,"Wake on pattern match"
+ HKR,NDI\Params\*WakeOnPattern,Type              ,0      ,enum
+ HKR,NDI\Params\*WakeOnPattern,Default           ,0      ,"1"
+ HKR,NDI\Params\*WakeOnPattern\enum,"0"          ,0      ,"Disabled"
+ HKR,NDI\Params\*WakeOnPattern\enum,"1"          ,0      ,"Enabled"
+
+;----------------------------------------------------------------------------
+; AUTO 5G 2.4G band ctrl
+;----------------------------------------------------------------------------
+ HKR,NDI\Params\BandCtrl,ParamDesc              ,0      ,"Band"
+ HKR,NDI\Params\BandCtrl,Type                   ,0      ,enum
+ HKR,NDI\Params\BandCtrl,Default                ,0      ,"3"
+ HKR,NDI\Params\BandCtrl\enum,"1"               ,0      ,"2.4 GHz Only"
+ HKR,NDI\Params\BandCtrl\enum,"2"               ,0      ,"5 GHz Only"
+ HKR,NDI\Params\BandCtrl\enum,"3"               ,0      ,"Auto"
+
+
+
+
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Versions,0,""
+;----------------------------------------------------------------------------
+;Allow FW Dump
+;    0         No dump
+;    bit 0 = 1 FW dump
+;    bit 1 = 1 PCIe register dump
+;    bit 2 = 1 Driver dump
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,AllowFWDump,0x00010001,0x7
+
+;----------------------------------------------------------------------------
+;Rssi lower bound
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,RssiLowerBound,0x00010001,0xFF
+
+;----------------------------------------------------------------------------
+;Rssi upper bound
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,RssiUpperBound,0x00010001,0xFF
+
+;----------------------------------------------------------------------------
+;Default channel bandwidth
+;	0 20Mhz
+;	2 40Mhz
+;----------------------------------------------------------------------------
+HKLM,System\CurrentControlSet\Services\mrvlpcie8897,ChannelBandwidth,0x00010001, 0xFF
+
+;----------------------------------------------------------------------------
+;Default Guard Interval
+; 	0 Long GI
+;	1 Short GI
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,SGI,0x00010001, 0xFF
+
+;----------------------------------------------------------------------------
+;Default Green Field
+;	0 Disable
+;	1 Enable
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,GreenField,0x00010001, 0xFF
+
+;----------------------------------------------------------------------------
+;Default P2P Go Operating Channel
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,OperatingChannel,0x00010001, 0xFF
+
+;----------------------------------------------------------------------------
+;Default P2P Listen Channel
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,ListenChannel,0x00010001, 0xFF
+
+;----------------------------------------------------------------------------
+;Default HT stream
+;	0 1X1
+;	1 2X2
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Mimo,0x00010001, 0xFF
+
+;----------------------------------------------------------------------------
+;Default In Memory Log Mask
+;    0x01 Error
+;    0x02 Command
+;    0x04 Command Response
+;    0x08 Event
+;    0x10 Interrupt
+;    0x20 Data
+;    0x40 IO
+;    0x80 EAPOL Packet
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,InMemLogMask,0x00010001,0x8F
+
+;----------------------------------------------------------------------------
+;Default NetwrokAddress
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,NetworkAddress,0,"FFFFFFFFFFFF"
+
+;----------------------------------------------------------------------------
+; AMPDU window size
+; DWORD: from bit 31 to bit 0: uAP TX, uAP RX, STA TX, STA RX; 1 byte per setting
+; Default =(0x20202020) (uAP TX: 32, uAP RX: 32, STA TX: 32, STA RX: 32)
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,WindowSize,0x00010001, 0x20202020
+
+;----------------------------------------------------------------------------
+; ED Controls for EU region
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EDCtrl2.4Ghz,0x00010001, 1
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EDOffset2.4Ghz,0x00010001, 20
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EDOnPeriod2.4Ghz,0x00010001, 18
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EDOffPeriod2.4Ghz,0x00010001, 2
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EDBitmap2.4G,0x00010001, 0x101
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EDCtrl5Ghz,0x00010001, 1
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EDOffset5Ghz,0x00010001, 12
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EDOnPeriod5Ghz,0x00010001, 18
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EDOffPeriod5Ghz,0x00010001, 0
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EDBitmap5G,0x00010001, 0x101
+
+;----------------------------------------------------------------------------
+; Debug Mask for  Event Tracing or Debug prints 
+; Default flags =(0x2800007F) (MMSG | MCMND| MEVENT | MDATA | MFATAL | MERROR | MWARN | MDEVIO | MMLAN)
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DebugMask,0x00010001, 0x2800007F
+;----------------------------------------------------------------------------
+; Enable WPP tracing
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EnableTracing,0x00010001,0
+
+;----------------------------------------------------------------------------
+; Band Data Rate
+;----------------------------------------------------------------------------
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate,ParamDesc              ,0      ,%BAND_DATARATE_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate,Type                   ,0      ,enum
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate,Default                ,0      ,"12"
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"0"               ,0      ,%1_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"1"               ,0      ,%2_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"2"               ,0      ,%5_5_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"3"               ,0      ,%11_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"4"               ,0      ,%6_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"5"               ,0      ,%9_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"6"               ,0      ,%12_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"7"               ,0      ,%18_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"8"               ,0      ,%24_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"9"               ,0      ,%36_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"10"              ,0      ,%48_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"11"              ,0      ,%54_MBPS_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate\enum,"12"              ,0      ,%AUTO_STR%
+
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,DataRate  ,0x00010001      ,12
+
+;----------------------------------------------------------------------------
+
+; 11n Data Rate
+
+;----------------------------------------------------------------------------
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate,ParamDesc        ,0      ,%DOT11N_DATARATE_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate,Type             ,0      ,enum
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate,Default          ,0      ,"-1"
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"0"         ,0      ,%MCS0_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"1"         ,0      ,%MCS1_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"2"         ,0      ,%MCS2_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"3"         ,0      ,%MCS3_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"4"         ,0      ,%MCS4_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"5"         ,0      ,%MCS5_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"6"         ,0      ,%MCS6_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"7"         ,0      ,%MCS7_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"8"         ,0      ,%MCS8_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"9"         ,0      ,%MCS9_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"10"        ,0      ,%MCS10_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"11"        ,0      ,%MCS11_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"12"        ,0      ,%MCS12_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"13"        ,0      ,%MCS13_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"14"        ,0      ,%MCS14_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"15"        ,0      ,%MCS15_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate\enum,"-1"        ,0      ,%AUTO_STR%
+
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11nDataRate  ,0x00010001      ,-1
+
+;----------------------------------------------------------------------------
+; 11n BeamForming Cap Info (32bit Bitmap Value)
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,BeamFormingN,0x00010001,0xFFFFFFFF
+
+;----------------------------------------------------------------------------
+; 11ac BeamForming Setting (32bit Bitmap Value representing vHtCap, from which Beamforming related bits matter)
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,BeamFormingAC,0x00010001,0xFFFFFFFF
+
+;----------------------------------------------------------------------------
+
+; 11ac Data Rate
+
+;----------------------------------------------------------------------------
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate,ParamDesc       ,0      ,%DOT11AC_DATARATE_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate,Type               ,0      ,enum
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate,Default            ,0      ,"-1"
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate\enum,"0"         ,0      ,%MCS0_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate\enum,"1"         ,0      ,%MCS1_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate\enum,"2"         ,0      ,%MCS2_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate\enum,"3"         ,0      ,%MCS3_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate\enum,"4"         ,0      ,%MCS4_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate\enum,"5"         ,0      ,%MCS5_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate\enum,"6"         ,0      ,%MCS6_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate\enum,"7"         ,0      ,%MCS7_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate\enum,"8"         ,0      ,%MCS8_STR%
+
+; HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate\enum,"9"         ,0      ,%MCS9_STR%
+
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acDataRate  ,0x00010001      ,-1
+
+;----------------------------------------------------------------------------
+;
+; 11ac Number of Spatial Stream
+;	1 spatial stream 1X1
+;	2 spatial stream 2X2	
+;----------------------------------------------------------------------------
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,Dot11acNss,0x00010001, 2
+
+;----------------------------------------------------------------------------
+; tx AMSDU support
+;	0: disable
+;	1: enable
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,TxAMSDU,0x00010001, 0
+
+
+;----------------------------------------------------------------------------
+;   EnableCSEvent support
+;	0: disable
+;	1: enable
+;   0xFFFFFFFF driver/firmware default
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,EnableCSEvent,0x00010001, 0x1
+ 
+;----------------------------------------------------------------------------
+[bootstrap.reg]
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,BootstrapScount,0x00010001, 0
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,BootstrapFcount,0x00010001, 0
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,BootstrapRefValue,0x00010001, 0xff8007ee
+ HKLM,System\CurrentControlSet\Services\mrvlpcie8897,BootstrapActValue,0x00010001, 0
+ 
+;-------------- Service installation
+[mrvlpcie8897_Device.ndi.NTamd64.Services]
+Include     = netvwifibus.inf
+Needs       = VWiFiBus.Services
+AddService  = WiFiClass, 2, WiFiClass_Service_Inst, WiFiClass_Eventlog_Inst
+AddService  = mrvlpcie8897,,mrvlpcie8897.Service_Inst
+
+[mrvlpcie8897_Device.gw.ndi.NTamd64.Services]
+Include     = netvwifibus.inf
+Needs       = VWiFiBus.Services
+AddService  = WiFiClass, 2, WiFiClass_Service_Inst, WiFiClass_Eventlog_Inst
+AddService  = mrvlpcie8897,,mrvlpcie8897.Service_Inst
+
+[mrvlpcie8897_Device.ndi.NTamd64.HW]
+AddReg      = mrvlpcie8897.HW.AddReg
+Include     = netvwifibus.inf
+Needs       = VWiFiBus.PnPFilterRegistration
+
+[mrvlpcie8897_Device.gw.ndi.NTamd64.HW]
+AddReg      = mrvlpcie8897.HW.AddReg
+Include     = netvwifibus.inf
+Needs       = VWiFiBus.PnPFilterRegistration
+
+[mrvlpcie8897.HW.AddReg]
+HKR,,"LowerFilters",0x00010000,"mrvlpcie8897"
+
+[WiFiClass_Eventlog_Inst]
+AddReg = WiFiClass_Eventlog_Inst.Reg 
+
+[WiFiClass_Eventlog_Inst.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+
+[WiFiClass_Service_Inst]
+DisplayName    = %WiFiCLass.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\wificlass.sys
+
+[mrvlpcie8897.Service_Inst]
+DisplayName    = %mrvlpcie8897.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\mrvlpcie8897.sys
+
+[SourceDisksNames]
+1 = %DiskId%,,,""
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksFiles]
+wificlass.sys  = 1,,
+mrvlpcie8897.sys = 1,,
+
+[Strings]
+ProviderName = "Marvell Semiconductor. Inc."
+mrvlpcie8897Mfg = "Marvell Semiconductor. Inc."
+DiskId = "Wireless LAN Class Driver Device Installation Disk"
+mrvlpcie8897_Device.DeviceDesc = "Marvell AVASTAR Wireless-AC Network Controller"
+WiFiClass.SVCDESC = "Microsoft Wireless LAN Miniport Driver"
+mrvlpcie8897.SVCDESC = "Marvell Wireless LAN PCIE8897 Device Filter Driver"

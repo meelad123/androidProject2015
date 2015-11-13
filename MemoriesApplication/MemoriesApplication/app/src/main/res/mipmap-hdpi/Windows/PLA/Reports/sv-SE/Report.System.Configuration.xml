@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="TopicBios" loc.comment="Topic name seen in report">BIOS</String>
+	<String ID="TopicDevices" loc.comment="Topic name seen in report">Enheter</String>
+	<String ID="TableBios" loc.comment="Table name seen in report">BIOS</String>
+	<String ID="TableIrq" loc.comment="Table name seen in report">IRQ</String>
+	<String ID="TableController" loc.comment="Table name seen in report">Controller-klasser</String>
+	<String ID="TableCooling" loc.comment="Table name seen in report">Cooling-klasser</String>
+	<String ID="TableInput" loc.comment="Table name seen in report">Input-klasser</String>
+	<String ID="TableStorage" loc.comment="Table name seen in report">Storage-klasser</String>
+	<String ID="TableMemory" loc.comment="Table name seen in report">Memory-klasser</String>
+	<String ID="TableMotherboard" loc.comment="Table name seen in report">Motherboard-klasser</String>
+	<String ID="TableNetwork" loc.comment="Table name seen in report">Network-klasser</String>
+	<String ID="TablePlugAndPlay" loc.comment="Table name seen in report">PlugAndPlay-klasser</String>
+	<String ID="TablePort" loc.comment="Table name seen in report">Port-klasser</String>
+	<String ID="TablePower" loc.comment="Table name seen in report">Power-klasser</String>
+	<String ID="TablePrinting" loc.comment="Table name seen in report">Printing-klasser</String>
+	<String ID="TableVideo" loc.comment="Table name seen in report">Video-klasser</String>
+	<String ID="tv_ConfigMgrErr0" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten fungerar inte korrekt.</String>
+	<String ID="tv_ConfigMgrErr1" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten är inte korrekt konfigurerad.</String>
+	<String ID="tv_ConfigMgrErr2" loc.comment="WMI ConfigManagerErrorCode property documented message string">Det går inte att läsa in drivrutinen för den här enheten.</String>
+	<String ID="tv_ConfigMgrErr3" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enhetens drivrutin kan vara skadad, eller så finns det för lite resurser eller minne i systemet.</String>
+	<String ID="tv_ConfigMgrErr4" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten fungerar inte korrekt. Registret eller en av dess drivrutiner kan vara skadade.</String>
+	<String ID="tv_ConfigMgrErr5" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enhetens drivrutin kräver resurser som inte kan hanteras i Windows.</String>
+	<String ID="tv_ConfigMgrErr6" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enhetens startkonfiguration är i konflikt med andra enheter.</String>
+	<String ID="tv_ConfigMgrErr7" loc.comment="WMI ConfigManagerErrorCode property documented message string">Det går inte att filtrera.</String>
+	<String ID="tv_ConfigMgrErr8" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enhetens drivrutinsinläsare saknas.</String>
+	<String ID="tv_ConfigMgrErr9" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten fungerar inte korrekt. Den inbyggda programvaran ger en felaktig rapport om resurserna.</String>
+	<String ID="tv_ConfigMgrErr10" loc.comment="WMI ConfigManagerErrorCode property documented message string">Det går inte att starta enheten.</String>
+	<String ID="tv_ConfigMgrErr11" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten misslyckades.</String>
+	<String ID="tv_ConfigMgrErr12" loc.comment="WMI ConfigManagerErrorCode property documented message string">Det finns inte tillräckligt med lediga resurser för enheten.</String>
+	<String ID="tv_ConfigMgrErr13" loc.comment="WMI ConfigManagerErrorCode property documented message string">Det går inte att bekräfta enhetens resurser.</String>
+	<String ID="tv_ConfigMgrErr14" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten kommer inte att fungera korrekt förrän datorn har startats om.</String>
+	<String ID="tv_ConfigMgrErr15" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten fungerar inte korrekt troligtvis på grund av ett återuppräkningsproblem.</String>
+	<String ID="tv_ConfigMgrErr16" loc.comment="WMI ConfigManagerErrorCode property documented message string">Det går inte att identifiera alla resurser som används av enheten.</String>
+	<String ID="tv_ConfigMgrErr17" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten kräver en okänd resurstyp.</String>
+	<String ID="tv_ConfigMgrErr18" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enhetens drivrutiner måste installeras om.</String>
+	<String ID="tv_ConfigMgrErr19" loc.comment="WMI ConfigManagerErrorCode property documented message string">Det gick inte att använda VxD-inläsaren.</String>
+	<String ID="tv_ConfigMgrErr20" loc.comment="WMI ConfigManagerErrorCode property documented message string">Registret kan vara skadat.</String>
+	<String ID="tv_ConfigMgrErr21" loc.comment="WMI ConfigManagerErrorCode property documented message string">Systemfel. Läs vidare i maskinvarans dokumentation om en ominstallation av enhetens drivrutin inte löste problemet. Enheten tas bort.</String>
+	<String ID="tv_ConfigMgrErr22" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten har inaktiverats.</String>
+	<String ID="tv_ConfigMgrErr23" loc.comment="WMI ConfigManagerErrorCode property documented message string">Systemfel. Läs vidare i maskinvarans dokumentation om en ominstallation av enhetens drivrutin inte löste problemet.</String>
+	<String ID="tv_ConfigMgrErr24" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten finns inte, fungerar inte korrekt eller så har inte alla enhetens drivrutiner installerats.</String>
+	<String ID="tv_ConfigMgrErr25" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten konfigureras fortfarande.</String>
+	<String ID="tv_ConfigMgrErr26" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten konfigureras fortfarande.</String>
+	<String ID="tv_ConfigMgrErr27" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten har inte en giltig loggkonfiguration.</String>
+	<String ID="tv_ConfigMgrErr28" loc.comment="WMI ConfigManagerErrorCode property documented message string">Drivrutiner har inte installerats.</String>
+	<String ID="tv_ConfigMgrErr29" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten är inaktiverad. Den inbyggda programvaran innehöll inte de resurser som krävs.</String>
+	<String ID="tv_ConfigMgrErr30" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten använder en avbrottsbegäran (IRQ) som redan används av en annan enhet.</String>
+	<String ID="tv_ConfigMgrErr31" loc.comment="WMI ConfigManagerErrorCode property documented message string">Enheten fungerar inte korrekt. Det går inte att läsa in de drivrutiner som krävs.</String>
+	<String ID="tv_ConfigMgrErr32" loc.comment="WMI ConfigManagerErrorCode property">Ett okänt fel returnerades: värde 32</String>
+	<String ID="tv_ConfigMgrErr33" loc.comment="WMI ConfigManagerErrorCode property">Ett okänt fel returnerades: värde 33</String>
+	<String ID="tv_ConfigMgrErr34" loc.comment="WMI ConfigManagerErrorCode property">Ett okänt fel returnerades: värde 34</String>
+	<String ID="tv_ConfigMgrErr35" loc.comment="WMI ConfigManagerErrorCode property">Ett okänt fel returnerades: värde 35</String>
+	<String ID="tv_ConfigMgrErr36" loc.comment="WMI ConfigManagerErrorCode property">Ett okänt fel returnerades: värde 36</String>
+	<String ID="tv_ConfigMgrErr37" loc.comment="WMI ConfigManagerErrorCode property">Ett okänt fel returnerades: värde 37</String>
+	<String ID="tv_ConfigMgrErr38" loc.comment="WMI ConfigManagerErrorCode property">Ett okänt fel returnerades: värde 38</String>
+	<String ID="tv_ConfigMgrErr39" loc.comment="WMI ConfigManagerErrorCode property">Drivrutiner som har markerats som skadliga.</String>
+	<String ID="tv_ConfigMgrErr40" loc.comment="WMI ConfigManagerErrorCode property">Ett okänt fel returnerades: värde 40</String>
+	<String ID="SystemConfig">Maskinvarukonfiguration</String>
+	<String ID="adapterString">Kort</String>
+	<String ID="allocationGranularity">Allokeringsprecision (byte)</String>
+	<String ID="biosString">BIOS</String>
+	<String ID="bitsPerPixel">Bitar/bildpunkt</String>
+	<String ID="bootDriveLetter">Startenhet</String>
+	<String ID="bytesPerSector">Byte/sektor</String>
+	<String ID="computerName">Dator</String>
+	<String ID="configCpu">CPU</String>
+	<String ID="configIdeChannel">IDE-kanal</String>
+	<String ID="configIrq">IRQ</String>
+	<String ID="configLogicalDisk">Logisk disk</String>
+	<String ID="configNetwork">Nätverk</String>
+	<String ID="configNic">Nätverksgränssnitt</String>
+	<String ID="configPhysicalDisk">Fysisk disk</String>
+	<String ID="configPnp">Plug and Play</String>
+	<String ID="configPower">Energi</String>
+	<String ID="configVideo">Video</String>
+	<String ID="configIdeChannelV1">IDE-kanal</String>
+	<String ID="configIrqV1">IRQ</String>
+	<String ID="configLogicalDiskV1">Logisk disk</String>
+	<String ID="configNetworkV1">Nätverk</String>
+	<String ID="configNicV1">Nätverksgränssnitt</String>
+	<String ID="configPhysicalDiskV1">Fysisk disk</String>
+	<String ID="configPnpV1">Plug and Play</String>
+	<String ID="configPowerV1">Energi</String>
+	<String ID="configServiceV1">Tjänster</String>
+	<String ID="configVideoV1">Video</String>
+	<String ID="chipType">Kretstyp</String>
+	<String ID="cylinders">Cylindrar</String>
+	<String ID="dacType">DAC-typ</String>
+	<String ID="deviceId">Enhet</String>
+	<String ID="deviceDescription">Beskrivning</String>
+	<String ID="deviceType">Enhetstyp</String>
+	<String ID="deviceTimingMode">Tidmätningsläge</String>
+	<String ID="dhcpServer">DHCP-server</String>
+	<String ID="diskNumber">Disknummer</String>
+	<String ID="dnsServer1">DNS</String>
+	<String ID="dnsServers">DNS-adresser</String>
+	<String ID="domainName">Domän</String>
+	<String ID="driveLetterString">Enhet</String>
+	<String ID="driveType">Enhetstyp</String>
+	<String ID="fileSystem">Filsystem</String>
+	<String ID="friendlyName">Eget namn</String>
+	<String ID="gateway">Gateway</String>
+	<String ID="hyperThreaded">Hypertrådad</String>
+	<String ID="ipAddress">IP-adress</String>
+	<String ID="ipAddresses">IP-adresser</String>
+	<String ID="irqAffinity">Tillhörighet</String>
+	<String ID="locationInformation">Platsinformation</String>
+	<String ID="irqNum">IRQ</String>
+	<String ID="manufacturer">Tillverkare</String>
+	<String ID="maxHashTableSize">Största hashtabellstorlek</String>
+	<String ID="maxUserPort">Högsta antal användarportar</String>
+	<String ID="memSize">Minne (MB)</String>
+	<String ID="memorySize">Minne</String>
+	<String ID="mhz">Processorhastighet (MHz)</String>
+	<String ID="nicIndex">Index</String>
+	<String ID="nicIndexV4">IPv4-index</String>
+	<String ID="nicIndexV6">IPv6-index</String>
+	<String ID="numberOfFreeClusters">Lediga kluster</String>
+	<String ID="numberOfProcessors">Processorer</String>
+	<String ID="pageSize">Sidstorlek (byte)</String>
+	<String ID="partitionCount">Partitioner</String>
+	<String ID="partitionNumber">Partitioner</String>
+	<String ID="partitionSize">Partitionsstorlek</String>
+	<String ID="physicalAddress">MAC-adress</String>
+	<String ID="pnpDeviceId">Enhet</String>
+	<String ID="primaryWinsServer">WINS</String>
+	<String ID="numTcbTablePartitions">TCB-partitioner</String>
+	<String ID="processId">Process-ID</String>
+	<String ID="s1">Strömsparläge1</String>
+	<String ID="s2">Strömsparläge2</String>
+	<String ID="s3">Strömsparläge3</String>
+	<String ID="s4">Stöd för viloläge från strömsparläge</String>
+	<String ID="s5">Stöd för avstängning i strömsparläge</String>
+	<String ID="scsiLun">SCSI LUN</String>
+	<String ID="scsiPath">SCSI-sökväg</String>
+	<String ID="scsiPort">SCSI-port</String>
+	<String ID="scsiTarget">SCSI-mål</String>
+	<String ID="sectorsPerCluster">Sektorer/kluster</String>
+	<String ID="sectorsPerTrack">Sektorer/spår</String>
+	<String ID="settings">Inställningar</String>
+	<String ID="sizeLogDisk">Storlek</String>
+	<String ID="startOffset">Startförskjutning</String>
+	<String ID="stateFlags">Tillståndsflaggor</String>
+	<String ID="subnetMask">Undernät</String>
+	<String ID="targetId">Mål</String>
+	<String ID="tcpTimedWaitDelay">TCP-väntetid</String>
+	<String ID="totalNumberOfClusters">Antal kluster</String>
+	<String ID="tracksPerCylinder">Spår/cylinder</String>
+	<String ID="volumeExt">Volymutökning</String>
+	<String ID="vRefresh">Uppdatera</String>
+	<String ID="writeCacheEnabled">Skrivcacheminnet aktiverat</String>
+	<String ID="xResolution">X-upplösn.</String>
+	<String ID="yResolution">Y-upplösn.</String>
+</StringTable>

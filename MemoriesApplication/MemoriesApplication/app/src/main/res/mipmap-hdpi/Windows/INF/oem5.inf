@@ -1,0 +1,83 @@
+;
+; SurfaceSoftwareServicingDriver.inf
+;
+; Copyright (C) 2014 Microsoft Corporation.  All Rights Reserved.
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=HIDClass
+ClassGuid={745a17a0-74d3-11d0-b6fe-00a0c90f57da}
+Provider=%VENDOR%
+LayoutFile=layout.inf
+CatalogFile=SurfaceSoftwareServicingDriver.cat
+DriverVer=10/09/2014,2.0.1168.0
+
+[SourceDisksFiles]
+SurfaceSoftwareServicingDriver.sys=99
+hidkmdf.sys     = 99
+
+[SourceDisksNames]
+99 = %DiskName%,,,""
+
+[DestinationDirs]
+CopyFilterDriver    = 12
+
+[Manufacturer]
+%VENDOR%=Vendor,NTamd64
+
+[Vendor.NTamd64]
+%SurfaceSoftwareServicing%=SurfaceSoftwareServicing.Inst, {98DE32A9-5D44-419E-B67D-66072BCEF58B}\SSSD_DEVICE
+
+[SurfaceSoftwareServicing.Inst.NT]
+CopyFiles = CopyFilterDriver
+
+[SurfaceSoftwareServicing.Inst.NT.HW]
+AddReg = SurfaceSoftwareServicing_Parameters.AddReg 
+
+[SurfaceSoftwareServicing.Inst.NT.Services]
+AddService = SurfaceSoftwareServicing,, SurfaceSoftwareServicing_Service_Inst
+AddService = mshidkmdf, 0x000001fa, mshidkmdf.AddService ;flag 0x2 sets this as the service for the device
+
+[CopyFilterDriver]
+SurfaceSoftwareServicingDriver.sys
+
+[mshidkmdf.AddService]
+ServiceType    = %SERVICE_KERNEL_DRIVER% 
+StartType      = %SERVICE_DEMAND_START% 
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %10%\System32\Drivers\mshidkmdf.sys
+
+[SurfaceSoftwareServicing_Parameters.AddReg]
+HKR,,"LowerFilters",%REG_MULTI_SZ%,"SurfaceSoftwareServicing"
+
+[SurfaceSoftwareServicing_Service_Inst]
+DisplayName    = %SurfaceSoftwareServicing%
+ServiceType    = %SERVICE_KERNEL_DRIVER% 
+StartType      = %SERVICE_DEMAND_START% 
+ErrorControl   = %SERVICE_ERROR_IGNORE% 
+ServiceBinary  = %12%\SurfaceSoftwareServicingDriver.sys 
+
+[Strings] 
+VENDOR="Microsoft"
+SurfaceSoftwareServicing="Surface Software Servicing"
+DiskName = "Surface Software Service Driver Installation Disk"
+
+SERVICE_BOOT_START     = 0x0 
+SERVICE_SYSTEM_START   = 0x1 
+SERVICE_AUTO_START     = 0x2 
+SERVICE_DEMAND_START   = 0x3 
+SERVICE_DISABLED       = 0x4 
+
+SERVICE_KERNEL_DRIVER  = 0x1 
+SERVICE_ERROR_IGNORE   = 0x0 
+SERVICE_ERROR_NORMAL   = 0x1 
+SERVICE_ERROR_SEVERE   = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ          = 0x00020000 
+REG_DWORD              = 0x00010001 
+REG_MULTI_SZ           = 0x00010000
+REG_BINARY             = 0x00000001
+REG_SZ                 = 0x00000000
+
+

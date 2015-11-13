@@ -102,6 +102,7 @@ public class MyProfile1 extends AsyncTask<String, String, JSONArray> {
 
             HttpEntity entity = response.getEntity();
             JSONObject jsonObjectUser = JsonHelper.parseJSONObjectResponse(entity.getContent());
+            saveTheUser(jsonObjectUser);
             result.put(jsonObjectUser);
 
             //User request end
@@ -113,6 +114,7 @@ public class MyProfile1 extends AsyncTask<String, String, JSONArray> {
             HttpResponse responseForFriends = httpclient.execute(getFreinds);
             HttpEntity entyFriends = responseForFriends.getEntity();
             JSONArray jsonObjectFriends = JsonHelper.parsArray(entyFriends.getContent());
+
             result.put(jsonObjectFriends);
             // users Friends Request end
 
@@ -122,10 +124,24 @@ public class MyProfile1 extends AsyncTask<String, String, JSONArray> {
         } catch (IOException e) {
             e.printStackTrace();
 
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
 
         return null;
+    }
+
+    private void saveTheUser(JSONObject object) throws JSONException {
+        SharedPreferences userDetalis = con.getSharedPreferences("profile", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = userDetalis.edit();
+        editor.putString("Fname", object.getString("FirstName"));
+        editor.putString("UserId",object.getString("UserId"));
+        editor.putString("Lname", object.getString("LastName"));
+        editor.putString("email", object.getString("Email"));
+        editor.putString("username", object.getString("UserName"));
+        editor.commit();
+
     }
 
     @Override

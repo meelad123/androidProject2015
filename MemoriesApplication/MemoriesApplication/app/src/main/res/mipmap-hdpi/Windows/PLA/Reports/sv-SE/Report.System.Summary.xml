@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringTable>
+	<String ID="sysHealthSummary">Resursöversikt</String>
+	<String ID="SysHealthComponentHdr">Komponent</String>
+	<String ID="SysHealthUtilizationHdr">Användning</String>
+	<String ID="SysHealthStatusHdr">Status</String>
+	<String ID="SysHealthDetailsHdr">Information</String>
+	<String ID="SysHealthCpuComponent">Processor</String>
+	<String ID="SysHealthDskComponent">Disk</String>
+	<String ID="SysHealthMemComponent">Minne</String>
+	<String ID="SysHealthNetComponent">Nätverk</String>
+	<String ID="TopicPerfSummary">Prestanda</String>
+</StringTable>

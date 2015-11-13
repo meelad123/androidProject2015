@@ -1,0 +1,64 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; File:          SurfaceDisplayCalibration.inx
+;
+; Description:   Driver Installation file.
+;
+; Copyright (C) 2014 Microsoft Corporation.  All Rights Reserved.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ManufacturerName%
+CatalogFile=SurfaceDisplayCalibration.cat
+PnPLockdown=1
+DriverVer=05/02/2014,2.0.1002.0
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+SurfaceDisplayCalibration.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+;-------------- Install our driver on ACPI\MSHW0036
+%SurfaceDisplayCalibration.DeviceDesc%=SurfaceDisplayCalibration_Device, ACPI\MSHW0036
+[SurfaceDisplayCalibration_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+SurfaceDisplayCalibration.sys
+
+;-------------- Service installation
+[SurfaceDisplayCalibration_Device.NT.Services]
+AddService = SurfaceDisplayCalibration,%SPSVCINST_ASSOCSERVICE%, SurfaceDisplayCalibration_Inst
+
+; -------------- Driver install sections
+[SurfaceDisplayCalibration_Inst]
+DisplayName    = %SurfaceDisplayCalibration.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\SurfaceDisplayCalibration.sys
+LoadOrderGroup = Extended Base
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Microsoft"
+ClassName="Surface Device Drivers"
+DiskName="Surface Display Calibration Installation Disk"
+SurfaceDisplayCalibration.DeviceDesc="Surface Display Calibration"
+SurfaceDisplayCalibration.SVCDESC="Surface Display Calibration Service"

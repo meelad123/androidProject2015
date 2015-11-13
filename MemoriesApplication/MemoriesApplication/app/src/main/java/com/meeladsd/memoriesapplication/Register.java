@@ -11,6 +11,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -21,12 +22,12 @@ import java.util.List;
  * Created by Sevag on 2015-10-21.
  * Edited by Meelad on 2015-10-22.
  */
-public class Register extends AsyncTask<String, String, String> {
+public class Register extends AsyncTask<String, String, JSONObject> {
 
     private String userName, password, email;
     private String Statues1;
     Context con;
-    private int statuscode;
+    private JSONObject statuscode;
 
 
     public Register(String _userName, String _Password, String _Email, Context c) {
@@ -38,7 +39,7 @@ public class Register extends AsyncTask<String, String, String> {
     }
 
 
-    protected String doInBackground(String... params) {
+    protected JSONObject doInBackground(String... params) {
 
         DefaultHttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost("http://jthcloudproject.elasticbeanstalk.com/api/v1/account");
@@ -59,8 +60,8 @@ public class Register extends AsyncTask<String, String, String> {
         try {
 
             HttpResponse response = httpclient.execute(httppost);
-            Statues1 = response.getEntity().toString();
-            statuscode = response.getStatusLine().getStatusCode();
+
+            statuscode = JsonHelper.parseJSONObjectResponse(response.getEntity().getContent());
 
 
         } catch (ClientProtocolException e) {
@@ -71,17 +72,16 @@ public class Register extends AsyncTask<String, String, String> {
             e.printStackTrace();
         }
 
-        return null;
+        return statuscode;
 
     }
 
 
-    protected void onPostExecute(String result) {
+    protected void onPostExecute(JSONObject result) {
 
-        if (statuscode > 200 || statuscode < 300)
-            Toast.makeText(con, "User created successfully. Redirecting..", Toast.LENGTH_SHORT).show();
-        else {
-            Toast.makeText(con, Statues1, Toast.LENGTH_SHORT).show();
-        }
+
+            Toast.makeText(con, result.toString(), Toast.LENGTH_SHORT).show();
+
+
     }
 }

@@ -42,11 +42,15 @@
         </activity>
         <activity
             android:name=".MyProfileactivity2"
-            android:label="@string/My_profile"
-            android:parentActivityName=".MainActivity" >
+            android:label="@string/My_profile" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".EditProfileActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EditProfileActivity" />
         </activity>
     </application>
 

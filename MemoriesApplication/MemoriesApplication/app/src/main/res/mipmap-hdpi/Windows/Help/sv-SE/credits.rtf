@@ -1,0 +1,807 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang16393\deflangfe16393{\fonttbl{\f0\fswiss\fprq2\fcharset0 Segoe UI Semibold;}{\f1\froman\fprq2\fcharset0 Times New Roman;}{\f2\fswiss\fprq2\fcharset0 Calibri;}{\f3\fswiss\fprq2\fcharset0 Segoe UI;}}
+{\colortbl ;\red0\green0\blue255;\red255\green255\blue0;}
+{\stylesheet{ Normal;}{\s1 heading 1;}{\s2 heading 2;}}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\sb100\sa100\lang1033\b\f0\fs32 Medverkande, copyright och meddelanden g\'e4llande tredje part\kerning32\f1\par
+\kerning0\b0\f2\fs18 Detta dokument inneh\'e5ller information om medverkande och copyright f\'f6r Windows\'ae.\f1\par
+\pard\keepn\nowidctlpar\s2\sb240\sa60\f0\fs22 Meddelanden g\'e4llande tredje part\f1\par
+\pard\keepn\nowidctlpar\s2\sa200\f3\fs18 Den h\'e4r filen baseras p\'e5 eller inneh\'e5ller material fr\'e5n projekten som anges nedan (gemensamt ben\'e4mnda "tredjepartskod").\~Microsoft \'e4r inte den ursprungliga upphovsmannen av tredjepartskoden. Den ursprungliga copyrightinformationen och licensen, enligt vilka Microsoft anv\'e4nder s\'e5dan tredjepartskod, anges nedan.\~S\'e5dana licenser och information l\'e4mnas endast f\'f6r informations\'e4ndam\'e5l.\~Microsoft, inte den tredje parten, licensierar tredjepartskoden till dig enligt de villkor som anges i licensvillkoren f\'f6r Microsofts produkt. Microsoft f\'f6rbeh\'e5ller sig alla andra r\'e4ttigheter som inte uttryckligen beviljas i detta avtal, genom implikation, estoppel eller p\'e5 annat s\'e4tt\par
+\pard\keepn\nowidctlpar\s2\sb240\sa60\f0\fs22 Copyright\par
+\pard\nowidctlpar\sa200\f3\fs18 Informationen i det h\'e4r dokumentet, inr\'e4knat URL-adresser och andra h\'e4nvisningar till webbplatser p\'e5 Internet, kan \'e4ndras utan f\'f6reg\'e5ende meddelande. Alla f\'f6retag, organisationer, produkter, dom\'e4nnamn, \line e-postadresser, logotyper, personer, platser och h\'e4ndelser som f\'f6rekommer i exempel \'e4r fiktiva, om inte annat anges. Alla likheter med verkliga f\'f6retag, organisationer, produkter, dom\'e4nnamn, e-postadresser, logotyper, personer, platser och h\'e4ndelser \'e4r oavsiktliga. Anv\'e4ndaren \'e4r ansvarig f\'f6r att alla till\'e4mpliga lagar om upphovsr\'e4tt respekteras. Utan att inf\'f6ra ytterligare skydd \'e4n det som medges av copyright f\'e5r ingen del av detta dokument reproduceras, lagras i eller sparas i ett inh\'e4mtningssystem eller \'f6verf\'f6ras \line i n\'e5gon form eller p\'e5 n\'e5got s\'e4tt (elektroniskt, mekaniskt, genom fotokopiering, som inspelning eller n\'e5got annat s\'e4tt) i n\'e5got som helst syfte utan uttryckligt skriftligt medgivande fr\'e5n Microsoft Corporation.\par
+\pard\nowidctlpar\sb100\sa100 Microsoft kan ha patent, patentans\'f6kningar, varum\'e4rken, copyright eller annan upphovsr\'e4tt till inneh\'e5llet \line i detta dokument. F\'f6rutom vad som uttryckligen s\'e4gs i eventuella skrivna licensvillkor fr\'e5n Microsoft ger innehavet av detta dokument dig inte n\'e5gon licens att anv\'e4nda dessa patent, varum\'e4rken, copyright eller upphovsr\'e4tt. \par
+\'a9 2013 Microsoft Corporation. Med ensamr\'e4tt.\par
+Microsoft, MS-DOS, Visual Basic, Visual Studio, Windows, Windows\~NT, Windows\~Server, Active Directory, Aero, BitLocker, HotStart, ReadyBoost, ReadyDrive, SideShow och SuperFetch \'e4r registrerade varum\'e4rken eller varum\'e4rken som tillh\'f6r Microsoft-koncernen.\par
+------------------------------------------------\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Spider Systems\'ae Limited. Eftersom produkten inkluderar programvara fr\'e5n Spider Systems Limited \'e4r Microsoft skyldigt att \line l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 Copyright 1987 Spider Systems Limited\par
+Copyright 1988 Spider Systems Limited\par
+Copyright 1990 Spider Systems Limited\par
+\pard\nowidctlpar\sb100\sa100\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Seagate Software.\par
+\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av ACE*COMM Corp. Eftersom produkten inkluderar programvara fr\'e5n ACE*COMM Corp. \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande \line text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sb100\sa100 Copyright 1995\endash 1997 ACE*COMM Corp\par
+\pard\nowidctlpar\sb100\sa100\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Sam Leffler och Silicon Graphics, Inc. Eftersom produkten inkluderar programvara fr\'e5n Sam Leffler och Silicon Graphics, Inc. \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 Copyright \'a9 1988\endash 1997 Sam Leffler\par
+Copyright \'a9 1991\endash 1997 Silicon Graphics, Inc.\par
+Du beviljas h\'e4rmed tillst\'e5nd att, utan kostnad, anv\'e4nda, kopiera, modifiera,\par
+distribuera och s\'e4lja denna programvara och dess dokumentation i alla syften,\par
+f\'f6rutsatt att (i) ovanst\'e5ende copyrightmeddelanden samt detta meddelande\par
+om tillst\'e5nd visas i alla kopior av programvaran och (ii) den tillh\'f6rande dokumentationen,\par
+samt att namnen Sam Leffler och Silicon Graphics inte anv\'e4nds i n\'e5gon\par
+typ av reklam eller marknadsf\'f6ring som r\'f6r programvaran utan\par
+f\'f6reg\'e5ende och uttryckligt tillst\'e5nd fr\'e5n Sam Leffler och Silicon Graphics.\par
+PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER, \par
+VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, \par
+GARANTIER AVSEENDE S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L.\~ \par
+SAM LEFFLER ELLER SILICON GRAPHICS KAN UNDER INGA OMST\'c4NDIGHETER\par
+H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA OF\'d6RUTSEDDA SKADOR, INDIREKTA SKADOR, \par
+F\'d6LJDSKADOR ELLER N\'c5GRA SOM HELST ANDRA SKADOR SOM UPPST\'c5R TILL F\'d6LJD AV \par
+F\'d6RLUST AV ANV\'c4NDBARHET, DATA ELLER UTEBLIVEN VINST, OAVSETT OM MAN VARNATS OM \par
+M\'d6JLIGHETEN AV S\'c5DAN SKADA OCH OAVSETT EVENTUELLA TEORIER OM ANSVAR, SOM \par
+UPPST\'c5R AV ELLER I SAMBAND MED ANV\'c4NDNING ELLER UTF\'d6RANDE AV DENNA \par
+PROGRAMVARA.\par
+\pard\nowidctlpar\sa200\par
+\pard\nowidctlpar\sb100\sa100 Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Highground Systems. Eftersom produkten inkluderar programvara fr\'e5n Highground Systems \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande \line text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 Copyright \'a9 1996\endash 1999 Highground Systems\par
+\pard\nowidctlpar\sa200\par
+\pard Den h\'e4r produkten inneh\'e5ller kompressionskod fr\'e5n Info-ZIP-gruppen. Anv\'e4ndningen av den h\'e4r koden medf\'f6r inte n\'e5gra extra avgifter eller kostnader, och den ursprungliga kompressionsk\'e4llkoden \'e4r tillg\'e4nglig p\'e5 {\field{\*\fldinst{HYPERLINK "http://www.info-zip.org/"}}{\fldrslt{\ul\cf1 http://www.info-zip.org/}}}\f3\fs18  eller {\field{\*\fldinst{HYPERLINK "ftp://ftp.info-zip.org/pub/infozip/src/"}}{\fldrslt{\ul\cf1 ftp://ftp.info-zip.org/pub/infozip/src/}}}\f3\fs18  p\'e5 webben.\par
+\par
+Delar Copyright \'a9 2000 SRS Labs, Inc\par
+\par
+I den h\'e4r produkten ing\'e5r programvara fr\'e5n det allm\'e4nna kompressionsbiblioteket "zlib".\par
+\pard\nowidctlpar\sb100\sa100\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av ScanSoft, Inc. Eftersom produkten inkluderar programvara fr\'e5n ScanSoft, Inc. \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\fi720\sa200 TextBridge\'ae OCR \'a9 by ScanSoft, Inc.\par
+\pard\nowidctlpar\sa200\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av University of Southern California. Eftersom produkten inkluderar programvara fr\'e5n University of Southern California \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 Copyright \'a9 1996 by the University of Southern California\par
+Med ensamr\'e4tt.\par
+Du beviljas h\'e4rmed tillst\'e5nd att, i alla syften och utan kostnad, anv\'e4nda, kopiera, modifiera och distribuera denna programvara och dess dokumentation, i k\'e4llkod och bin\'e4r form, f\'f6rutsatt att b\'e5de ovanst\'e5ende copyrightmeddelanden samt detta meddelande om tillst\'e5nd visas i alla exemplar, samt att det i all dokumentation, allt marknadsf\'f6ringsmaterial och \'f6vrigt material som r\'f6r denna distribuering och anv\'e4ndning anges att programvaran delvis utvecklats av Information Sciences Institute p\'e5 University of Southern California. Universitetets namn f\'e5r inte anv\'e4ndas f\'f6r att rekommendera eller marknadsf\'f6ra produkter som h\'e4rletts fr\'e5n denna programvara utan uttrycklig och f\'f6reg\'e5ende skriftlig till\'e5telse.\par
+UNIVERSITY OF SOUTHERN CALIFORNIA g\'f6r inga utf\'e4stelser avseende programvarans l\'e4mplighet f\'f6r n\'e5got syfte. PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER AVSEENDE S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L.\par
+Annan copyright kan g\'e4lla f\'f6r delar av den h\'e4r programvaran, vilket anges n\'e4r det \'e4r aktuellt.\par
+\pard\nowidctlpar\sa200\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av James Kanze. Eftersom produkten inkluderar programvara fr\'e5n James Kanze \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 MEDDELANDE OM COPYRIGHT OCH TILLST\'c5ND\par
+Med ensamr\'e4tt. \par
+Tillst\'e5nd beviljas h\'e4rmed varje person som skaffar ett exemplar av programmet och tillh\'f6rande dokumentationsfiler ("programvaran") att utan kostnad anv\'e4nda programvaran, inklusive, och utan begr\'e4nsningar, r\'e4ttighet att bruka, kopiera, publicera, distribuera och/eller s\'e4lja exemplar av programvaran, samt att till\'e5ta personer som f\'e5r tillg\'e5ng till programvaran att ocks\'e5 g\'f6ra detta, under f\'f6ruts\'e4ttning att ovanst\'e5ende copyrightmeddelanden och detta meddelande om tillst\'e5nd finns med i alla exemplar av programvaran samt att b\'e5de ovanst\'e5ende copyrightmeddelande(n) och detta tillst\'e5nd finns med i den medf\'f6ljande dokumentationen. Tillst\'e5nd beviljas \'e4ven att utan begr\'e4nsning i omfattning modifiera programvaran, under f\'f6ruts\'e4ttning att prefixet \rdblquote GB_\rdblquote  i den modifierade programvaran \'e4ndras till n\'e5gonting annat samt att namnkatalogerna f\'f6r include-filerna (\rdblquote gb\rdblquote  i denna distribution) ocks\'e5 \'e4ndras. \par
+PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK, UTAN N\'c5GRA GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER AVSEENDE S\'c4LJBARHET, L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I R\'c4TTIGHETER TILLH\'d6RANDE TREDJE PART. COPYRIGHTINNEHAVARNA KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA ANSPR\'c5K ELLER S\'c4RSKILDA ELLER INDIREKTA SKADOR ELLER F\'d6LJDSKADOR ELLER ANDRA SKADOR SOM UPPKOMMER TILL F\'d6LJD AV UTEBLIVEN ANV\'c4NDNING ELLER VINST ELLER TILL F\'d6LJD AV DATAF\'d6RLUST, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, OAKTSAMHET ELLER ANNAN \'c5TALBAR H\'c4NDELSE, SOM UPPST\'c5R TILL F\'d6LJD AV ELLER I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER UTF\'d6RANDET AV PROGRAMVARAN. \par
+F\'f6rutom vad som anges i detta meddelande f\'e5r copyrightinnehavarens namn inte anv\'e4ndas vid marknadsf\'f6ring eller andra \'e5tg\'e4rder f\'f6r att gynna f\'f6rs\'e4ljning, anv\'e4ndning eller andra transaktioner f\'f6r denna programvara utan skriftligt tillst\'e5nd i f\'f6rv\'e4g fr\'e5n copyrightinnehavaren.\par
+\pard\nowidctlpar\sa200\par
+Denna produkt inneh\'e5ller programvara fr\'e5n Cisco ISAKMP Services.\par
+\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av RSA Data Security, Inc. Eftersom produkten inkluderar programvara fr\'e5n RSA Data Security, Inc. \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 Copyright \'a9 1990, RSA Data Security, Inc. Med ensamr\'e4tt.\par
+Tillst\'e5nd beviljas att kopiera och anv\'e4nda den h\'e4r programvaran, under f\'f6ruts\'e4ttning att den identifieras som "RSA Data Security, Inc. MD5 Message-Digest Algorithm" i allt material d\'e4r denna programvara eller denna funktion omn\'e4mns eller h\'e4nvisas till. Tillst\'e5nd beviljas \'e4ven att skapa och anv\'e4nda alster som \'e4r h\'e4rledda fr\'e5n denna programvara, under f\'f6ruts\'e4ttning att s\'e5dana h\'e4rledda alster identifieras s\'e5som \rdblquote derived from the RSA Data Security, Inc. MD5 Message-Digest Algorithm\rdblquote  i allt material d\'e4r detta h\'e4rledda alster omn\'e4mns eller h\'e4nvisas till.\par
+RSA Data Security, Inc. g\'f6r inga utf\'e4stelser avseende programvarans s\'e4ljbarhet eller programvarans l\'e4mplighet f\'f6r n\'e5got s\'e4rskilt syfte. Programvaran tillhandah\'e5lls i befintligt skick utan n\'e5gra som helst garantier, vare sig uttryckliga eller underf\'f6rst\'e5dda.\par
+ Dessa meddelanden m\'e5ste beh\'e5llas i alla exemplar som g\'f6rs av n\'e5gon del av denna dokumentation och/eller programvara.                                                                                   \par
+\pard\nowidctlpar\sa200\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Regents of The University \line of Michigan. Eftersom produkten inkluderar programvara fr\'e5n Regents of The University of Michigan \line\'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 Copyright \'a9 1995, 1996 Regents of The University of Michigan.\par
+Med ensamr\'e4tt.\par
+Du beviljas h\'e4rmed tillst\'e5nd att, i alla syften och utan kostnad, anv\'e4nda, kopiera, modifiera \line och distribuera denna programvara och dess dokumentation, f\'f6rutsatt att ovanst\'e5ende copyrightmeddelande f\'f6rekommer i samtliga exemplar samt att b\'e5de copyrightmeddelandet och detta meddelande om tillst\'e5nd f\'f6rekommer i den medf\'f6ljande dokumentationen, samt att namnet University of Michigan ej anv\'e4nds i marknadsf\'f6ring eller reklam som r\'f6r distributionen av denna programvara utan f\'f6reg\'e5ende skriftlig till\'e5telse. Programvaran tillhandah\'e5lls i befintligt skick utan n\'e5gra som helst uttryckliga eller underf\'f6rst\'e5dda garantier.\par
+Copyright \'a9 1993, 1994 Regents of the University of Michigan.\par
+Med ensamr\'e4tt.\par
+\'c5terdistribution och anv\'e4ndning i k\'e4llform och bin\'e4r form \'e4r till\'e5tet under f\'f6ruts\'e4ttning att detta meddelande har beh\'e5llits och att korrekt h\'e4nvisning g\'f6rs till University of Michigan at Ann Arbor. Universitetets namn f\'e5r inte anv\'e4ndas f\'f6r att rekommendera eller marknadsf\'f6ra produkter som h\'e4rletts fr\'e5n denna programvara utan uttrycklig och f\'f6reg\'e5ende skriftlig till\'e5telse. Programvaran tillhandah\'e5lls i befintligt skick utan uttryckliga eller underf\'f6rst\'e5dda garantier.\par
+\pard\nowidctlpar\sa200\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Massachusetts Institute of Technology. Eftersom produkten inkluderar programvara fr\'e5n Massachusetts Institute of Technology \line\'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 Copyright 1989, 1990 by the Massachusetts Institute of Technology. Med ensamr\'e4tt.\par
+ F\'f6r export av denna programvara fr\'e5n USA kan det kr\'e4vas en s\'e4rskild licens fr\'e5n USA:s myndigheter. Det \'e5ligger den person eller organisation som funderar p\'e5 att exportera att inf\'f6rskaffa en s\'e5dan licens innan exporten sker.\par
+ UNDER DEN RESTRIKTIONEN beviljas du h\'e4rmed tillst\'e5nd att, i alla syften och utan kostnad, anv\'e4nda, kopiera, modifiera och distribuera denna programvara och tillh\'f6rande dokumentation, f\'f6rutsatt att ovanst\'e5ende copyrightmeddelande finns med i samtliga exemplar samt att b\'e5de copyrightmeddelandet och detta meddelande om tillst\'e5nd finns med i den medf\'f6ljande dokumentationen, samt att namnet M.I.T. ej anv\'e4nds i marknadsf\'f6ring eller reklam som r\'f6r distributionen av denna programvara utan f\'f6reg\'e5ende skriftlig till\'e5telse. M.I.T. g\'f6r inga utf\'e4stelser avseende programvarans l\'e4mplighet f\'f6r n\'e5got syfte. Programvaran tillhandah\'e5lls i befintligt skick utan garantier, vare sig uttryckliga eller underf\'f6rst\'e5dda.\par
+ Enligt lagstiftningen i USA f\'e5r programvaran inte exporteras utanf\'f6r USA utan tillst\'e5nd av U.S. Department of Commerce.\par
+ Copyright 1994 by the Massachusetts Institute of Technology. Med ensamr\'e4tt.\par
+F\'f6r export av denna programvara fr\'e5n USA kan det kr\'e4vas en s\'e4rskild licens fr\'e5n USA:s myndigheter. Det \'e5ligger den person eller organisation som funderar p\'e5 att exportera att inf\'f6rskaffa en s\'e5dan licens innan exporten sker.\par
+UNDER DEN RESTRIKTIONEN beviljas du h\'e4rmed tillst\'e5nd att, i alla syften och utan kostnad, anv\'e4nda, kopiera, modifiera och distribuera denna programvara och tillh\'f6rande dokumentation, f\'f6rutsatt att ovanst\'e5ende copyrightmeddelande finns med i samtliga exemplar samt att b\'e5de copyrightmeddelandet och detta meddelande om tillst\'e5nd finns med i den medf\'f6ljande dokumentationen, samt att namnet M.I.T. ej anv\'e4nds i marknadsf\'f6ring eller reklam som r\'f6r distributionen av denna programvara utan f\'f6reg\'e5ende skriftlig till\'e5telse. M.I.T. g\'f6r inga utf\'e4stelser avseende programvarans l\'e4mplighet f\'f6r n\'e5got syfte. Programvaran tillhandah\'e5lls i befintligt skick utan garantier, vare sig uttryckliga eller underf\'f6rst\'e5dda.\par
+\pard\nowidctlpar\sa200\par
+Denna produkt inneh\'e5ller programvara som utvecklats av University of California, Berkeley och bidragande parter.\par
+\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Autodesk, Inc. Eftersom produkten inkluderar programvara fr\'e5n Autodesk, Inc. \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200\'a9 Copyright 1995 by Autodesk, Inc.\par
+\pard\nowidctlpar\sa200\par
+Denna produkt inneh\'e5ller programvara f\'f6r grafikfilter, programvara som delvis \'e4r baserad p\'e5 arbete som utf\'f6rts av Independent JPEG Group.\par
+\par
+I den h\'e4r produkten ing\'e5r programvara fr\'e5n PNG-referensbiblioteket "libpng".\par
+\par
+I denna produkt ing\'e5r "True Verb"-tekniken fr\'e5n KS Waves Ltd.\par
+\par
+Inneh\'e5ller k\'f6rningsmoduler fr\'e5n Lotus C++ API Toolkit for Notes/Domino. (c) Copyright IBM Corporation 2003. Med ensamr\'e4tt.\par
+\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av SGS-Thomson Microelectronics, Inc. Eftersom produkten inkluderar programvara fr\'e5n SGS-Thomson Microelectronics, Inc. \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 Copyright 1996 SGS-Thomson Microelectronics, Inc. Med ensamr\'e4tt\par
+\pard\nowidctlpar\sa200\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Unicode, Inc. Eftersom produkten inkluderar programvara fr\'e5n Unicode, Inc. \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 MEDDELANDE OM COPYRIGHT OCH TILLST\'c5ND\par
+\pard\li721\sa200\sl240\slmult1 Copyright \'a9 1991\endash 2005 Unicode, Inc. Med ensamr\'e4tt. Distribueras i enlighet med anv\'e4ndningsvillkoren i {\field{\*\fldinst{HYPERLINK "http://www.unicode.org/copyright.html"}}{\fldrslt{\ul\cf1 http://www.unicode.org/copyright.html}}}\f3\fs18 .\par
+Du beviljas h\'e4rmed tillst\'e5nd att, utan kostnad, h\'e4mta ett exemplar av Unicode-datafilerna och associerad dokumentation ("datafilerna") eller Unicode-programvaran och associerad dokumentation ("programvaran") f\'f6r att arbeta med datafilerna eller programvaran utan begr\'e4nsning, \'e4ven utan begr\'e4nsning vad g\'e4ller r\'e4tten att anv\'e4nda, kopiera, \'e4ndra, sammanfoga, publicera, distribuera och/eller s\'e4lja exemplar av datafilerna eller programvaran. D\'e4rut\'f6ver beviljas alla personer som datafilerna eller programvaran distribueras till samma r\'e4ttigheter. I samtliga fall m\'e5ste f\'f6ljande villkor uppfyllas: (a) ovanst\'e5ende copyrightmeddelanden och den h\'e4r texten ska inkluderas i samtliga exemplar av datafilerna eller programvaran, (b) ovanst\'e5ende copyrightmeddelanden och den h\'e4r texten ska inkluderas i associerad dokumentation och (c) det ska tydligt framg\'e5 i varje \'e4ndrad datafil eller i programvaran, liksom i dokumentationen som associeras med datafilerna eller programvaran, att datafilerna eller programvaran har modifierats.\par
+DATAFILERNA OCH PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER AVSEENDE S\'c4LJBARHET, L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I R\'c4TTIGHETER TILLH\'d6RANDE TREDJE PART. COPYRIGHTINNEHAVARNA KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA ANSPR\'c5K ELLER S\'c4RSKILDA ELLER INDIREKTA SKADOR ELLER F\'d6LJDSKADOR ELLER ANDRA SKADOR SOM UPPKOMMER TILL F\'d6LJD AV UTEBLIVEN ANV\'c4NDNING ELLER VINST ELLER TILL F\'d6LJD AV DATAF\'d6RLUST, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, OAKTSAMHET ELLER ANNAN \'c5TALBAR H\'c4NDELSE, SOM UPPST\'c5R TILL F\'d6LJD AV ELLER I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER UTF\'d6RANDET AV DATAFILERNA ELLER PROGRAMVARAN.\par
+F\'f6rutom vad som anges i detta meddelande f\'e5r copyrightinnehavarens namn inte anv\'e4ndas i marknadsf\'f6ringsmaterial eller i annat material f\'f6r att marknadsf\'f6ra f\'f6rs\'e4ljningen, anv\'e4ndningen eller utnyttjandet av dessa datafiler eller programvaran utan f\'f6reg\'e5ende skriftligt tillst\'e5nd fr\'e5n copyrightinnehavaren.\par
+\pard\nowidctlpar\sa200\par
+Combined PostScript-drivrutinen har utvecklats gemensamt av Adobe Systems Incorporated och Microsoft Corporation.\par
+\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Media Cybernetics. Eftersom produkten inkluderar programvara fr\'e5n Media Cybernetics \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara: \par
+\pard\nowidctlpar\li720\sa200 HALO Image File Format Library \'a9 1991\endash 1992 Media Cybernetics, Inc.\par
+\pard\nowidctlpar\sa200\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Luigi Rizzo. Eftersom produkten inkluderar programvara fr\'e5n Luigi Rizzo \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200\'a9 1997\endash 98 Luigi Rizzo (luigi@iet.unipi.it)\lang1040\par
+\lang1033 Delar har baserats fr\'e5n kod av Phil Karn (karn@ka9q.ampr.org), Robert Morelos-Zaragoza (robert@spectra.eng.hawaii.edu) och Hari Thirumoorthy (harit@spectra.eng.hawaii.edu), \line augusti 1995\par
+Distribution och anv\'e4ndning i k\'e4llform och bin\'e4r form, med eller utan modifikation, till\'e5ts under f\'f6ruts\'e4ttning att f\'f6ljande villkor uppfylls:\par
+1. All distribution av k\'e4llkoden m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul.\par
+2. All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul i dokumentationen och/eller annat material som tillhandah\'e5lls med distributionen.\par
+DEN H\'c4R PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK, UTAN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L. UPPHOVSM\'c4NNEN KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA DIREKTA, INDIREKTA, OF\'d6RUTSEDDA, S\'c4RSKILDA ELLER TYPISKA SKADOR ELLER F\'d6LJDSKADOR (INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, ANSKAFFANDE AV ERS\'c4TTNINGSPRODUKTER ELLER ERS\'c4TTNINGSTJ\'c4NSTER, UTEBLIVEN ANV\'c4NDNING, VINST ELLER DATAF\'d6RLUST ELLER AVBROTT \line I VERKSAMHETEN), OAKTAT UPPKOMST OCH ANSVARSPRINCIP, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, STRIKT ANSVAR ELLER \'c5TALBAR HANDLING (INKLUSIVE OAKTSAMHET ELLER P\'c5 ANNAT S\'c4TT) SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV DEN H\'c4R PROGRAMVARAN, \'c4VEN OM DE HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DAN SKADA.\par
+\pard\nowidctlpar\sa200\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av W3C. Eftersom produkten inkluderar programvara fr\'e5n W3C \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 W3C \'ae MEDDELANDE OM PROGRAMVARA OCH LICENS\par
+\pard\li721\sa200\sl240\slmult1{\field{\*\fldinst{HYPERLINK "http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231"}}{\fldrslt{\ul\cf1 http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231}}}\f3\fs18\par
+Detta arbete (och medf\'f6ljande programvara, dokumentation, t.ex. Viktigt-filer, eller annat relaterat material) tillhandah\'e5lls av copyrightinnehavarna i enlighet med f\'f6ljande licens. Genom att erh\'e5lla, anv\'e4nda och/eller kopiera det h\'e4r arbetet samtycker du (licenstagaren) till nedanst\'e5ende villkor och best\'e4mmelser, som du har l\'e4st, f\'f6rst\'e5tt och f\'f6rbinder dig att f\'f6lja.\par
+Du beviljas h\'e4rmed tillst\'e5nd att, utan kostnad eller royaltyavgift, och f\'f6r valfritt \'e4ndam\'e5l, kopiera, \'e4ndra och distribuera den h\'e4r programvaran och tillh\'f6rande dokumentation, med eller utan modifikation, under f\'f6ruts\'e4ttning att f\'f6ljande inkluderas i ALLA exemplar av hela eller delar av programvaran och dokumentationen, inklusive modifikationer:\par
+1. Den fullst\'e4ndiga texten i detta MEDDELANDE p\'e5 en framtr\'e4dande plats i det distribuerade eller h\'e4rledda arbetet. \par
+2. Eventuella befintliga friskrivningsklausuler f\'f6r immateriell egendom, meddelanden eller best\'e4mmelser och villkor. Om inga s\'e5dana finns ska W3C Software Short Notice inkluderas (hypertext \'e4r att f\'f6redra, text till\'e5ts) i distributionen eller den h\'e4rledda koden. \par
+3. Meddelande om \'e4ndringar eller modifikationer i filerna, inklusive det datum d\'e5 \'e4ndringar gjorts. (Vi rekommenderar att du l\'e4gger till URL:er till kodens ursprungliga plats.) \par
+DEN H\'c4R PROGRAMVARAN OCH DOKUMENTATIONEN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK OCH COPYRIGHTINNEHAVARNA GER INGA UTF\'c4STELSER ELLER GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER OM S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I R\'c4TTIGHETER, PATENT, COPYRIGHT ELLER VARUM\'c4RKEN TILLH\'d6RANDE TREDJE PART.\par
+COPYRIGHTINNEHAVARNA KAN INTE H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA DIREKTA, INDIREKTA ELLER S\'c4RSKILDA SKADOR ELLER F\'d6LJDSKADOR SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV PROGRAMVARAN ELLER DOKUMENTATIONEN.\par
+Copyrightinnehavarnas namn och varum\'e4rken f\'e5r INTE anv\'e4nds i reklam- eller marknadsf\'f6ringsmaterial f\'f6r programvaran utan f\'f6reg\'e5ende uttryckligt, skriftligt tillst\'e5nd. R\'e4tten till copyright i den h\'e4r programvaran och associerad dokumentation tillh\'f6r uteslutande copyrightinnehavarna.\par
+\pard\nowidctlpar\sa200\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Sun Microsystems, Inc. Eftersom produkten inkluderar programvara fr\'e5n Sun Microsystems, Inc. \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 Sun RPC \'e4r en produkt som tillh\'f6r Sun Microsystems, Inc. och tillhandah\'e5lls f\'f6r obegr\'e4nsad anv\'e4ndning under f\'f6ruts\'e4ttning att den h\'e4r texten inkluderas p\'e5 alla bandmedia och som en del av hela eller en del av programvaran. Anv\'e4ndarna har r\'e4tt att kopiera eller modifiera Sun RPC utan kostnad, men f\'e5r inte licensiera eller distribuera programvaran till n\'e5gon annan, f\'f6rutom som en del av en produkt eller ett program som utvecklats av anv\'e4ndaren.\par
+SUN RPC TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER, INKLUSIVE GARANTIER OM UTF\'d6RANDE, S\'c4LJBARHET OCH L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L, ELLER GARANTIER SOM NORMALT L\'c4MNAS I SAMBAND MED AFF\'c4RS\'d6VERENSKOMMELSER ELLER SOM ETT RESULTAT AV ANV\'c4NDNINGS- ELLER HANDELSPRAXIS.\par
+Sun RPC tillhandah\'e5lls utan support och utan n\'e5gon skyldighet f\'f6r Sun Microsystems, Inc. att bist\'e5 med hj\'e4lp avseende anv\'e4ndning, korrigeringar, modifikationer eller f\'f6rb\'e4ttringar.\par
+SUN MICROSYSTEMS, INC. KAN INTE H\'c5LLAS ANSVARIG F\'d6R INTR\'c5NG ELLER \'d6VERTR\'c4DELSER MED AVSEENDE P\'c5 UPPHOVSR\'c4TTIGHETER, HANDELSHEMLIGHETER ELLER PATENT I ANSLUTNING TILL SUN RPC ELLER N\'c5GON DEL D\'c4RAV.\par
+Sun Microsystems, Inc. kan under inga omst\'e4ndigheter h\'e5llas ansvarig f\'f6r utebliven int\'e4kt eller vinst eller f\'f6r andra s\'e4rskilda eller indirekta skador eller f\'f6ljdskador, \'e4ven om Sun har informerats om risken f\'f6r s\'e5dana skador.\par
+Sun Microsystems, Inc.\par
+2550 Garcia Avenue\par
+Mountain View, California 94043\par
+\pard\nowidctlpar\sa200\par
+Tillverkat under licens fr\'e5n Dolby Laboratories. \rdblquote Dolby\rdblquote  och symbolen double-D \'e4r varum\'e4rken som tillh\'f6r Dolby Laboratories. Konfidentiellt, opublicerat arbete. Copyright 1992\endash 1997 Dolby Laboratories. Med ensamr\'e4tt.\par
+\par
+Inneh\'e5ller Adobe\'ae [Flash\'ae och/eller Shockwave\'ae] Player-teknik fr\'e5n Adobe Systems Incorporated.  Copyright \'a9 1996 \endash  2013 Adobe Systems Incorporated.  Med ensamr\'e4tt.  Adobe, Flash och Shockwave \'e4r varum\'e4rken eller registrerade varum\'e4rken som tillh\'f6r Adobe Systems Incorporated i USA och i andra l\'e4nder.\par
+\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Andrei Alexandrescu. Eftersom produkten inkluderar programvara fr\'e5n Andrei Alexandrescu \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 The Loki Library\par
+Copyright \'a9 2001 by Andrei Alexandrescu\par
+Den h\'e4r koden medf\'f6ljer boken:\par
+Alexandrescu, Andrei. \rdblquote Modern C++ Design: Generic Programming and Design Patterns Applied.\rdblquote  Copyright \'a9 2001. Addison-Wesley.\par
+Du beviljas h\'e4rmed tillst\'e5nd att, i alla syften och utan kostnad, anv\'e4nda, kopiera, modifiera, distribuera och s\'e4lja denna programvara, f\'f6rutsatt att ovanst\'e5ende copyrightmeddelande f\'f6rekommer i samtliga exemplar samt att b\'e5de copyrightmeddelandet och detta meddelande \line om tillst\'e5nd f\'f6rekommer i den medf\'f6ljande dokumentationen.\par
+Upphovsmannen eller Addison-Welsey Longman l\'e4mnar inga utf\'e4stelser avseende programvarans l\'e4mplighet f\'f6r ett visst \'e4ndam\'e5l. Programvaran tillhandah\'e5lls i befintligt skick utan garantier, vare sig uttryckliga eller underf\'f6rst\'e5dda.\par
+\pard\nowidctlpar\sa200\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Distributed Management Task Force, Inc. (DMTF). Eftersom produkten inkluderar programvara baserad p\'e5 DMTF:s specifikationer \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text:\par
+\pard\nowidctlpar\li720\sa200 Copyright \'a9 2007 Distributed Management Task Force, Inc. (DMTF). Med ensamr\'e4tt.\par
+\pard\nowidctlpar\sa200\par
+Delar av det h\'e4r arbetet bygger p\'e5 "The Draft Standard C++ Library" Copyright \'a9 1995 P. J. Plauger, som publiceras av Prentice-Hall och som anv\'e4nds med vederb\'f6rligt tillst\'e5nd.\par
+\par
+Delar Copyright 2002\endash 2007 Charlie Poole eller Copyright 2002\endash 2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov eller Copyright 2000\endash 2002 Philip A. Craig\par
+\par
+Delar av denna programvara \'e4r delvis baserade p\'e5 arbete som utf\'f6rts av Hewlett-Packard Company. Eftersom produkten inkluderar programvara fr\'e5n Hewlett-Packard Company \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\pard\nowidctlpar\li720\sa200 Copyright \'a9 2002, 2003 Hewlett-Packard Company.\par
+Om-meddelande:\par
+\pard\li721\sa200\sl240\slmult1 Den h\'e4r programvaran baseras p\'e5 programvara som finns tillg\'e4nglig p\'e5 {\field{\*\fldinst{HYPERLINK "http://mpvtools.sourceforge.net"}}{\fldrslt{\ul\cf1 http://mpvtools.sourceforge.net}}}\f3\fs18 .\par
+Programmet bearbetar ett format som heter MPV. MPV \'e4r en \'f6ppen standard f\'f6r hantering av multimediesamlingar och spellistor med bilder, video och musikinneh\'e5ll och associerade metadata. MPV \'e4r tillg\'e4ngligt utan kostnad fr\'e5n Optical Storage Technology Association. Mer information om MPV-standarden finns p\'e5 {\field{\*\fldinst{HYPERLINK "http://www.osta.org/mpv"}}{\fldrslt{\ul\cf1 http://www.osta.org/mpv}}}\f3\fs18 .\par
+Tillst\'e5ndsmeddelande:\par
+Den person som h\'e4mtar ett exemplar av denna programvara och associerade dokumentationsfiler ("programvaran") beviljas h\'e4rmed tillst\'e5nd att utan kostnad arbeta med programvaran utan begr\'e4nsning, \'e4ven utan begr\'e4nsning vad g\'e4ller r\'e4tten att anv\'e4nda, kopiera, modifiera, sammanfoga, publicera, distribuera, vidarelicensiera och/eller s\'e4lja exemplar av programvaran. D\'e4rut\'f6ver beviljas alla personer som programvaran distribueras till samma r\'e4ttigheter under f\'f6ljande f\'f6ruts\'e4ttningar:\par
+Copyrightmeddelandet ovan, det h\'e4r meddelandet och om-meddelandet ovan m\'e5ste ing\'e5 i alla exemplar och st\'f6rre delar av programvaran.\par
+PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER AVSEENDE S\'c4LJBARHET, L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I R\'c4TTIGHETER. UPPHOVSM\'c4NNEN ELLER COPYRIGHTINNEHAVARNA KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA ANSPR\'c5K, SKADOR ELLER ANDRA KRAV GENOM EN \'c5TG\'c4RD INOM KONTRAKTET, \'c5TALBAR HANDLING ELLER \par
+ANNAT SOM UPPST\'c5R FR\'c5N, TILL F\'d6LJD AV ELLER I ANSLUTNING TILL PROGRAMVARAN ELLER VID ANV\'c4NDNING ELLER ANNAT HANDHAVANDE MED MJUKVARAN.\par
+F\'f6rutom vad som anges i detta meddelande f\'e5r copyrightinnehavarens namn inte anv\'e4ndas vid marknadsf\'f6ring eller andra \'e5tg\'e4rder f\'f6r att gynna f\'f6rs\'e4ljning, anv\'e4ndning eller andra transaktioner f\'f6r denna programvara utan skriftligt tillst\'e5nd i f\'f6rv\'e4g fr\'e5n copyrightinnehavaren.\par
+\pard\nowidctlpar\sa200\par
+Delar av r\'e4ttstavningssystemet International CorrectSpell\'99 \'a9 1993 by Lernout & Hauspie Speech Products N.V.  Med ensamr\'e4tt. American Heritage\'ae Dictionary of the English Language, Third Edition Copyright \'a9 1992 Houghton Mifflin Company. Elektronisk version licensierad av Lernout & Hauspie Speech Products N.V. Med ensamr\'e4tt.\par
+\par
+\pard\nowidctlpar Portions Copyright \'a9 2005 Gregory Wild-Smith\par
+\pard\nowidctlpar\sa200 Upphovsm\'e4nnens webbplats: {\field{\*\fldinst{HYPERLINK "http://www.twilightuniverse.com/"}}{\fldrslt{\ul\cf1 http://www.twilightuniverse.com/}}}\f3\fs18\par
+\par
+Med ensamr\'e4tt.\par
+Tillst\'e5nd beviljas h\'e4rmed varje person som skaffar ett exemplar av programmet och tillh\'f6rande dokumentationsfiler ("programvaran") att utan kostnad anv\'e4nda programvaran, inklusive, och utan begr\'e4nsningar, r\'e4ttighet att bruka, kopiera, \'e4ndra, sl\'e5 samman, publicera, distribuera och/eller s\'e4lja exemplar av programvaran, samt att till\'e5ta personer som f\'e5r tillg\'e5ng till programvaran att ocks\'e5 g\'f6ra detta, under f\'f6ruts\'e4ttning att ovanst\'e5ende copyrightmeddelanden, adressen till upphovsm\'e4nnens webbplats och detta meddelande om tillst\'e5nd finns med i alla exemplar av programvaran samt att b\'e5de ovanst\'e5ende copyrightmeddelande(n), upphovsm\'e4nnens webbplats och detta tillst\'e5nd finns med i den medf\'f6ljande dokumentationen.\par
+\par
+\pard Den h\'e4r produkten inneh\'e5ller programvara fr\'e5n Box2D-motorn som utvecklats av Erin Catto (\f0\fs24{\field{\*\fldinst{HYPERLINK "file:///D:\\\\CAT\\\\2013\\\\Jul-13\\\\Microsoft\\\\COTB_2013-07-08-RD-RTM01\\\\02_Prepped\\\\2013-07-08-133338113_2013-07-08-RD-RTM01\\\\HandoffBuild\\\\Jeankl\\\\AppData\\\\Local\\\\Microsoft\\\\Windows\\\\Temporary%20Internet%20Files\\\\Content.Outlook\\\\DZANW57P\\\\www.box2d.org"}}{\fldrslt{\f3\fs18 www.box2d.org}}}\f3\fs18 ).\par
+\pard\nowidctlpar ----------------------------------\par
+Den h\'e4r produkten anv\'e4nder material fr\'e5n Bigelow and Holmes\par
+\par
+Lucida\'ae-teckensnitt\par
+Copyright\'a9 1985, 1986, 1987, 1988 och 1990 av Bigelow & Holmes\par
+U.S. Patents Des. 289,420; Des. 289,421; Des. 289,422; Des. 289,773\par
+\par
+----------------------------------\par
+\par
+Delar av den h\'e4r programvaran baseras delvis p\'e5 Flex. Eftersom produkten inkluderar programvara fr\'e5n Flex \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+ \par
+Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007 The Flex Project.\par
+Copyright (c) 1990, 1997 The Regents of the University of California.\par
+Med ensamr\'e4tt.\par
+ \par
+Den h\'e4r koden kommer fr\'e5n programvara som Vern Paxson har bidragit med till Berkeley.\par
+ \par
+USA:s myndigheter innehar r\'e4ttigheter till detta arbete som regleras av avtal nr DE-AC03-76SF00098 mellan United States Department of Energy och University of California.\par
+ \par
+Distribution och anv\'e4ndning i k\'e4llform och bin\'e4r form, med eller utan modifikation, till\'e5ts under f\'f6ruts\'e4ttning att f\'f6ljande villkor uppfylls:\par
+ \par
+1. All distribution av k\'e4llkoden m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul.\par
+2. All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul i dokumentationen och/eller annat material som tillhandah\'e5lls med distributionen.\par
+ \par
+Varken universitetets namn eller namnen p\'e5 dess bidragsgivare f\'e5r anv\'e4ndas f\'f6r att rekommendera eller marknadsf\'f6ra produkter som h\'e4rletts fr\'e5n denna programvara utan uttrycklig och f\'f6reg\'e5ende skriftlig till\'e5telse.\par
+ \par
+PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER AVSEENDE S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L.\par
+----------------------------------\par
+Den h\'e4r produkten anv\'e4nder material fr\'e5n FastCGI\par
+fastcgi.h\par
+Definitioner f\'f6r FastCGI-protokollet.\par
+Copyright (c) 1995-1996 Open Market, Inc.\par
+\par
+Den h\'e4r programbiblioteksk\'e4llan och objektkoden f\'f6r FastCGI ("programvaran") och tillh\'f6rande dokumentation ("dokumentationen") \'e4r copyrightskyddade av Open Market, Inc ("Open Market"). F\'f6ljande villkor g\'e4ller f\'f6r alla filer som associeras med programvaran och dokumentationen s\'e5vida inget annat uttryckligen anges i enskilda filer.\par
+\par
+Open Market till\'e5ter att du anv\'e4nder, kopierar, modifierar, distribuerar och licensierar programvaran och dokumentationen i alla syften, under f\'f6ruts\'e4ttning att befintliga copyrightmeddelanden bevaras i alla exemplar och att detta meddelande f\'f6rekommer ordagrant i alla distributioner. Inga skriftliga avtal, licenser eller royaltyavgifter kr\'e4vs f\'f6r vederb\'f6rlig anv\'e4ndning. Modifikationer av programvaran och dokumentationen kan copyrightskyddas av upphovsm\'e4nnen och beh\'f6ver inte f\'f6lja licensvillkoren som beskrivs h\'e4r. Om modifikationer av programvaran och dokumentationen har nya licensvillkor m\'e5ste de nya villkoren tydligt anges p\'e5 den f\'f6rsta sidan i varje fil d\'e4r de g\'e4ller.\par
+\par
+OPEN MARKET L\'c4MNAR INGA UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER AVSEENDE PROGRAMVARAN ELLER DOKUMENTATIONEN, INKLUSIVE MEN UTAN BEGR\'c4NSNING TILL, GARANTIER OM S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L. UNDER INGA OMST\'c4NDIGHETER KAN OPEN MARKET H\'c5LLAS ANSVARIGT GENTEMOT DIG ELLER ANNAN TREDJE PART F\'d6R SKADOR SOM UPPST\'c5R TILL F\'d6LJD AV ELLER I ANSLUTNING TILL DENNA PROGRAMVARA ELLER DOKUMENTATIONEN, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, INDIREKTA, S\'c4RSKILDA ELLER LIKNANDE SKADOR ELLER F\'d6LJDSKADOR, INKLUSIVE UTEBLIVEN VINST ELLER DATAF\'d6RLUST, \'c4VEN OM OPEN MARKET HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DANA SKADOR. PROGRAMVARAN OCH DOKUMENTATIONEN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK. OPEN MARKET FR\'c5NS\'c4GER SIG ALLT ANSVAR F\'d6R SKADOR I RELATION TILL AVTALET, OAKTSAMHET ELLER \'c5TALBAR HANDLING ELLER LIKNANDE SOM UPPST\'c5R TILL F\'d6LJD AV ANV\'c4NDNINGEN AV DENNA PROGRAMVARA ELLER DOKUMENTATIONEN.\par
+\par
+----------------------------------\par
+\par
+Den h\'e4r produkten anv\'e4nder material fr\'e5n PJ Naughters Base64-implementering.\par
+Copyright (c) 1999 - 2004 av PJ Naughter.  \par
+Med ensamr\'e4tt.\par
+Anv\'e4nds med vederb\'f6rligt tillst\'e5nd.\par
+\par
+----------------------------------\par
+\par
+Den h\'e4r produkten anv\'e4nder material fr\'e5n RFC 3174.\par
+Copyright (C) The Internet Society (2001).  Med ensamr\'e4tt.\par
+\par
+Det h\'e4r dokumentet och \'f6vers\'e4ttningar d\'e4rav f\'e5r kopieras och distribueras till andra, och h\'e4rledda alster som h\'e4nvisar till eller p\'e5 annat vis beskriver dokumentet eller underl\'e4ttar dess implementering f\'e5r tas fram, kopieras, publiceras och distribueras, i sin helhet eller i delar, utan n\'e5gra begr\'e4nsningar, under f\'f6ruts\'e4ttning att ovanst\'e5ende copyrightmeddelande och detta stycke f\'f6rekommer i alla s\'e5dana exemplar och h\'e4rledda alster.  D\'e4remot f\'e5r detta konkreta dokument inte modifieras p\'e5 n\'e5got vis, t.ex. genom att copyrightmeddelandet eller referenser till Internet Society eller andra Internetorganisationer tas bort, f\'f6rutom d\'e5 detta kr\'e4vs f\'f6r utveckling av Internetstandarder i vilket fall coyprightprocedurerna som definieras i Internet Standards-processen m\'e5ste f\'f6ljas, eller d\'e5 detta kr\'e4vs f\'f6r \'f6vers\'e4ttning till andra spr\'e5k \'e4n engelska.\par
+\par
+De begr\'e4nsade tillst\'e5nd som beviljas ovan \'e4r inte tidsbegr\'e4nsade och kommer inte att \'e5terkallas av Internet Society eller dess efterf\'f6ljare eller ombud.\par
+\par
+Detta dokument och informationen h\'e4ri tillhandah\'e5lls I BEFINTLIGT SKICK och THE INTERNET SOCIETY OCH THE INTERNET ENGINEERING TASK FORCE FRISKRIVER SIG FR\'c5N ALLA GARANTIER, S\'c5V\'c4L UTTRYCKLIGA SOM UNDERF\'d6RST\'c5DDA, INKLUSIVE MEN UTAN BEGR\'c4NSNING TILL, GARANTIER OM ICKE-INTR\'c5NG I R\'c4TTIGHETER TILLH\'d6RANDE TREDJE PART ELLER UNDERF\'d6RST\'c5DDA GARANTIER AVSEENDE S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L.\par
+\par
+----------------------------------\par
+\par
+Den h\'e4r produkten anv\'e4nder material fr\'e5n RFC 3550.\par
+Copyright (C) The Internet Society (2001).  Med ensamr\'e4tt.\par
+\par
+Det h\'e4r dokumentet och \'f6vers\'e4ttningar d\'e4rav f\'e5r kopieras och distribueras till andra, och h\'e4rledda alster som h\'e4nvisar till eller p\'e5 annat vis beskriver dokumentet eller underl\'e4ttar dess implementering f\'e5r tas fram, kopieras, publiceras och distribueras, i sin helhet eller i delar, utan n\'e5gra begr\'e4nsningar, under f\'f6ruts\'e4ttning att ovanst\'e5ende copyrightmeddelande och detta stycke f\'f6rekommer i alla s\'e5dana exemplar och h\'e4rledda alster.  D\'e4remot f\'e5r detta konkreta dokument inte modifieras p\'e5 n\'e5got vis, t.ex. genom att copyrightmeddelandet eller referenser till Internet Society eller andra Internetorganisationer tas bort, f\'f6rutom d\'e5 detta kr\'e4vs f\'f6r utveckling av Internetstandarder i vilket fall coyprightprocedurerna som definieras i Internet Standards-processen m\'e5ste f\'f6ljas, eller d\'e5 detta kr\'e4vs f\'f6r \'f6vers\'e4ttning till andra spr\'e5k \'e4n engelska.\par
+\par
+De begr\'e4nsade tillst\'e5nd som beviljas ovan \'e4r inte tidsbegr\'e4nsade och kommer inte att \'e5terkallas av Internet Society eller dess efterf\'f6ljare eller ombud.\par
+\par
+Detta dokument och informationen h\'e4ri tillhandah\'e5lls I BEFINTLIGT SKICK och THE INTERNET SOCIETY OCH THE INTERNET ENGINEERING TASK FORCE FRISKRIVER SIG FR\'c5N ALLA GARANTIER, S\'c5V\'c4L UTTRYCKLIGA SOM UNDERF\'d6RST\'c5DDA, INKLUSIVE MEN UTAN BEGR\'c4NSNING TILL, GARANTIER OM ICKE-INTR\'c5NG I R\'c4TTIGHETER TILLH\'d6RANDE TREDJE PART ELLER UNDERF\'d6RST\'c5DDA GARANTIER AVSEENDE S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av Bob Jenkins.\par
+(c) Bob Jenkins, 1996. 74512.261@compuserve.com.  \par
+Du kan anv\'e4nda den h\'e4r koden som du \'f6nskar f\'f6r privat eller kommersiellt bruk eller f\'f6r utbildnings\'e4ndam\'e5l under f\'f6ruts\'e4ttning att den h\'e4r kommentaren infogas i sin helhet.\par
+\par
+Se {\field{\*\fldinst{HYPERLINK "http://ourworld.compuserve.com/homepages/bob_jenkins/evahash.htm"}}{\fldrslt{\ul\cf1 http://ourworld.compuserve.com/homepages/bob_jenkins/evahash.htm}}}\f3\fs18\par
+Anv\'e4nd f\'f6r att uppt\'e4cka \'e4ndringar mellan dokumentrevisioner, f\'f6rutsatt att ingen f\'f6rs\'f6ker skapa konflikter.  Anv\'e4nd INTE f\'f6r kryptografi.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av OpenVision Technologies, Inc. Copyright 1993 av OpenVision Technologies, Inc.\par
+\par
+Du beviljas h\'e4rmed tillst\'e5nd att, i alla syften och utan kostnad, anv\'e4nda, kopiera, modifiera, distribuera och s\'e4lja denna programvara och tillh\'f6rande dokumentation, f\'f6rutsatt att ovanst\'e5ende copyrightmeddelande finns med i samtliga exemplar samt att b\'e5de copyrightmeddelandet och detta meddelande om tillst\'e5nd finns med i den medf\'f6ljande dokumentationen, samt att namnet OpenVision ej anv\'e4nds i marknadsf\'f6ring eller reklam som r\'f6r distributionen av denna programvara utan f\'f6reg\'e5ende skriftlig till\'e5telse. OpenVision g\'f6r inga utf\'e4stelser avseende programvarans l\'e4mplighet f\'f6r n\'e5got syfte.  Programvaran tillhandah\'e5lls i befintligt skick utan garantier, vare sig uttryckliga eller underf\'f6rst\'e5dda.\par
+\par
+OPENVISION FRISKRIVER SIG FR\'c5N ALLA GARANTIER R\'d6RANDE DENNA PROGRAMVARA, INKLUSIVE ALLA UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET, OCH UNDER INGA OMST\'c4NDIGHETER SKA OPENVISION H\'c5LLAS ANSVARIGT F\'d6R S\'c4RSKILDA ELLER INDIREKTA SKADOR, F\'d6LJDSKADOR ELLER N\'c5GON ANNAN SKADA SOM UPPST\'c5R TILL F\'d6LJD AV UTEBLIVEN ANV\'c4NDNING, UTEBLIVEN VINST ELLER DATAF\'d6RLUST, VARKEN GENOM KONTRAKTUELLA \'c5TG\'c4RDER, OAKTSAMHET ELLER ANNAN \'c5TALBAR HANDLING, SOM UPPST\'c5R TILL F\'d6LJD AV ELLER I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER UTF\'d6RANDET AV PROGRAMVARAN.\par
+\par
+----------------------------------\par
+\par
+Copyright (c) 2006 av BEA, BMC, CA, Cisco, Dell, EMC, HP, IBM, Intel, Microsoft och Sun. Med ensamr\'e4tt.\par
+Du beviljas h\'e4rmed tillst\'e5nd att, p\'e5 valfritt medium och utan kostnad eller royaltyavgifter, kopiera, visa och distribuera detta SML-schemadokument (Service Modeling Language), under f\'f6ruts\'e4ttning att f\'f6ljande finns med i ALLA exemplar av hela eller delar av detta SML-schemadokument som du g\'f6r:\par
+\par
+1. En l\'e4nk eller URL till SML-schemadokumentet p\'e5 f\'f6ljande plats: \par
+{\field{\*\fldinst{HYPERLINK "http://schemas.serviceml.org/sml/2007/02/sml.xsd"}}{\fldrslt{\ul\cf1 http://schemas.serviceml.org/sml/2007/02/sml.xsd}}}\f3\fs18\par
+\par
+2. Copyrightmeddelandet som det visas i SML-schemadokumentet.\par
+\par
+BEA, BMC, CA, Cisco, Dell, EMC, HP, IBM, Intel, Microsoft och Sun (gemensamt ben\'e4mnda "upphovsm\'e4nnen") beviljar dig en royaltyfri licens, enligt rimliga villkor som inte utesluter n\'e5gon, till deras respektive patent d\'e5 detta kr\'e4vs f\'f6r att implementera SML-schemadokumentet (Service Modeling Language).\par
+\par
+SML-SCHEMADOKUMENTET TILLHANDAH\'c5LLS I BEFINTLIGT SKICK OCH UPPHOVSM\'c4NNEN L\'c4MNAR INGA UTF\'c4STELSER ELLER GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER OM S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I TREDJE PARTS R\'c4TT. VIDARE GARANTERAR UPPHOVSM\'c4NNEN INTE ATT INNEH\'c5LLET I SML-SCHEMADOKUMENTET \'c4R L\'c4MPLIGT F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L ELLER ATT IMPLEMENTERINGEN AV S\'c5DANT INNEH\'c5LL INTE G\'d6R INTR\'c5NG I PATENT, COPYRIGHT, VARUM\'c4RKEN ELLER ANDRA R\'c4TTIGHETER TILLH\'d6RANDE TREDJE PART.\par
+UPPHOVSM\'c4NNEN KAN INTE H\'c5LLAS ANSVARIGA F\'d6R N\'c5GRA DIREKTA, INDIREKTA, S\'c4RSKILDA ELLER OF\'d6RUTSEDDA SKADOR ELLER F\'d6LJDSKADOR SOM UPPKOMMER I SAMBAND MED ELLER I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER DISTRIBUTIONEN AV SML-SCHEMADOKUMENTET.\par
+\par
+Namnet och varum\'e4rkena som tillh\'f6r upphovsm\'e4nnen f\'e5r INTE anv\'e4ndas i n\'e5gon form, exempelvis i reklam eller marknadsf\'f6ring r\'f6rande SML-schemadokumentet eller dess inneh\'e5ll, utan f\'f6reg\'e5ende skriftligt tillst\'e5nd. Copyrightr\'e4tten i SML-schemadokumentet tillh\'f6r alltid upphovsm\'e4nnen. \par
+\par
+(c) 2001-2006 BEA Systems, Inc., BMC Software, CA, Inc., \par
+International Business Machines Corporation, Layer 7 Technologies, Microsoft Corporation, Inc., Novell, Inc. och VeriSign, Inc. Med ensamr\'e4tt.\par
+\par
+Du beviljas h\'e4rmed tillst\'e5nd att, p\'e5 valfritt medium och utan kostnad eller royaltyavgifter, kopiera, visa, utf\'f6ra, modifiera och distribuera WS-AUTHORIZATION.XSD ("dokumentet"), och att ge andra samma tillst\'e5nd, i syfte att utveckla och utv\'e4rdera dokumentet. \par
+\par
+BEA Systems, BMC Software, CA Inc., IBM, Layer 7 Technologies, Microsoft, Novell och VeriSign (gemensamt ben\'e4mnda "upphovsm\'e4nnen") beviljar en licens till tredje parter, enligt royaltyfria och i \'f6vrigt rimliga villkor som inte utesluter n\'e5gon, till deras respektive patentanspr\'e5k d\'e5 detta kr\'e4vs f\'f6r att implementera dokumentet.  \par
+\par
+DOKUMENTET TILLHANDAH\'c5LLS I BEFINTLIGT SKICK OCH UPPHOVSM\'c4NNEN L\'c4MNAR INGA UTF\'c4STELSER ELLER GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER OM S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I TREDJE PARTS R\'c4TT. UPPHOVSM\'c4NNEN GARANTERAR INTE HELLER ATT INNEH\'c5LLET I DOKUMENTET \'c4R L\'c4MPLIGT F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L ELLER ATT IMPLEMENTERINGEN AV S\'c5DANT INNEH\'c5LL INTE G\'d6R INTR\'c5NG I PATENT, COPYRIGHT, VARUM\'c4RKEN ELLER ANDRA R\'c4TTIGHETER TILLH\'d6RANDE TREDJE PART. \par
+\par
+UPPHOVSM\'c4NNEN KAN INTE H\'c5LLAS ANSVARIGA F\'d6R N\'c5GRA DIREKTA, INDIREKTA, S\'c4RSKILDA \par
+ELLER OF\'d6RUTSEDDA SKADOR ELLER F\'d6LJDSKADOR SOM UPPST\'c5R I SAMBAND MED ANV\'c4NDNINGEN AV \par
+DOKUMENTET ELLER I ANSLUTNING TILL DOKUMENTINNEH\'c5LLETS IMPLEMENTERING ELLER \par
+UTF\'d6RANDE. \par
+\par
+Du har r\'e4tt att ta bort dessa friskrivningsklausuler fr\'e5n dina modifierade versioner av \par
+dokumentet under f\'f6ruts\'e4ttning att du fr\'e5ns\'e4ger dig alla garantier och ansvarsskyldigheter \'e5 alla copyrightinnehavares v\'e4gnar i exemplaren av s\'e5dana modifierade versioner som du distribuerar. \par
+\par
+Namnet och varum\'e4rkena som tillh\'f6r upphovsm\'e4nnen f\'e5r INTE anv\'e4ndas i n\'e5gon form, exempelvis i reklam eller marknadsf\'f6ring r\'f6rande dokumentet eller dess inneh\'e5ll, utan f\'f6reg\'e5ende skriftligt tillst\'e5nd. Copyrightr\'e4tten i dokumentet tillh\'f6r alltid upphovsm\'e4nnen.\par
+\par
+(c) 2001-2006 BEA Systems Inc., International Business Machines Corporation, Microsoft Corporation, Inc., SAP AG, Sonic Software och VeriSign, Inc. Med ensamr\'e4tt.\par
+\par
+Du beviljas h\'e4rmed tillst\'e5nd att, p\'e5 valfritt medium och utan kostnad eller royaltyavgifter, kopiera och visa WS-Policy-specifikationen ("specifikationen", som inneh\'e5ller WSDL- och schemadokument), under f\'f6ruts\'e4ttning att f\'f6ljande finns med i ALLA exemplar av WS-Policy-specifikationen som du g\'f6r:\par
+\par
+1. En l\'e4nk eller URL till WS-Policy-specifikationen p\'e5 en av upphovsm\'e4nnens webbplatser\par
+2. Copyrightmeddelandet som det visas i WS-Policy-specifikationen.\par
+\par
+BEA Systems, IBM, Microsoft, SAP, Sonic Software och VeriSign (gemensamt ben\'e4mnda "upphovsm\'e4nnen") beviljar dig en licens, enligt royaltyfria och i \'f6vrigt rimliga villkor som inte utesluter n\'e5gon, till deras respektive patentanspr\'e5k d\'e5 detta kr\'e4vs f\'f6r att implementera WS-Policy-specifikationen.\par
+\par
+WS-POLICY-SPECIFIKATIONEN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK OCH UPPHOVSM\'c4NNEN L\'c4MNAR INGA UTF\'c4STELSER ELLER GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER OM S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I TREDJE PARTS R\'c4TT. UPPHOVSM\'c4NNEN GARANTERAR INTE HELLER ATT INNEH\'c5LLET I WS-POLICY-SPECIFIKATIONEN \'c4R L\'c4MPLIGT F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L ELLER ATT IMPLEMENTERINGEN AV S\'c5DANT INNEH\'c5LL INTE G\'d6R INTR\'c5NG I PATENT, COPYRIGHT, VARUM\'c4RKEN ELLER ANDRA R\'c4TTIGHETER TILLH\'d6RANDE TREDJE PART.\par
+\par
+UPPHOVSM\'c4NNEN KAN INTE H\'c5LLAS ANSVARIGA F\'d6R N\'c5GRA DIREKTA, INDIREKTA, S\'c4RSKILDA ELLER OF\'d6RUTSEDDA SKADOR ELLER F\'d6LJDSKADOR SOM UPPKOMMER I SAMBAND MED ELLER I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER DISTRIBUTIONEN AV WS-POLICY-SPECIFIKATIONEN.\par
+\par
+Namnet och varum\'e4rkena som tillh\'f6r upphovsm\'e4nnen f\'e5r INTE anv\'e4ndas i n\'e5gon form, exempelvis i reklam eller marknadsf\'f6ring r\'f6rande WS-Policy-specifikationen eller dess inneh\'e5ll, utan f\'f6reg\'e5ende skriftligt tillst\'e5nd. Copyrightr\'e4tten i WS-Policy-specifikationen tillh\'f6r alltid upphovsm\'e4nnen.\par
+\par
+Inga andra r\'e4ttigheter beviljas genom implikation, estoppel eller p\'e5 annat s\'e4tt.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som utvecklats av J. Zobel.\par
+Ber\'e4knar snabbt ett hash-v\'e4rde fr\'e5n en bytesekvens.\par
+Den h\'e4r typen av hash \'e4r INTE KRYPTOGRAFISK, den har\par
+endast utformats f\'f6r anv\'e4ndning i hash-tabeller.  Upphovsmannan har gjort den\par
+tillg\'e4nglig f\'f6r offentligt bruk under f\'f6ruts\'e4ttning att den h\'e4r kommentaren tas med:\par
+\par
+Upphovsman: J. Zobel, April 2001. Tillst\'e5nd att anv\'e4nda den h\'e4r koden\par
+beviljas fritt, under f\'f6ruts\'e4ttning att detta meddelande inkluderas.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av Regents of the University of California.\par
+Copyright (c) 1982, 1986, 1990, 1993\par
+The Regents of the University of California.  Med ensamr\'e4tt.\par
+\par
+Distribution och anv\'e4ndning i k\'e4llform och bin\'e4r form, med eller utan modifikation, till\'e5ts under f\'f6ruts\'e4ttning att f\'f6ljande villkor uppfylls:\par
+1. All distribution av k\'e4llkoden m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul.\par
+2. All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul i dokumentationen och/eller annat material som tillhandah\'e5lls med distributionen.\par
+3. Allt reklam- eller marknadsf\'f6ringsmaterial som anv\'e4nder eller omn\'e4mner funktioner i denna programvara m\'e5ste inkludera f\'f6ljande meddelande:\par
+Denna produkt inneh\'e5ller programvara som utvecklats av University of California, Berkeley och bidragande parter.\par
+4. Varken universitetets namn eller namnen p\'e5 dess bidragsgivare f\'e5r anv\'e4ndas f\'f6r att rekommendera eller marknadsf\'f6ra produkter som h\'e4rletts fr\'e5n denna programvara utan uttrycklig och f\'f6reg\'e5ende skriftlig till\'e5telse.\par
+\par
+DEN H\'c4R PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK, UTAN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L.  REGENTS ELLER BIDRAGANDE PARTER KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA DIREKTA, INDIREKTA, OF\'d6RUTSEDDA, S\'c4RSKILDA ELLER TYPISKA SKADOR ELLER F\'d6LJDSKADOR (INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, ANSKAFFANDE AV ERS\'c4TTNINGSPRODUKTER ELLER ERS\'c4TTNINGSTJ\'c4NSTER, UTEBLIVEN ANV\'c4NDNING, UTEBLIVEN VINST ELLER DATAF\'d6RLUST ELLER AVBROTT I VERKSAMHETEN), OAKTAT UPPKOMST OCH ANSVARSPRINCIP, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, STRIKT ANSVAR ELLER \'c5TALBAR HANDLING (INKLUSIVE OAKTSAMHET ELLER P\'c5 ANNAT S\'c4TT) SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV DEN H\'c4R PROGRAMVARAN, \'c4VEN OM DE HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DAN SKADA.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av OASIS.\par
+Copyright OASIS Open 2002-2006. Med ensamr\'e4tt.\par
+\par
+\pard\nowidctlpar\sa200\sl240\slmult1 Det h\'e4r dokumentet och \'f6vers\'e4ttningar d\'e4rav f\'e5r kopieras och distribueras till andra, och h\'e4rledda alster som h\'e4nvisar till eller p\'e5 annat vis beskriver dokumentet eller underl\'e4ttar dess implementering f\'e5r tas fram, kopieras, publiceras och distribueras, i sin helhet eller i delar, utan n\'e5gra begr\'e4nsningar, under f\'f6ruts\'e4ttning att ovanst\'e5ende copyrightmeddelande och detta stycke f\'f6rekommer i alla s\'e5dana exemplar och h\'e4rledda alster. D\'e4remot f\'e5r detta konkreta dokument inte modifieras p\'e5 n\'e5got vis, t.ex. genom att copyrightmeddelandet eller referenser till OASIS tas bort, f\'f6rutom d\'e5 detta kr\'e4vs f\'f6r utveckling av OASIS-specifikationer i vilket fall coyprightprocedurerna som definieras i dokumentet OASIS Intellectual Property Rights m\'e5ste f\'f6ljas, eller d\'e5 detta kr\'e4vs f\'f6r \'f6vers\'e4ttning till andra spr\'e5k \'e4n engelska.\par
+De begr\'e4nsade tillst\'e5nd som beviljas ovan \'e4r inte tidsbegr\'e4nsade och kommer inte att \'e5terkallas av OASIS eller dess efterf\'f6ljare eller ombud.\par
+Detta dokument och informationen h\'e4ri tillhandah\'e5lls I BEFINTLIGT SKICK och OASIS FRISKRIVER SIG FR\'c5N ALLA GARANTIER, S\'c5V\'c4L UTTRYCKLIGA SOM UNDERF\'d6RST\'c5DDA, INKLUSIVE MEN UTAN BEGR\'c4NSNING TILL, UTF\'c4STELSER SOM GARANTERAR ATT ANV\'c4NDNINGEN AV INFORMATIONEN H\'c4RI INTE MEDF\'d6R INTR\'c5NG I TREDJE PARTS R\'c4TTIGHETER ELLER UNDERF\'d6RST\'c5DDA GARANTIER AVSEENDE S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L.\par
+\pard\nowidctlpar\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av David Gottner.\par
+Copyright 1994, David Gottner\par
+Med ensamr\'e4tt\par
+\par
+Du beviljas h\'e4rmed tillst\'e5nd att, i alla syften och utan kostnad, anv\'e4nda, kopiera, modifiera och distribuera denna programvara och tillh\'f6rande dokumentation, under f\'f6ruts\'e4ttning att ovanst\'e5ende copyrightmeddelande, detta meddelande om tillst\'e5nd och f\'f6ljande friskrivningsmeddelande finns med i of\'f6r\'e4ndrad form i samtliga exemplar.\par
+\par
+JAG FRISKRIVER MIG FR\'c5N ALLA GARANTIER R\'d6RANDE DENNA PROGRAMVARA, INKLUSIVE ALLA UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET.  UNDER INGA OMST\'c4NDIGHETER SKA JAG H\'c5LLAS ANSVARIG F\'d6R S\'c4RSKILDA SKADOR, INDIREKTA SKADOR, F\'d6LJDSKADOR ELLER N\'c5GRA ANDRA SKADOR SOM UPPST\'c5R TILL F\'d6LJD AV UTEBLIVEN ANV\'c4NDNING, UTEBLIVEN VINST ELLER DATAF\'d6RLUST, VARKEN GENOM KONTRAKTUELLA \'c5TG\'c4RDER, OAKTSAMHET ELLER ANNAN \'c5TALBAR HANDLING, SOM UPPST\'c5R TILL F\'d6LJD AV ELLER I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER UTF\'d6RANDET AV PROGRAMVARAN.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av William E. Kempf, Inc. \par
+\par
+(c) Copyright William E. Kempf 2001\par
+\par
+Du beviljas h\'e4rmed tillst\'e5nd att, i alla syften och utan kostnad, anv\'e4nda, kopiera, modifiera, distribuera och s\'e4lja denna programvara och dess dokumentation, f\'f6rutsatt att ovanst\'e5ende copyrightmeddelande f\'f6rekommer i samtliga exemplar samt att b\'e5de copyrightmeddelandet och detta meddelande om tillst\'e5nd f\'f6rekommer i den medf\'f6ljande dokumentationen. William E. Kempf g\'f6r inga utf\'e4stelser avseende programvarans l\'e4mplighet f\'f6r n\'e5got syfte. Programvaran tillhandah\'e5lls i befintligt skick utan garantier, vare sig uttryckliga eller underf\'f6rst\'e5dda.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r filen anv\'e4nder material fr\'e5n LibTIFF.\par
+\par
+Copyright (c) 1988-1997 Sam Leffler\par
+Copyright (c) 1991-1997 Silicon Graphics, Inc.\par
+\par
+Du beviljas h\'e4rmed tillst\'e5nd att, i alla syften och utan kostnad, anv\'e4nda, kopiera, modifiera, distribuera och s\'e4lja denna programvara och tillh\'f6rande dokumentation, f\'f6rutsatt att (i) ovanst\'e5ende copyrightmeddelande och detta meddelande om tillst\'e5nd finns med i samtliga exemplar av programvaran och relaterad dokumentation, samt att (ii) namnet Sam Leffler och Silicon Graphics ej anv\'e4nds i marknadsf\'f6ring eller reklam som r\'f6r programvaran utan f\'f6reg\'e5ende skriftlig till\'e5telse fr\'e5n Sam Leffler och Silicon Graphics.\par
+\par
+PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER AVSEENDE S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L.  \par
+\par
+SAM LEFFLER ELLER SILICON GRAPHICS KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA S\'c4RSKILDA, OF\'d6RUTSEDDA ELLER INDIREKTA SKADOR, F\'d6LJDSKADOR ELLER ANDRA SKADOR (INKLUSIVE, MEN INTE BEGR\'c4NSAT TILL UTEBLIVEN ANV\'c4NDNING, UTEBLIVEN VINST ELLER DATAF\'d6RLUST), OAKTAT ANSVARSPRINCIP, SOM UPPST\'c5R TILL F\'d6LJD AV ELLER I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER UTF\'d6RANDET AV PROGRAMVARAN, \'c4VEN OM DE HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DAN SKADA.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material fr\'e5n TWAIN Toolkit\par
+\par
+TWAIN Toolkit distribueras i befintligt skick. Utvecklaren och distribut\'f6rerna av TWAIN Toolkit friskriver sig uttryckligen fr\'e5n alla underf\'f6rst\'e5dda, uttryckliga eller lagstadgade garantier, inklusive, men utan begr\'e4nsning till, underf\'f6rst\'e5dda garantier om s\'e4ljbarhet, icke-intr\'e5ng i tredje parts r\'e4ttigheter eller l\'e4mplighet f\'f6r ett s\'e4rskilt \'e4ndam\'e5l. Varken utvecklarna eller distribut\'f6rerna kan h\'e5llas ansvariga f\'f6r skador, varken direkta, indirekta, s\'e4rskilda eller of\'f6rutsedda skador eller f\'f6ljdskador som uppkommer till f\'f6ljd av reproduktion, modifikation, distribution eller annan anv\'e4ndning av TWAIN Toolkit.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av Intel Corporation.\par
+Copyright (c) 2004-2007, Intel Corporation. Med ensamr\'e4tt.\par
+\par
+Distribution och anv\'e4ndning i k\'e4llform och bin\'e4r form, med eller utan modifikation, till\'e5ts under f\'f6ruts\'e4ttning att f\'f6ljande villkor uppfylls:\par
+\par
+All distribution av k\'e4llkoden m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul.\par
+\par
+All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul i dokumentationen och/eller annat material som tillhandah\'e5lls med distributionen.\par
+\par
+DEN H\'c4R PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK, UTAN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L. COPYRIGHTINNEHAVAREN ELLER BIDRAGANDE PARTER KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA DIREKTA, INDIREKTA, OF\'d6RUTSEDDA, S\'c4RSKILDA ELLER TYPISKA SKADOR ELLER F\'d6LJDSKADOR (INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, ANSKAFFANDE AV ERS\'c4TTNINGSPRODUKTER ELLER ERS\'c4TTNINGSTJ\'c4NSTER, UTEBLIVEN ANV\'c4NDNING, UTEBLIVEN VINST ELLER DATAF\'d6RLUST ELLER AVBROTT I VERKSAMHETEN), OAKTAT UPPKOMST OCH ANSVARSPRINCIP, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, STRIKT ANSVAR ELLER \'c5TALBAR HANDLING (INKLUSIVE OAKTSAMHET ELLER P\'c5 ANNAT S\'c4TT) SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV DEN H\'c4R PROGRAMVARAN, \'c4VEN OM DE HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DAN SKADA.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder jQuery UI.\par
+Copyright 2010, AUTHORS.txt ({\field{\*\fldinst{HYPERLINK "http://jqueryui.com/about"}}{\fldrslt{\ul\cf1 http://jqueryui.com/about}}}\f3\fs18 ) \par
+\par
+Den person som h\'e4mtar ett exemplar av denna programvara och associerade dokumentationsfiler ("programvaran") beviljas h\'e4rmed tillst\'e5nd att utan kostnad arbeta med programvaran utan begr\'e4nsning, \'e4ven utan begr\'e4nsning vad g\'e4ller r\'e4tten att anv\'e4nda, kopiera, modifiera, sammanfoga, publicera, distribuera, vidarelicensiera och/eller s\'e4lja exemplar av programvaran. D\'e4rut\'f6ver beviljas alla personer som programvaran distribueras till samma r\'e4ttigheter under f\'f6ljande f\'f6ruts\'e4ttningar:\par
+\par
+Ovanst\'e5ende copyrightmeddelanden samt detta meddelande om tillst\'e5nd ska finnas med i alla exemplar och st\'f6rre delar av programvaran.\par
+\par
+PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER AVSEENDE S\'c4LJBARHET, L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I R\'c4TTIGHETER. UPPHOVSM\'c4NNEN ELLER COPYRIGHTINNEHAVARNA KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA ANSPR\'c5K, SKADOR ELLER ANDRA KRAV, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, OAKTSAMHET ELLER ANNAN \'c5TALBAR H\'c4NDELSE, SOM UPPST\'c5R TILL F\'d6LJD AV ELLER I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER HANTERINGEN AV PROGRAMVARAN.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder xHCI-specifikationsinformation.\par
+Copyright \'a9 2008-2010 Intel Corporation. Med ensamr\'e4tt.\par
+\par
+{\field{\*\fldinst{HYPERLINK "http://www.intel.com/technology/usb/download/xHCI_Adopters_Agreement.pdf"}}{\fldrslt{\ul\cf1 http://www.intel.com/technology/usb/download/xHCI_Adopters_Agreement.pdf}}}\f3\fs18\par
+3.2 Copyrightlicens. Under f\'f6ruts\'e4ttning att avtalstagaren uppfyller villkoren i detta avtal beviljar Intel f\'f6r egen r\'e4kning och \'e5 bidragande parters r\'e4kning h\'e4rmed \'e4ven en icke exklusiv, royaltyfri, icke \'f6verl\'e5tbar, \line icke vidarelicensierbar, global copyrightlicens till den slutgiltiga specifikationen f\'f6r reproduktion av specifikationen i den m\'e5n detta kr\'e4vs f\'f6r att ut\'f6va patentr\'e4ttigheterna som beviljas i avsnitt 3.1(a), \line under f\'f6ruts\'e4ttning att alla reproduktioner d\'e4rav inkluderar eventuella copyrightmeddelanden och friskrivningsklausuler som finns i den slutgiltiga specifikationen.\par
+\par
+INTEL FR\'c5NS\'c4GER SIG ALLT ANSVAR OCH FRISKRIVER SIG FR\'c5N ALLA UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER AVSEENDE F\'d6RS\'c4LJNINGEN OCH/ELLER ANV\'c4NDNINGEN AV INTELS PRODUKTER, INKLUSIVE ANSVAR ELLER GARANTIER AVSEENDE L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L, S\'c4LJBARHET ELLER ICKE-INTR\'c5NG I TREDJE PARTS PATENT, COPYRIGHT ELLER ANNAN UPPHOVSR\'c4TT.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material fr\'e5n RFC 4034.\par
+Copyright (C) The Internet Society (2005).\par
+\par
+Detta dokument regleras av r\'e4ttigheterna, licenserna och begr\'e4nsningarna i BCP 78, och alla r\'e4ttigheter tillh\'f6r upphovsm\'e4nnen om inget annat anges.\par
+\par
+Detta dokument och informationen h\'e4ri tillhandah\'e5lls I BEFINTLIGT SKICK och DEN BIDRAGANDE PARTEN, ORGANISATIONEN SOM HAN/HON REPRESENTERAR ELLER SPONSRAS AV (I F\'d6REKOMMANDE FALL), THE INTERNET SOCIETY OCH THE INTERNET ENGINEERING TASK FORCE FRISKRIVER SIG FR\'c5N ALLA GARANTIER, S\'c5V\'c4L UTTRYCKLIGA SOM UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UTF\'c4STELSER SOM GARANTERAR ATT ANV\'c4NDNINGEN AV INFORMATIONEN H\'c4RI INTE MEDF\'d6R INTR\'c5NG I TREDJE PARTS R\'c4TTIGHETER ELLER UNDERF\'d6RST\'c5DDA GARANTIER AVSEENDE S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L.\par
+\par
+Immateriell egendom\par
+IETF tar inte i beaktande giltigheten eller omfattningen av eventuella r\'e4ttigheter till immateriell egendom eller andra r\'e4ttigheter med anknytning till implementeringen eller anv\'e4ndningen av tekniken som beskrivs \line i detta dokument, eller i vilken utstr\'e4ckning som licenser som regleras av s\'e5dana r\'e4ttigheter kan vara tillg\'e4ngliga eller inte, och ger inte heller n\'e5gra utf\'e4stelser om att man har vidtagit oberoende \'e5tg\'e4rder i syfte att identifiera s\'e5dana r\'e4ttigheter.  Information om procedurerna med avseende p\'e5 r\'e4ttigheter i RFC-dokument finns i BCP 78 och BCP 79.\par
+\par
+Exemplar av IPR-information som inkommer till IETF:s sekretariat och eventuella utf\'e4stelser om licensutgivning, eller resultatet av f\'f6rs\'f6k att erh\'e5lla en generell licens eller ett generellt tillst\'e5nd f\'f6r anv\'e4ndning av s\'e5dana upphovsr\'e4tter av implementerare eller anv\'e4ndare av den h\'e4r specifikationen, finns tillg\'e4ngliga i IETF:s IPR-arkiv p\'e5 webben p\'e5 {\field{\*\fldinst{HYPERLINK "http://www.ietf.org/ipr"}}{\fldrslt{\ul\cf1 http://www.ietf.org/ipr}}}\f3\fs18 .\par
+\par
+IETF uppmuntrar intresserade parter att uppm\'e4rksamma eventuella copyrightr\'e4ttigheter, patent eller patentans\'f6kningar, eller andra upphovsr\'e4ttigheter som kan omfatta teknik som kan kr\'e4vas f\'f6r att implementera denna standard.  Skicka informationen till IETF p\'e5 ietf-ipr@ietf.org.\par
+\par
+----------------------------------\par
+\par
+Den h\'e4r programvaran baseras delvis p\'e5 arbete av Independent JPEG Group. \par
+Copyright (C) 1991-2013, Thomas G. Lane, Guido Vollbeding.\par
+Alla r\'e4ttigheter f\'f6rbeh\'e5lles med undantag f\'f6r vad som anges nedan.\par
+\par
+Du beviljas h\'e4rmed tillst\'e5nd att anv\'e4nda, kopiera, modifiera och distribuera denna programvara (eller delar av den) f\'f6r valfritt \'e4ndam\'e5l, utan kostnad, i enlighet med f\'f6ljande villkor:\par
+(1) Om n\'e5gon del av k\'e4llkoden f\'f6r den h\'e4r programvaran distribueras m\'e5ste denna README-fil inkluderas, med of\'f6r\'e4ndrade copyrightmeddelanden och friskrivningsklausuler. Alla till\'e4gg, borttagningar eller \'e4ndringar i originalfilerna m\'e5ste tydligt anges i medf\'f6ljande dokumentation.\par
+(2) Om endast k\'f6rbar kod distribueras m\'e5ste det tydligt framg\'e5 i den medf\'f6ljande dokumentationen att "denna programvara baseras delvis p\'e5 arbete av Independent JPEG Group".\par
+(3) Tillst\'e5nd att anv\'e4nda denna programvara beviljas endast under f\'f6ruts\'e4ttning att anv\'e4ndaren accepterar fullt ansvar f\'f6r alla eventuella o\'f6nskade konsekvenser. Upphovsm\'e4nnen fr\'e5ns\'e4ger sig ALLT ANSVAR f\'f6r skador oaktat uppkomst och art.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av Stephen Satchell.\par
+Copyright (C) 1986 Stephen Satchell.\par
+Programmerare kan anv\'e4nda hela eller delar av koden i sina program, under f\'f6ruts\'e4ttning att de inkluderar korrekta h\'e4nvisningar till upphovsm\'e4nnen i k\'e4llan. Publicering av k\'e4llrutiner \'e4r till\'e5tet under f\'f6ruts\'e4ttning att korrekta h\'e4nvisningar till Stephen Satchell, Satchell Evaluations och Chuck Forsberg, Omen Technology inkluderas.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av Jon Zeeff.\par
+Copyright 1988 Jon Zeeff (zeeff@b-tech.ann-arbor.mi.us)\par
+Du kan anv\'e4nda den h\'e4r koden p\'e5 valfritt s\'e4tt, under f\'f6ruts\'e4ttning att du uppger mig som upphovsman samt att jag friskrivs fr\'e5n allt ansvar i h\'e4ndelse av eventuella problem i anslutning till koden.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av Lexmark International.\par
+\par
+Copyright (c) 1993-2003 Lexmark International Inc. Med ensamr\'e4tt.\par
+Tillst\'e5nd beviljas f\'f6r distribution av den h\'e4r filen under f\'f6ruts\'e4ttning att detta copyrightmeddelande l\'e4mnas of\'f6r\'e4ndrat och att inneh\'e5llet i filen inte \'e4ndras p\'e5 n\'e5got s\'e4tt i f\'f6rh\'e5llande till dess ursprungliga form.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder zlib.\par
+Copyright (C) 1995-2002 Jean-loup Gailly och Mark Adler\par
+\par
+Programvaran tillhandah\'e5lls i befintligt skick utan uttryckliga eller underf\'f6rst\'e5dda garantier.  Under inga omst\'e4ndigheter kan upphovsm\'e4nnen h\'e5llas ansvariga f\'f6r eventuella skador som uppkommer till f\'f6ljd av anv\'e4ndningen av denna programvara.\par
+\par
+Tillst\'e5nd beviljas att anv\'e4nda denna programvara i valfritt syfte, inklusive f\'f6r kommersiellt bruk, samt att \'e4ndra och vidaredistribuera den fritt, i enlighet med f\'f6ljande begr\'e4nsningar:\par
+\par
+1. Det f\'e5r inte finnas risk f\'f6r feltolkning r\'f6rande programvarans ursprung; du f\'e5r inte h\'e4vda att den ursprungliga programvaran \'e4r skriven av dig. Om du anv\'e4nder den h\'e4r programvaran i en produkt skulle ett erk\'e4nnande i produktdokumentationen uppskattas, men det \'e4r inget krav.\par
+\par
+2. Modifierade k\'e4llversioner m\'e5ste tydligt m\'e4rkas som s\'e5dana, och det f\'e5r inte finnas risk f\'f6r att de tolkas som den ursprungliga programvaran.\par
+\par
+3. Detta meddelande f\'e5r inte tas bort eller modifieras i f\'f6rh\'e5llande till k\'e4lldistributionen.\par
+\par
+  Jean-loup Gailly        Mark Adler\par
+  jloup@gzip.org          madler@alumni.caltech.edu\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder SafeInt.\par
+SafeInt.hpp\par
+Version 3.0.14p\par
+\par
+Den h\'e4r programvaran licensieras enligt Microsoft Public License (Ms-PL).\par
+Mer information om Microsofts open source-licenser finns p\'e5 \par
+{\field{\*\fldinst{HYPERLINK "http://www.microsoft.com/opensource/licenses.mspx"}}{\fldrslt{\ul\cf1 http://www.microsoft.com/opensource/licenses.mspx}}}\f3\fs18\par
+\par
+Den h\'e4r licensen reglerar anv\'e4ndningen av den medf\'f6ljande programvaran. Din anv\'e4ndning av programvaran betraktas som ditt samtycke till villkoren f\'f6r denna licens. Om du inte accepterar licensvillkoren har du inte r\'e4tt att anv\'e4nda programvaran.\par
+\par
+Definitioner\par
+Termerna "reproducera", "reproduktion", "h\'e4rledda alster" och "distribution" har samma inneb\'f6rd h\'e4r som \line i USA:s copyrightlagstiftning. En "bidragande produkt" syftar p\'e5 den ursprungliga programvaran, eller eventuella till\'e4gg eller \'e4ndringar i programvaran. \par
+En "bidragande part" \'e4r en person som distribuerar sin bidragande produkt i enlighet med denna licens. \par
+"Licensierade patent" syftar p\'e5 en bidragande parts patentanspr\'e5k som finns tydligt angivna i produkten.\par
+\par
+R\'e4ttighetsbeviljande\par
+(A) Copyrighttillst\'e5nd \endash  Under f\'f6ruts\'e4ttning att villkoren i denna licens, inklusive licensvillkoren och begr\'e4nsningarna som anges i avsnitt 3, uppfylls, beviljar varje bidragande part dig en icke exklusiv, global, royaltyfri copyrightlicens att reproducera partens bidragande produkt, att ta fram h\'e4rledda alster av produkten samt att distribuera produkten eller h\'e4rledda alster som du skapar.\par
+\par
+(B) Patenttillst\'e5nd \endash  Under f\'f6ruts\'e4ttning att villkoren i denna licens, inklusive licensvillkoren och begr\'e4nsningarna i avsnitt 3, uppfylls, beviljar varje bidragande part dig en icke exklusiv, global, royaltyfri licens under partens licensierade patent att utveckla, f\'e5 utvecklat, anv\'e4nda, s\'e4lja, erbjuda till f\'f6rs\'e4ljning, importera och/eller att p\'e5 annat s\'e4tt f\'f6rfoga \'f6ver partens bidragande produkt i programvaran eller h\'e4rledda alster av den bidragande produkten i programvaran.\par
+\par
+Villkor och begr\'e4nsningar\par
+(A) Ingen varum\'e4rkeslicens \endash  Denna licens beviljar dig inte r\'e4tt att anv\'e4nda en bidragande parts namn, logotyp eller varum\'e4rken. \par
+(B) Om du riktar ett patentanspr\'e5k mot en bidragande part r\'f6rande patent som du h\'e4vdar att programvaran g\'f6r intr\'e5ng p\'e5, upph\'f6r din patentlicens fr\'e5n den bidragande parten f\'f6r programvaran automatiskt. \par
+(C) Om du distribuerar en del av programvaran m\'e5ste all information r\'f6rande copyright, patent, varum\'e4rken och upphovsm\'e4n som finns i programvaran bevaras. \par
+(D) Om du distribuerar en del av programvaran i k\'e4llkodsformat, har du endast r\'e4tt att g\'f6ra det enligt denna licens under f\'f6ruts\'e4ttning att ett fullst\'e4ndigt exemplar av licensen medf\'f6ljer distributionen. Om du distribuerar en del av programvaran i kompilerat kodformat eller i objektkodsformat, har du endast r\'e4tt att g\'f6ra det enligt en licens som uppfyller villkoren i denna licens. \par
+(E) Programvaran licensieras i befintligt skick. Du anv\'e4nder det p\'e5 egen risk. Bidragande parter utger inga uttryckliga garantier eller villkor. Du kan ha ytterligare r\'e4ttigheter som konsument enligt till\'e4mplig lagstiftning vilket inte p\'e5verkas av denna licens. Med undantag av vad som f\'f6ljer av tvingande lag undantas underf\'f6rst\'e5dda garantier f\'f6r allm\'e4n l\'e4mplighet, l\'e4mplighet f\'f6r ett s\'e4rskilt \'e4ndam\'e5l och fr\'e5nvaro av intr\'e5ng i tredje mans r\'e4ttigheter.\par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material fr\'e5n "Graphic Gems", Academic Press, 1990. \par
+\par
+----------------------------------\par
+     \par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av Gary P. Mussar.\par
+Copyright (c) 1990 Gary P. Mussar.\par
+\par
+/***********************************************************************\par
+* CRC-verktygsrutiner f\'f6r allm\'e4nna 16- och 32-bitars CRC:er.\par
+*\par
+* 1990 Gary P. Mussar\par
+* Den h\'e4r koden har gjorts tillg\'e4nglig f\'f6r offentligt bruk. Det finns inga begr\'e4nsningar.\par
+* Ett erk\'e4nnande av upphovsmannen genom bevarande av den h\'e4r kommentaren\par
+* \'e4r dock h\'f6gt uppskattat.\par
+***********************************************************************/\par
+\par
+----------------------------------\par
+\par
+Denna produkt inneh\'e5ller programvara som utvecklats av OpenSSL Project f\'f6r anv\'e4ndning i OpenSSL Toolkit ({\field{\*\fldinst{HYPERLINK "http://www.openssl.org/"}}{\fldrslt{\ul\cf1 http://www.openssl.org/}}}\f3\fs18 )\par
+\par
+Copyright (c) 1998-2011 The OpenSSL Project.  Med ensamr\'e4tt.\par
+\par
+Distribution och anv\'e4ndning i k\'e4llform och bin\'e4r form, med eller utan modifikation, till\'e5ts under f\'f6ruts\'e4ttning att f\'f6ljande villkor uppfylls:\par
+\par
+\pard\fi-360\li405\sl252\slmult1 1.\tab All distribution av k\'e4llkoden m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul.\par
+2.\tab All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul i dokumentationen och/eller annat material som tillhandah\'e5lls med distributionen.\par
+3.\tab Allt reklam- eller marknadsf\'f6ringsmaterial som anv\'e4nder eller omn\'e4mner funktioner i denna programvara m\'e5ste inkludera f\'f6ljande meddelande:\par
+\pard\nowidctlpar\li450 "Denna produkt inneh\'e5ller programvara som utvecklats av OpenSSL Project f\'f6r anv\'e4ndning i OpenSSL Toolkit. ({\field{\*\fldinst{HYPERLINK "http://www.openssl.org/"}}{\fldrslt{\ul\cf1 http://www.openssl.org/}}}\f3\fs18 )"\par
+\pard\fi-360\li405\sl252\slmult1 4.\tab Namnen "OpenSSL Toolkit" och "OpenSSL Project" f\'e5r inte anv\'e4ndas f\'f6r att rekommendera eller marknadsf\'f6ra produkter som h\'e4rletts fr\'e5n denna programvara utan uttrycklig och f\'f6reg\'e5ende skriftlig till\'e5telse. Ans\'f6k om skriftligt tillst\'e5nd genom att kontakta openssl-core@openssl.org.\par
+5.\tab Produkter som baseras p\'e5 denna programvara f\'e5r inte kallas "OpenSSL", och "OpenSSL" f\'e5r inte f\'f6rekomma i produktnamn utan f\'f6reg\'e5ende skriftligt tillst\'e5nd fr\'e5n OpenSSL Project.\par
+6.\tab All distribution m\'e5ste inkludera f\'f6ljande meddelande:\par
+\pard\nowidctlpar\li450 "Denna produkt inneh\'e5ller programvara som utvecklats av OpenSSL Project f\'f6r anv\'e4ndning i OpenSSL Toolkit ({\field{\*\fldinst{HYPERLINK "http://www.openssl.org/"}}{\fldrslt{\ul\cf1 http://www.openssl.org/}}}\f3\fs18 )"\par
+\pard\nowidctlpar  \par
+DEN H\'c4R PROGRAMVARAN TILLHANDAH\'c5LLS AV OpenSSL PROJECT I BEFINTLIGT SKICK, UTAN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L.  OpenSSL PROJECT ELLER BIDRAGANDE PARTER KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA DIREKTA, INDIREKTA, OF\'d6RUTSEDDA, S\'c4RSKILDA ELLER TYPISKA SKADOR ELLER F\'d6LJDSKADOR (INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, ANSKAFFANDE AV ERS\'c4TTNINGSPRODUKTER ELLER ERS\'c4TTNINGSTJ\'c4NSTER, UTEBLIVEN ANV\'c4NDNING, UTEBLIVEN VINST ELLER DATAF\'d6RLUST ELLER AVBROTT I VERKSAMHETEN), OAKTAT UPPKOMST OCH ANSVARSPRINCIP, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, STRIKT ANSVAR ELLER \'c5TALBAR HANDLING (INKLUSIVE OAKTSAMHET ELLER P\'c5 ANNAT S\'c4TT) SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV DEN H\'c4R PROGRAMVARAN, \'c4VEN OM DE HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DAN SKADA.\par
+====================================================================\par
+Produkten inneh\'e5ller kryptografisk programvara skriven av Eric Young (eay@cryptsoft.com).  Produkten inneh\'e5ller programvara skriven av Tim Hudson (tjh@cryptsoft.com).\par
+\par
+Ursprunglig SSLeay-licens\par
+-----------------------\par
+\par
+Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)\par
+Med ensamr\'e4tt.\par
+\par
+Det h\'e4r paketet \'e4r en SSL-implementering skriven av Eric Young (eay@cryptsoft.com).\par
+Implementeringen f\'f6ljer Netscapes SSL.\par
+\par
+Det h\'e4r biblioteket \'e4r gratis f\'f6r kommersiell och icke-kommersiell anv\'e4ndning under f\'f6ruts\'e4ttning \line att f\'f6ljande villkor uppfylls.  F\'f6ljande villkor g\'e4ller all kod i den h\'e4r distributionen: RC4, RSA,\par
+lhash, DES o.s.v. och inte bara SSL-koden.  SSL-dokumentationen som ing\'e5r i den h\'e4r distributionen \line regleras av samma upphovsr\'e4ttsvillkor f\'f6rutom att innehavaren \'e4r Tim Hudson (tjh@cryptsoft.com).\par
+\par
+Upphovsr\'e4ttigheterna tillh\'f6r fortfarande Eric Young, och inga copyrightmeddelanden i koden f\'e5r avl\'e4gsnas.\par
+Om det h\'e4r paketet anv\'e4nds i en produkt ska det tydligt framg\'e5 att Eric Young \'e4r upphovsmannen till de delar av biblioteket som anv\'e4nds.  Den h\'e4r informationen kan utg\'f6ra ett textmeddelande som visas n\'e4r programmet startar eller ing\'e5 i dokumentationen (webbaserat eller tryckt material) som medf\'f6ljer paketet.\par
+ \par
+Distribution och anv\'e4ndning i k\'e4llform och bin\'e4r form, med eller utan modifikation, till\'e5ts under f\'f6ruts\'e4ttning att f\'f6ljande villkor uppfylls:\par
+\pard\fi-360\li720\sl252\slmult1 1.\tab All distribution av k\'e4llkoden m\'e5ste inkludera copyrightmeddelandet, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul.\par
+2.\tab All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul i dokumentationen och/eller annat material som tillhandah\'e5lls med distributionen.\par
+3.\tab Allt reklam- eller marknadsf\'f6ringsmaterial som anv\'e4nder eller omn\'e4mner funktioner i denna programvara m\'e5ste inkludera f\'f6ljande meddelande:\par
+\pard\nowidctlpar\li720 "Den h\'e4r produkten inneh\'e5ller kryptografisk programvara skriven av Eric Young (eay@cryptsoft.com)"\par
+\pard\nowidctlpar\tab Ordet "kryptografisk" kan utel\'e4mnas om rutinerna fr\'e5n biblioteket som anv\'e4nds inte \'e4r relaterade \tab till kryptografi.\par
+\pard\fi-360\li720\sl252\slmult1 4.\tab Om du anv\'e4nder Windows-specifik kod (eller Windows-h\'e4rledd kod) fr\'e5n appkatalogen (programkoden) m\'e5ste f\'f6ljande meddelande tas med:\par
+\pard\nowidctlpar\li720 "Den h\'e4r produkten inneh\'e5ller programvara skriven av Tim Hudson (tjh@cryptsoft.com)".\par
+\pard\nowidctlpar  \par
+DEN H\'c4R PROGRAMVARAN TILLHANDAH\'c5LLS AV ERIC YOUNG I BEFINTLIGT SKICK, UTAN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L.  UPPHOVSMANNEN ELLER BIDRAGANDE PARTER KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA DIREKTA, INDIREKTA, OF\'d6RUTSEDDA, S\'c4RSKILDA ELLER TYPISKA SKADOR ELLER F\'d6LJDSKADOR (INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, ANSKAFFANDE AV ERS\'c4TTNINGSPRODUKTER ELLER ERS\'c4TTNINGSTJ\'c4NSTER, UTEBLIVEN ANV\'c4NDNING, UTEBLIVEN VINST ELLER DATAF\'d6RLUST ELLER AVBROTT I VERKSAMHETEN), OAKTAT UPPKOMST OCH ANSVARSPRINCIP, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, STRIKT ANSVAR ELLER \'c5TALBAR HANDLING (INKLUSIVE OAKTSAMHET ELLER P\'c5 ANNAT S\'c4TT) SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV DEN H\'c4R PROGRAMVARAN, \'c4VEN OM DE HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DAN SKADA.\par
+\par
+Licens- och distributionsvillkoren f\'f6r offentligt tillg\'e4ngliga versioner eller versioner som kan h\'e4rledas till denna kod f\'e5r inte \'e4ndras. Det betyder att du inte bara f\'e5r kopiera den h\'e4r koden och anv\'e4nda den under en annan distributionslicens (inklusive GNU Public-licensen).\par
+\f0\fs24  \par
+\f3\fs18 -------------------------\par
+\par
+Delar av den h\'e4r programvaran baseras delvis p\'e5 FreeBSD. Eftersom produkten inkluderar programvara fr\'e5n FreeBSD \'e4r Microsoft skyldigt att l\'e4gga till f\'f6ljande text som medf\'f6ljer s\'e5dan programvara:\par
+\par
+\pard\nowidctlpar\sa200\sl240\slmult1 All dokumentation och programvara som ing\'e5r i 4.4BSD- och 4.4BSD-Lite-versionerna \'e4r copyrightskyddad av The Regents of the University of California.\par
+Copyright 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994 The Regents of the University of California. Med ensamr\'e4tt.\par
+\pard\nowidctlpar Distribution och anv\'e4ndning i k\'e4llform och bin\'e4r form, med eller utan modifikation, till\'e5ts under f\'f6ruts\'e4ttning att f\'f6ljande villkor uppfylls:\par
+\pard\fi-360\li720\sl252\slmult1\tx720 1.\tab All distribution av k\'e4llkoden m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul.\par
+\pard\fi-360\li720\sl252\slmult1 2.\tab All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul i dokumentationen och/eller annat material som tillhandah\'e5lls med distributionen.\par
+3.\tab Allt reklam- eller marknadsf\'f6ringsmaterial som anv\'e4nder eller omn\'e4mner funktioner i denna programvara m\'e5ste inkludera f\'f6ljande meddelande: \par
+\pard\nowidctlpar\li720 Denna produkt inneh\'e5ller programvara som utvecklats av University of California, Berkeley och bidragande parter.\par
+\pard\fi-358\li721\sa200\sl252\slmult1\tx720 4.\tab Varken universitetets namn eller namnen p\'e5 dess bidragsgivare f\'e5r anv\'e4ndas f\'f6r att rekommendera eller marknadsf\'f6ra produkter som h\'e4rletts fr\'e5n denna programvara utan uttrycklig och f\'f6reg\'e5ende skriftlig till\'e5telse.\par
+\pard\nowidctlpar DEN H\'c4R PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK, UTAN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L. REGENTS ELLER BIDRAGANDE PARTER KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA DIREKTA, INDIREKTA, OF\'d6RUTSEDDA, S\'c4RSKILDA ELLER TYPISKA SKADOR ELLER F\'d6LJDSKADOR (INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, ANSKAFFANDE AV ERS\'c4TTNINGSPRODUKTER ELLER ERS\'c4TTNINGSTJ\'c4NSTER, UTEBLIVEN ANV\'c4NDNING, UTEBLIVEN VINST ELLER DATAF\'d6RLUST ELLER AVBROTT I VERKSAMHETEN), OAKTAT UPPKOMST OCH ANSVARSPRINCIP, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, STRIKT ANSVAR ELLER \'c5TALBAR HANDLING (INKLUSIVE OAKTSAMHET ELLER P\'c5 ANNAT S\'c4TT) SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV DEN H\'c4R PROGRAMVARAN, \'c4VEN OM DE HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DAN SKADA.\par
+\par
+Institute of Electrical and Electronics Engineers och American National Standards Committee X3, on Information Processing Systems har beviljat oss tillst\'e5nd att trycka delar av deras dokumentation.\par
+I f\'f6ljande meddelande syftar "den h\'e4r texten" p\'e5 delar av systemdokumentationen.  Delar av den h\'e4r texten har publicerats och reproducerats i elektroniskt format i den andra BSD Networking Software-versionen fr\'e5n IEEE Std 1003.1-1988, IEEE Standard Portable Operating System Interface for Computer Environments (POSIX), copyright C 1988 av Institute of Electrical and Electronics Engineers, Inc. Vid eventuella avvikelser mellan dessa versioner och den ursprungliga IEEE-standarden ska den ursprungliga IEEE-standarden anv\'e4ndas som referensdokument.\par
+\par
+I f\'f6ljande meddelande syftar "detta material" p\'e5 delar av systemdokumentationen.\par
+Detta material reproduceras med tillst\'e5nd fr\'e5n American National Standards Committee X3, on Information Processing Systems. Computer and Business Equipment Manufacturers Association (CBEMA), 311 First St., NW, Suite 500, Washington, DC 20001-2178. Utvecklingsarbetet med programmeringsspr\'e5ket C slutf\'f6rdes av X3J11 Technical Committee.\par
+\par
+Alla \'e5sikter och slutsatser i programvaran och dokumentationen tillh\'f6r upphovsm\'e4nnen och ska inte betraktas som officiella utf\'e4stelser, varken uttryckliga eller underf\'f6rst\'e5dda, av Regents of the University of California.\par
+\par
+Obs! Upphovsr\'e4tten till UC Berkeleys BSD-k\'e4llkod (Berkeley Software Distribution) har uppdaterats. Copyrighttill\'e4gget finns p\'e5 {\field{\*\fldinst{HYPERLINK "ftp://ftp.cs.berkeley.edu/pub/4bsd/README.Impt.License.Change"}}{\fldrslt{\ul\cf1 ftp://ftp.cs.berkeley.edu/pub/4bsd/README.Impt.License.Change}}}\f3\fs18  och \par
+nedan.\par
+\par
+    Den 22 juli 1999\par
+\par
+    Till alla licenstagare och distribut\'f6rer av n\'e5gon version av BSD:\par
+\par
+    Som du vet kr\'e4ver vissa BSD-k\'e4llkodsfiler (Berkeley Software Distribution) att marknadsf\'f6ringsmaterial f\'f6r distributioner av produkter som inneh\'e5ller hela eller delar av programvaran inkluderar ett meddelande som anger att produkten inneh\'e5ller programvara som utvecklats av UC Berkeley och dess bidragande parter.\par
+\par
+    Mer specifikt anger villkoret att:\par
+    "     * 3. Allt marknadsf\'f6ringsmaterial som omn\'e4mner funktioner i eller som anv\'e4nder programvaran\par
+          *\tab    m\'e5ste inkludera f\'f6ljande meddelande:\par
+          *\tab    Den h\'e4r produkten inneh\'e5ller programvara som utvecklats av University of\par
+          *\tab    California, Berkeley och bidragande parter."\par
+\par
+    Licenstagare och distribut\'f6rer \'e4r inte l\'e4ngre skyldiga att inkludera detta meddelande i sitt marknadsf\'f6ringsmaterial. D\'e4rmed avl\'e4gsnas det f\'f6reg\'e5ende stycket i sin helhet i de BSD Unix-filer som inneh\'e5ller det.\par
+\par
+    William Hoskins\par
+    Director, Office of Technology Licensing\par
+\par
+------------------------\par
+\par
+Delar av den h\'e4r programvaran baseras delvis p\'e5 LZ4.\par
+\par
+Copyright (C) 2011-2013, Yann Collet.\par
+\par
+BSD-licens med tv\'e5 klausuler ({\field{\*\fldinst{HYPERLINK "http://www.opensource.org/licenses/bsd-license.php"}}{\fldrslt{\ul\cf1 http://www.opensource.org/licenses/bsd-license.php}}}\f3\fs18 )\par
+ \par
+Distribution och anv\'e4ndning i k\'e4llform och bin\'e4r form, med eller utan modifikation, till\'e5ts under f\'f6ruts\'e4ttning att f\'f6ljande villkor uppfylls:\par
+ \par
+* All distribution av k\'e4llkoden m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul.\par
+* All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul i dokumentationen och/eller annat material som tillhandah\'e5lls med distributionen.\par
+ \par
+DEN H\'c4R PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK, UTAN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L. COPYRIGHTINNEHAVAREN ELLER BIDRAGANDE PARTER KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA DIREKTA, INDIREKTA, OF\'d6RUTSEDDA, S\'c4RSKILDA ELLER TYPISKA SKADOR ELLER F\'d6LJDSKADOR (INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, ANSKAFFANDE AV ERS\'c4TTNINGSPRODUKTER ELLER ERS\'c4TTNINGSTJ\'c4NSTER, UTEBLIVEN ANV\'c4NDNING,\par
+UTEBLIVEN VINST ELLER DATAF\'d6RLUST ELLER AVBROTT I VERKSAMHETEN), OAKTAT UPPKOMST OCH ANSVARSPRINCIP, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, STRIKT ANSVAR ELLER \'c5TALBAR HANDLING (INKLUSIVE OAKTSAMHET ELLER P\'c5 ANNAT S\'c4TT) SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV DEN H\'c4R PROGRAMVARAN, \'c4VEN OM DE HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DAN SKADA.\par
+\pard\nowidctlpar\sb100\sa100\par
+\pard\nowidctlpar -------------------------------\par
+\par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av Carnegie Mellon University. \par
+Copyright (c) 1989-2005 Carnegie Mellon University.  Med ensamr\'e4tt.\par
+\par
+Distribution och anv\'e4ndning i k\'e4llform och bin\'e4r form, med eller utan modifikation, till\'e5ts under f\'f6ruts\'e4ttning att f\'f6ljande villkor uppfylls:\par
+\par
+1. All distribution av k\'e4llkoden m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul. \par
+\par
+2. All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul i dokumentationen och/eller annat material som tillhandah\'e5lls med distributionen.\par
+\par
+Det h\'e4r arbetet finansierades delvis av Defense Advanced Research Projects Agency och National Science Foundation of the United States of America, samt CMU Sphinx Speech Consortium.\par
+\par
+DEN H\'c4R PROGRAMVARAN TILLHANDAH\'c5LLS AV CARNEGIE MELLON UNIVERSITY I BEFINTLIGT SKICK, UTAN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L.  CARNEGIE MELLON UNIVERSITY ELLER DESS ANST\'c4LLDA KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA DIREKTA, INDIREKTA, OF\'d6RUTSEDDA, S\'c4RSKILDA ELLER TYPISKA SKADOR ELLER F\'d6LJDSKADOR (INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, ANSKAFFANDE AV ERS\'c4TTNINGSPRODUKTER ELLER ERS\'c4TTNINGSTJ\'c4NSTER, UTEBLIVEN ANV\'c4NDNING, UTEBLIVEN VINST ELLER DATAF\'d6RLUST ELLER AVBROTT I VERKSAMHETEN), OAKTAT UPPKOMST OCH ANSVARSPRINCIP, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, STRIKT ANSVAR ELLER \'c5TALBAR HANDLING (INKLUSIVE OAKTSAMHET ELLER P\'c5 ANNAT S\'c4TT) SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV DEN H\'c4R PROGRAMVARAN, \'c4VEN OM DE HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DAN SKADA.\par
+\par
+\par
+-------------------------------\par
+\par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av Silicon Graphics, Inc. \par
+Copyright (C) Silicon Graphics, Inc. Med ensamr\'e4tt.\par
+\par
+Den person som h\'e4mtar ett exemplar av denna programvara och associerade dokumentationsfiler ("programvaran") beviljas h\'e4rmed tillst\'e5nd att utan kostnad arbeta med programvaran utan begr\'e4nsning, \'e4ven utan begr\'e4nsning vad g\'e4ller r\'e4tten att anv\'e4nda, kopiera, modifiera, sammanfoga, publicera, distribuera, vidarelicensiera och/eller s\'e4lja exemplar av programvaran. D\'e4rut\'f6ver beviljas alla personer som programvaran distribueras till samma r\'e4ttigheter under f\'f6ljande f\'f6ruts\'e4ttningar:\par
+\par
+\pard\nowidctlpar\sa200\sl240\slmult1 Ovanst\'e5ende copyrightmeddelande, inklusive datumen f\'f6r den f\'f6rsta publikationen samt antingen detta meddelande om tillst\'e5ndsbeviljande eller en referens till {\field{\*\fldinst{HYPERLINK "http://oss.sgi.com/projects/FreeB/"}}{\fldrslt{\ul\cf1 http://oss.sgi.com/projects/FreeB/}}}\f3\fs18  ska ing\'e5 i alla kopior eller betydande delar av programvaran.\par
+\pard\nowidctlpar PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER,\par
+VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER\par
+AVSEENDE S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L ELLER\par
+ICKE-INTR\'c5NG I R\'c4TTIGHETER. SILICON GRAPHICS, INC. KAN UNDER INGA OMST\'c4NDIGHETER\par
+H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA ANSPR\'c5K, SKADOR ELLER ANDRA KRAV,\par
+\'c4VEN I H\'c4NDELSE AV AVTALSBROTT, OAKTSAMHET ELLER ANNAN \'c5TALBAR H\'c4NDELSE, SOM UPPST\'c5R TILL F\'d6LJD AV ELLER\par
+I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER HANTERINGEN AV PROGRAMVARAN.\par
+\par
+F\'f6rutom vad som anges i detta meddelande f\'e5r namnet Silicon Graphics, Inc. inte anv\'e4ndas i marknadsf\'f6ring eller p\'e5 annat vis f\'f6r att gynna f\'f6rs\'e4ljning, anv\'e4ndning eller andra transaktioner med avseende p\'e5 denna programvara utan f\'f6reg\'e5ende skriftligt tillst\'e5nd fr\'e5n Silicon Graphics, Inc.\par
+\par
+------------------------------\par
+\par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av The NetBSD Foundation, Inc. \par
+Copyright (c) 2008 The NetBSD Foundation, Inc.\par
+Med ensamr\'e4tt.\par
+\par
+Distribution och anv\'e4ndning i k\'e4llform och bin\'e4r form, med eller utan modifikation, till\'e5ts under f\'f6ruts\'e4ttning att f\'f6ljande villkor uppfylls:\par
+\par
+1. All distribution av k\'e4llkoden m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul.\par
+\par
+2. All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul i dokumentationen och/eller annat material som tillhandah\'e5lls med distributionen.\par
+\par
+DEN H\'c4R PROGRAMVARAN TILLHANDAH\'c5LLS AV NETBSD FOUNDATION, INC. OCH BIDRAGANDE PARTER I BEFINTLIGT SKICK, UTAN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L.  STIFTELSEN ELLER BIDRAGANDE PARTER KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA DIREKTA, INDIREKTA, OF\'d6RUTSEDDA, S\'c4RSKILDA ELLER TYPISKA SKADOR ELLER F\'d6LJDSKADOR (INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, ANSKAFFANDE AV ERS\'c4TTNINGSPRODUKTER ELLER ERS\'c4TTNINGSTJ\'c4NSTER, UTEBLIVEN ANV\'c4NDNING, UTEBLIVEN VINST ELLER DATAF\'d6RLUST ELLER AVBROTT I VERKSAMHETEN), OAKTAT UPPKOMST OCH ANSVARSPRINCIP, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, STRIKT ANSVAR ELLER \'c5TALBAR HANDLING (INKLUSIVE OAKTSAMHET ELLER P\'c5 ANNAT S\'c4TT) SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV DEN H\'c4R PROGRAMVARAN, \'c4VEN OM DE HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DAN SKADA.\par
+\par
+-------------------------------\par
+\par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av John Dyer. \par
+Delar kommer fr\'e5n MediaElement.js\par
+Copyright 2010-2013, John Dyer ({\field{\*\fldinst{HYPERLINK "http://j.hn"}}{\fldrslt{\ul\cf1 http://j.hn}}}\f3\fs18 )\par
+\par
+Den person som h\'e4mtar ett exemplar av denna programvara och associerade dokumentationsfiler ("programvaran") beviljas h\'e4rmed tillst\'e5nd att utan kostnad arbeta med programvaran utan begr\'e4nsning, \'e4ven utan begr\'e4nsning vad g\'e4ller r\'e4tten att anv\'e4nda, kopiera, modifiera, sammanfoga, publicera, distribuera, vidarelicensiera och/eller s\'e4lja exemplar av programvaran. D\'e4rut\'f6ver beviljas alla personer som programvaran distribueras till samma r\'e4ttigheter under f\'f6ljande f\'f6ruts\'e4ttningar:\par
+Ovanst\'e5ende copyrightmeddelanden samt detta meddelande om tillst\'e5nd ska finnas med i alla exemplar och st\'f6rre delar av programvaran.\par
+\par
+PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER AVSEENDE S\'c4LJBARHET, L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I R\'c4TTIGHETER. UPPHOVSM\'c4NNEN ELLER COPYRIGHTINNEHAVARNA KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA ANSPR\'c5K, SKADOR ELLER ANDRA KRAV, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, OAKTSAMHET ELLER ANNAN \'c5TALBAR H\'c4NDELSE, SOM UPPST\'c5R TILL F\'d6LJD AV ELLER I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER HANTERINGEN AV PROGRAMVARAN.\par
+\par
+-------------------------------\par
+\par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av World Wide Web Consortium. \par
+\par
+Copyright (c) 1994-2000 World Wide Web Consortium, (Massachusetts Institute of Technology, Institut National de Recherche en Informatique et en Automatique, Keio University). \par
+Med ensamr\'e4tt. \par
+\par
+Det h\'e4r programmet distribueras under W3C:s programvarulicens f\'f6r immateriell egendom. Programmet distribueras med f\'f6rhoppningen att det ska vara anv\'e4ndbart, men UTAN GARANTIER AV N\'c5GOT SLAG, inklusive underf\'f6rst\'e5dda garantier avseende S\'c4LJBARHET eller L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L. Mer information finns i W3C-licensinformationen p\'e5 {\field{\*\fldinst{HYPERLINK "http://www.w3.org/Consortium/Legal/"}}{\fldrslt{\ul\cf1 http://www.w3.org/Consortium/Legal/}}}\f3\fs18 . \par
+\par
+Copyright \'a9 1995 CERN. "Den h\'e4r produkten inneh\'e5ller datorprogramvara som har utvecklats och gjorts tillg\'e4nglig av CERN. Detta meddelande m\'e5ste tas med i sin helhet i alla produkter som inneh\'e5ller hela eller delar av programvaran fr\'e5n CERN".  \par
+\par
+Licens\par
+\par
+Genom att erh\'e5lla, anv\'e4nda och/eller kopiera det h\'e4r arbetet samtycker du (licenstagaren) till nedanst\'e5ende villkor och best\'e4mmelser, som du har l\'e4st, f\'f6rst\'e5tt och f\'f6rbinder dig att f\'f6lja.\par
+\par
+Du beviljas h\'e4rmed tillst\'e5nd att, utan kostnad eller royaltyavgift, och f\'f6r valfritt \'e4ndam\'e5l, kopiera, \'e4ndra och distribuera den h\'e4r programvaran och tillh\'f6rande dokumentation, med eller utan modifikation, under f\'f6ruts\'e4ttning att f\'f6ljande inkluderas i ALLA exemplar av hela eller delar av programvaran och dokumentationen, inklusive modifikationer:\par
+\par
+Den fullst\'e4ndiga texten i detta MEDDELANDE p\'e5 en framtr\'e4dande plats i det distribuerade eller h\'e4rledda arbetet. Eventuella befintliga friskrivningsklausuler f\'f6r immateriell egendom, meddelanden eller best\'e4mmelser och villkor. Om inga s\'e5dana finns ska W3C Software Short Notice inkluderas (hypertext \'e4r att f\'f6redra, text till\'e5ts) i distributionen eller den h\'e4rledda koden.\par
+\par
+Meddelande om \'e4ndringar eller modifikationer i filerna, inklusive det datum d\'e5 \'e4ndringar gjorts. (Vi rekommenderar att du l\'e4gger till URI:s till kodens ursprungliga plats.)\par
+\par
+Friskrivningsklausuler\par
+\par
+DEN H\'c4R PROGRAMVARAN OCH DOKUMENTATIONEN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK OCH COPYRIGHTINNEHAVARNA GER INGA UTF\'c4STELSER ELLER GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER OM S\'c4LJBARHET ELLER L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I R\'c4TTIGHETER, PATENT, COPYRIGHT ELLER VARUM\'c4RKEN TILLH\'d6RANDE TREDJE PART.\par
+\par
+COPYRIGHTINNEHAVARNA KAN INTE H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA DIREKTA, INDIREKTA ELLER S\'c4RSKILDA SKADOR ELLER F\'d6LJDSKADOR SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV PROGRAMVARAN ELLER DOKUMENTATIONEN.\par
+\par
+Copyrightinnehavarnas namn och varum\'e4rken f\'e5r INTE anv\'e4nds i reklam- eller marknadsf\'f6ringsmaterial f\'f6r programvaran utan f\'f6reg\'e5ende uttryckligt, skriftligt tillst\'e5nd. R\'e4tten till copyright i den h\'e4r programvaran och associerad dokumentation tillh\'f6r uteslutande copyrightinnehavarna.\par
+\par
+-------------------------------\par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av W3C.\par
+\par
+Copyright 1998-2004 W3C (MIT, ERCIM, Keio),\par
+\par
+Med ensamr\'e4tt. Du beviljas h\'e4rmed tillst\'e5nd att, i alla syften och utan kostnad eller tidsbegr\'e4nsning, anv\'e4nda, kopiera, modifiera och distribuera SSML-schemat och tillh\'f6rande dokumentation, under f\'f6ruts\'e4ttning att ovanst\'e5ende copyrightmeddelande och detta stycke finns med i samtliga exemplar.  Copyrightinnehavarna l\'e4mnar inga utf\'e4stelser avseende schemats l\'e4mplighet f\'f6r n\'e5got \'e4ndam\'e5l. Schemat tillhandah\'e5lls i befintligt skick utan garantier, vare sig uttryckliga eller underf\'f6rst\'e5dda.\par
+\par
+-------------------------------\par
+\par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av Ralph Hancock och John Hudson. \par
+\par
+Hebrew OpenType Layout logic copyright (c) 2003 & 2007, Ralph Hancock & John Hudson. Layoutlogiken f\'f6r Biblical Hebrew \'e4r programvara med \'f6ppen k\'e4llkod som anv\'e4nds under licens fr\'e5n MIT.\par
+\par
+Den person som h\'e4mtar ett exemplar av denna programvara och associerade dokumentationsfiler ("programvaran") beviljas h\'e4rmed tillst\'e5nd att utan kostnad arbeta med programvaran utan begr\'e4nsning, \'e4ven utan begr\'e4nsning vad g\'e4ller r\'e4tten att anv\'e4nda, kopiera, modifiera, sammanfoga, publicera, distribuera, vidarelicensiera och/eller s\'e4lja exemplar av programvaran. D\'e4rut\'f6ver beviljas alla personer som programvaran distribueras till samma r\'e4ttigheter under f\'f6ljande f\'f6ruts\'e4ttningar:\par
+\par
+Ovanst\'e5ende copyrightmeddelanden samt detta meddelande om tillst\'e5nd ska finnas med i alla exemplar och st\'f6rre delar av programvaran.\par
+\par
+PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER AVSEENDE S\'c4LJBARHET, L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I R\'c4TTIGHETER. UPPHOVSM\'c4NNEN ELLER COPYRIGHTINNEHAVARNA KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA ANSPR\'c5K, SKADOR ELLER ANDRA KRAV, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, OAKTSAMHET ELLER ANNAN \'c5TALBAR H\'c4NDELSE, SOM UPPST\'c5R TILL F\'d6LJD AV ELLER I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER HANTERINGEN AV PROGRAMVARAN.\par
+\par
+-------------------------------\par
+\par
+Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av CodePlex Foundation.\par
+Copyright (c) 2009 CodePlex Foundation.\par
+Med ensamr\'e4tt.\par
+\par
+Distribution och anv\'e4ndning i k\'e4llform och bin\'e4r form, med eller utan modifikation, till\'e5ts under f\'f6ruts\'e4ttning att f\'f6ljande villkor uppfylls:\par
+\par
+All distribution av k\'e4llkoden m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul.\par
+\par
+All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausul i dokumentationen och/eller annat material som tillhandah\'e5lls med distributionen.\par
+Varken namnet CodePlex Foundation eller namnen p\'e5 dess bidragsgivare f\'e5r anv\'e4ndas f\'f6r att rekommendera eller marknadsf\'f6ra produkter som h\'e4rletts fr\'e5n denna programvara utan f\'f6reg\'e5ende uttryckligt skriftligt tillst\'e5nd.\par
+\par
+DEN H\'c4R PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK, UTAN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA GARANTIER, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, UNDERF\'d6RST\'c5DDA GARANTIER OM S\'c4LJBARHET OCH L\'c4MPLIGHET F\'d6R ETT VISST \'c4NDAM\'c5L. COPYRIGHTINNEHAVAREN KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIG F\'d6R EVENTUELLA DIREKTA, INDIREKTA, OF\'d6RUTSEDDA, S\'c4RSKILDA ELLER TYPISKA SKADOR ELLER F\'d6LJDSKADOR (INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, ANSKAFFANDE AV ERS\'c4TTNINGSPRODUKTER ELLER ERS\'c4TTNINGSTJ\'c4NSTER, UTEBLIVEN ANV\'c4NDNING, UTEBLIVEN VINST ELLER DATAF\'d6RLUST ELLER AVBROTT I VERKSAMHETEN), OAKTAT UPPKOMST OCH ANSVARSPRINCIP, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, STRIKT ANSVAR ELLER \'c5TALBAR HANDLING (INKLUSIVE OAKTSAMHET ELLER P\'c5 ANNAT S\'c4TT) SOM UPPKOMMER TILL F\'d6LJD AV ANV\'c4NDNINGEN AV DEN H\'c4R PROGRAMVARAN, \'c4VEN OM DE HAR HAFT K\'c4NNEDOM OM RISKEN F\'d6R S\'c5DAN SKADA.\par
+\par
+-------------------------------\par
+\highlight2\par
+\highlight0 Den h\'e4r produkten anv\'e4nder material som \'e4r copyrightskyddat av University of Illinois.\par
+University of Illinois/NCSA\par
+Licens f\'f6r \'f6ppen k\'e4llkod\par
+\par
+Copyright (c) 2003-2010 University of Illinois at Urbana-Champaign.\par
+Med ensamr\'e4tt.\par
+\par
+Utvecklat av:\par
+\par
+    LLVM Team\par
+    University of Illinois at Urbana-Champaign\par
+    {\field{\*\fldinst{HYPERLINK "http://llvm.org"}}{\fldrslt{\ul\cf1 http://llvm.org}}}\f3\fs18\par
+\par
+Den person som h\'e4mtar ett exemplar av denna programvara och associerade dokumentationsfiler ("programvaran") beviljas h\'e4rmed tillst\'e5nd att utan kostnad arbeta med programvaran utan begr\'e4nsning, \'e4ven utan begr\'e4nsning vad g\'e4ller r\'e4tten att anv\'e4nda, kopiera, modifiera, sammanfoga, publicera, distribuera, vidarelicensiera och/eller s\'e4lja exemplar av programvaran. D\'e4rut\'f6ver beviljas alla personer som programvaran distribueras till samma r\'e4ttigheter under f\'f6ljande f\'f6ruts\'e4ttningar:\par
+\par
+    * All distribution av k\'e4llkoden m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausuler.\par
+\par
+    * All distribution i bin\'e4r form m\'e5ste inkludera ovanst\'e5ende copyrightmeddelande, den h\'e4r listan med villkor och f\'f6ljande friskrivningsklausuler i dokumentationen och/eller annat material som medf\'f6ljer distributionen.\par
+\par
+    * Varken LLVM Team, University of Illinois at Urbana-Champaign eller namnen p\'e5 bidragande parter f\'e5r anv\'e4ndas f\'f6r att rekommendera eller marknadsf\'f6ra produkter som h\'e4rletts fr\'e5n denna programvara utan uttryckligt f\'f6reg\'e5ende skriftligt tillst\'e5nd.\par
+\par
+PROGRAMVARAN TILLHANDAH\'c5LLS I BEFINTLIGT SKICK UTAN N\'c5GRA GARANTIER, VARKEN UTTRYCKLIGA ELLER UNDERF\'d6RST\'c5DDA, INKLUSIVE, MEN UTAN BEGR\'c4NSNING TILL, GARANTIER AVSEENDE S\'c4LJBARHET, L\'c4MPLIGHET F\'d6R ETT S\'c4RSKILT \'c4NDAM\'c5L ELLER ICKE-INTR\'c5NG I R\'c4TTIGHETER.  COPYRIGHTINNEHAVARNA ELLER BIDRAGANDE PARTER KAN UNDER INGA OMST\'c4NDIGHETER H\'c5LLAS ANSVARIGA F\'d6R EVENTUELLA ANSPR\'c5K, SKADOR ELLER ANDRA KRAV, \'c4VEN I H\'c4NDELSE AV AVTALSBROTT, OAKTSAMHET ELLER ANNAN \'c5TALBAR H\'c4NDELSE, SOM UPPST\'c5R TILL F\'d6LJD AV ELLER I ANSLUTNING TILL ANV\'c4NDNINGEN ELLER HANTERINGEN AV\par
+PROGRAMVARAN.\highlight2\par
+\highlight0 _____________________________________\par
+\pard\nowidctlpar\sb100\sa100 Alla andra varum\'e4rken tillh\'f6r respektive \'e4gare.\par
+\par
+}
+ 
