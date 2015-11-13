@@ -35,11 +35,9 @@ public class CreateVacationaActivity extends ActionBarActivity {
     private String start;
     private String end;
     private EditText place;
-    TextView startVac;
-    TextView EndVac;
-    Calendar myCalender = Calendar.getInstance();
-
-    Button btnUpload;
+    private TextView startVac;
+    private TextView EndVac;
+    private Calendar myCalender = Calendar.getInstance();
 
     public static ArrayList<Bitmap> bitmapArray;
     private GridView gridView;
@@ -99,34 +97,20 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                if (bitmapArray.size() < 2) {
-                    if (position == 0) {
-                        Intent imageGalleryInten = new Intent(Intent.ACTION_PICK);
-                        File picDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+                if (position == 0) {
+                    Intent imageGalleryInten = new Intent(Intent.ACTION_PICK);
+                    File picDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
-                        String picDirPath = picDir.getPath();
+                    String picDirPath = picDir.getPath();
 
-                        Uri data = Uri.parse(picDirPath);
+                    Uri data = Uri.parse(picDirPath);
 
-                        imageGalleryInten.setDataAndType(data, "image/*");
-                        startActivityForResult(imageGalleryInten, IMAGE_GALLERY);
-                    }
+                    imageGalleryInten.setDataAndType(data, "image/*");
+                    startActivityForResult(imageGalleryInten, IMAGE_GALLERY);
                 }
-
-
             }
         });
 
-        this.btnUpload = (Button)findViewById(R.id.btnupload);
-
-        btnUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new ImageUpload(21,
-                        bitmapArray,
-                        getApplicationContext()).execute();
-            }
-        });
     }
 
     @Override
@@ -174,7 +158,7 @@ public class CreateVacationaActivity extends ActionBarActivity {
                 place.getText().toString(),
                 start.toString(),
                 end.toString(),
-                getApplicationContext(),
+                CreateVacationaActivity.this,
                 bitmapArray).execute();
 
     }
@@ -202,7 +186,6 @@ public class CreateVacationaActivity extends ActionBarActivity {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear,
                               int dayOfMonth) {
-            // TODO Auto-generated method stub
             myCalender.set(Calendar.YEAR, year);
             myCalender.set(Calendar.MONTH, monthOfYear);
             myCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -218,7 +201,6 @@ public class CreateVacationaActivity extends ActionBarActivity {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear,
                               int dayOfMonth) {
-            // TODO Auto-generated method stub
             myCalender.set(Calendar.YEAR, year);
             myCalender.set(Calendar.MONTH, monthOfYear);
             myCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);

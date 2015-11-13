@@ -1,9 +1,12 @@
 package com.meeladsd.memoriesapplication;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -26,17 +29,27 @@ public class CreateMemory extends AsyncTask<String, Void, JSONObject> {
     private int _id;
     private ArrayList<Bitmap> _bArray;
     private String _time;
-    private Context _con;
+    private Activity _con;
+    private ProgressDialog progress;
     private int _statuscode;
 
-    CreateMemory(int id, ArrayList<Bitmap> bArra, String time, Context c) {
+    CreateMemory(int id, ArrayList<Bitmap> bArra, String time, Activity c) {
 
         _bArray = bArra;
         _id = id;
         _time = time;
         _con = c;
+        progress = new ProgressDialog(c);
     }
 
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progress.setTitle("Creating a new vacation");
+        progress.setMessage("Please wait...");
+        progress.show();
+    }
     @Override
     protected JSONObject doInBackground(String... params) {
         DefaultHttpClient httpclient = new DefaultHttpClient();
@@ -66,14 +79,23 @@ public class CreateMemory extends AsyncTask<String, Void, JSONObject> {
 
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
-        int idM = -1;
-        try {
-            idM = jsonObject.getInt("MemoryId");
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if (progress.isShowing()) {
+            progress.dismiss();
         }
-        new ImageUpload(idM,
-                _bArray,
-                _con).execute();
+        if(_statuscode >= 200 && _statuscode <300) {
+            int idM = -1;
+            try {
+                idM = jsonObject.getInt("MemoryId");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            new ImageUpload(idM,
+                    _bArray,
+                    _con).execute();
+        }
+        else {
+            Toast.makeText(_con, "Failed to create a new memory", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

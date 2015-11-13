@@ -1,79 +1,107 @@
 package com.meeladsd.memoriesapplication;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
 /**
  * Created by meeladsd on 11/9/2015.
  */
 public class ImageUpload extends AsyncTask<String, Void, String> {
+
+    private List<Integer> _statusCode = new ArrayList<Integer>();
     private int _id;
     private ArrayList<Bitmap> _bArray;
-    Context _con;
-    private int _statuscode;
+    private Activity _con;
 
-    DataOutputStream dos;
-    ImageUpload(int id, ArrayList<Bitmap> bArra, Context con) {
+    private String _attachmentName = "bitmap";
+    private String _attachmentFileName = "bitmap.bmp";
+    private String _crlf = "\r\n";
+    private String _twoHyphens = "--";
+    private String _boundary =  "*****";
+
+    private ProgressDialog progress;
+
+    ImageUpload(int id, ArrayList<Bitmap> bArra, Activity con) {
 
         _bArray = bArra;
         _id = id;
         _con = con;
+        progress = new ProgressDialog(con);
 
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progress.setTitle("Uploading the images");
+        progress.setMessage("Please wait...");
+        progress.show();
+    }
+
+    @Override
     protected String doInBackground(String... params) {
+        //get sharePrefrences & the access token
+        SharedPreferences myS =  _con.getSharedPreferences("token", Context.MODE_PRIVATE);
+        String t = myS.getString("access_token", "");
+        HttpURLConnection httpUrlConnection = null;
+        //url for upload
+
         try {
+            for (Bitmap bitmap: _bArray) {
+                int width = bitmap.getWidth();
+                int height = bitmap.getHeight();
+                URL url = new URL("http://jthcloudproject.elasticbeanstalk.com/api/v1/memories/"+ _id+"/picture?height="+height+"&width="+width);
 
-            Bitmap bitmap = _bArray.get(0);
+                httpUrlConnection = (HttpURLConnection) url.openConnection();
+                httpUrlConnection.setUseCaches(false);
+                httpUrlConnection.setDoOutput(true);
+                httpUrlConnection.setRequestMethod("POST");
+                httpUrlConnection.setRequestProperty("Authorization", "Bearer "+t);
+                httpUrlConnection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + _boundary);
 
-            SharedPreferences myS =  _con.getSharedPreferences("token", Context.MODE_PRIVATE);
-            String t = myS.getString("access_token", "");
+                DataOutputStream request = new DataOutputStream(
+                        httpUrlConnection.getOutputStream());
 
-            int width = bitmap.getWidth();
-            int height = bitmap.getHeight();
+                request.writeBytes(_twoHyphens + _boundary + _crlf);
+                request.writeBytes("Content-Disposition: form-data; name=\"" +
+                        _attachmentName + "\";filename=\"" +
+                        _attachmentFileName + "\"" + _crlf);
+                request.writeBytes(_crlf);
 
-            URL url = new URL("http://jthcloudproject.elasticbeanstalk.com/api/v1/memories/"+ _id+"/picture?height="+height+"&width="+width);
-            HttpURLConnection c = (HttpURLConnection) url.openConnection();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+                byte[] imageBytes = baos.toByteArray();
 
-            c.setDoInput(true);
-            c.setDoOutput(true);
+                request.write(imageBytes);
 
-            c.setRequestMethod("POST");
-            c.setRequestProperty("Authorization", "bearer " + t);
-            c.setRequestProperty("Content-type", "multipart/form-data");
-            
-            dos = new DataOutputStream(c.getOutputStream());
+                request.writeBytes(_crlf);
+                request.writeBytes(_twoHyphens + _boundary +
+                        _twoHyphens + _crlf);
 
-            c.connect();
+                request.flush();
+                request.close();
 
-            OutputStream output = c.getOutputStream();
-
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
-            byte[] imageBytes = baos.toByteArray();
-
-            output.write(imageBytes);
-            output.close();
-
-            int responseCode = c.getResponseCode();
-            Scanner result = new Scanner(c.getInputStream());
-            String response = result.nextLine();
-            result.close();
-
-            return response;
+                _statusCode.add(httpUrlConnection.getResponseCode());
+                InputStream inputStream = httpUrlConnection.getInputStream();
+                inputStream.close();
+                httpUrlConnection.disconnect();
+            }
         } catch (IOException e) {
             Log.e("tstImage", "Error", e);
         }
@@ -82,10 +110,23 @@ public class ImageUpload extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
+        if (progress.isShowing()) {
+            progress.dismiss();
+        }
+        boolean ok = true;
+        for (int status:_statusCode) {
 
-        Log.e("response",s);
+            if (status >= 300 && status < 200){
+                ok = false;
+            }
+        }
+        if(!ok)
+        {
+            Toast.makeText(_con, "Failed to upload one or more images", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            _con.startActivity(new Intent(_con, MainActivity.class));
+        }
     }
 }
-
-
-//URL url = new URL("http://jthcloudproject.elasticbeanstalk.com/api/v1/memories/"+ _id+"/picture?height="+height+"&width="+width);

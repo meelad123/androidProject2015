@@ -81,6 +81,9 @@ public class login extends AsyncTask<String, Void, JSONObject>{
 
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
+        if (progress.isShowing()) {
+            progress.dismiss();
+        }
         try {
             if(jsonObject.getString("access_token") != null){
                 SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
@@ -99,20 +102,11 @@ public class login extends AsyncTask<String, Void, JSONObject>{
                 } catch (JSONException e) {
                     Toast.makeText(_myContext, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
-                finally {
-                    if (progress.isShowing()) {
-                        progress.dismiss();
-                    }
-                }
-
             }
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(_myContext, e.getMessage(), Toast.LENGTH_LONG).show();
 
-            if (progress.isShowing()) {
-                progress.dismiss();
-            }
         }
 
     }

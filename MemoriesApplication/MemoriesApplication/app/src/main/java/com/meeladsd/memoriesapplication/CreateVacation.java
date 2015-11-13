@@ -1,5 +1,7 @@
 package com.meeladsd.memoriesapplication;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -33,11 +35,11 @@ public class CreateVacation extends AsyncTask<String, String, JSONObject> {
     private String Statues1;
     private ArrayList<Bitmap> _bitmapArray;
 
-    Context con;
+    private Activity con;
+    private ProgressDialog progress;
 
 
-
-    public CreateVacation(String _title, String _description, String _place, String _start, String _end, Context c, ArrayList<Bitmap> bArray) {
+    public CreateVacation(String _title, String _description, String _place, String _start, String _end, Activity c, ArrayList<Bitmap> bArray) {
         Description=_description;
         title=_title;
         place=_place;
@@ -45,9 +47,16 @@ public class CreateVacation extends AsyncTask<String, String, JSONObject> {
         end=_end;
         con = c;
         _bitmapArray = bArray;
-
+        progress = new ProgressDialog(c);
     }
 
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progress.setTitle("Creating a new vacation");
+        progress.setMessage("Please wait...");
+        progress.show();
+    }
     @Override
     protected JSONObject doInBackground(String... params) {
         DefaultHttpClient httpclient = new DefaultHttpClient();
@@ -58,8 +67,6 @@ public class CreateVacation extends AsyncTask<String, String, JSONObject> {
         nameValuePair.add(new BasicNameValuePair("place", place));
         nameValuePair.add(new BasicNameValuePair("start", start));
         nameValuePair.add(new BasicNameValuePair("end", end));
-
-
 
         try {
             SharedPreferences myS =  con.getSharedPreferences("token", Context.MODE_PRIVATE);
@@ -84,17 +91,19 @@ public class CreateVacation extends AsyncTask<String, String, JSONObject> {
 
     }
 
-
+    @Override
     protected void onPostExecute(JSONObject result) {
-
-        if (statuscode > 200 || statuscode < 300)
+        if (progress.isShowing()) {
+            progress.dismiss();
+        }
+        if (statuscode >= 200 && statuscode < 300)
             try {
                 newMemory(result);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         else {
-            Toast.makeText(con, "Vacation not created", Toast.LENGTH_SHORT).show();
+            Toast.makeText(con, "Failed to create a new vacation", Toast.LENGTH_SHORT).show();
         }
 
     }
