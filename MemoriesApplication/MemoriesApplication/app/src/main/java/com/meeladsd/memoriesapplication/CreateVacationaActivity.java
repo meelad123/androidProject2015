@@ -27,7 +27,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
-
+/**
+ * Created by meeladsd on 11/9/2015.
+ */
 public class CreateVacationaActivity extends ActionBarActivity {
     private Button create_vacaion_btn;
     private EditText title;
@@ -107,6 +109,10 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
                     imageGalleryInten.setDataAndType(data, "image/*");
                     startActivityForResult(imageGalleryInten, IMAGE_GALLERY);
+                }
+                else {
+                    bitmapArray.remove(position);
+                    imageAdapter.notifyDataSetChanged();
                 }
             }
         });

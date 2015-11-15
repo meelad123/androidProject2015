@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+/**
+ * Created by meeladsd on 11/9/2015.
+ */
 public class LogInActivity extends ActionBarActivity {
 
     private Button btnLogin;

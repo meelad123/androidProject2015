@@ -42,6 +42,7 @@ public class ImageAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
+        
         if (convertView == null) {
             imageView = new ImageView(_cx);
             imageView.setLayoutParams(new GridView.LayoutParams(185, 185));
