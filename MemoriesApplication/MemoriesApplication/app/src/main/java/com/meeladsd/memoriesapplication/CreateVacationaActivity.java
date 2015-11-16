@@ -99,7 +99,7 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                if (position == 0) {
+                if (position == 0 && bitmapArray.size() < 4) {
                     Intent imageGalleryInten = new Intent(Intent.ACTION_PICK);
                     File picDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
@@ -109,8 +109,7 @@ public class CreateVacationaActivity extends ActionBarActivity {
 
                     imageGalleryInten.setDataAndType(data, "image/*");
                     startActivityForResult(imageGalleryInten, IMAGE_GALLERY);
-                }
-                else {
+                } else if(position != 0){
                     bitmapArray.remove(position);
                     imageAdapter.notifyDataSetChanged();
                 }

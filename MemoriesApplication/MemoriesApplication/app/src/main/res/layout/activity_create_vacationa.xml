@@ -7,15 +7,17 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add pictures:"
+        android:layout_height="20dp"
+        android:text="Add Memories"
         android:paddingLeft="4dp"
         android:textColor="#fff"
         android:background="#006192"
         android:id="@+id/txt_add_pic"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_marginBottom="10dp"
-        />
+        android:textStyle="bold">
+
+    </TextView>
+
     <GridView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,14 +46,21 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/grd_images"
         />
-    <View
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_marginTop="5dp"
-        android:id="@+id/img_devider"
+        android:layout_height="20dp"
+        android:text="Aditional Info"
+        android:paddingLeft="4dp"
+        android:textColor="#fff"
         android:background="#006192"
+        android:id="@+id/img_devider"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/description_txt"
-        />
+        android:textStyle="bold"
+        >
+    </TextView>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
