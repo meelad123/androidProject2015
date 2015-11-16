@@ -27,17 +27,15 @@ import java.util.List;
  */
 public class EditUser extends AsyncTask<String, String, Integer> {
 
-   private TextView  FirstName,LastName,Email,UserName;
+   private TextView  FirstName,LastName,Email;
     private String[] myList;
    private HttpResponse response=null;
     int state;
-
-            Activity _myContext;
-    EditUser(TextView _FName,TextView _Lname,TextView _email,TextView _username, String [] myArray, Activity c)
+    Activity _myContext;
+    EditUser(TextView _FName,TextView _Lname,TextView _email, String [] myArray, Activity c)
     {LastName=_Lname;
         Email=_email;
         myList=myArray;
-        UserName=_username;
         FirstName=_FName;
         _myContext = c;
     }
@@ -60,7 +58,8 @@ public class EditUser extends AsyncTask<String, String, Integer> {
         nameValuePair.add(new BasicNameValuePair("FirstName", myList[1].toString()));
         nameValuePair.add(new BasicNameValuePair("LastName", myList[2].toString()));
         nameValuePair.add(new BasicNameValuePair("Email", myList[3].toString()));
-        nameValuePair.add(new BasicNameValuePair("UserName", myList[4].toString()));
+        nameValuePair.add(new BasicNameValuePair("username", myList[4].toString()));
+
         try {
 
             httpPut.setEntity(new UrlEncodedFormEntity(nameValuePair, HTTP.UTF_8));
@@ -90,8 +89,6 @@ public class EditUser extends AsyncTask<String, String, Integer> {
 
 
             Toast.makeText(_myContext,"your profile has been successfully updated",Toast.LENGTH_LONG).show();
-
-
             _myContext.startActivity(new Intent(_myContext,MyProfileactivity2.class));
 
         }

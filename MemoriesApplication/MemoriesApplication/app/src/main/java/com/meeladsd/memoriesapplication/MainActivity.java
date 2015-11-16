@@ -1,5 +1,6 @@
 package com.meeladsd.memoriesapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -63,6 +64,26 @@ public class MainActivity extends ActionBarActivity {
                     startActivity(intent);
                     finish();
                 }
+                if (position == 4) {
+
+                    new DeleteUser(MainActivity.this).execute();
+
+                    SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
+                    SharedPreferences.Editor editor = userDetails.edit();
+                    SharedPreferences detalisOfUser = view.getContext().getSharedPreferences("profile", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor2 = detalisOfUser.edit();
+                    SharedPreferences userName = view.getContext().getSharedPreferences("Name", MODE_PRIVATE);
+                    SharedPreferences.Editor editor1 = userName.edit();
+                    editor1.clear();
+                    editor1.apply();
+                    editor2.clear();
+                    editor2.apply();
+                    editor.clear();
+                    editor.apply();
+                    Intent intent = new Intent(view.getContext(), LogInActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -71,7 +92,7 @@ public class MainActivity extends ActionBarActivity {
 
     }
     private void addDrawerItems() {
-        String[] myitems = { "My vacations", "My friends", "Log out","My Profile"};
+        String[] myitems = { "My vacations", "My friends", "Log out","My Profile","Delete current user"};
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myitems);
         mDrawerList.setAdapter(mAdapter);
     }

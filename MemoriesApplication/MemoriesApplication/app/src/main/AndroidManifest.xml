@@ -50,7 +50,7 @@
         <activity android:name=".EditProfileActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".EditProfileActivity" />
+                android:value=".LogInActivity" />
         </activity>
     </application>
 
