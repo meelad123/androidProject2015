@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.os.AsyncTaskCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,7 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+import android.os.AsyncTask;
 public class MainActivity extends ActionBarActivity {
 
 
@@ -62,20 +63,11 @@ public class MainActivity extends ActionBarActivity {
                     finish();
                 }
                 if (position == 4) {
+                    DeleteUser test = new DeleteUser(MainActivity.this);
+                    test.execute();
 
-                    new DeleteUser(MainActivity.this).execute();
 
-                    SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
-                    SharedPreferences.Editor editor = userDetails.edit();
-                    SharedPreferences detalisOfUser = view.getContext().getSharedPreferences("profile", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor2 = detalisOfUser.edit();
-                    editor2.clear();
-                    editor2.apply();
-                    editor.clear();
-                    editor.apply();
-                    Intent intent = new Intent(view.getContext(), LogInActivity.class);
-                    startActivity(intent);
-                    finish();
+
                 }
             }
         });

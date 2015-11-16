@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -40,7 +41,6 @@ public class DeleteUser extends AsyncTask<String,String,Integer>
     @Override
     protected Integer doInBackground(String... params) {
         SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
-
         String t = myS.getString("access_token", "");
         String name = myS.getString("username", "");
 
@@ -72,9 +72,21 @@ public class DeleteUser extends AsyncTask<String,String,Integer>
         if (integer > 200 || integer < 300)
         {  Toast.makeText(_myContext, "User successfully deleted", Toast.LENGTH_LONG).show();
 
+            SharedPreferences userDetails = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = userDetails.edit();
+            SharedPreferences detalisOfUser = _myContext.getSharedPreferences("profile", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor2 = detalisOfUser.edit();
+            editor2.clear();
+            editor2.apply();
+            editor.clear();
+            editor.apply();
+            Intent intent = new Intent(_myContext, LogInActivity.class);
+            _myContext.startActivity(intent);
+            _myContext.finish();}
+
+
         }
 
 
 
-    }
 }
