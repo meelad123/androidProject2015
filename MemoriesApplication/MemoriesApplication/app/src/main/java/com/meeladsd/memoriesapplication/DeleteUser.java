@@ -40,9 +40,9 @@ public class DeleteUser extends AsyncTask<String,String,Integer>
     @Override
     protected Integer doInBackground(String... params) {
         SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
-        SharedPreferences myS2 = _myContext.getSharedPreferences("Name", Context.MODE_PRIVATE);
+
         String t = myS.getString("access_token", "");
-        String name = myS2.getString("Fname", "");
+        String name = myS.getString("username", "");
 
         DefaultHttpClient client = new DefaultHttpClient();
         HttpDelete httpDelete = new HttpDelete("http://jthcloudproject.elasticbeanstalk.com/api/v1/Users/" + name);
@@ -71,17 +71,6 @@ public class DeleteUser extends AsyncTask<String,String,Integer>
         }
         if (integer > 200 || integer < 300)
         {  Toast.makeText(_myContext, "User successfully deleted", Toast.LENGTH_LONG).show();
-
-
-            SharedPreferences userDetails =_myContext.getSharedPreferences("access_token", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = userDetails.edit();
-            SharedPreferences use = _myContext.getSharedPreferences("Name", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor1 = use.edit();
-            editor1.clear();
-            editor1.apply();
-            editor.clear();
-            editor.apply();
-
 
         }
 

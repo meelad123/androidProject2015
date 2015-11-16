@@ -60,7 +60,6 @@ public class Register extends AsyncTask<String, String, JSONObject> {
         try {
 
             HttpResponse response = httpclient.execute(httppost);
-
             statuscode = JsonHelper.parseJSONObjectResponse(response.getEntity().getContent());
 
 

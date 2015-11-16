@@ -78,9 +78,9 @@ public class MyProfile1 extends AsyncTask<String, String, JSONArray> {
         try {
             JSONArray result = new JSONArray();
             SharedPreferences myS = con.getSharedPreferences("token", Context.MODE_PRIVATE);
-            SharedPreferences myS2 = con.getSharedPreferences("Name", Context.MODE_PRIVATE);
+
             String t = myS.getString("access_token", "");
-            String name = myS2.getString("Fname", "");
+            String name = myS.getString("username", "");
             DefaultHttpClient httpclient = new DefaultHttpClient();
 
 

@@ -46,9 +46,9 @@ public class EditUser extends AsyncTask<String, String, Integer> {
 
 
         SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
-        SharedPreferences myS2 = _myContext.getSharedPreferences("Name", Context.MODE_PRIVATE);
+
         String t = myS.getString("access_token", "");
-        String name = myS2.getString("Fname", "");
+        String name = myS.getString("username", "");
 
         DefaultHttpClient client = new DefaultHttpClient();
         HttpPut httpPut = new HttpPut("http://jthcloudproject.elasticbeanstalk.com/api/v1/Users/" + name);

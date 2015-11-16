@@ -33,41 +33,38 @@
         android:textColor="#ffffff"
         android:textAlignment="center"
         android:background="#282828"
-        android:layout_marginTop="32dp"
-        android:layout_below="@+id/Email_text"
-        android:layout_alignRight="@+id/Email_text"
-        android:layout_alignEnd="@+id/Email_text"
-        android:layout_alignLeft="@+id/Email_text"
-        android:layout_alignStart="@+id/Email_text" />
+        android:layout_marginBottom="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/Email_text"
+        android:id="@+id/Pass_text_Field"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
         android:textAlignment="center"
         android:hint="@string/txt_password"
-        android:layout_marginTop="23dp"
-        android:layout_below="@+id/Pass_text_Field"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/Email_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/Pass_text_Field"
+        android:id="@+id/Email_text"
         android:hint="@string/txt_email"
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
-        android:layout_below="@+id/editText2"
-        android:layout_alignLeft="@+id/Email_text"
-        android:layout_alignStart="@+id/Email_text"
-        android:layout_marginTop="22dp" />
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/Pass_text_Field"
+        android:layout_alignStart="@+id/Pass_text_Field" />
 
     <ImageView
         android:layout_width="wrap_content"

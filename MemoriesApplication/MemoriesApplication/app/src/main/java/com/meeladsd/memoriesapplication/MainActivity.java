@@ -56,9 +56,6 @@ public class MainActivity extends ActionBarActivity {
                     finish();
                 }
                 if (position == 3) {
-                    SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
-                    SharedPreferences.Editor editor = userDetails.edit();
-
 
                     Intent intent = new Intent(view.getContext(), MyProfileactivity2.class);
                     startActivity(intent);
@@ -72,10 +69,6 @@ public class MainActivity extends ActionBarActivity {
                     SharedPreferences.Editor editor = userDetails.edit();
                     SharedPreferences detalisOfUser = view.getContext().getSharedPreferences("profile", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor2 = detalisOfUser.edit();
-                    SharedPreferences userName = view.getContext().getSharedPreferences("Name", MODE_PRIVATE);
-                    SharedPreferences.Editor editor1 = userName.edit();
-                    editor1.clear();
-                    editor1.apply();
                     editor2.clear();
                     editor2.apply();
                     editor.clear();
