@@ -28,5 +28,7 @@
     <string name="txt_email">Email</string>
     <string name="title_activity_my_profileactivity2">MyProfileactivity2</string>
     <string name="title_activity_edit_profile_activity">EditProfile_activity</string>
+    <string name="LukesTestButton">BeginTest</string>
+    <string name="LukesTestResult">This should change</string>
 
 </resources>
