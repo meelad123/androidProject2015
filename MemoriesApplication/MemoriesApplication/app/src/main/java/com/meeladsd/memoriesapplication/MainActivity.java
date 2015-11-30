@@ -1,5 +1,7 @@
 package com.meeladsd.memoriesapplication;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -14,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
 public class MainActivity extends ActionBarActivity {
 
 
@@ -73,10 +76,23 @@ public class MainActivity extends ActionBarActivity {
                     finish();
                 }
                 if (position == 4) {
-                    DeleteUser test = new DeleteUser(MainActivity.this);
-                    test.execute();
+                    AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
+                    adb.setTitle("Alert")
+                            .setMessage("are you sure you want to delete this user")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
 
+                                    DeleteUser test = new DeleteUser(MainActivity.this);
+                                    test.execute();
 
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    dialog.cancel();
+                                }
+                            }).show();
 
                 }
             }
@@ -86,13 +102,14 @@ public class MainActivity extends ActionBarActivity {
 
 
     }
+
     private void addDrawerItems() {
-        String[] myitems = { "My vacations", "My friends", "Log out","My Profile","Delete current user"};
+        String[] myitems = {"My vacations", "My friends", "Log out", "My Profile", "Delete current user"};
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myitems);
         mDrawerList.setAdapter(mAdapter);
     }
 
-    private void setupDrawer(){
+    private void setupDrawer() {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.drawer_open, R.string.drawer_close) {
 
@@ -124,8 +141,7 @@ public class MainActivity extends ActionBarActivity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        if(id == R.id.action_add)
-        {
+        if (id == R.id.action_add) {
             Intent intent = new Intent(this, CreateVacationaActivity.class);
             startActivity(intent);
         }

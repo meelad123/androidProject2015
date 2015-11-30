@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -21,7 +22,17 @@ public class MyProfileactivity2 extends ActionBarActivity {
         textView_name = (TextView) findViewById(R.id.textView_name);
         textView_Freinds = (TextView) findViewById(R.id.userFirstName);
         txtViewVacations = (TextView) findViewById(R.id.vacations_item_counter);
+        TextView NumberOfFriends =(TextView)findViewById(R.id.userFirstName);
 
+        NumberOfFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent friendsIntent = new Intent(getApplicationContext(),FriendsActivity.class);
+                startActivity(friendsIntent);
+
+            }
+        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
