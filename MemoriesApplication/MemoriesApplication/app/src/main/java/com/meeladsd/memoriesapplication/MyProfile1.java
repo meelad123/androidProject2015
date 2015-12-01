@@ -159,7 +159,7 @@ public class MyProfile1 extends AsyncTask<String, String, JSONArray> {
             String Lname = Myobj.getString("LastName");
 
             if (Fname.equals("null") || Lname.equals("null")) {
-                TextViewUsername.setText("First name and last name not defind");
+                TextViewUsername.setText("First name and last name not defind, please edit profile");
             } else {
                 friendstxtView.setText(numOffriends);
                 vacationsView.setText(TotalVacations);

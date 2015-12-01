@@ -77,7 +77,8 @@
             android:gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:clickable="true" />
 
         ></RelativeLayout>
     <RelativeLayout
