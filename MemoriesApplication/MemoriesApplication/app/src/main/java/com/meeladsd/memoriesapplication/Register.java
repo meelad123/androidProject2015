@@ -77,10 +77,6 @@ public class Register extends AsyncTask<String, String, JSONObject> {
 
 
     protected void onPostExecute(JSONObject result) {
-
-
-            Toast.makeText(con, result.toString(), Toast.LENGTH_SHORT).show();
-
-
+        Toast.makeText(con, result.toString(), Toast.LENGTH_SHORT).show();
     }
 }

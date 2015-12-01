@@ -17,6 +17,12 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="view vacation"
+            android:id="@+id/btn_view_vac"
+            android:layout_below="@+id/Steve"/>
     </RelativeLayout>
 
     <ListView android:id="@+id/left_drawer"

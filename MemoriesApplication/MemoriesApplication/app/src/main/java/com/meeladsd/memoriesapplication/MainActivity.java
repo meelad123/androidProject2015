@@ -23,6 +23,7 @@ public class MainActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private String mActivityTitle;
     private Button LukesButton;
+    private Button btnViewVac;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,16 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
                 finish();
 
+            }
+        });
+
+        btnViewVac = (Button) findViewById(R.id.btn_view_vac);
+
+        btnViewVac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ViewVacationActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.meeladsd.memoriesapplication.ViewVacationActivity"
+    android:background="@drawable/bg_new2">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_memory_review"
+        android:src="@drawable/no_memories"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:text=""
+        android:paddingLeft="4dp"
+        android:textColor="#fff"
+        android:background="#e4e4e4"
+        android:id="@+id/img_devider"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/img_memory_review"
+        android:textStyle="bold"
+        >
+    </TextView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_devider">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:background="#F3F3F3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/layout_title">
+                <ImageView
+                    android:id="@+id/icon_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dip"
+                    android:layout_marginLeft="8dip"
+
+                    android:src="@drawable/ic_flight_takeoff_black_36dp"
+                    />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp"
+                    android:layout_toRightOf="@id/icon_title"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:gravity="center_vertical"
+                    android:text="Title"
+                    android:id="@+id/text_title"/>
+
+                <TextView
+                    android:id="@+id/text_title_desc"
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_toRightOf="@id/icon_title"
+                    android:layout_below="@+id/text_title"
+                    android:text="No title available"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:textColor="#fff"
+                android:background="#e4e4e4"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_below="@+id/layout_title"
+                android:textStyle="bold"
+                >
+            </TextView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:background="#F3F3F3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/layout_desc">
+                <ImageView
+                    android:id="@+id/icon_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dip"
+                    android:layout_marginLeft="8dip"
+
+                    android:src="@drawable/ic_description_black_36dp"
+                    />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp"
+                    android:layout_toRightOf="@id/icon_desc"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:gravity="center_vertical"
+                    android:text="Description"
+                    android:id="@+id/text_desc_desc"/>
+
+                <TextView
+                    android:id="@+id/text_desc2_desc"
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_toRightOf="@id/icon_desc"
+                    android:layout_below="@+id/text_desc_desc"
+                    android:text="No description available"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:textColor="#fff"
+                android:background="#e4e4e4"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_below="@+id/layout_desc"
+                android:textStyle="bold"
+                >
+            </TextView>
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/listPreferredItemHeight"
+            android:background="#F3F3F3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/layout_place">
+            <ImageView
+                android:id="@+id/icon_place"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginRight="20dip"
+                android:layout_marginLeft="8dip"
+
+                android:src="@drawable/ic_place_black_36dp"
+                />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_toRightOf="@id/icon_place"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignWithParentIfMissing="true"
+                android:gravity="center_vertical"
+                android:text="Place"
+                android:id="@+id/text_place_title"/>
+
+            <TextView
+                android:id="@+id/text_place_desc"
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_toRightOf="@id/icon_place"
+                android:layout_below="@+id/text_place_title"
+                android:text="No place available"
+                />
+        </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:textColor="#fff"
+                android:background="#e4e4e4"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_below="@+id/layout_place"
+                android:textStyle="bold"
+                >
+            </TextView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:background="#F3F3F3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/layout_start_date">
+                <ImageView
+                    android:id="@+id/icon_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dip"
+                    android:layout_marginLeft="8dip"
+
+                    android:src="@drawable/ic_date_range_black_36dp"
+                    />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp"
+                    android:layout_toRightOf="@id/icon_start_date"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:gravity="center_vertical"
+                    android:text="Start date"
+                    android:id="@+id/text_start_date"/>
+
+                <TextView
+                    android:id="@+id/text_start_date_desc"
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_toRightOf="@id/icon_start_date"
+                    android:layout_below="@+id/text_start_date"
+                    android:text="No start date available"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:textColor="#fff"
+                android:background="#e4e4e4"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_below="@+id/layout_start_date"
+                android:textStyle="bold"
+                >
+            </TextView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:background="#F3F3F3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/layout_end_date">
+                <ImageView
+                    android:id="@+id/icon_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dip"
+                    android:layout_marginLeft="8dip"
+
+                    android:src="@drawable/ic_date_range_black_36dp"
+                    />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp"
+                    android:layout_toRightOf="@id/icon_end_date"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:gravity="center_vertical"
+                    android:text="End date"
+                    android:id="@+id/text_end_date"/>
+
+                <TextView
+                    android:id="@+id/text_end_date_desc"
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_toRightOf="@id/icon_end_date"
+                    android:layout_below="@+id/text_end_date"
+                    android:text="No end date available"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:textColor="#fff"
+                android:background="#e4e4e4"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_below="@+id/layout_end_date"
+                android:textStyle="bold"
+                >
+            </TextView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:background="#F3F3F3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/layout_memories">
+                <ImageView
+                    android:id="@+id/icon_memories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dip"
+                    android:layout_marginLeft="8dip"
+
+                    android:src="@drawable/ic_wallpaper_black_36dp"
+                    />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp"
+                    android:layout_toRightOf="@id/icon_memories"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:gravity="center_vertical"
+                    android:text="Memories"
+                    android:id="@+id/text_memories"/>
+
+                <TextView
+                    android:id="@+id/text_memories_desc"
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_toRightOf="@id/icon_memories"
+                    android:layout_below="@+id/text_memories"
+                    android:text="View memories"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:textColor="#fff"
+                android:background="#e4e4e4"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_below="@+id/layout_memories"
+                android:textStyle="bold"
+                >
+            </TextView>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
