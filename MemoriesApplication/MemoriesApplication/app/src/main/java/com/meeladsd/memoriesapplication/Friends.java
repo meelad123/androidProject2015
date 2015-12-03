@@ -1,6 +1,7 @@
 package com.meeladsd.memoriesapplication;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -31,13 +33,24 @@ public class Friends extends AsyncTask<String, String, JSONArray> {
     Context con;
     ListView myList;
     Activity ac;
+    private ProgressDialog progress;
+    SearchView searchView;
 
 
-    public Friends(Activity _con,ListView _List,Activity _ac) {
+    public Friends(Activity _con,ListView _List,SearchView _sr,Activity _ac) {
         myList=_List;
         con = _con;
         ac=_ac;
+        searchView=_sr;
+        progress = new ProgressDialog(con);
 
+    }
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progress.setTitle("Creating a new vacation");
+        progress.setMessage("Please wait...");
+        progress.show();
     }
 
 
@@ -75,6 +88,9 @@ public class Friends extends AsyncTask<String, String, JSONArray> {
 
     @Override
     protected void onPostExecute(JSONArray jsonArray) {
+        if (progress.isShowing()) {
+            progress.dismiss();
+        }
         super.onPostExecute(jsonArray);
         String myFriends[] = new String[jsonArray.length()];
 
@@ -90,9 +106,23 @@ public class Friends extends AsyncTask<String, String, JSONArray> {
             e.printStackTrace();
         }
         ArrayList<String> stringList = new ArrayList<>(Arrays.asList(myFriends));
-        mylistAdob adapter = new mylistAdob(stringList, con,ac);
+        final mylistAdob adapter = new mylistAdob(stringList, con,ac);
 
         myList.setAdapter(adapter);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
     }
 

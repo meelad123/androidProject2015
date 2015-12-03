@@ -7,27 +7,34 @@ import android.content.Context;
 /**
  * Created by Sevag on 2015-11-26.
  */
-import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
-public class mylistAdob extends BaseAdapter implements ListAdapter {
+
+public class mylistAdob extends BaseAdapter implements Filterable {
     private ArrayList<String> list = new ArrayList<String>();
     private Context context;
     private Activity activity;
+    List<String> arrayListNames;
 
-    public mylistAdob(ArrayList<String> list, Context context ,Activity _ac) {
+
+    public mylistAdob(ArrayList<String> list, Context context, Activity _ac) {
         this.list = list;
-        activity=_ac;
+        activity = _ac;
+        arrayListNames = list;
         this.context = context;
+
     }
 
     @Override
@@ -55,14 +62,14 @@ public class mylistAdob extends BaseAdapter implements ListAdapter {
         }
 
         //Handle TextView and display string from your list
-        TextView listItemText = (TextView)view.findViewById(R.id.label);
+        TextView listItemText = (TextView) view.findViewById(R.id.label);
         listItemText.setText(list.get(position));
 
         //Handle buttons and add onClickListeners
-        Button deleteBtn = (Button)view.findViewById(R.id.followersFriends);
+        Button deleteBtn = (Button) view.findViewById(R.id.followersFriends);
 
 
-        deleteBtn.setOnClickListener(new View.OnClickListener(){
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -72,9 +79,9 @@ public class mylistAdob extends BaseAdapter implements ListAdapter {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                              String friendsName =  list.get(position);
+                                String friendsName = list.get(position);
 
-                                new DeleteFriend(activity,friendsName).execute();
+                                new DeleteFriend(activity, friendsName).execute();
                                 list.remove(position); //or some other task
                                 notifyDataSetChanged();
 
@@ -93,6 +100,46 @@ public class mylistAdob extends BaseAdapter implements ListAdapter {
         return view;
     }
 
-    }
+    @Override
+    public Filter getFilter() {
 
+
+        Filter filter = new Filter() {
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+
+                    list = (ArrayList<String>) results.values;
+                    notifyDataSetChanged();
+
+            }
+
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+
+                Filter.FilterResults results = new FilterResults();
+                ArrayList<String> FilteredArrayNames = new ArrayList<String>();
+
+                // perform your search here using the searchConstraint String.
+
+                constraint = constraint.toString().toLowerCase();
+                for (int i = 0; i < arrayListNames.size(); i++) {
+                    String dataNames = arrayListNames.get(i);
+                    if (dataNames.toLowerCase().startsWith(constraint.toString()))  {
+                        FilteredArrayNames.add(dataNames);
+                    }
+                }
+
+                results.count = FilteredArrayNames.size();
+                results.values = FilteredArrayNames;
+
+
+                return results;
+            }
+        };
+
+        return filter;
+    }
+    }
 

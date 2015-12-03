@@ -11,19 +11,20 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 public class FriendsActivity extends ActionBarActivity {
-        TextView followrs ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
-
         ListView listView = (ListView)findViewById(R.id.listView_friends);
-
-        new  Friends(FriendsActivity.this,listView,FriendsActivity.this).execute();
+       SearchView sr = (SearchView)findViewById(R.id.searchViewforFriends);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        new  Friends(FriendsActivity.this,listView,sr,FriendsActivity.this).execute();
 
 
 

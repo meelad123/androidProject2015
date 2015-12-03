@@ -86,6 +86,12 @@ public class MainActivity extends ActionBarActivity {
                     startActivity(intent);
                     finish();
                 }
+                if (position == 1) {
+
+                    Intent intent = new Intent(view.getContext(), FriendsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
                 if (position == 4) {
                     AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
                     adb.setTitle("Alert")
