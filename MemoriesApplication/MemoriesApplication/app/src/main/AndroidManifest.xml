@@ -68,6 +68,9 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".FriendsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MyProfileactivity2" />
         </activity>
         <activity android:name=".ViewMemoriesActivity" >
         </activity>
