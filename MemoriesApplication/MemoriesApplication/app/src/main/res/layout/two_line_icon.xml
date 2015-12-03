@@ -1,25 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+    <ImageView android:id="@+id/icon"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
 
-    <ImageView android:id="@+id/icon" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/layout_mem_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:layout_height="150dp"
+        android:layout_toRightOf="@+id/icon"
+        android:layout_alignBottom="@+id/icon"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp">
 
-        <TextView android:id="@+id/text1" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:text="Texto 1"/>
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12pt"
+            android:textColor="@color/ColorPrimaryDark"
+            android:text="Titel"
+            android:textStyle="bold"/>
 
-        <TextView android:id="@+id/text2" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:text="Descricao"/>
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="8pt"
+            android:textColor="@color/ColorPrimaryDark"
+            android:layout_below="@id/text1"/>
+        <TextView
+            android:id="@+id/text_media_counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Media: "
+            android:textSize="5pt"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/ColorPrimaryDark" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

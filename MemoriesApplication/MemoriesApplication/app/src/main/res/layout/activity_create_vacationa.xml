@@ -63,8 +63,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/img_devider"
+        android:background="#fff"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,13 +76,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/title_txt"
-                android:textColor="#ffffff"
-                android:foreground="#ffffff"
-                android:textColorHint="#ffffff"
-                android:textColorHighlight="#ffffff"
-                android:textColorLink="#ffffff"
+                android:textColor="#737373"
+                android:textColorHint="#737373"
+                android:textColorHighlight="#737373"
+                android:textColorLink="#737373"
                 android:hint="Title"
-                android:layout_marginBottom="30dp"/>
+                android:layout_marginBottom="15dp"
+                android:paddingLeft="20dp"/>
 
 
             <EditText
@@ -89,12 +90,13 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/place_txt"
                 android:hint="Place"
-                android:textColor="#ffffff"
-                android:foreground="#ffffff"
-                android:textColorHint="#ffffff"
-                android:textColorHighlight="#ffffff"
-                android:textColorLink="#ffffff"
-                android:layout_marginBottom="30dp"/>
+                android:textColor="#737373"
+                android:foreground="#737373"
+                android:textColorHint="#737373"
+                android:textColorHighlight="#737373"
+                android:textColorLink="#737373"
+                android:layout_marginBottom="15dp"
+                android:paddingLeft="20dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -144,12 +146,12 @@
                 </LinearLayout>
             </LinearLayout>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/create_vacation_btn"
                 android:text="Creat"
-                android:textColor="#fff"
-                android:background="@color/primary_dark_material_dark"
+                android:textColor="#737373"
+                android:background="#e7e8e8"
                 android:layout_gravity="center"/>
         </LinearLayout>
     </ScrollView>
