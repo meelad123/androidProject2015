@@ -75,7 +75,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="#383838"
             android:textSize="12sp"
             android:textStyle="bold"
             android:clickable="true" />
@@ -125,7 +125,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="#383838"
             android:textSize="12sp"
             android:textStyle="bold" />
 

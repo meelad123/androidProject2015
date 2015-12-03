@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.apache.http.HttpEntity;
@@ -17,7 +16,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by meelad on 12/1/2015.
@@ -48,7 +46,6 @@ public class ViewMemoriesList extends AsyncTask<String, String, JSONArray> {
         DefaultHttpClient httpclient = new DefaultHttpClient();
         SharedPreferences myS = _con.getSharedPreferences("token", Context.MODE_PRIVATE);
         String t = myS.getString("access_token", "");
-        String userName = myS.getString("username", "");
 
         try {
             HttpGet fetchMemories = new HttpGet("http://jthcloudproject.elasticbeanstalk.com/api/v1/vacations/"+_vacId+"/memories");

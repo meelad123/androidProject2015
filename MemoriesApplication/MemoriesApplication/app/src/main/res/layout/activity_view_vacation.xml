@@ -313,6 +313,17 @@
                     android:layout_below="@+id/text_memories"
                     android:text="View memories"
                     />
+                <TextView
+                    android:id="@+id/text_mem_counter"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/rectangle"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
             <TextView
                 android:layout_width="match_parent"
