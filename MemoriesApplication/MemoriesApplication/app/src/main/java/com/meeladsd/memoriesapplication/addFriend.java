@@ -95,7 +95,7 @@ return null;
             con.startActivity(intent);
         }
         else {
-            Toast.makeText(con, "Failed to create a new vacation/NO user found with the followed name", Toast.LENGTH_LONG).show();
+            Toast.makeText(con, "NO user found with the followed name", Toast.LENGTH_LONG).show();
 
         }
 
