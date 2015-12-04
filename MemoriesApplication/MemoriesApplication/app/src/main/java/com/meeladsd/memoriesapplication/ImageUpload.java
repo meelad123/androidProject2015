@@ -30,7 +30,7 @@ public class ImageUpload extends AsyncTask<String, Void, String> {
     private Activity _con;
 
     private String _attachmentName = "bitmap";
-    private String _attachmentFileName = "bitmap.bmp";
+    private String _attachmentFileName = "bitmap.JPEG";
     private String _crlf = "\r\n";
     private String _twoHyphens = "--";
     private String _boundary =  "*****";
@@ -63,6 +63,7 @@ public class ImageUpload extends AsyncTask<String, Void, String> {
         //url for upload
 
         try {
+            _bArray.remove(0);
             for (Bitmap bitmap: _bArray) {
                 int width = bitmap.getWidth();
                 int height = bitmap.getHeight();

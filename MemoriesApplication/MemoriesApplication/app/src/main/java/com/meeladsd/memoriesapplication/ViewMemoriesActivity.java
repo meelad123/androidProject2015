@@ -14,7 +14,7 @@ public class ViewMemoriesActivity extends ActionBarActivity {
 
         _lstMem = (ListView)findViewById(R.id.memories_list);
 
-        new ViewMemoriesList(19, _lstMem, this, getApplicationContext()).execute();
+        new ViewMemoriesList(22, _lstMem, this, getApplicationContext()).execute();
 
 
     }

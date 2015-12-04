@@ -1,14 +1,14 @@
 package com.meeladsd.memoriesapplication;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -18,12 +18,12 @@ import java.util.ArrayList;
 public class MemoriesAdapter extends BaseAdapter {
 
     private Context _con;
-    private ArrayList<String> _memTitles, _memDesc, _memIds;
+    private ArrayList<String> _memTitles, _memIds, _memUrl;
 
-    public MemoriesAdapter(Context c, ArrayList<String> titles, ArrayList<String> descs, ArrayList<String> ids) {
-        _memDesc = descs;
+    public MemoriesAdapter(Context c, ArrayList<String> titles, ArrayList<String> urls, ArrayList<String> ids) {
         _memIds = ids;
         _memTitles = titles;
+        _memUrl = urls;
         _con = c;
     }
 
@@ -48,12 +48,14 @@ public class MemoriesAdapter extends BaseAdapter {
                 inflate(R.layout.two_line_icon, parent, false);
 
         TextView text1 = (TextView) rowView.findViewById(R.id.text1);
-        TextView text2 = (TextView) rowView.findViewById(R.id.text2);
         ImageView icon = (ImageView) rowView.findViewById(R.id.icon);
+        if(_memUrl.get(position) != "")
+        {
+            Picasso.with(rowView.getContext()).load("https://mybuckpics.s3.amazonaws.com/"+_memUrl.get(position)).into(icon);
+        }
 
         text1.setText(_memTitles.get(position));
-        text2.setText(_memDesc.get(position));
-        icon.setImageResource(R.drawable.ic_flight_takeoff_black_36dp);
+
 
         rowView.setTag(_memIds.get(position));
 

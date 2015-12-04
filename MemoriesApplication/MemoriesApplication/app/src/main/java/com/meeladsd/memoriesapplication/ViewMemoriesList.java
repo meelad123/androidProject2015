@@ -24,9 +24,7 @@ public class ViewMemoriesList extends AsyncTask<String, String, JSONArray> {
 
     private Activity _activ;
     private Context _con;
-    private ArrayList<String> _memTitles;
-    private ArrayList<String> _memDesc;
-    private ArrayList<String> _memIds;
+    private ArrayList<String> _memTitles, _memDesc, _memIds, _memUrl;
     private ListView _lstMem;
     private int _vacId;
     public ViewMemoriesList(int vacId, ListView lstMem, Activity con, Context appCon){
@@ -35,6 +33,7 @@ public class ViewMemoriesList extends AsyncTask<String, String, JSONArray> {
         _memTitles = new ArrayList<String>();
         _memDesc = new ArrayList<String>();
         _memIds = new ArrayList<String>();
+        _memUrl =  new ArrayList<String>();
         _vacId = vacId;
         _lstMem = lstMem;
 
@@ -53,10 +52,29 @@ public class ViewMemoriesList extends AsyncTask<String, String, JSONArray> {
             HttpResponse response = httpclient.execute(fetchMemories);
 
             HttpEntity entity  = response.getEntity();
-            JSONArray jsonObjectFriends = JsonHelper.parsArray(entity.getContent());
+            JSONArray jsonObjectMem = JsonHelper.parsArray(entity.getContent());
 
-            for (int i=0;i< jsonObjectFriends.length();i++) {
-                result.put(jsonObjectFriends.get(i));
+            for (int i=0;i< jsonObjectMem.length();i++) {
+                result.put(jsonObjectMem.get(i));
+            }
+
+            for(int i=0;i<result.length();i++) {
+                JSONObject o = result.getJSONObject(i);
+                _memTitles.add(i, o.getString("Title"));
+                _memDesc.add(i, o.getString("Description"));
+                _memIds.add(i, o.getString("MemoryId"));
+
+                HttpGet fetchMediaUrl = new HttpGet("http://jthcloudproject.elasticbeanstalk.com/api/v1/memories/"+ o.getString("MemoryId") +"/picture");
+                fetchMediaUrl.addHeader("Authorization", "Bearer " + t);
+                HttpResponse respMemUrl = httpclient.execute(fetchMediaUrl);
+
+                JSONArray objUrl = JsonHelper.parsArray(respMemUrl.getEntity().getContent());
+                if(objUrl.length() != 0){
+                    _memUrl.add(i, objUrl.getJSONObject(0).getString("Url"));
+                }
+                else{
+                    _memUrl.add(i,"");
+                }
             }
             return result;
         } catch (IOException e) {
@@ -71,20 +89,7 @@ public class ViewMemoriesList extends AsyncTask<String, String, JSONArray> {
 
     @Override
     protected void onPostExecute(JSONArray jsonArray) {
-        try {
-            for(int i=0;i<jsonArray.length();i++) {
-                JSONObject o = jsonArray.getJSONObject(i);
-                _memTitles.add(i, o.getString("Title"));
-                _memDesc.add(i, o.getString("Description"));
-                _memIds.add(i, o.getString("MemoryId"));
-
-
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        MemoriesAdapter mAd = new MemoriesAdapter(_con, _memTitles, _memDesc, _memIds);
+        MemoriesAdapter mAd = new MemoriesAdapter(_con, _memTitles, _memUrl, _memIds);
 
         _lstMem.setAdapter(mAd);
     }
