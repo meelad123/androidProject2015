@@ -92,13 +92,11 @@ public class MainActivity extends ActionBarActivity {
 
                     Intent intent = new Intent(view.getContext(), MyProfileactivity2.class);
                     startActivity(intent);
-                    finish();
                 }
                 if (position == 1) {
 
                     Intent intent = new Intent(view.getContext(), FriendsActivity.class);
                     startActivity(intent);
-                    finish();
                 }
                 if (position == 4) {
                     AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
