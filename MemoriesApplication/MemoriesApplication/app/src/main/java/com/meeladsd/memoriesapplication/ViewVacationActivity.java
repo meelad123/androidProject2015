@@ -12,6 +12,6 @@ public class ViewVacationActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_vacation);
 
-        new ViewVacation(19, ViewVacationActivity.this).execute();
+        new ViewVacation(22, ViewVacationActivity.this).execute();
     }
 }

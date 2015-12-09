@@ -1,20 +1,19 @@
 package com.meeladsd.memoriesapplication;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 
 public class FriendsActivity extends ActionBarActivity {
-     private Context context = this;
+    private Context context = this;
     private    String userInputValue;
     private FloatingActionButton addBtn;
     @Override
@@ -28,7 +27,7 @@ public class FriendsActivity extends ActionBarActivity {
 
 
         ListView listView = (ListView)findViewById(R.id.listView_friends);
-       SearchView sr = (SearchView)findViewById(R.id.searchViewforFriends);
+        SearchView sr = (SearchView)findViewById(R.id.searchViewforFriends);
 
 
 
