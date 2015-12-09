@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -32,9 +33,11 @@ public class addFriend extends AsyncTask<String, String, JSONObject> {
     private int _statuscode;
 
 
+
     public addFriend(Context _con,String _Friendsname) {
         FriendsName = _Friendsname;
         con = _con;
+
         progress = new ProgressDialog(con);
 
     }
@@ -91,7 +94,7 @@ return null;
         if(_statuscode >= 200 && _statuscode <300) {
             Toast.makeText(con, "Friend added", Toast.LENGTH_LONG).show();
 
-            Intent intent = new Intent(con.getApplicationContext(),FriendsActivity.class);
+          Intent intent = new Intent(con.getApplicationContext(),FriendsActivity.class);
             con.startActivity(intent);
         }
         else {

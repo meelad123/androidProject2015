@@ -17,7 +17,6 @@
             android:label="@string/lbl_log_in" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,6 +31,9 @@
         <activity
             android:name=".MainActivity"
             android:label="MAIN" />
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
         <activity
             android:name=".CreateVacationaActivity"
             android:label="@string/add_vacation"

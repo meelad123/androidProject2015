@@ -1,6 +1,8 @@
 package com.meeladsd.memoriesapplication;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -11,12 +13,14 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by Sevag on 2015-10-21.
@@ -25,9 +29,10 @@ import java.util.List;
 public class Register extends AsyncTask<String, String, JSONObject> {
 
     private String userName, password, email;
-    private String Statues1;
+    private ProgressDialog progress;
+    private int _statuscode;
     Context con;
-    private JSONObject statuscode;
+
 
 
     public Register(String _userName, String _Password, String _Email, Context c) {
@@ -35,6 +40,8 @@ public class Register extends AsyncTask<String, String, JSONObject> {
         password = _Password;
         email = _Email;
         con = c;
+        progress = new ProgressDialog(con);
+
 
     }
 
@@ -60,8 +67,8 @@ public class Register extends AsyncTask<String, String, JSONObject> {
         try {
 
             HttpResponse response = httpclient.execute(httppost);
-            statuscode = JsonHelper.parseJSONObjectResponse(response.getEntity().getContent());
-
+            _statuscode = response.getStatusLine().getStatusCode();
+            return JsonHelper.parseJSONObjectResponse(response.getEntity().getContent());
 
         } catch (ClientProtocolException e) {
             e.printStackTrace();
@@ -71,12 +78,25 @@ public class Register extends AsyncTask<String, String, JSONObject> {
             e.printStackTrace();
         }
 
-        return statuscode;
-
+        return  null ;
     }
 
 
     protected void onPostExecute(JSONObject result) {
-        Toast.makeText(con, result.toString(), Toast.LENGTH_SHORT).show();
+        if (progress.isShowing()) {
+            progress.dismiss();
+        }
+        if(_statuscode >= 200 && _statuscode <300) {
+            Toast.makeText(con, "User created successfullysuccessfully", Toast.LENGTH_LONG).show();
+        }
+        else {
+            try {
+                Toast.makeText(con, result.getJSONObject("ModelState").getJSONArray("").getString(0), Toast.LENGTH_LONG).show();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
     }
 }
