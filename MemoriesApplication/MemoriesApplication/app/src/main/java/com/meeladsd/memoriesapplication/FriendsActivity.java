@@ -26,12 +26,17 @@ public class FriendsActivity extends ActionBarActivity {
 
 
 
+<<<<<<< HEAD
 
         ListView listView = (ListView)findViewById(R.id.listView_friends);
        SearchView sr = (SearchView)findViewById(R.id.searchViewforFriends);
         listView = (ListView) findViewById(R.id.listView_friends);
         sr = (SearchView) findViewById(R.id.searchViewforFriends);
 
+=======
+        final ListView listView = (ListView)findViewById(R.id.listView_friends);
+        SearchView sr = (SearchView)findViewById(R.id.searchViewforFriends);
+>>>>>>> origin/master
 
 
 
