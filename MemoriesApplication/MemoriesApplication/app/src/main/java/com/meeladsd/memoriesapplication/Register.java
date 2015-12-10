@@ -1,5 +1,6 @@
 package com.meeladsd.memoriesapplication;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -32,14 +33,16 @@ public class Register extends AsyncTask<String, String, JSONObject> {
     private ProgressDialog progress;
     private int _statuscode;
     Context con;
+    Activity _rAct;
 
 
 
-    public Register(String _userName, String _Password, String _Email, Context c) {
+    public Register(String _userName, String _Password, String _Email, Context c, Activity rAct) {
         userName = _userName;
         password = _Password;
         email = _Email;
         con = c;
+        _rAct = rAct;
         progress = new ProgressDialog(con);
 
 
@@ -88,6 +91,9 @@ public class Register extends AsyncTask<String, String, JSONObject> {
         }
         if(_statuscode >= 200 && _statuscode <300) {
             Toast.makeText(con, "User created successfullysuccessfully", Toast.LENGTH_LONG).show();
+            Intent reg = new Intent(con.getApplicationContext(), LogInActivity.class);
+            _rAct.startActivity(reg);
+
         }
         else {
             try {

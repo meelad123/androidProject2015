@@ -60,7 +60,6 @@ public class LogInActivity extends ActionBarActivity {
 
     private void viewRegisterActivity(View v) {
         Intent reg = new Intent(v.getContext(), RegisterActivity.class);
-
         startActivity(reg);
     }
 

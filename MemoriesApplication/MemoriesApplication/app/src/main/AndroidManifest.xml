@@ -17,6 +17,7 @@
             android:label="@string/lbl_log_in" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -77,7 +78,14 @@
         <activity android:name=".ViewMemoriesActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MyProfileactivity2" />
+                android:value=".ViewVacationActivity" />
+        </activity>
+        <activity
+            android:name=".EditVacationActivity"
+            android:label="@string/title_activity_edit_vacation" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ViewVacationActivity" />
         </activity>
     </application>
 
