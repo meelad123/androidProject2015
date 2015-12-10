@@ -11,24 +11,24 @@ import java.io.IOException;
  * Created by alem1324 on 12/9/2015.
  */
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
-    private SurfaceHolder mSurfaceHolder;
-    private Camera mCamera;
+    private SurfaceHolder _surfaceHolder;
+    private Camera _camera;
 
     // Constructor that obtains context and camera
     @SuppressWarnings("deprecation")
     public CameraPreview(Context context, Camera camera) {
         super(context);
-        this.mCamera = camera;
-        this.mSurfaceHolder = this.getHolder();
-        this.mSurfaceHolder.addCallback(this);
-        this.mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        this._camera = camera;
+        this._surfaceHolder = this.getHolder();
+        this._surfaceHolder.addCallback(this);
+        this._surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         try {
-            mCamera.setPreviewDisplay(surfaceHolder);
-            mCamera.startPreview();
+            _camera.setPreviewDisplay(surfaceHolder);
+            _camera.startPreview();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -36,16 +36,16 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
-        mCamera.stopPreview();
-        mCamera.release();
+        _camera.stopPreview();
+        _camera.release();
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder surfaceHolder, int format, int width, int height) {
         // start preview with new settings
         try {
-            mCamera.setPreviewDisplay(surfaceHolder);
-            mCamera.startPreview();
+            _camera.setPreviewDisplay(surfaceHolder);
+            _camera.startPreview();
         } catch (Exception e) {
             e.printStackTrace();
         }

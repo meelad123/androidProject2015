@@ -2,6 +2,7 @@ package com.meeladsd.memoriesapplication;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,25 +19,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CameraPreviewActivity extends Activity {
-    private Camera mCamera;
-    private CameraPreview mCameraPreview;
+    private Camera _camera;
+    private CameraPreview _cameraPreview;
+    private byte[] _cameraData;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_preview);
-        mCamera = getCameraInstance();
-        mCamera.setDisplayOrientation(90);
-        mCameraPreview = new CameraPreview(this, mCamera);
+        _camera = getCameraInstance();
+        _camera.setDisplayOrientation(90);
+        _cameraPreview = new CameraPreview(this, _camera);
         FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
-        preview.addView(mCameraPreview);
+        preview.addView(_cameraPreview);
 
         Button captureButton = (Button) findViewById(R.id.button_capture);
         captureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCamera.takePicture(null, null, mPicture);
+                _camera.takePicture(null, null, mPicture);
             }
         });
     }
@@ -60,6 +62,7 @@ public class CameraPreviewActivity extends Activity {
     Camera.PictureCallback mPicture = new Camera.PictureCallback() {
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
+            _cameraData = data;
 
         }
     };
