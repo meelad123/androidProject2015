@@ -23,27 +23,13 @@ public class FriendsActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-
-
-
-<<<<<<< HEAD
-
         ListView listView = (ListView)findViewById(R.id.listView_friends);
-       SearchView sr = (SearchView)findViewById(R.id.searchViewforFriends);
+        SearchView sr = (SearchView)findViewById(R.id.searchViewforFriends);
         listView = (ListView) findViewById(R.id.listView_friends);
         sr = (SearchView) findViewById(R.id.searchViewforFriends);
 
-=======
-        final ListView listView = (ListView)findViewById(R.id.listView_friends);
-        SearchView sr = (SearchView)findViewById(R.id.searchViewforFriends);
->>>>>>> origin/master
-
-
-
 
         new  Friends(FriendsActivity.this,listView,sr,FriendsActivity.this).execute();
-
-
 
 
         addBtn = (FloatingActionButton ) findViewById(R.id.addFriends);
