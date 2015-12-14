@@ -48,16 +48,6 @@ public class MainActivity extends ActionBarActivity {
         mActivityTitle = getTitle().toString();
 
 
-        btnViewVac = (Button) findViewById(R.id.btn_view_vac);
-
-        btnViewVac.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ViewVacationActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
         addDrawerItems();
         setupDrawer();
@@ -117,7 +107,7 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         Log.e("Luke", "before we begin");
-        ListAdapter adapter = new ListAdapter(this,R.layout.itemlistrow);
+        final ListAdapter adapter = new ListAdapter(this,R.layout.itemlistrow);
         ListView vacationlist = (ListView)this.findViewById(R.id.ListofVacations);
         vacationlist.setAdapter(adapter);
         Log.d("Luke", "OMG it works");
@@ -125,12 +115,25 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Intent intent = new Intent(v.getContext(), ViewVacationActivity.class);
+                intent.putExtra("VacationID", adapter.getItem(position).VacationID);
                 startActivity(intent);
             }
         });
 
-        new GetVacationList(this, adapter).execute();
+        btnViewVac = (Button) findViewById(R.id.btn_view_vac);
 
+        btnViewVac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RefreshData(adapter);
+            }
+        });
+
+    }
+
+    private void RefreshData(ListAdapter adapter)
+    {
+        new GetVacationList(this, adapter).execute();
     }
 
 

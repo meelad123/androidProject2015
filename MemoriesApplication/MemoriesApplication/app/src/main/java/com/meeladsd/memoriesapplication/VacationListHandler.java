@@ -1,20 +1,18 @@
 package com.meeladsd.memoriesapplication;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Dictionary;
 
 /**
  * Created by Hamster on 7/12/2015.
@@ -33,83 +31,11 @@ public class VacationListHandler {
         Connection = adapter;
     }
 
-    public void checkForFile()
-    {
-        File folder = _myContext.getFilesDir();
 
-        File theFile = new File(folder, "JsonList.txt");
-        boolean answer = theFile.exists();
-        if (answer == true)
-        {
-            ReadFromFile();
-            PopulateList(ResultsList, null);
-        }
-        else
-        {
-            TextView title = (TextView)_myContext.findViewById(R.id.title);
-            title.setText("No Saved vacations, connect to internet");
-        }
-
-    }
-
-    public void ReadFromFile()
-    {
-        Log.d("Luke", "we are reading from file");
-        File folder = _myContext.getFilesDir();
-
-        File theFile = new File(folder, "JsonList.txt");
-        File[] TheList = folder.listFiles();
-        for (int i = 0; i <TheList.length; ++i)
-        {
-            Log.d("Luke", "File List: " + TheList[i].toString());
-        }
-
-        JSONArray Results = null;
-        try {
-            Log.e("Luke", "hello again 1");
-            String s = new String();
-            FileInputStream fIn = new FileInputStream(theFile);
-            s = LukesJSON.ReadInputStream(fIn);
-            Results = LukesJSON.ParseStringToJsonArray(s);
-        } catch (Exception e) {
-            Log.e("Luke", e.getMessage());
-
-        }
-        ResultsList = Results;
-    }
-
-    public void Writetofile(JSONArray Inputarray)
-    {
-        File folder = _myContext.getFilesDir();
-        File theFile = new File(folder, "JsonList.txt");
-        JSONArray transfer = new JSONArray();
-        for (int i = 0; i < saveRate; i++ )
-        {
-            try {
-                transfer.put(i, Inputarray.optJSONObject(i));
-            }
-            catch (JSONException e)
-            {
-                Log.e("luke", e.getMessage());
-            }
-        }
-
-        String JsonUnconverted = transfer.toString();
-        try{
-            FileOutputStream outputStream = new FileOutputStream(theFile);
-            OutputStreamWriter writer = new OutputStreamWriter(outputStream);
-
-            writer.flush();
-            writer.write(JsonUnconverted);
-            outputStream.close();
-        }catch (Exception e){
-            Log.e("Luke", e.getMessage());
-        }
-    }
-
-    public void PopulateList(JSONArray Inputarray, Dictionary<String,String> Friends)
+    public void PopulateList(JSONArray Inputarray)
     {
         try {
+            Connection.clear();
             for (int i = 0; i < Inputarray.length() -1; i++)
             {
                 VacationItem NextItem = new VacationItem();
@@ -131,21 +57,6 @@ public class VacationListHandler {
                 }
                 NextItem.VacationID = Integer.parseInt(Steve.getString("VacationId"));
 
-                if (Friends != null && Friends.isEmpty() != true)
-                {
-                    try{
-                        NextItem.UserName = Friends.get(Steve.getString("UserId"));
-                    }
-                    catch (Exception ex)
-                    {
-                        SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
-                        String Username = myS.getString("username", "");
-                        NextItem.UserName = Username;
-                    }
-
-                }
-
-
                 Connection.add(NextItem);
 
             }
@@ -158,6 +69,64 @@ public class VacationListHandler {
         }
 
         Log.d("Luke", "Do I die again");
+    }
+
+    public void writeToFile(JSONArray Inputarray) {
+        JSONArray transfer = new JSONArray();
+        for (int i = 0; i < saveRate; i++ )
+        {
+            try {
+                transfer.put(i, Inputarray.optJSONObject(i));
+            }
+            catch (JSONException e)
+            {
+                Log.e("luke", e.getMessage());
+            }
+        }
+
+        String JsonUnconverted = transfer.toString();
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(_myContext.openFileOutput("JsonList.txt", _myContext.MODE_PRIVATE));
+            outputStreamWriter.write(JsonUnconverted);
+            outputStreamWriter.close();
+        }
+        catch (Exception e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+
+
+    public JSONArray ReadFromFile() {
+
+        String ret = "";
+        JSONArray Results = null;
+
+        try {
+            InputStream inputStream = _myContext.openFileInput("JsonList.txt");
+
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
+
+                inputStream.close();
+                ret = stringBuilder.toString();
+                Results = LukesJSON.ParseStringToJsonArray(ret);
+                ResultsList = Results;
+            }
+        }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
+
+        return Results;
     }
 
 }
