@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private String mActivityTitle;
     private Button btnViewVac;
-    public VacationListHandler ListHandler = new VacationListHandler(this, 20);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,16 +117,11 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         Log.e("Luke", "before we begin");
-
-        new GetVacationList(this).execute();
-
-
-    }
-
-    private void ConnectVacations()
-    {
-
-        vacationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ListAdapter adapter = new ListAdapter(this,R.layout.itemlistrow);
+        ListView vacationlist = (ListView)this.findViewById(R.id.ListofVacations);
+        vacationlist.setAdapter(adapter);
+        Log.d("Luke", "OMG it works");
+        vacationlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Intent intent = new Intent(v.getContext(), ViewVacationActivity.class);
@@ -134,6 +129,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        new GetVacationList(this, adapter).execute();
 
     }
 

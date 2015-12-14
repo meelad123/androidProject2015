@@ -15,6 +15,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Dictionary;
+
 /**
  * Created by Hamster on 7/12/2015.
  */
@@ -26,14 +28,15 @@ public class GetVacationList extends AsyncTask<String, Void, Void> {
     private JSONArray Friends = new JSONArray();
     private JSONArray PersonalVacations = new JSONArray();
     private JSONArray FinalList = new JSONArray();
+    private Dictionary<String, String> FriendList;
     private VacationListHandler ListHandler;
     private boolean connected = false;
 
 
-    GetVacationList(Activity c)
+    GetVacationList(Activity c, ListAdapter adapter)
     {
         _myContext = c;
-        ListHandler = new VacationListHandler(_myContext, 20);
+        ListHandler = new VacationListHandler(_myContext, 20, adapter);
     }
 
     @Override
@@ -164,6 +167,17 @@ public class GetVacationList extends AsyncTask<String, Void, Void> {
             Log.d("Luke", "Retrieved from net");
             Log.d("Luke", JsonUnconverted);
             Friends = LukesJSON.ParseStringToJsonArray(JsonUnconverted);
+            for (int i = 0; i < Friends.length(); i++)
+            {
+                try {
+                    JSONObject frienddata = Friends.getJSONObject(i);
+                    FriendList.put(frienddata.getString("UserId"), frienddata.getString("UserName"));
+                }
+                catch(Exception ex)
+                {
+                    Log.e("Luke", ex.getMessage());
+                }
+            }
 
         }catch (Exception e)
         {
@@ -190,7 +204,7 @@ public class GetVacationList extends AsyncTask<String, Void, Void> {
     protected void onPostExecute(Void v)
     {
         if (FinalList != null) {
-            ListHandler.PopulateList(FinalList);
+            ListHandler.PopulateList(FinalList, FriendList);
             ListHandler.Writetofile(PersonalVacations);
         }
         else

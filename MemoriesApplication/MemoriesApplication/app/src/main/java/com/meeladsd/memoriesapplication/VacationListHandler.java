@@ -1,8 +1,9 @@
 package com.meeladsd.memoriesapplication;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.util.Dictionary;
 
 /**
  * Created by Hamster on 7/12/2015.
@@ -22,11 +24,13 @@ public class VacationListHandler {
     private static Activity _myContext;
     private static JSONArray ResultsList;
     private static int saveRate = 20;
+    private ListAdapter Connection = null;
 
-    public VacationListHandler(Activity c, int s)
+    public VacationListHandler(Activity c, int s, ListAdapter adapter)
     {
         _myContext = c;
         saveRate = s;
+        Connection = adapter;
     }
 
     public void checkForFile()
@@ -38,7 +42,7 @@ public class VacationListHandler {
         if (answer == true)
         {
             ReadFromFile();
-            PopulateList(ResultsList);
+            PopulateList(ResultsList, null);
         }
         else
         {
@@ -103,26 +107,51 @@ public class VacationListHandler {
         }
     }
 
-    public void PopulateList(JSONArray Inputarray)
+    public void PopulateList(JSONArray Inputarray, Dictionary<String,String> Friends)
     {
         try {
-            String[] sing = new String[Inputarray.length()];
             for (int i = 0; i < Inputarray.length() -1; i++)
             {
+                VacationItem NextItem = new VacationItem();
                 Log.d("Luke", "Oli" + i);
                 JSONObject Steve = Inputarray.getJSONObject(i);
-                if (Steve.getString("Title") == "null")
+                if (Steve.getString("Title").equals("null"))
                 {
-                    sing[i] = "Unnamed " + i;
+                    NextItem.Title = "Unnamed " + i;
                 } else
                 {
-                    sing[i] = Steve.getString("Title");
+                    NextItem.Title = Steve.getString("Title");
                 }
+                if (Steve.getString("Place").equals("null"))
+                {
+                    NextItem.Place = "Undefined";
+                } else
+                {
+                    NextItem.Place = Steve.getString("Place");
+                }
+                NextItem.VacationID = Integer.parseInt(Steve.getString("VacationId"));
+
+                if (Friends != null && Friends.isEmpty() != true)
+                {
+                    try{
+                        NextItem.UserName = Friends.get(Steve.getString("UserId"));
+                    }
+                    catch (Exception ex)
+                    {
+                        SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
+                        String Username = myS.getString("username", "");
+                        NextItem.UserName = Username;
+                    }
+
+                }
+
+
+                Connection.add(NextItem);
+
             }
-            VacationArrayAdapter adapter = new VacationArrayAdapter(_myContext, sing);
-            ListView vacationlist = (ListView)_myContext.findViewById(R.id.ListofVacations);
-            vacationlist.setAdapter(adapter);
-            Log.d("Luke", "OMG it works");
+
+
+
 
         } catch (Exception e) {
             Log.e("Luke", e.getMessage());
@@ -130,4 +159,5 @@ public class VacationListHandler {
 
         Log.d("Luke", "Do I die again");
     }
+
 }

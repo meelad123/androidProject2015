@@ -35,7 +35,8 @@
             android:id="@+id/ListofVacations"
             android:layout_below="@+id/btn_view_vac"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:clickable="true" />
 
 
       <com.google.android.gms.ads.AdView
