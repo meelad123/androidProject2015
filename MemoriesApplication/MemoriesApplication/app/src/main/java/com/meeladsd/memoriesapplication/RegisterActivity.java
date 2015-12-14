@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegisterActivity extends ActionBarActivity {
 
@@ -39,8 +40,14 @@ public class RegisterActivity extends ActionBarActivity {
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                NetworkChecker n = new NetworkChecker(getApplicationContext());
 
-                registerFun(v);
+                if(n.haveNetworkConnection()){
+                    registerFun(v);
+                }else{
+                    Toast.makeText(getApplicationContext(), "No connection found..", Toast.LENGTH_LONG).show();
+                }
+
 
             }
         });

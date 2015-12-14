@@ -37,16 +37,28 @@
     <GridView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/grd_images"
+        android:id="@+id/grd_imagess"
         android:columnWidth="60dp"
         android:numColumns="auto_fit"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
-        android:stretchMode="columnWidth"
         android:gravity="center"
         android:layout_below="@+id/top_wrapper"
         >
     </GridView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Audio: 0"
+        android:id="@+id/txt_audio"
+        android:layout_below="@+id/grd_imagess"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Video: 0"
+        android:id="@+id/txt_video"
+        android:layout_below="@id/txt_audio"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="10dp"
@@ -57,7 +69,7 @@
         android:id="@+id/img_devider"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/grd_images"
+        android:layout_below="@+id/txt_video"
         android:textStyle="bold"
         >
     </TextView>

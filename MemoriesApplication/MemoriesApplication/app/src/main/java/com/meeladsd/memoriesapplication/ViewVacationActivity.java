@@ -22,13 +22,13 @@ public class ViewVacationActivity extends ActionBarActivity {
         deleteBtnVac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DeleteVacation(39, ViewVacationActivity.this).execute();
+                new DeleteVacation(, ViewVacationActivity.this).execute();
             }
         });
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        new ViewVacation(22, ViewVacationActivity.this).execute();
+        new ViewVacation(2, ViewVacationActivity.this).execute();
     }
 
 
@@ -47,7 +47,6 @@ public class ViewVacationActivity extends ActionBarActivity {
                 Intent parentIntent1 = new Intent(this,MainActivity.class);
                 startActivity(parentIntent1);
                 return true;
-
             case  R.id.icon_edit:
                 Intent intent_1 = new Intent(this,EditVacationActivity.class);
                 startActivity(intent_1);

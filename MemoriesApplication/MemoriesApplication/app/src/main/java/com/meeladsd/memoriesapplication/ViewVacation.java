@@ -94,7 +94,7 @@ public class ViewVacation extends AsyncTask<String, String, JSONObject> {
                 @Override
                 public void onClick(View v) {
                     Intent mem = new Intent(v.getContext(), ViewMemoriesActivity.class);
-
+                    mem.putExtra("VAC_ID", _vacId);
                     _myContext.startActivity(mem);
 
 

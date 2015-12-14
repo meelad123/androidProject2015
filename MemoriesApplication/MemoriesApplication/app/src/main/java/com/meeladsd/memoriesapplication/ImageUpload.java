@@ -38,7 +38,6 @@ public class ImageUpload extends AsyncTask<String, Void, String> {
     private ProgressDialog progress;
 
     ImageUpload(int id, ArrayList<Bitmap> bArra, Activity con) {
-
         _bArray = bArra;
         _id = id;
         _con = con;
