@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -77,8 +76,8 @@ public class LukesNetworkTest extends AsyncTask<String, Void, Void>
     @Override
     protected void onPostExecute(Void v)
     {
-        TextView test = (TextView)_myContext.findViewById(R.id.outPutData);
-        test.setText("Yay");
+       // TextView test = (TextView)_myContext.findViewById(R.id.outPutData);
+       // test.setText("Yay");
         Log.d("Luke","the file" + JsonUnconverted);
         File folder = _myContext.getFilesDir();
         File theFile = new File(folder, "JsonList.txt");

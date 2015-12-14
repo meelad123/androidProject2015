@@ -24,9 +24,20 @@ public class FriendsActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         ListView listView = (ListView)findViewById(R.id.listView_friends);
+<<<<<<< HEAD
        SearchView sr = (SearchView)findViewById(R.id.searchViewforFriends);
 
         new  Friends(FriendsActivity.this,listView,sr,FriendsActivity.this).execute();
+=======
+        SearchView sr = (SearchView)findViewById(R.id.searchViewforFriends);
+        listView = (ListView) findViewById(R.id.listView_friends);
+        sr = (SearchView) findViewById(R.id.searchViewforFriends);
+
+
+        new  Friends(FriendsActivity.this,listView,sr,FriendsActivity.this).execute();
+
+
+>>>>>>> origin/master
         addBtn = (FloatingActionButton ) findViewById(R.id.addFriends);
         addBtn.setRippleColor(Color.RED);
         addBtn.setOnClickListener(new View.OnClickListener() {
