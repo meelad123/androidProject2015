@@ -78,49 +78,65 @@ public class ViewVacation extends AsyncTask<String, String, JSONObject> {
         if (_progressDialog.isShowing()) {
             _progressDialog.dismiss();
         }
-        _txtTitle = (TextView)_myContext.findViewById(R.id.text_title_desc);
-        _txtDesc = (TextView)_myContext.findViewById(R.id.text_desc2_desc);
-        _txtPlace = (TextView)_myContext.findViewById(R.id.text_place_desc);
-        _txtStartDate = (TextView)_myContext.findViewById(R.id.text_start_date_desc);
-        _txtEndDate = (TextView)_myContext.findViewById(R.id.text_end_date_desc);
-        _txtMemCounter = (TextView) _myContext.findViewById(R.id.text_mem_counter);
-        _memText = (RelativeLayout)_myContext.findViewById(R.id.layout_memories);
 
-        _txtMemCounter.setText(String.valueOf(_memList.length()));
+        if (_myContext instanceof ViewVacationActivity) {
+            _txtTitle = (TextView) _myContext.findViewById(R.id.text_title_desc);
+            _txtDesc = (TextView) _myContext.findViewById(R.id.text_desc2_desc);
+            _txtPlace = (TextView) _myContext.findViewById(R.id.text_place_desc);
+            _txtStartDate = (TextView) _myContext.findViewById(R.id.text_start_date_desc);
+            _txtEndDate = (TextView) _myContext.findViewById(R.id.text_end_date_desc);
+            _txtMemCounter = (TextView) _myContext.findViewById(R.id.text_mem_counter);
+            _memText = (RelativeLayout) _myContext.findViewById(R.id.layout_memories);
 
-        _memText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mem = new Intent(v.getContext(), ViewMemoriesActivity.class);
+            _txtMemCounter.setText(String.valueOf(_memList.length()));
 
-                _myContext.startActivity(mem);
+            _memText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent mem = new Intent(v.getContext(), ViewMemoriesActivity.class);
 
-            }
-        });
-        try{
-            if(jsonObject.getString("Title") != null)
-            {
-                _txtTitle.setText(jsonObject.getString("Title"));
-            }
-            if(jsonObject.getString("Description") != null)
-            {
-                _txtDesc.setText(jsonObject.getString("Description"));
-            }
-            if(jsonObject.getString("Place") != null)
-            {
-                _txtPlace.setText(jsonObject.getString("Place"));
-            }
-            if(jsonObject.getString("Start") != null)
-            {
-                _txtStartDate.setText(jsonObject.getString("Start"));
-            }
-            if(jsonObject.getString("End") != null)
-            {
-                _txtEndDate.setText(jsonObject.getString("End"));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
+                    _myContext.startActivity(mem);
+
+
+                }
+            });
+
+        }     else {
+
+            _txtTitle = (TextView) _myContext.findViewById(R.id.edit_title_desc);
+            _txtDesc = (TextView) _myContext.findViewById(R.id.edit_desc2_desc);
+            _txtPlace = (TextView) _myContext.findViewById(R.id.edit_place_desc);
+            _txtStartDate = (TextView) _myContext.findViewById(R.id.edit_start_date_desc);
+            _txtEndDate = (TextView) _myContext.findViewById(R.id.edit_end_date_desc);
+
+
+
         }
-    }
+            try {
+                if (jsonObject.getString("Title") != null) {
+                    _txtTitle.setText(jsonObject.getString("Title"));
+                }
+                if (jsonObject.getString("Description") != null) {
+                    _txtDesc.setText(jsonObject.getString("Description"));
+                }
+                if (jsonObject.getString("Place") != null) {
+                    _txtPlace.setText(jsonObject.getString("Place"));
+                }
+                if (jsonObject.getString("Start") != null) {
+                    _txtStartDate.setText(jsonObject.getString("Start"));
+                }
+                if (jsonObject.getString("End") != null) {
+                    _txtEndDate.setText(jsonObject.getString("End"));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+
+
+
 }
 

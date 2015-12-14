@@ -1,9 +1,12 @@
 package com.meeladsd.memoriesapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +27,10 @@ public class RegisterActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
@@ -38,6 +45,12 @@ public class RegisterActivity extends ActionBarActivity {
             }
         });
     }
+    public boolean onCreateOptionsMenu( Menu menu ) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate( R.menu.main2, menu );
+
+        return onCreateOptionsMenu(menu);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -45,6 +58,9 @@ public class RegisterActivity extends ActionBarActivity {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
+            case android.R.id.edit:
+                Intent intent = new Intent(this.getApplicationContext(),EditVacationActivity.class);
+                startActivity(intent);
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -66,6 +82,6 @@ public class RegisterActivity extends ActionBarActivity {
         else if (Email_str.isEmpty() || Email_str.matches(regM))
             Email.setError("Cannot be Empty ");
         else
-            new Register(user_name_str, Pass_str, Email_str, getApplicationContext()).execute();
+            new Register(user_name_str, Pass_str, Email_str, getApplicationContext(), this).execute();
     }
 }

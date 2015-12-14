@@ -1,5 +1,7 @@
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -29,10 +31,26 @@
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:id="@+id/ListofVacations"
             android:layout_below="@+id/btn_view_vac"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+=======
+            android:text="view vacation"
+            android:id="@+id/btn_view_vac"
+            android:layout_below="@+id/Steve"/>
+
+      <com.google.android.gms.ads.AdView
+          android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-4809882305587576/6787299241"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true" />
+>>>>>>> origin/master
     </RelativeLayout>
 
     <ListView android:id="@+id/left_drawer"

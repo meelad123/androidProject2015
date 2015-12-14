@@ -1,33 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.meeladsd.memoriesapplication.ViewVacationActivity"
-    android:background="@drawable/bg_new2">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/img_memory_review"
-        android:src="@drawable/no_memories"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:text=""
-        android:paddingLeft="4dp"
-        android:textColor="#fff"
-        android:background="#e4e4e4"
-        android:id="@+id/img_devider"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/img_memory_review"
-        android:textStyle="bold"
-        >
-    </TextView>
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg_new2"
+    tools:context="com.meeladsd.memoriesapplication.EditVacationActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,11 +40,14 @@
                     android:layout_alignWithParentIfMissing="true"
                     android:gravity="center_vertical"
                     android:text="Title"
+                    android:textStyle="bold"
                     android:id="@+id/text_title"/>
 
                 <TextView
-                    android:id="@+id/text_title_desc"
-
+                    android:id="@+id/edit_title_desc"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
+                    android:editable="true"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
 
@@ -109,17 +91,21 @@
                     android:layout_alignWithParentIfMissing="true"
                     android:gravity="center_vertical"
                     android:text="Description"
+                    android:textStyle="bold"
+
                     android:id="@+id/text_desc_desc"/>
 
                 <TextView
-                    android:id="@+id/text_desc2_desc"
-
+                    android:id="@+id/edit_desc2_desc"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
+                    android:editable="true"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/icon_desc"
                     android:layout_below="@+id/text_desc_desc"
                     android:text="No description available"
-                   />
+                    />
             </RelativeLayout>
             <TextView
                 android:layout_width="match_parent"
@@ -132,43 +118,47 @@
                 >
             </TextView>
             <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/listPreferredItemHeight"
-            android:background="#F3F3F3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/layout_place">
-            <ImageView
-                android:id="@+id/icon_place"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginRight="20dip"
-                android:layout_marginLeft="8dip"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:background="#F3F3F3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/layout_place">
+                <ImageView
+                    android:id="@+id/icon_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dip"
+                    android:layout_marginLeft="8dip"
 
-                android:src="@drawable/ic_place_black_36dp"
-                />
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="30dp"
-                android:layout_toRightOf="@id/icon_place"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignWithParentIfMissing="true"
-                android:gravity="center_vertical"
-                android:text="Place"
-                android:id="@+id/text_place_title"/>
+                    android:src="@drawable/ic_place_black_36dp"
+                    />
+                <TextView
+                    android:textStyle="bold"
 
-            <TextView
-                android:id="@+id/text_place_desc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp"
+                    android:layout_toRightOf="@id/icon_place"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:gravity="center_vertical"
+                    android:text="Place"
+                    android:id="@+id/text_place_title"/>
 
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/edit_place_desc"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
+                    android:editable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
 
-                android:layout_toRightOf="@id/icon_place"
-                android:layout_below="@+id/text_place_title"
-                android:text="No place available"
-                />
-        </RelativeLayout>
+                    android:layout_toRightOf="@id/icon_place"
+                    android:layout_below="@+id/text_place_title"
+                    android:text="No place available"
+                    />
+            </RelativeLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -196,6 +186,8 @@
                     android:src="@drawable/ic_date_range_black_36dp"
                     />
                 <TextView
+                    android:textStyle="bold"
+
                     android:layout_width="fill_parent"
                     android:layout_height="30dp"
                     android:layout_toRightOf="@id/icon_start_date"
@@ -207,8 +199,10 @@
                     android:id="@+id/text_start_date"/>
 
                 <TextView
-                    android:id="@+id/text_start_date_desc"
-
+                    android:id="@+id/edit_start_date_desc"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
+                    android:editable="true"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
 
@@ -244,6 +238,8 @@
                     android:src="@drawable/ic_date_range_black_36dp"
                     />
                 <TextView
+                    android:textStyle="bold"
+
                     android:layout_width="fill_parent"
                     android:layout_height="30dp"
                     android:layout_toRightOf="@id/icon_end_date"
@@ -255,8 +251,10 @@
                     android:id="@+id/text_end_date"/>
 
                 <TextView
-                    android:id="@+id/text_end_date_desc"
-
+                    android:id="@+id/edit_end_date_desc"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
+                    android:editable="true"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
 
@@ -275,55 +273,7 @@
                 android:textStyle="bold"
                 >
             </TextView>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="?android:attr/listPreferredItemHeight"
-                android:background="#F3F3F3"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:id="@+id/layout_memories">
-                <ImageView
-                    android:id="@+id/icon_memories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="20dip"
-                    android:layout_marginLeft="8dip"
 
-                    android:src="@drawable/ic_wallpaper_black_36dp"
-                    />
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="30dp"
-                    android:layout_toRightOf="@id/icon_memories"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignWithParentIfMissing="true"
-                    android:gravity="center_vertical"
-                    android:text="Memories"
-                    android:id="@+id/text_memories"/>
-
-                <TextView
-                    android:id="@+id/text_memories_desc"
-
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_toRightOf="@id/icon_memories"
-                    android:layout_below="@+id/text_memories"
-                    android:text="View memories"
-                    />
-                <TextView
-                    android:id="@+id/text_mem_counter"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="8dp"
-                    android:background="@drawable/rectangle"
-                    android:gravity="center"
-                    android:layout_centerVertical="true"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -334,12 +284,12 @@
                 android:textStyle="bold"
                 >
             </TextView>
+
             <Button
-                android:id="@+id/btnDeleteVac"
+                android:id="@+id/saveVacBtn"
+                android:text="Save Changes"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Delete vacation"
-                android:background="#D41818"/>
+                android:layout_height="match_parent" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
