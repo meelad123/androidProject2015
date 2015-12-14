@@ -30,5 +30,6 @@
     <string name="title_activity_edit_profile_activity">EditProfile_activity</string>
     <string name="LukesTestButton">BeginTest</string>
     <string name="LukesTestResult">This should change</string>
+    <string name="url_get_vacations">http://jthcloudproject.elasticbeanstalk.com/api/v1/users/</string>
 
 </resources>

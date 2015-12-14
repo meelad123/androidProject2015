@@ -55,12 +55,7 @@ public class LukesJSON
             StringBuilder lol = new StringBuilder();
             lol.append("{\"Vacations\":");
             lol.append(input);
-            lol.reverse();
-            int Fixingit = lol.indexOf("{,");
-            Log.d("Luke", "Fixing it = " +Fixingit);
-            lol.delete(0, Fixingit + 1);
-            lol.reverse();
-            lol.append("]}");
+            lol.append("}");
             JSONObject tokener = new JSONObject(lol.toString());
             Log.d("Luke", "parsing well 2");
             result = tokener.getJSONArray("Vacations");

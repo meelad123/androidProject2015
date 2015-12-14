@@ -129,14 +129,14 @@ public class LukesTesting extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lukestestingface);
+        //setContentView(R.layout.lukestestingface);
 
         Log.d("Luke", "still going");
 
-        outputtest = (TextView)findViewById(R.id.outPutData);
-        VacationsList = (ListView)findViewById(R.id.ListOfVacations);
+       // outputtest = (TextView)findViewById(R.id.outPutData);
+       // VacationsList = (ListView)findViewById(R.id.ListOfVacations);
 
-        btntest = (Button)findViewById(R.id.beginTest);
+       // btntest = (Button)findViewById(R.id.beginTest);
 
         Log.d("Luke", "still going");
 
@@ -150,7 +150,7 @@ public class LukesTesting extends Activity
             }
         });
 
-        NextTest = (Button)findViewById(R.id.NextTest);
+       // NextTest = (Button)findViewById(R.id.NextTest);
 
         Log.d("Luke", "still going");
 
@@ -162,7 +162,7 @@ public class LukesTesting extends Activity
             }
         });
 
-        screwthis = (Button)findViewById(R.id.Screwthis);
+       // screwthis = (Button)findViewById(R.id.Screwthis);
 
         Log.d("Luke", "still going");
 

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,12 +22,13 @@ public class MainActivity extends ActionBarActivity {
 
 
     private ListView mDrawerList;
+    private ListView vacationList;
     private ArrayAdapter<String> mAdapter;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private String mActivityTitle;
-    private Button LukesButton;
     private Button btnViewVac;
+    public VacationListHandler ListHandler = new VacationListHandler(this, 20);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +38,7 @@ public class MainActivity extends ActionBarActivity {
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
-        LukesButton = (Button) findViewById(R.id.Steve);
-        LukesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), LukesTesting.class);
-                startActivity(intent);
-                finish();
 
-            }
-        });
 
         btnViewVac = (Button) findViewById(R.id.btn_view_vac);
 
@@ -117,8 +110,28 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        Log.e("Luke", "before we begin");
+
+        new GetVacationList(this).execute();
+
 
     }
+
+    private void ConnectVacations()
+    {
+
+        vacationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Intent intent = new Intent(v.getContext(), ViewVacationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+    }
+
+
 
     private void addDrawerItems() {
         String[] myitems = {"My vacations", "My friends", "Log out", "My Profile", "Delete current user"};
