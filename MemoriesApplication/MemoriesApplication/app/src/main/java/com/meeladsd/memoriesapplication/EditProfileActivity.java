@@ -1,20 +1,13 @@
 package com.meeladsd.memoriesapplication;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.AssetManager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.lang.reflect.Array;
-import android.os.AsyncTask;
 public class EditProfileActivity extends ActionBarActivity {
     private   TextView FnameTxtview;
     private   TextView Lnametxtview;
@@ -24,6 +17,7 @@ public class EditProfileActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_edit_profile);
         FnameTxtview=(TextView)findViewById(R.id.userFirstName);
         Lnametxtview=(TextView)findViewById(R.id.userLasttName);
@@ -53,5 +47,17 @@ public class EditProfileActivity extends ActionBarActivity {
 
 
         }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     }

@@ -3,8 +3,10 @@ package com.meeladsd.memoriesapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.widget.TextView;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -16,7 +18,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,9 +26,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-
-import cz.msebera.android.httpclient.client.methods.HttpPatch;
-import cz.msebera.android.httpclient.entity.BasicHttpEntity;
 
 import static org.apache.http.protocol.HTTP.UTF_8;
 
@@ -39,13 +37,15 @@ public class SaveEditVacation extends AsyncTask<String, String, Integer> {
     private String VacTitle,VacDes,VacPlace,VacStart,VacEnd;
     private String newRes[] ;
     private boolean VacFoumd = true;
-    private TextView _txtTitle,_txtDesc,_txtPlace,_txtStartDate,_txtEndDate, _txtMemCounter;
+    private String _txtTitle,_txtDesc,_txtPlace,_txtStartDate,_txtEndDate, _txtMemCounter;
     private String[] myList;
     private HttpResponse response=null;
     int state;
     Activity _myContext;
+    boolean connected;
+    VacationListHandler ListHandler = new VacationListHandler(_myContext, 20, null);
 
-    SaveEditVacation(TextView Title,TextView Description,TextView place,TextView Start ,TextView End, int vacId, Activity c)
+    SaveEditVacation(String Title,String Description,String place,String Start ,String End, int vacId, Activity c)
     {   _txtTitle =Title;
         _txtDesc = Description;
         _txtPlace = place;
@@ -58,97 +58,174 @@ public class SaveEditVacation extends AsyncTask<String, String, Integer> {
 
     @Override
     protected void onPreExecute() {
+
         super.onPreExecute();
-        VacTitle = _txtTitle.getText().toString();
-        VacDes =_txtDesc.getText().toString();
-        VacPlace=_txtPlace.getText().toString();
-        VacStart = _txtStartDate.getText().toString();
-        VacEnd= _txtEndDate.getText().toString();
+
+        if (CheckNetworkConnection() == false)
+        {
+            VacationEditInfo Store = new VacationEditInfo();
+            Store.VacTitle = _txtTitle;
+            Store.VacDes =_txtDesc;
+            Store.VacPlace=_txtPlace;
+            Store.VacStart = _txtStartDate;
+            Store.VacEnd= _txtEndDate;
+            Store.VacID= String.valueOf(_vacId);
+
+            Converter conv = new Converter();
+            JSONArray result = new JSONArray();
+            try {
+                result.put(0, conv.ClassToJSON(Store));
+            }
+            catch (Exception ex)
+            {
+                Log.e("SaveEditVac", ex.getMessage());
+            }
+
+            ListHandler.writeToFile(result, "StorredComs.txt");
+        }
+
+
+            VacTitle = _txtTitle;
+            VacDes =_txtDesc;
+            VacPlace=_txtPlace;
+            VacStart = _txtStartDate;
+            VacEnd= _txtEndDate;
+
+
 
 
     }
 
     @Override
     protected Integer doInBackground(String... params) {
+        if (connected == true) {
 
-        JSONObject result = new JSONObject();
+            JSONObject result = new JSONObject();
 
 
-        SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
+            SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
 
-        String t = myS.getString("access_token", "");
-        String name = myS.getString("username", "");
+            String t = myS.getString("access_token", "");
+            String name = myS.getString("username", "");
 
-        DefaultHttpClient client = new DefaultHttpClient();
+            DefaultHttpClient client = new DefaultHttpClient();
 
-        HttpGet httpGet = new HttpGet("http://jthcloudproject.elasticbeanstalk.com/api/v1/Users/" + name + "/vacations");
-        httpGet.addHeader("authorization", "bearer " + t);
-        try {
-            HttpResponse resp = client.execute(httpGet);
-            HttpEntity entity = resp.getEntity();
-            JSONArray jsonObjectVacations = JsonHelper.parsArray(entity.getContent());
-            String newRes[] = new String[jsonObjectVacations.length()];
-            for (int i=0;i< jsonObjectVacations.length();i++) {
-                result =(jsonObjectVacations.getJSONObject(i));
-                newRes[i] = result.getString("VacationId");
-                if(Integer.toString(_vacId) == newRes[i])
-                {
+            HttpGet httpGet = new HttpGet("http://jthcloudproject.elasticbeanstalk.com/api/v1/Users/" + name + "/vacations");
+            httpGet.addHeader("authorization", "bearer " + t);
+            try {
+                HttpResponse resp = client.execute(httpGet);
+                HttpEntity entity = resp.getEntity();
+                JSONArray jsonObjectVacations = JsonHelper.parsArray(entity.getContent());
+                String newRes[] = new String[jsonObjectVacations.length()];
+                for (int i = 0; i < jsonObjectVacations.length(); i++) {
+                    result = (jsonObjectVacations.getJSONObject(i));
+                    newRes[i] = result.getString("VacationId");
+                    if (Integer.toString(_vacId) == newRes[i]) {
 
-                    VacFoumd=false;
+                        VacFoumd = false;
+                    }
                 }
-            }
-            if(!VacFoumd) {
-                HttpPut httpPut = new HttpPut("http://jthcloudproject.elasticbeanstalk.com/api/v1/vacations/"+_vacId);
-                httpPut.addHeader("authorization", "bearer " + t);
-                List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>();
-                nameValuePair.add(new BasicNameValuePair("Title",VacTitle));
-                nameValuePair.add(new BasicNameValuePair("Description",VacDes));
-                nameValuePair.add(new BasicNameValuePair("Place", VacPlace));
-                nameValuePair.add(new BasicNameValuePair("Start", VacStart));
-                nameValuePair.add(new BasicNameValuePair("End", VacEnd));
+                if (!VacFoumd) {
+                    HttpPut httpPut = new HttpPut("http://jthcloudproject.elasticbeanstalk.com/api/v1/vacations/" + _vacId);
+                    httpPut.addHeader("authorization", "bearer " + t);
+                    List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>();
+                    nameValuePair.add(new BasicNameValuePair("Title", VacTitle));
+                    nameValuePair.add(new BasicNameValuePair("Description", VacDes));
+                    nameValuePair.add(new BasicNameValuePair("Place", VacPlace));
+                    nameValuePair.add(new BasicNameValuePair("Start", VacStart));
+                    nameValuePair.add(new BasicNameValuePair("End", VacEnd));
 
-                try {
+                    try {
 
-                    httpPut.setEntity(new UrlEncodedFormEntity(nameValuePair, UTF_8));
-                    response = client.execute(httpPut);
+                        httpPut.setEntity(new UrlEncodedFormEntity(nameValuePair, UTF_8));
+                        response = client.execute(httpPut);
 
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
 
-                } catch (ClientProtocolException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    Toast.makeText(_myContext, e.getMessage(), Toast.LENGTH_LONG).show();
+                    } catch (ClientProtocolException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        Toast.makeText(_myContext, e.getMessage(), Toast.LENGTH_LONG).show();
 
-                    e.printStackTrace();
+                        e.printStackTrace();
+                    }
+
+
+                    return state = response.getStatusLine().getStatusCode();
+
+
                 }
-
-
-               return state = response.getStatusLine().getStatusCode();
-
-
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+        }
+        else
+        {
+
         }
 
 
         return null;
     }
+
+    public Boolean CheckNetworkConnection() {
+        connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)_myContext.getSystemService(_myContext.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else {
+            connected = false;
+        }
+        return  connected;
+
+    }
     @Override
     protected void onPostExecute(Integer rep) {
         super.onPostExecute(rep);
+        if (connected ==true) {
 
-        if (rep > 200 || rep <300){
+            if (rep > 200 || rep < 300) {
 
 
-            Toast.makeText(_myContext,"your profile has been successfully updated",Toast.LENGTH_LONG).show();
-            //_myContext.startActivity(new Intent(_myContext,MyProfileactivity2.class));
+                Toast.makeText(_myContext, "your profile has been successfully updated", Toast.LENGTH_LONG).show();
+                //_myContext.startActivity(new Intent(_myContext,MyProfileactivity2.class));
 
+            }
+        }
+
+        JSONArray Check = ListHandler.ReadFromFile("StorredComs.txt");
+        if (Check != null && Check.length()>0)
+        {
+            try{
+                JSONObject LastCommand = Check.optJSONObject(0);
+
+                VacTitle = LastCommand.getString("VacTitle");
+                VacDes =LastCommand.getString("VacTitle");
+                VacPlace=LastCommand.getString("VacTitle");
+                VacStart = LastCommand.getString("VacTitle");
+                VacEnd= LastCommand.getString("VacTitle");
+                _vacId = Integer.parseInt(LastCommand.getString("VacID"));
+                _myContext.deleteFile("StorredComs.txt");
+                new SaveEditVacation(VacTitle,VacDes,VacPlace,VacStart,VacEnd,_vacId,_myContext).execute();
+            }
+            catch (Exception ex)
+            {
+                Log.e("SaveEditVac", ex.getMessage());
+
+            }
         }
 
     }
+}
+
+class VacationEditInfo
+{
+    public String VacTitle,VacDes,VacPlace,VacStart,VacEnd,VacID;
 }
 

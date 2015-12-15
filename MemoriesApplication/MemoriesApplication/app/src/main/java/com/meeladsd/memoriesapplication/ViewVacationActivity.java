@@ -13,13 +13,14 @@ import android.widget.RelativeLayout;
 public class ViewVacationActivity extends ActionBarActivity {
 
     private RelativeLayout _memText;
+    int VacID = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_vacation);
         Button deleteBtnVac = (Button)findViewById(R.id.btnDeleteVac);
         Intent i = getIntent();
-        final int VacID = i.getIntExtra("VacationID", 0);
+        VacID = i.getIntExtra("VacationID", 0);
 
         deleteBtnVac.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,12 +47,12 @@ public class ViewVacationActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent parentIntent1 = new Intent(this,MainActivity.class);
-                startActivity(parentIntent1);
+                finish();
                 return true;
 
             case  R.id.icon_edit:
                 Intent intent_1 = new Intent(this,EditVacationActivity.class);
+                intent_1.putExtra("VacationID", VacID);
                 startActivity(intent_1);
                 return  true;
             default:

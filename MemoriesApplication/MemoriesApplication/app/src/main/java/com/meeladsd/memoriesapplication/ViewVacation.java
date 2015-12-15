@@ -5,7 +5,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -31,6 +34,7 @@ public class ViewVacation extends AsyncTask<String, String, JSONObject> {
     private TextView _txtTitle,_txtDesc,_txtPlace,_txtStartDate,_txtEndDate, _txtMemCounter;
     private RelativeLayout _memText;
     private JSONArray _memList;
+    private boolean connected;
 
     public ViewVacation(int vacId, Activity con){
         _vacId = vacId;
@@ -47,30 +51,51 @@ public class ViewVacation extends AsyncTask<String, String, JSONObject> {
     }
     @Override
     protected JSONObject doInBackground(String... params) {
-        try{
-            SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
-            String t = myS.getString("access_token", "");
+        if (CheckNetworkConnection() == true) {
+            try {
+                SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
+                String t = myS.getString("access_token", "");
 
-            DefaultHttpClient httpclient = new DefaultHttpClient();
+                DefaultHttpClient httpclient = new DefaultHttpClient();
 
-            HttpGet getVacarion = new HttpGet("http://jthcloudproject.elasticbeanstalk.com/api/v1/vacations/" + _vacId);
-            getVacarion.addHeader("authorization", "bearer " + t);
+                HttpGet getVacarion = new HttpGet("http://jthcloudproject.elasticbeanstalk.com/api/v1/vacations/" + _vacId);
+                getVacarion.addHeader("authorization", "bearer " + t);
 
-            HttpGet getMem = new HttpGet("http://jthcloudproject.elasticbeanstalk.com/api/v1/vacations/"+_vacId+"/memories");
-            getMem.addHeader("Authorization", "bearer " + t);
+                HttpGet getMem = new HttpGet("http://jthcloudproject.elasticbeanstalk.com/api/v1/vacations/" + _vacId + "/memories");
+                getMem.addHeader("Authorization", "bearer " + t);
 
-            HttpResponse resp = httpclient.execute(getVacarion);
-            HttpResponse respMem = httpclient.execute(getMem);
-            int statuscode = respMem.getStatusLine().getStatusCode();
-            _memList = JsonHelper.parsArray(respMem.getEntity().getContent());
-            return JsonHelper.parseJSONObjectResponse(resp.getEntity().getContent());
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
+                HttpResponse resp = httpclient.execute(getVacarion);
+                HttpResponse respMem = httpclient.execute(getMem);
+                int statuscode = respMem.getStatusLine().getStatusCode();
+                _memList = JsonHelper.parsArray(respMem.getEntity().getContent());
+                return JsonHelper.parseJSONObjectResponse(resp.getEntity().getContent());
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
-        return null;
+        else
+        {
+            return null;
+        }
+    }
+
+    public Boolean CheckNetworkConnection() {
+        connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)_myContext.getSystemService(_myContext.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else {
+            connected = false;
+        }
+        return  connected;
+
     }
 
     @Override
@@ -112,6 +137,27 @@ public class ViewVacation extends AsyncTask<String, String, JSONObject> {
 
 
         }
+        if (connected == false)
+        {
+            VacationListHandler ListHandler = new VacationListHandler(_myContext, 20, null);
+            JSONArray results = ListHandler.ReadFromFile("JsonList.txt");
+            for (int i = 0; i < results.length(); i++)
+            {
+                try {
+                    JSONObject Check = results.getJSONObject(i);
+                    int CheckObjVacID = Integer.parseInt(Check.getString("VacationId"));
+                    if (CheckObjVacID == _vacId) {
+                        jsonObject = Check;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.e("ViewVacation", ex.getMessage());
+                }
+
+            }
+        }
+
             try {
                 if (jsonObject.getString("Title") != null) {
                     _txtTitle.setText(jsonObject.getString("Title"));

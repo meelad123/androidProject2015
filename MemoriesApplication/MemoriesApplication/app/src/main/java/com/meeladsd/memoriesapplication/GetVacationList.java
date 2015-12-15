@@ -206,13 +206,14 @@ public class GetVacationList extends AsyncTask<String, Void, Void> {
         if (connected == false)
         {
             Toast.makeText(_myContext, "No Network Connection", Toast.LENGTH_LONG).show();
-            JSONArray results = ListHandler.ReadFromFile();
+            JSONArray results = ListHandler.ReadFromFile("JsonList.txt");
             ListHandler.PopulateList(results);
         }
         else {
             if (FinalList.length() > 0) {
                 ListHandler.PopulateList(FinalList);
-                ListHandler.writeToFile(PersonalVacations);
+                ListHandler.writeToFile(PersonalVacations, "JsonList.txt");
+                ListHandler.writeToFile(Friends, "FriendList.txt");
                 Log.d("Luke", "Finished writing to file");
             }
         }

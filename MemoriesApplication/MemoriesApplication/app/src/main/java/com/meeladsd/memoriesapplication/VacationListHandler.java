@@ -71,12 +71,16 @@ public class VacationListHandler {
         Log.d("Luke", "Do I die again");
     }
 
-    public void writeToFile(JSONArray Inputarray) {
+    public void writeToFile(JSONArray Inputarray, String Filename) {
         JSONArray transfer = new JSONArray();
         for (int i = 0; i < saveRate; i++ )
         {
             try {
-                transfer.put(i, Inputarray.optJSONObject(i));
+                JSONObject transObj = Inputarray.optJSONObject(i);
+                if (transObj != null)
+                {
+                    transfer.put(i,transObj);
+                }
             }
             catch (JSONException e)
             {
@@ -86,7 +90,7 @@ public class VacationListHandler {
 
         String JsonUnconverted = transfer.toString();
         try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(_myContext.openFileOutput("JsonList.txt", _myContext.MODE_PRIVATE));
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(_myContext.openFileOutput(Filename, _myContext.MODE_PRIVATE));
             outputStreamWriter.write(JsonUnconverted);
             outputStreamWriter.close();
         }
@@ -96,13 +100,13 @@ public class VacationListHandler {
     }
 
 
-    public JSONArray ReadFromFile() {
+    public JSONArray ReadFromFile(String Filename) {
 
         String ret = "";
         JSONArray Results = null;
 
         try {
-            InputStream inputStream = _myContext.openFileInput("JsonList.txt");
+            InputStream inputStream = _myContext.openFileInput(Filename);
 
             if ( inputStream != null ) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -124,6 +128,8 @@ public class VacationListHandler {
             Log.e("login activity", "File not found: " + e.toString());
         } catch (IOException e) {
             Log.e("login activity", "Can not read file: " + e.toString());
+        } catch (Exception e) {
+        Log.e("login activity", e.toString());
         }
 
         return Results;

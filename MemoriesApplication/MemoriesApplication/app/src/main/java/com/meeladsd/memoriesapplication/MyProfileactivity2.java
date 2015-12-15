@@ -53,8 +53,7 @@ public class MyProfileactivity2 extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent parentIntent1 = new Intent(this,MainActivity.class);
-                startActivity(parentIntent1);
+                finish();
                 return true;
 
             case  R.id.icon_edit:
