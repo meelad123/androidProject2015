@@ -63,6 +63,10 @@ public class CameraPreviewActivity extends Activity {
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
             _cameraData = data;
+            Intent intent = new Intent(getApplicationContext(), ViewMemoriesActivity.class);
+            intent.putExtra("imageData",_cameraData);
+            setResult(Activity.RESULT_OK, intent);
+            finish();
 
         }
     };

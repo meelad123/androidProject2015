@@ -49,7 +49,6 @@ public class ViewVacationActivity extends ActionBarActivity {
             case android.R.id.home:
                 finish();
                 return true;
-
             case  R.id.icon_edit:
                 Intent intent_1 = new Intent(this,EditVacationActivity.class);
                 intent_1.putExtra("VacationID", VacID);

@@ -31,8 +31,6 @@ public class FriendsActivity extends ActionBarActivity {
 
 
         new  Friends(FriendsActivity.this,listView,sr,FriendsActivity.this).execute();
-
-
         addBtn = (FloatingActionButton ) findViewById(R.id.addFriends);
         addBtn.setRippleColor(Color.RED);
         addBtn.setOnClickListener(new View.OnClickListener() {

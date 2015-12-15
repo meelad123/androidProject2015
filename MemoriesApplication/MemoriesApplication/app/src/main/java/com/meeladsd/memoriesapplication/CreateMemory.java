@@ -32,14 +32,18 @@ public class CreateMemory extends AsyncTask<String, Void, JSONObject> {
     private Activity _con;
     private ProgressDialog progress;
     private int _statuscode;
+    private byte[] _vidByte;
+    private byte[] _soundByte;
 
-    CreateMemory(int id, ArrayList<Bitmap> bArra, String time, Activity c) {
+    CreateMemory(int id, byte[] s, byte[] v, ArrayList<Bitmap> bArra, String time, Activity c) {
 
         _bArray = bArra;
         _id = id;
         _time = time;
         _con = c;
         progress = new ProgressDialog(c);
+        _vidByte = v;
+        _soundByte = s;
     }
 
 
@@ -89,9 +93,18 @@ public class CreateMemory extends AsyncTask<String, Void, JSONObject> {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            new ImageUpload(idM,
-                    _bArray,
-                    _con).execute();
+            if(_bArray != null)
+            {
+                new ImageUpload(idM, _bArray, _con).execute();
+            }
+            if(_soundByte != null){
+                new AudioUpload(idM, _soundByte, _con).execute();
+
+            }
+            if(_vidByte != null){
+                new VideoUpload(idM, _vidByte, _con).execute();
+
+            }
         }
         else {
             Toast.makeText(_con, "Failed to create a new memory", Toast.LENGTH_SHORT).show();

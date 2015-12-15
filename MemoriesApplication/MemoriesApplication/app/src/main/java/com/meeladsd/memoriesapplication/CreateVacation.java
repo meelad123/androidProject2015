@@ -105,12 +105,11 @@ public class CreateVacation extends AsyncTask<String, String, JSONObject> {
         else {
             Toast.makeText(con, "Failed to create a new vacation", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private void newMemory(JSONObject result) throws JSONException {
         int id = result.getInt("VacationId");
-        new CreateMemory(id,
+        new CreateMemory(id, null, null,
                 _bitmapArray,
                 start,
                 con).execute();

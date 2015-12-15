@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 /**
  * Created by meeladsd on 11/9/2015.
  */
@@ -36,7 +38,13 @@ public class LogInActivity extends ActionBarActivity {
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    NetworkChecker n = new NetworkChecker(getApplicationContext());
+                    if(n.haveNetworkConnection()) {
                         Login(v);
+                    }else{
+                        Toast.makeText(getApplicationContext(), "No connection found..", Toast.LENGTH_LONG).show();
+                    }
+
                 }
             });
 
@@ -52,7 +60,6 @@ public class LogInActivity extends ActionBarActivity {
         else
         {
             Intent main = new Intent(this, MainActivity.class);
-
             startActivity(main);
             finish();
         }

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegisterActivity extends ActionBarActivity {
 
@@ -27,43 +28,20 @@ public class RegisterActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
-
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
-
         btnReg = (Button)findViewById(R.id.btn_register);
 
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                NetworkChecker n = new NetworkChecker(getApplicationContext());
 
-                registerFun(v);
-
+                if(n.haveNetworkConnection()){
+                    registerFun(v);
+                }else{
+                    Toast.makeText(getApplicationContext(), "No connection found..", Toast.LENGTH_LONG).show();
+                }
             }
         });
-    }
-    public boolean onCreateOptionsMenu( Menu menu ) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate( R.menu.main2, menu );
-
-        return onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            case android.R.id.edit:
-                Intent intent = new Intent(this.getApplicationContext(),EditVacationActivity.class);
-                startActivity(intent);
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     private void registerFun(View v) {
