@@ -65,7 +65,9 @@ public class ViewMemoriesActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         _lstMem = (ListView)findViewById(R.id.memories_list);
-        new ViewMemoriesList(2, _lstMem, this, getApplicationContext()).execute();
+
+        int id = getIntent().getIntExtra("VAC_ID", 0);
+        new ViewMemoriesList(id, _lstMem, this, getApplicationContext()).execute();
 
         _imgCam = (ImageView)this.findViewById(R.id.img_camera);
         _imgAudio = (ImageView)this.findViewById(R.id.img_audio);
@@ -145,11 +147,26 @@ public class ViewMemoriesActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case  R.id.icon_upload:
-                if(_bitmapArray.size() == 1) {
-                    new ImageUpload(_vacId, _bitmapArray, this).execute();
+                if(_bitmapArray.size() == 1 && _txtVideo.getText() == "Video: 1" && _txtAudio.getText() == "Audio: 1") {
+                    File file = new File(_outputFile);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    FileInputStream fis;
+                    try {
+                        fis = new FileInputStream(file);
+                        byte[] buf = new byte[1024];
+                        int n;
+                        while (-1 != (n = fis.read(buf)))
+                            baos.write(buf, 0, n);
+                        Log.d("err", "hej");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    byte[] sAr = baos.toByteArray();
+
+                    new CreateMemory(_vacId, sAr, _vidBytes, _bitmapArray, "00:00", this).execute();
                 }
-                else if(_txtVideo.getText() == "Video: 1") {
-                    new VideoUpload(_vacId, _vidBytes, this).execute();
+                else if(_bitmapArray.size() == 1) {
+                    new CreateMemory(_vacId, null, null, _bitmapArray, "00:00", this).execute();
                 }
                 else if(_txtAudio.getText() == "Audio: 1"){
                     File file = new File(_outputFile);
@@ -166,7 +183,10 @@ public class ViewMemoriesActivity extends ActionBarActivity {
                         e.printStackTrace();
                     }
                     byte[] sAr = baos.toByteArray();
-                    new AudioUpload(_vacId, sAr, this).execute();
+                    new CreateMemory(_vacId, sAr, null, null, "00:00", this).execute();
+                }
+                else if(_txtVideo.getText() == "Video: 1"){
+                    new CreateMemory(_vacId, null, _vidBytes, null, "00:00", this).execute();
                 }else {
                     Toast.makeText(this, "No media selected to upload!", Toast.LENGTH_SHORT).show();
                 }

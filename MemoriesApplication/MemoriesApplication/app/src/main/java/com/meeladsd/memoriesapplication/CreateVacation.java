@@ -109,7 +109,7 @@ public class CreateVacation extends AsyncTask<String, String, JSONObject> {
 
     private void newMemory(JSONObject result) throws JSONException {
         int id = result.getInt("VacationId");
-        new CreateMemory(id,
+        new CreateMemory(id, null, null,
                 _bitmapArray,
                 start,
                 con).execute();

@@ -60,7 +60,6 @@ public class LogInActivity extends ActionBarActivity {
         else
         {
             Intent main = new Intent(this, MainActivity.class);
-
             startActivity(main);
             finish();
         }

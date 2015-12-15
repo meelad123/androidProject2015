@@ -89,6 +89,7 @@ public class ViewMemoriesList extends AsyncTask<String, String, JSONArray> {
 
     @Override
     protected void onPostExecute(JSONArray jsonArray) {
+
         MemoriesAdapter mAd = new MemoriesAdapter(_con, _memTitles, _memUrl, _memIds);
 
         _lstMem.setAdapter(mAd);

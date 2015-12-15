@@ -62,17 +62,19 @@ public class ImageUpload extends AsyncTask<String, Void, String> {
         //url for upload
 
         try {
-            _bArray.remove(0);
-            for (Bitmap bitmap: _bArray) {
+            if (_bArray.size() > 0) {
+                _bArray.remove(0);
+            }
+
+            for (Bitmap bitmap : _bArray) {
                 int width = bitmap.getWidth();
                 int height = bitmap.getHeight();
-                URL url = new URL("http://jthcloudproject.elasticbeanstalk.com/api/v1/memories/"+ _id+"/picture?height="+height+"&width="+width);
-
+                URL url = new URL("http://jthcloudproject.elasticbeanstalk.com/api/v1/memories/" + _id + "/picture?height=" + height + "&width=" + width);
                 httpUrlConnection = (HttpURLConnection) url.openConnection();
                 httpUrlConnection.setUseCaches(false);
                 httpUrlConnection.setDoOutput(true);
                 httpUrlConnection.setRequestMethod("POST");
-                httpUrlConnection.setRequestProperty("Authorization", "Bearer "+t);
+                httpUrlConnection.setRequestProperty("Authorization", "Bearer " + t);
                 httpUrlConnection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + _boundary);
 
                 DataOutputStream request = new DataOutputStream(

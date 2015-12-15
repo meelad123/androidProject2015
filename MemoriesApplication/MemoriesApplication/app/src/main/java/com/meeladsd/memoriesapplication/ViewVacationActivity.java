@@ -24,21 +24,13 @@ public class ViewVacationActivity extends ActionBarActivity {
         deleteBtnVac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-                new DeleteVacation(, ViewVacationActivity.this).execute();
-=======
                 new DeleteVacation(VacID, ViewVacationActivity.this).execute();
->>>>>>> origin/master
             }
         });
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-<<<<<<< HEAD
-        new ViewVacation(2, ViewVacationActivity.this).execute();
-=======
         new ViewVacation(VacID, ViewVacationActivity.this).execute();
->>>>>>> origin/master
     }
 
 
