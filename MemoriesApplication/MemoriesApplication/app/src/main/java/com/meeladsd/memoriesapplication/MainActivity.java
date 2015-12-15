@@ -129,6 +129,8 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        new GetVacationList(this, adapter).execute();
+
     }
 
     private void RefreshData(ListAdapter adapter)
