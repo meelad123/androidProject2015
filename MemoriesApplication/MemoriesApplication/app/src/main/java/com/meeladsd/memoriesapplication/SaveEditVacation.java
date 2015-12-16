@@ -2,6 +2,7 @@ package com.meeladsd.memoriesapplication;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -106,29 +107,16 @@ public class SaveEditVacation extends AsyncTask<String, String, Integer> {
             SharedPreferences myS = _myContext.getSharedPreferences("token", Context.MODE_PRIVATE);
 
             String t = myS.getString("access_token", "");
-            String name = myS.getString("username", "");
 
             DefaultHttpClient client = new DefaultHttpClient();
 
-            HttpGet httpGet = new HttpGet("http://jthcloudproject.elasticbeanstalk.com/api/v1/Users/" + name + "/vacations");
-            httpGet.addHeader("authorization", "bearer " + t);
-            try {
-                HttpResponse resp = client.execute(httpGet);
-                HttpEntity entity = resp.getEntity();
-                JSONArray jsonObjectVacations = JsonHelper.parsArray(entity.getContent());
-                String newRes[] = new String[jsonObjectVacations.length()];
-                for (int i = 0; i < jsonObjectVacations.length(); i++) {
-                    result = (jsonObjectVacations.getJSONObject(i));
-                    newRes[i] = result.getString("VacationId");
-                    if (Integer.toString(_vacId) == newRes[i]) {
 
-                        VacFoumd = false;
-                    }
-                }
-                if (!VacFoumd) {
-                    HttpPut httpPut = new HttpPut("http://jthcloudproject.elasticbeanstalk.com/api/v1/vacations/" + _vacId);
+
+                    HttpPut httpPut = new HttpPut("http://jthcloudproject.elasticbeanstalk.com/api/v1/vacations/"+_vacId);
                     httpPut.addHeader("authorization", "bearer " + t);
                     List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>();
+                    nameValuePair.add(new BasicNameValuePair("VacationId",Integer.toString(_vacId)));
+
                     nameValuePair.add(new BasicNameValuePair("Title", VacTitle));
                     nameValuePair.add(new BasicNameValuePair("Description", VacDes));
                     nameValuePair.add(new BasicNameValuePair("Place", VacPlace));
@@ -155,12 +143,8 @@ public class SaveEditVacation extends AsyncTask<String, String, Integer> {
                     return state = response.getStatusLine().getStatusCode();
 
 
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
+
         }
         else
         {
@@ -190,11 +174,20 @@ public class SaveEditVacation extends AsyncTask<String, String, Integer> {
         super.onPostExecute(rep);
         if (connected ==true) {
 
-            if (rep > 200 || rep < 300) {
+            if (rep >= 200 && rep < 300) {
 
 
                 Toast.makeText(_myContext, "your profile has been successfully updated", Toast.LENGTH_LONG).show();
-                //_myContext.startActivity(new Intent(_myContext,MyProfileactivity2.class));
+                Intent intent = new Intent(_myContext, MainActivity.class);
+                intent.putExtra("VacationID", _vacId);
+
+                _myContext.startActivity(intent);
+                _myContext.finish();
+
+            }
+            else {
+                Toast.makeText(_myContext, "your profile did not  updated", Toast.LENGTH_LONG).show();
+
 
             }
         }

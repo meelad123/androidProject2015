@@ -33,6 +33,14 @@ public class MyProfileactivity2 extends ActionBarActivity {
 
             }
         });
+
+        txtViewVacations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ViewMyVacations.class);
+                startActivity(intent);
+            }
+        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
