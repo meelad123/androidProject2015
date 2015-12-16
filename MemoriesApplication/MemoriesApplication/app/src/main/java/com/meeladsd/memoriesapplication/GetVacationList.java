@@ -121,18 +121,21 @@ public class GetVacationList extends AsyncTask<String, Void, Void> {
         String eh = _myContext.getString(R.string.url_get_vacations) + Username + "/vacations";
         HttpGet httpGet = new HttpGet(eh);
         HttpClient clive = new DefaultHttpClient();
-
+        JSONArray j = new JSONArray();
         try
         {
             httpGet.addHeader("Accept", "application/json");
             httpGet.addHeader("Content-Type", "application/x-www-form-urlencoded");
             httpGet.addHeader("Authorization", "Bearer " + Token);
             resp = clive.execute(httpGet);
-
-            JsonUnconverted = LukesJSON.ReadInputStream(resp.getEntity().getContent());
             Log.d("Luke", "Retrieved from net");
             Log.d("Luke", JsonUnconverted);
-            Vacations = LukesJSON.ParseStringToJsonArray(JsonUnconverted);
+
+            JSONArray js = JsonHelper.parsArray(resp.getEntity().getContent());
+            for (int i=0;i< js.length();i++) {
+                j.put(js.get(i));
+            }
+            Vacations = j;
             return Vacations;
 
 
@@ -141,6 +144,7 @@ public class GetVacationList extends AsyncTask<String, Void, Void> {
             e.printStackTrace();
             return null;
         }
+
     }
 
     private void GetFriends()
