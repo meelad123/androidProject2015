@@ -18,6 +18,8 @@ public class ViewVacationActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_vacation);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Button deleteBtnVac = (Button)findViewById(R.id.btnDeleteVac);
         Intent i = getIntent();
         VacID = i.getIntExtra("VacationID", 0);
@@ -30,7 +32,6 @@ public class ViewVacationActivity extends ActionBarActivity {
         });
 
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         new ViewVacation(VacID, ViewVacationActivity.this).execute();
     }
 

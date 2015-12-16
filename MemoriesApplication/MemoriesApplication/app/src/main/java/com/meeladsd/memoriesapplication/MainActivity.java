@@ -55,7 +55,16 @@ public class MainActivity extends ActionBarActivity {
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position== 0){
 
+
+
+                    Intent intent = new Intent(view.getContext(), ViewMyVacations.class);
+                    startActivity(intent);
+
+
+
+                }
                 if (position == 2) {
                     SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
                     SharedPreferences.Editor editor = userDetails.edit();

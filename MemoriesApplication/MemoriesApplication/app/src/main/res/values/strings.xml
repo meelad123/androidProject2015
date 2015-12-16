@@ -32,5 +32,6 @@
     <string name="LukesTestResult">This should change</string>
     <string name="url_get_vacations">http://jthcloudproject.elasticbeanstalk.com/api/v1/users/</string>
     <string name="title_activity_edit_vacation">EditVacationActivity</string>
+    <string name="title_activity_view_my_vacations">ViewMyVacations</string>
 
 </resources>
