@@ -36,7 +36,7 @@ public class VacationListHandler {
     {
         try {
             Connection.clear();
-            for (int i = 0; i < Inputarray.length() -1; i++)
+            for (int i = 0; i < Inputarray.length(); i++)
             {
                 VacationItem NextItem = new VacationItem();
                 Log.d("Luke", "Oli" + i);
@@ -61,7 +61,7 @@ public class VacationListHandler {
 
             }
 
-
+            Connection.notifyDataSetChanged();
 
 
         } catch (Exception e) {

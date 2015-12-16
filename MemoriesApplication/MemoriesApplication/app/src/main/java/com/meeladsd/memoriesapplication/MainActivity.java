@@ -56,14 +56,8 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position== 0){
-
-
-
                     Intent intent = new Intent(view.getContext(), ViewMyVacations.class);
                     startActivity(intent);
-
-
-
                 }
                 if (position == 2) {
                     SharedPreferences userDetails = view.getContext().getSharedPreferences(getString(R.string.str_token), MODE_PRIVATE);
@@ -74,7 +68,6 @@ public class MainActivity extends ActionBarActivity {
                     editor1.apply();
                     editor.clear();
                     editor.apply();
-
 
                     Intent intent = new Intent(view.getContext(), LogInActivity.class);
                     startActivity(intent);
@@ -140,6 +133,7 @@ public class MainActivity extends ActionBarActivity {
 
         new GetVacationList(this, adapter).execute();
 
+        adapter.notifyDataSetChanged();
     }
 
     private void RefreshData(ListAdapter adapter)

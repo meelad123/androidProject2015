@@ -88,21 +88,9 @@
         </activity>
         <activity android:name=".CameraPreviewActivity" >
         </activity>
-        <activity android:name=".AudioActivity" >
-        </activity>
-<<<<<<< HEAD
         <activity android:name=".ViewMemoryByIdActivity" >
         </activity>
         <activity android:name=".ViewMediaActivity" >
-=======
-        <activity
-            android:name=".ViewMyVacations"
-            android:label="@string/title_activity_view_my_vacations" >
-            <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity" />
-
->>>>>>> origin/master
         </activity>
     </application>
 
