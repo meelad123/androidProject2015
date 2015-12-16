@@ -1,5 +1,6 @@
 package com.meeladsd.memoriesapplication;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -94,8 +95,9 @@ return null;
         if(_statuscode >= 200 && _statuscode <300) {
             Toast.makeText(con, "Friend added", Toast.LENGTH_LONG).show();
 
-          Intent intent = new Intent(con.getApplicationContext(),FriendsActivity.class);
+            Intent intent = new Intent(con.getApplicationContext(),FriendsActivity.class);
             con.startActivity(intent);
+            ((Activity)con).finish();
         }
         else {
             Toast.makeText(con, "NO user found with the followed name", Toast.LENGTH_LONG).show();

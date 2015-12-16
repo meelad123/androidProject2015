@@ -62,7 +62,7 @@ public class ImageUpload extends AsyncTask<String, Void, String> {
         //url for upload
 
         try {
-            if (_bArray.size() > 0) {
+            if (_bArray.size() > 1) {
                 _bArray.remove(0);
             }
 
@@ -128,7 +128,12 @@ public class ImageUpload extends AsyncTask<String, Void, String> {
         }
         else
         {
-            _con.startActivity(new Intent(_con, MainActivity.class));
+            Toast.makeText(_con, "Media uploaded...", Toast.LENGTH_SHORT).show();
+            if (_con instanceof ViewMemoryByIdActivity){
+                _con.finish();
+                _con.startActivity(_con.getIntent());
+
+            }
         }
     }
 }

@@ -72,6 +72,7 @@ public class AudioActivity extends Dialog implements android.view.View.OnClickLi
                 Toast.makeText(getContext(), "Saved successfully", Toast.LENGTH_LONG).show();
                 _txtAudio = (TextView) _c.findViewById(R.id.txt_audio);
                 _txtAudio.setText("Audio: 1");
+
                 dismiss();
                 break;
             case R.id.btn_play:

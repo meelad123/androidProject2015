@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.support.v7.internal.widget.AdapterViewCompat;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.apache.http.HttpEntity;
@@ -21,6 +24,7 @@ import java.util.ArrayList;
  * Created by meelad on 12/1/2015.
  */
 public class ViewMemoriesList extends AsyncTask<String, String, JSONArray> {
+
 
     private Activity _activ;
     private Context _con;
