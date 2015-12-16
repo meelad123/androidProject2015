@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,6 +44,7 @@ public class ViewMemoryByIdActivity extends ActionBarActivity {
     private TextView _txtAudio, _txtVideo;
     public String _outputFile;
     private byte[] _vidBytes;
+    private Button _btnDel;
 
     private String _memId;
     @Override
@@ -52,6 +54,14 @@ public class ViewMemoryByIdActivity extends ActionBarActivity {
         Intent i = getIntent();
         _memId = i.getStringExtra("memId");
 
+        _btnDel = (Button) findViewById(R.id.btnDeleteMem);
+
+        _btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DeleteMemory(_memId, ViewMemoryByIdActivity.this).execute();
+            }
+        });
         _outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/recording.3gp";
 
         _bitmapArray = new ArrayList<Bitmap>();

@@ -55,6 +55,10 @@ public class MainActivity extends ActionBarActivity {
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 5){
+                    Intent intent = new Intent(view.getContext(), ViewSearchResultActivity.class);
+                    startActivity(intent);
+                }
                 if(position== 0){
                     Intent intent = new Intent(view.getContext(), ViewMyVacations.class);
                     startActivity(intent);
@@ -144,7 +148,7 @@ public class MainActivity extends ActionBarActivity {
 
 
     private void addDrawerItems() {
-        String[] myitems = {"My vacations", "My friends", "Log out", "My Profile", "Delete current user"};
+        String[] myitems = {"My Vacations", "My Friends", "Log Out", "My Profile", "Delete Account", "Search Memories"};
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myitems);
         mDrawerList.setAdapter(mAdapter);
     }

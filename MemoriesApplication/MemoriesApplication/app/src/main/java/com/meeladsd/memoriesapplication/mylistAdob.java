@@ -8,6 +8,7 @@ import android.content.Context;
  * Created by Sevag on 2015-11-26.
  */
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,34 +69,38 @@ public class mylistAdob extends BaseAdapter implements Filterable {
         //Handle buttons and add onClickListeners
         Button deleteBtn = (Button) view.findViewById(R.id.followersFriends);
 
+        if(context instanceof FriendsActivity){
+            Drawable bg = context.getResources().getDrawable(R.drawable.ic_delete_white_36dp);
 
-        deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            deleteBtn.setBackground(bg);
+            deleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                AlertDialog.Builder adb = new AlertDialog.Builder(context);
-                adb.setTitle("Alert")
-                        .setMessage("are you sure you want to delete this user")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String friendsName = list.get(position);
+                    AlertDialog.Builder adb = new AlertDialog.Builder(context);
+                    adb.setTitle("Alert")
+                            .setMessage("are you sure you want to delete this user")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String friendsName = list.get(position);
 
-                                new DeleteFriend(activity, friendsName).execute();
-                                list.remove(position); //or some other task
-                                notifyDataSetChanged();
+                                    new DeleteFriend(activity, friendsName).execute();
+                                    list.remove(position); //or some other task
+                                    notifyDataSetChanged();
 
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                dialog.cancel();
-                            }
-                        }).show();
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    dialog.cancel();
+                                }
+                            }).show();
 
 
-            }
-        });
+                }
+            });
+        }
 
         return view;
     }

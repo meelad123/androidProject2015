@@ -40,7 +40,7 @@
             android:label="MAIN" />
         <activity
             android:name=".ViewMyVacations"
-            android:label="My Vacations">
+            android:label="My Vacations" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -63,7 +63,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".EditProfileActivity" >
+        <activity android:name=".EditProfileActivity"
+            android:label="Edit Profile">>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LogInActivity" />
@@ -76,12 +77,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".FriendsActivity" >
+        <activity android:name=".FriendsActivity"
+            android:label="Friends">>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MyProfileactivity2" />
         </activity>
-        <activity android:name=".ViewMemoriesActivity" >
+        <activity android:name=".ViewMemoriesActivity"
+            android:label="Memories">>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ViewVacationActivity" />
@@ -93,11 +96,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ViewVacationActivity" />
         </activity>
-        <activity android:name=".CameraPreviewActivity" >
+        <activity android:name=".CameraPreviewActivity"
+            android:label="Camera">>
         </activity>
-        <activity android:name=".ViewMemoryByIdActivity" >
+        <activity android:name=".ViewMemoryByIdActivity"
+            android:label="Memory info">>
         </activity>
-        <activity android:name=".ViewMediaActivity" >
+        <activity android:name=".ViewMediaActivity"
+            android:label="Media">>
+        </activity>
+        <activity android:name=".ViewSearchResultActivity"
+            android:label="Search for memories">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
     </application>
 
